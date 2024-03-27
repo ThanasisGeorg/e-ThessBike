@@ -1,0 +1,1747 @@
+CompileCommand: exclude com/intellij/openapi/vfs/impl/FilePartNodeRoot.trieDescend bool exclude = true
+2024-03-27 17:51:36,605 [   1388]   WARN - #c.i.o.v.n.p.l.VfsLog - VFS Log version differs from the implementation version: log null vs implementation -43
+2024-03-27 17:51:37,054 [   1837]   WARN - #c.i.o.a.i.ActionManagerImpl - keymap "VSCode" not found PluginDescriptor(name=Terminal, id=org.jetbrains.plugins.terminal, descriptorPath=plugin.xml, path=/usr/local/android-studio/plugins/terminal, version=231.9392.1.2311.11330709, package=null, isBundled=true)
+2024-03-27 17:51:37,259 [   2042]   WARN - #c.i.n.i.NotificationGroupManagerImpl - Notification group Logcat is already registered (group=com.intellij.notification.NotificationGroup@28ae3fcb). Plugin descriptor: PluginDescriptor(name=Android, id=org.jetbrains.android, descriptorPath=plugin.xml, path=/usr/local/android-studio/plugins/android, version=231.9392.1.2311.11330709, package=null, isBundled=true)
+2024-03-27 17:51:41,569 [   6352]   WARN - #c.i.u.j.JBCefApp - JCefAppConfig.class is not from a JBR module, url: jar:file:/usr/local/android-studio/lib/app.jar!/com/jetbrains/cef/JCefAppConfig.class (Use JBR bundled with the IDE)
+2024-03-27 17:51:44,224 [   9007]   WARN - #com.android.tools.ndk.HotfixForOCInitialTablesBuildingActivity - Overriding OCInitialTablesBuildingActivity with HotfixForOCInitialTablesBuildingActivity
+2024-03-27 17:51:49,210 [  13993]   WARN - #c.i.o.a.i.ActionUpdater - 2206 ms to call on BGT RunContextAction#update@EditorPopup(preload-bgt) (com.intellij.execution.actions.RunContextAction)
+2024-03-27 17:51:49,210 [  13993]   WARN - #c.i.o.a.i.ActionUpdater - 2206 ms to call on BGT RunContextAction#update@EditorPopup(preload-bgt) (com.intellij.execution.actions.RunContextAction)
+2024-03-27 17:53:52,502 [ 137285] SEVERE - #c.i.v.l.d.i.IndexDiagnosticRunner - IdeaLoggingEvent[message=Index is corrupted, throwable=java.lang.RuntimeException: Index is corrupted
+	at com.intellij.vcs.log.data.index.IndexDiagnosticRunner.runDiagnostic(IndexDiagnosticRunner.kt:54)
+	at com.intellij.vcs.log.data.index.IndexDiagnosticRunner.onDataPackChange(IndexDiagnosticRunner.kt:66)
+	at com.intellij.vcs.log.data.VcsLogData.fireDataPackChangeEvent(VcsLogData.java:243)
+	at com.intellij.vcs.log.data.VcsLogRefresherImpl.lambda$new$0(VcsLogRefresherImpl.java:80)
+	at com.intellij.vcs.log.data.SingleTaskController.taskCompleted(SingleTaskController.java:152)
+	at com.intellij.vcs.log.data.VcsLogRefresherImpl$MyRefreshTask.run(VcsLogRefresherImpl.java:210)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.startTask(CoreProgressManager.java:429)
+	at com.intellij.openapi.progress.impl.ProgressManagerImpl.startTask(ProgressManagerImpl.java:114)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$runProcessWithProgressAsynchronously$6(CoreProgressManager.java:480)
+	at com.intellij.openapi.progress.impl.ProgressRunner.lambda$submit$3(ProgressRunner.java:252)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$runProcess$2(CoreProgressManager.java:186)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$executeProcessUnderProgress$13(CoreProgressManager.java:604)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.registerIndicatorAndRun(CoreProgressManager.java:679)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.computeUnderProgress(CoreProgressManager.java:635)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.executeProcessUnderProgress(CoreProgressManager.java:603)
+	at com.intellij.openapi.progress.impl.ProgressManagerImpl.executeProcessUnderProgress(ProgressManagerImpl.java:60)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.runProcess(CoreProgressManager.java:173)
+	at com.intellij.openapi.progress.impl.ProgressRunner.lambda$submit$4(ProgressRunner.java:252)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(CompletableFuture.java:1768)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1$1.run(Executors.java:702)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1$1.run(Executors.java:699)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1.run(Executors.java:699)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+]
+2024-03-27 18:04:37,083 [ 781866]   WARN - #c.i.u.x.Binding - no accessors for org.jetbrains.kotlin.idea.projectConfiguration.KotlinNotConfiguredSuppressedModulesState
+2024-03-27 18:04:41,182 [ 785965]   WARN - #c.i.o.a.ActionStub - ActionGroup should be registered using <group> tag: id="Android.CreateResourcesActionGroup" class="org.jetbrains.android.actions.CreateResourceFileActionGroup"
+WARNING: A terminally deprecated method in java.lang.System has been called
+WARNING: System::setSecurityManager has been called by com.android.tools.rendering.security.RenderSecurityManager
+WARNING: Please consider reporting this to the maintainers of com.android.tools.rendering.security.RenderSecurityManager
+WARNING: System::setSecurityManager will be removed in a future release
+2024-03-27 18:09:43,244 [1088027]   WARN - #com.android.tools.idea.rendering.ConfigurationMatcher - 'default' is not a best match for any device/locale combination for file:///home/thanasis/programming/personal/android/e-ThessBike/app/src/main/AndroidManifest.xml.
+Displaying it with
+  , , , , Left To Right, sw412dp, w412dp, h732dp, Normal Screen, Short screen aspect ratio, Not Round screen, , , Portrait Orientation, Normal, Day time, 420 DPI Density, Finger-based touchscreen, Soft keyboard, No keyboard, Hidden navigation, No navigation, Screen resolution 1920x1080, API Level 34
+which is compatible, but will actually be displayed with another more specific version of the layout.
+2024-03-27 18:50:22,849 [3527632]   WARN - #com.android.tools.idea.uibuilder.scene.LayoutlibSceneManager - null
+java.util.concurrent.CancellationException
+	at java.base/java.util.concurrent.CompletableFuture.cancel(CompletableFuture.java:2478)
+	at com.android.tools.rendering.RenderExecutor$runAsyncActionWithTimeout$future$1.cancel(RenderExecutor.kt:125)
+	at com.android.tools.rendering.RenderExecutor.cancelActionsByTopic(RenderExecutor.kt:241)
+	at com.android.tools.idea.compose.preview.ComposePreviewRefreshRequest.onRefreshCompleted(ComposePreviewRefreshManager.kt:98)
+	at com.android.tools.idea.preview.PreviewRefreshManager$1$1$2.invoke(PreviewRefreshManager.kt:169)
+	at com.android.tools.idea.preview.PreviewRefreshManager$1$1$2.invoke(PreviewRefreshManager.kt:159)
+	at kotlinx.coroutines.InvokeOnCompletion.invoke(JobSupport.kt:1392)
+	at kotlinx.coroutines.JobSupport.notifyCompletion(JobSupport.kt:1520)
+	at kotlinx.coroutines.JobSupport.completeStateFinalization(JobSupport.kt:323)
+	at kotlinx.coroutines.JobSupport.finalizeFinishingState(JobSupport.kt:240)
+	at kotlinx.coroutines.JobSupport.tryMakeCompletingSlowPath(JobSupport.kt:906)
+	at kotlinx.coroutines.JobSupport.tryMakeCompleting(JobSupport.kt:863)
+	at kotlinx.coroutines.JobSupport.makeCompletingOnce$kotlinx_coroutines_core(JobSupport.kt:828)
+	at kotlinx.coroutines.AbstractCoroutine.resumeWith(AbstractCoroutine.kt:100)
+	at kotlinx.coroutines.debug.internal.DebugProbesImpl$CoroutineOwner.resumeWith(DebugProbesImpl.kt:545)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:46)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:104)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1$1.run(Executors.java:702)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1$1.run(Executors.java:699)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1.run(Executors.java:699)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+java.nio.channels.ClosedByInterruptException
+	at java.base/java.nio.channels.spi.AbstractInterruptibleChannel.end(AbstractInterruptibleChannel.java:199)
+	at java.base/sun.nio.ch.FileChannelImpl.endBlocking(FileChannelImpl.java:171)
+	at java.base/sun.nio.ch.FileChannelImpl.write(FileChannelImpl.java:293)
+	at com.intellij.util.lang.FileLoader.saveIndex(FileLoader.java:252)
+	at com.intellij.util.lang.FileLoader.buildData(FileLoader.java:290)
+	at com.intellij.util.lang.FileLoader.createCachingFileLoader(FileLoader.java:59)
+	at com.intellij.util.lang.ClassPath.createLoader(ClassPath.java:383)
+	at com.intellij.util.lang.ClassPath.getLoaderSlowPath(ClassPath.java:342)
+	at com.intellij.util.lang.ClassPath.getLoader(ClassPath.java:325)
+	at com.intellij.util.lang.ClassPath.findResource(ClassPath.java:272)
+	at com.intellij.util.lang.UrlClassLoader.doFindResource(UrlClassLoader.java:319)
+	at com.intellij.util.lang.UrlClassLoader.findResource(UrlClassLoader.java:276)
+	at java.base/java.lang.ClassLoader.getResource(ClassLoader.java:1403)
+	at com.android.tools.rendering.classloading.loaders.ClassLoaderLoader.loadClass(ClassLoaderLoader.kt:36)
+	at org.jetbrains.android.uipreview.ModuleClassLoaderOverlays$classLoaderLoader$1.loadClass(ModuleClassLoaderOverlays.kt:66)
+	at org.jetbrains.android.uipreview.OverlayLoader.loadClass(OverlayLoader.kt:35)
+	at com.android.tools.idea.rendering.classloading.loaders.ListeningLoader.loadClass(ListeningLoader.kt:30)
+	at com.android.tools.idea.rendering.classloading.loaders.ListeningLoader.loadClass(ListeningLoader.kt:30)
+	at com.android.tools.idea.rendering.classloading.loaders.AsmTransformingLoader.loadClass(AsmTransformingLoader.kt:43)
+	at com.android.tools.idea.rendering.classloading.loaders.MultiLoader$loadClass$1.invoke(MultiLoader.kt:33)
+	at com.android.tools.idea.rendering.classloading.loaders.MultiLoader$loadClass$1.invoke(MultiLoader.kt:33)
+	at kotlin.sequences.TransformingSequence$iterator$1.next(Sequences.kt:210)
+	at kotlin.sequences.FilteringSequence$iterator$1.calcNext(Sequences.kt:170)
+	at kotlin.sequences.FilteringSequence$iterator$1.hasNext(Sequences.kt:194)
+	at kotlin.sequences.SequencesKt___SequencesKt.firstOrNull(_Sequences.kt:168)
+	at com.android.tools.idea.rendering.classloading.loaders.MultiLoader.loadClass(MultiLoader.kt:34)
+	at com.android.tools.idea.rendering.classloading.loaders.MultiLoaderWithAffinity$loadClass$affineClass$1.invoke(MultiLoader.kt:84)
+	at com.android.tools.idea.rendering.classloading.loaders.MultiLoaderWithAffinity$loadClass$affineClass$1.invoke(MultiLoader.kt:84)
+	at kotlin.sequences.TransformingSequence$iterator$1.next(Sequences.kt:210)
+	at kotlin.sequences.FilteringSequence$iterator$1.calcNext(Sequences.kt:170)
+	at kotlin.sequences.FilteringSequence$iterator$1.hasNext(Sequences.kt:194)
+	at kotlin.sequences.SequencesKt___SequencesKt.firstOrNull(_Sequences.kt:168)
+	at com.android.tools.idea.rendering.classloading.loaders.MultiLoaderWithAffinity.loadClass(MultiLoader.kt:84)
+	at org.jetbrains.android.uipreview.ModuleClassLoaderImpl.loadClass(ModuleClassLoaderUtil.kt:324)
+	at com.android.tools.rendering.classloading.loaders.DelegatingClassLoader.findClass(DelegatingClassLoader.kt:76)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:587)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:520)
+	at com.android.tools.rendering.classloading.loaders.DelegatingClassLoader.loadClass(DelegatingClassLoader.kt:62)
+	at androidx.compose.ui.graphics.Matrix.<clinit>(Matrix.kt)
+	at androidx.compose.ui.node.NodeCoordinator.<clinit>(NodeCoordinator.kt:1227)
+	at androidx.compose.ui.node.NodeChain.<init>(NodeChain.kt:35)
+	at androidx.compose.ui.node.LayoutNode.<init>(LayoutNode.kt:773)
+	at androidx.compose.ui.node.LayoutNode.<init>(LayoutNode.kt:76)
+	at androidx.compose.ui.platform.AndroidComposeView.<init>(AndroidComposeView.android.kt:217)
+	at androidx.compose.ui.platform.Wrapper_androidKt.setContent(Wrapper.android.kt:80)
+	at androidx.compose.ui.platform.AbstractComposeView.ensureCompositionCreated(ComposeView.android.kt:251)
+	at androidx.compose.ui.platform.AbstractComposeView.onAttachedToWindow(ComposeView.android.kt:283)
+	at android.view.View.dispatchAttachedToWindow(View.java:21291)
+	at android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3491)
+	at android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3498)
+	at android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3498)
+	at android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3498)
+	at android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3498)
+	at android.view.AttachInfo_Accessor.setAttachInfo(AttachInfo_Accessor.java:54)
+	at com.android.layoutlib.bridge.impl.RenderSessionImpl.inflate(RenderSessionImpl.java:372)
+	at com.android.layoutlib.bridge.Bridge.createSession(Bridge.java:450)
+	at com.android.tools.idea.layoutlib.LayoutLibrary.createSession(LayoutLibrary.java:122)
+	at com.android.tools.rendering.RenderTask.createRenderSession(RenderTask.java:742)
+	at com.android.tools.rendering.RenderTask.lambda$inflate$7(RenderTask.java:889)
+	at com.android.tools.rendering.RenderExecutor$runAsyncActionWithTimeout$3.run(RenderExecutor.kt:202)
+	at com.android.tools.rendering.RenderExecutor$PriorityRunnable.run(RenderExecutor.kt:316)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-03-27 18:54:54,507 [3799290]   WARN - #c.i.u.x.Binding - no accessors for org.jetbrains.kotlin.android.inspection.KotlinAndroidResourceQuickFixProvider
+2024-03-27 18:58:36,206 [4020989] SEVERE - #c.i.o.e.i.ExtensionPointImpl - Positive width should be defined for an inline element by [null]
+com.intellij.diagnostic.PluginException: Positive width should be defined for an inline element by [null]
+	at com.intellij.diagnostic.PluginProblemReporterImpl.createPluginExceptionByClass(PluginProblemReporterImpl.java:23)
+	at com.intellij.diagnostic.PluginException.createByClass(PluginException.java:89)
+	at com.intellij.openapi.editor.impl.InlineInlayImpl.doUpdate(InlineInlayImpl.java:73)
+	at com.intellij.openapi.editor.impl.InlayImpl.update(InlayImpl.java:59)
+	at com.intellij.codeInsight.hints.declarative.impl.DeclarativeInlayHintsMouseMotionListener.mouseMoved(DeclarativeInlayHintsMouseMotionListener.kt:38)
+	at com.intellij.openapi.editor.impl.event.EditorEventMulticasterImpl$3.lambda$mouseMoved$0(EditorEventMulticasterImpl.java:96)
+	at com.intellij.openapi.extensions.impl.ExtensionProcessingHelper.forEachExtensionSafe(ExtensionProcessingHelper.kt:32)
+	at com.intellij.openapi.extensions.ExtensionPointName.forEachExtensionSafe(ExtensionPointName.kt:49)
+	at com.intellij.openapi.editor.impl.event.EditorEventMulticasterImpl$3.mouseMoved(EditorEventMulticasterImpl.java:96)
+	at com.intellij.openapi.editor.impl.EditorImpl$MyMouseMotionListener.mouseMoved(EditorImpl.java:4459)
+	at java.desktop/java.awt.Component.processMouseMotionEvent(Component.java:6702)
+	at java.desktop/javax.swing.JComponent.processMouseMotionEvent(JComponent.java:3403)
+	at java.desktop/java.awt.Component.processEvent(Component.java:6426)
+	at java.desktop/java.awt.Container.processEvent(Container.java:2266)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:5027)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2324)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4855)
+	at java.desktop/java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4954)
+	at java.desktop/java.awt.LightweightDispatcher.processMouseEvent(Container.java:4594)
+	at java.desktop/java.awt.LightweightDispatcher.dispatchEvent(Container.java:4522)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2310)
+	at java.desktop/java.awt.Window.dispatchEventImpl(Window.java:2808)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4855)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:791)
+	at java.desktop/java.awt.EventQueue$3.run(EventQueue.java:740)
+	at java.desktop/java.awt.EventQueue$3.run(EventQueue.java:734)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:86)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:97)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:764)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:762)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:86)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:761)
+	at com.intellij.ide.IdeEventQueue.defaultDispatchEvent(IdeEventQueue.kt:667)
+	at com.intellij.ide.IdeEventQueue.dispatchMouseEvent(IdeEventQueue.kt:615)
+	at com.intellij.ide.IdeEventQueue._dispatchEvent(IdeEventQueue.kt:570)
+	at com.intellij.ide.IdeEventQueue.access$_dispatchEvent(IdeEventQueue.kt:68)
+	at com.intellij.ide.IdeEventQueue$dispatchEvent$processEventRunnable$1$1$1.compute(IdeEventQueue.kt:349)
+	at com.intellij.ide.IdeEventQueue$dispatchEvent$processEventRunnable$1$1$1.compute(IdeEventQueue.kt:348)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.computePrioritized(CoreProgressManager.java:787)
+	at com.intellij.ide.IdeEventQueue$dispatchEvent$processEventRunnable$1$1.invoke(IdeEventQueue.kt:348)
+	at com.intellij.ide.IdeEventQueue$dispatchEvent$processEventRunnable$1$1.invoke(IdeEventQueue.kt:343)
+	at com.intellij.ide.IdeEventQueueKt.performActivity$lambda$1(IdeEventQueue.kt:995)
+	at com.intellij.openapi.application.TransactionGuardImpl.performActivity(TransactionGuardImpl.java:113)
+	at com.intellij.ide.IdeEventQueueKt.performActivity(IdeEventQueue.kt:995)
+	at com.intellij.ide.IdeEventQueue.dispatchEvent$lambda$4(IdeEventQueue.kt:343)
+	at com.intellij.openapi.application.impl.ApplicationImpl.runIntendedWriteActionOnCurrentThread(ApplicationImpl.java:829)
+	at com.intellij.ide.IdeEventQueue.dispatchEvent(IdeEventQueue.kt:385)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:207)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:128)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:117)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:105)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:92)
+2024-03-27 18:58:36,212 [4020995] SEVERE - #c.i.o.e.i.ExtensionPointImpl - Android Studio Hedgehog | 2023.1.1 Patch 2  Build #AI-231.9392.1.2311.11330709
+2024-03-27 18:58:36,212 [4020995] SEVERE - #c.i.o.e.i.ExtensionPointImpl - JDK: 17.0.7; VM: OpenJDK 64-Bit Server VM; Vendor: JetBrains s.r.o.
+2024-03-27 18:58:36,212 [4020995] SEVERE - #c.i.o.e.i.ExtensionPointImpl - OS: Linux
+2024-03-27 18:59:02,061 [4046844] SEVERE - #c.i.o.e.i.ExtensionPointImpl - Positive width should be defined for an inline element by [null]
+com.intellij.diagnostic.PluginException: Positive width should be defined for an inline element by [null]
+	at com.intellij.diagnostic.PluginProblemReporterImpl.createPluginExceptionByClass(PluginProblemReporterImpl.java:23)
+	at com.intellij.diagnostic.PluginException.createByClass(PluginException.java:89)
+	at com.intellij.openapi.editor.impl.InlineInlayImpl.doUpdate(InlineInlayImpl.java:73)
+	at com.intellij.openapi.editor.impl.InlayImpl.update(InlayImpl.java:59)
+	at com.intellij.codeInsight.hints.declarative.impl.DeclarativeInlayHintsMouseMotionListener.mouseMoved(DeclarativeInlayHintsMouseMotionListener.kt:38)
+	at com.intellij.openapi.editor.impl.event.EditorEventMulticasterImpl$3.lambda$mouseMoved$0(EditorEventMulticasterImpl.java:96)
+	at com.intellij.openapi.extensions.impl.ExtensionProcessingHelper.forEachExtensionSafe(ExtensionProcessingHelper.kt:32)
+	at com.intellij.openapi.extensions.ExtensionPointName.forEachExtensionSafe(ExtensionPointName.kt:49)
+	at com.intellij.openapi.editor.impl.event.EditorEventMulticasterImpl$3.mouseMoved(EditorEventMulticasterImpl.java:96)
+	at com.intellij.openapi.editor.impl.EditorImpl$MyMouseMotionListener.mouseMoved(EditorImpl.java:4459)
+	at java.desktop/java.awt.AWTEventMulticaster.mouseMoved(AWTEventMulticaster.java:338)
+	at java.desktop/java.awt.Component.processMouseMotionEvent(Component.java:6702)
+	at java.desktop/javax.swing.JComponent.processMouseMotionEvent(JComponent.java:3403)
+	at java.desktop/java.awt.Component.processEvent(Component.java:6426)
+	at java.desktop/java.awt.Container.processEvent(Container.java:2266)
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:5027)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2324)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4855)
+	at java.desktop/java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4954)
+	at java.desktop/java.awt.LightweightDispatcher.processMouseEvent(Container.java:4594)
+	at java.desktop/java.awt.LightweightDispatcher.dispatchEvent(Container.java:4522)
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2310)
+	at java.desktop/java.awt.Window.dispatchEventImpl(Window.java:2808)
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4855)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:791)
+	at java.desktop/java.awt.EventQueue$3.run(EventQueue.java:740)
+	at java.desktop/java.awt.EventQueue$3.run(EventQueue.java:734)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:86)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:97)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:764)
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:762)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:86)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:761)
+	at com.intellij.ide.IdeEventQueue.defaultDispatchEvent(IdeEventQueue.kt:667)
+	at com.intellij.ide.IdeEventQueue.dispatchMouseEvent(IdeEventQueue.kt:615)
+	at com.intellij.ide.IdeEventQueue._dispatchEvent(IdeEventQueue.kt:570)
+	at com.intellij.ide.IdeEventQueue.access$_dispatchEvent(IdeEventQueue.kt:68)
+	at com.intellij.ide.IdeEventQueue$dispatchEvent$processEventRunnable$1$1$1.compute(IdeEventQueue.kt:349)
+	at com.intellij.ide.IdeEventQueue$dispatchEvent$processEventRunnable$1$1$1.compute(IdeEventQueue.kt:348)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.computePrioritized(CoreProgressManager.java:787)
+	at com.intellij.ide.IdeEventQueue$dispatchEvent$processEventRunnable$1$1.invoke(IdeEventQueue.kt:348)
+	at com.intellij.ide.IdeEventQueue$dispatchEvent$processEventRunnable$1$1.invoke(IdeEventQueue.kt:343)
+	at com.intellij.ide.IdeEventQueueKt.performActivity$lambda$1(IdeEventQueue.kt:995)
+	at com.intellij.openapi.application.TransactionGuardImpl.performActivity(TransactionGuardImpl.java:113)
+	at com.intellij.ide.IdeEventQueueKt.performActivity(IdeEventQueue.kt:995)
+	at com.intellij.ide.IdeEventQueue.dispatchEvent$lambda$4(IdeEventQueue.kt:343)
+	at com.intellij.openapi.application.impl.ApplicationImpl.runIntendedWriteActionOnCurrentThread(ApplicationImpl.java:829)
+	at com.intellij.ide.IdeEventQueue.dispatchEvent(IdeEventQueue.kt:385)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:207)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:128)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:117)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:113)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:105)
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:92)
+2024-03-27 18:59:02,064 [4046847] SEVERE - #c.i.o.e.i.ExtensionPointImpl - Android Studio Hedgehog | 2023.1.1 Patch 2  Build #AI-231.9392.1.2311.11330709
+2024-03-27 18:59:02,064 [4046847] SEVERE - #c.i.o.e.i.ExtensionPointImpl - JDK: 17.0.7; VM: OpenJDK 64-Bit Server VM; Vendor: JetBrains s.r.o.
+2024-03-27 18:59:02,065 [4046848] SEVERE - #c.i.o.e.i.ExtensionPointImpl - OS: Linux
+2024-03-27 19:06:00,724 [4465507]   WARN - #c.i.d.PerformanceWatcherImpl - UI was frozen for 8563ms, details saved to /home/thanasis/.cache/Google/AndroidStudio2023.1/log/threadDumps-freeze-20240327-190557-AI-231.9392.1.2311.11330709-8sec
+2024-03-27 19:14:21,694 [4966477]   WARN - #c.i.o.a.i.ActionUpdater - 2550 ms to call on BGT ApplyChangesAction#update@MainToolbar (com.android.tools.idea.execution.common.applychanges.ApplyChangesAction)
+2024-03-27 19:14:22,165 [4966948]   WARN - #c.i.o.a.i.ActionUpdater - 2541 ms to grab EDT for EditorMarkupModelImpl$1#getChildren@EditorInspectionsToolbar (com.intellij.openapi.editor.impl.EditorMarkupModelImpl$1)
+2024-03-27 20:38:21,153 [10005936]   WARN - #c.i.o.a.i.ActionUpdater - 7171 ms to call on BGT precache-slow-data@TextEditorWithMultiRepresentationPreview$SplitEditorActionDelegate#update@TabsMoreToolbar (com.android.tools.idea.uibuilder.editor.multirepresentation.TextEditorWithMultiRepresentationPreview$SplitEditorActionDelegate)
+2024-03-27 20:38:48,539 [10033322]   WARN - #c.i.d.PerformanceWatcherImpl - UI was frozen for 10330ms, details saved to /home/thanasis/.cache/Google/AndroidStudio2023.1/log/threadDumps-freeze-20240327-203811-AI-231.9392.1.2311.11330709-10sec
+2024-03-27 20:39:15,830 [10060613]   WARN - #c.i.d.PerformanceWatcherImpl - UI was frozen for 12485ms, details saved to /home/thanasis/.cache/Google/AndroidStudio2023.1/log/threadDumps-freeze-20240327-203903-AI-231.9392.1.2311.11330709-12sec
+2024-03-27 20:39:33,142 [10077925]   WARN - #c.i.o.a.i.ActionUpdater - 461 ms to grab EDT for DeviceAndSnapshotComboBoxAction#update@MainToolbar (com.android.tools.idea.run.deployment.DeviceAndSnapshotComboBoxAction)
+2024-03-27 20:39:44,069 [10088852]   WARN - #c.i.o.a.i.ActionUpdater - 577 ms to grab EDT for DeviceAndSnapshotComboBoxAction#update@MainToolbar (com.android.tools.idea.run.deployment.DeviceAndSnapshotComboBoxAction)
+2024-03-27 20:39:45,026 [10089809]   WARN - #c.i.o.a.i.ActionUpdater - 605 ms to grab EDT for AndroidConnectDebuggerAction#update@MainToolbar (org.jetbrains.android.actions.AndroidConnectDebuggerAction)
+2024-03-27 20:39:46,440 [10091223]   WARN - #c.i.o.a.i.ActionUpdater - 1090 ms to grab EDT for SyncProjectAction#update@MainToolbar (com.android.tools.idea.gradle.actions.SyncProjectAction)
+2024-03-27 20:39:46,446 [10091229]   WARN - #c.i.o.a.i.ActionUpdater - 1048 ms to grab EDT for TextEditorWithMultiRepresentationPreview$SplitEditorActionDelegate#update@TabsMoreToolbar (com.android.tools.idea.uibuilder.editor.multirepresentation.TextEditorWithMultiRepresentationPreview$SplitEditorActionDelegate)
+2024-03-27 20:39:56,771 [10101554]   WARN - #c.i.o.a.i.ActionUpdater - 341 ms to grab EDT for LiveEditIssueNotificationAction#update@EditorInspectionsToolbar (com.android.tools.idea.editors.liveedit.ui.LiveEditIssueNotificationAction)
+2024-03-27 20:39:57,717 [10102500]   WARN - #c.i.o.a.i.ActionUpdater - 306 ms to call on EDT DeviceAndSnapshotComboBoxAction#update@MainToolbar (com.android.tools.idea.run.deployment.DeviceAndSnapshotComboBoxAction). Revise AnAction.getActionUpdateThread property [Plugin: org.jetbrains.android]
+com.intellij.diagnostic.PluginException: 306 ms to call on EDT DeviceAndSnapshotComboBoxAction#update@MainToolbar (com.android.tools.idea.run.deployment.DeviceAndSnapshotComboBoxAction). Revise AnAction.getActionUpdateThread property [Plugin: org.jetbrains.android]
+	at com.intellij.diagnostic.PluginProblemReporterImpl.createPluginExceptionByClass(PluginProblemReporterImpl.java:23)
+	at com.intellij.diagnostic.PluginException.createByClass(PluginException.java:89)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.computeOnEdt(ActionUpdater.java:256)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.callAction(ActionUpdater.java:207)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.callAction(ActionUpdater.java:165)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.updateActionReal(ActionUpdater.java:141)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.lambda$new$0(ActionUpdater.java:128)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.update(ActionUpdater.java:711)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.expandGroupChild(ActionUpdater.java:557)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.lambda$doExpandActionGroup$22(ActionUpdater.java:522)
+	at com.intellij.util.containers.ContainerUtil.concat(ContainerUtil.java:1538)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.doExpandActionGroup(ActionUpdater.java:522)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.expandActionGroup(ActionUpdater.java:310)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.lambda$doExpandActionGroupAsync$14(ActionUpdater.java:373)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.lambda$doExpandActionGroupAsync$15(ActionUpdater.java:393)
+	at com.intellij.openapi.application.impl.ApplicationImpl.tryRunReadAction(ApplicationImpl.java:1100)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.lambda$tryRunReadActionAndCancelBeforeWrite$19(ActionUpdater.java:425)
+	at com.intellij.openapi.progress.util.ProgressIndicatorUtilService.runActionAndCancelBeforeWrite(ProgressIndicatorUtilService.java:63)
+	at com.intellij.openapi.progress.util.ProgressIndicatorUtils.runActionAndCancelBeforeWrite(ProgressIndicatorUtils.java:129)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.tryRunReadActionAndCancelBeforeWrite(ActionUpdater.java:421)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.lambda$doExpandActionGroupAsync$16(ActionUpdater.java:393)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$runProcess$2(CoreProgressManager.java:186)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$executeProcessUnderProgress$13(CoreProgressManager.java:604)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.registerIndicatorAndRun(CoreProgressManager.java:679)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.computeUnderProgress(CoreProgressManager.java:635)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.executeProcessUnderProgress(CoreProgressManager.java:603)
+	at com.intellij.openapi.progress.impl.ProgressManagerImpl.executeProcessUnderProgress(ProgressManagerImpl.java:60)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.runProcess(CoreProgressManager.java:173)
+	at com.intellij.openapi.progress.util.BackgroundTaskUtil.runUnderDisposeAwareIndicator(BackgroundTaskUtil.java:361)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.lambda$doExpandActionGroupAsync$17(ActionUpdater.java:392)
+	at io.opentelemetry.context.Context.lambda$wrap$1(Context.java:212)
+	at com.intellij.util.concurrency.BoundedTaskExecutor.doRun(BoundedTaskExecutor.java:248)
+	at com.intellij.util.concurrency.BoundedTaskExecutor.access$200(BoundedTaskExecutor.java:28)
+	at com.intellij.util.concurrency.BoundedTaskExecutor$1.executeFirstTaskAndHelpQueue(BoundedTaskExecutor.java:221)
+	at com.intellij.util.ConcurrencyUtil.runUnderThreadName(ConcurrencyUtil.java:227)
+	at com.intellij.util.concurrency.BoundedTaskExecutor$1.run(BoundedTaskExecutor.java:210)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1$1.run(Executors.java:702)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1$1.run(Executors.java:699)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1.run(Executors.java:699)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-03-27 20:39:58,655 [10103438]   WARN - #c.i.o.a.i.ActionUpdater - 852 ms to grab EDT for TextEditorWithMultiRepresentationPreview$SplitEditorActionDelegate#update@TabsMoreToolbar (com.android.tools.idea.uibuilder.editor.multirepresentation.TextEditorWithMultiRepresentationPreview$SplitEditorActionDelegate)
+2024-03-27 20:40:00,327 [10105110]   WARN - #c.i.o.a.i.ActionUpdater - 1006 ms to grab EDT for DeviceAndSnapshotComboBoxAction#update@MainToolbar (com.android.tools.idea.run.deployment.DeviceAndSnapshotComboBoxAction)
+2024-03-27 20:40:01,444 [10106227]   WARN - #c.i.o.a.i.ActionUpdater - 308 ms to grab EDT for TextEditorWithMultiRepresentationPreview$SplitEditorActionDelegate#update@TabsMoreToolbar (com.android.tools.idea.uibuilder.editor.multirepresentation.TextEditorWithMultiRepresentationPreview$SplitEditorActionDelegate)
+2024-03-27 20:40:01,674 [10106457]   WARN - #c.i.o.a.i.ActionUpdater - 714 ms to grab EDT for SyncProjectAction#update@MainToolbar (com.android.tools.idea.gradle.actions.SyncProjectAction)
+2024-03-27 20:40:01,926 [10106709]   WARN - #c.i.o.a.i.ActionUpdater - 307 ms to call on EDT TextEditorWithMultiRepresentationPreview$SplitEditorActionDelegate#update@TabsMoreToolbar (com.android.tools.idea.uibuilder.editor.multirepresentation.TextEditorWithMultiRepresentationPreview$SplitEditorActionDelegate). Revise AnAction.getActionUpdateThread property [Plugin: com.android.tools.design]
+com.intellij.diagnostic.PluginException: 307 ms to call on EDT TextEditorWithMultiRepresentationPreview$SplitEditorActionDelegate#update@TabsMoreToolbar (com.android.tools.idea.uibuilder.editor.multirepresentation.TextEditorWithMultiRepresentationPreview$SplitEditorActionDelegate). Revise AnAction.getActionUpdateThread property [Plugin: com.android.tools.design]
+	at com.intellij.diagnostic.PluginProblemReporterImpl.createPluginExceptionByClass(PluginProblemReporterImpl.java:23)
+	at com.intellij.diagnostic.PluginException.createByClass(PluginException.java:89)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.computeOnEdt(ActionUpdater.java:256)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.callAction(ActionUpdater.java:207)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.callAction(ActionUpdater.java:165)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.updateActionReal(ActionUpdater.java:141)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.lambda$new$0(ActionUpdater.java:128)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.update(ActionUpdater.java:711)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.expandGroupChild(ActionUpdater.java:557)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.lambda$doExpandActionGroup$22(ActionUpdater.java:522)
+	at com.intellij.util.containers.ContainerUtil.concat(ContainerUtil.java:1538)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.doExpandActionGroup(ActionUpdater.java:522)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.expandGroupChild(ActionUpdater.java:613)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.lambda$doExpandActionGroup$22(ActionUpdater.java:522)
+	at com.intellij.util.containers.ContainerUtil.concat(ContainerUtil.java:1538)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.doExpandActionGroup(ActionUpdater.java:522)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.expandActionGroup(ActionUpdater.java:310)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.lambda$doExpandActionGroupAsync$14(ActionUpdater.java:373)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.lambda$doExpandActionGroupAsync$15(ActionUpdater.java:393)
+	at com.intellij.openapi.application.impl.ApplicationImpl.tryRunReadAction(ApplicationImpl.java:1100)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.lambda$tryRunReadActionAndCancelBeforeWrite$19(ActionUpdater.java:425)
+	at com.intellij.openapi.progress.util.ProgressIndicatorUtilService.runActionAndCancelBeforeWrite(ProgressIndicatorUtilService.java:63)
+	at com.intellij.openapi.progress.util.ProgressIndicatorUtils.runActionAndCancelBeforeWrite(ProgressIndicatorUtils.java:129)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.tryRunReadActionAndCancelBeforeWrite(ActionUpdater.java:421)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.lambda$doExpandActionGroupAsync$16(ActionUpdater.java:393)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$runProcess$2(CoreProgressManager.java:186)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$executeProcessUnderProgress$13(CoreProgressManager.java:604)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.registerIndicatorAndRun(CoreProgressManager.java:679)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.computeUnderProgress(CoreProgressManager.java:635)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.executeProcessUnderProgress(CoreProgressManager.java:603)
+	at com.intellij.openapi.progress.impl.ProgressManagerImpl.executeProcessUnderProgress(ProgressManagerImpl.java:60)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.runProcess(CoreProgressManager.java:173)
+	at com.intellij.openapi.progress.util.BackgroundTaskUtil.runUnderDisposeAwareIndicator(BackgroundTaskUtil.java:361)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.lambda$doExpandActionGroupAsync$17(ActionUpdater.java:392)
+	at io.opentelemetry.context.Context.lambda$wrap$1(Context.java:212)
+	at com.intellij.util.concurrency.BoundedTaskExecutor.doRun(BoundedTaskExecutor.java:248)
+	at com.intellij.util.concurrency.BoundedTaskExecutor.access$200(BoundedTaskExecutor.java:28)
+	at com.intellij.util.concurrency.BoundedTaskExecutor$1.executeFirstTaskAndHelpQueue(BoundedTaskExecutor.java:221)
+	at com.intellij.util.ConcurrencyUtil.runUnderThreadName(ConcurrencyUtil.java:227)
+	at com.intellij.util.concurrency.BoundedTaskExecutor$1.run(BoundedTaskExecutor.java:210)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1$1.run(Executors.java:702)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1$1.run(Executors.java:699)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1.run(Executors.java:699)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-03-27 20:40:02,790 [10107573]   WARN - #c.i.o.a.i.ActionUpdater - 349 ms to grab EDT for TextEditorWithMultiRepresentationPreview$SplitEditorActionDelegate#update@TabsMoreToolbar (com.android.tools.idea.uibuilder.editor.multirepresentation.TextEditorWithMultiRepresentationPreview$SplitEditorActionDelegate)
+2024-03-27 21:23:41,233 [12726016]   WARN - #c.i.o.a.i.ActionUpdater - 522 ms to call on EDT TextEditorWithMultiRepresentationPreview$SplitEditorActionDelegate#update@TabsMoreToolbar (com.android.tools.idea.uibuilder.editor.multirepresentation.TextEditorWithMultiRepresentationPreview$SplitEditorActionDelegate). Revise AnAction.getActionUpdateThread property [Plugin: com.android.tools.design]
+com.intellij.diagnostic.PluginException: 522 ms to call on EDT TextEditorWithMultiRepresentationPreview$SplitEditorActionDelegate#update@TabsMoreToolbar (com.android.tools.idea.uibuilder.editor.multirepresentation.TextEditorWithMultiRepresentationPreview$SplitEditorActionDelegate). Revise AnAction.getActionUpdateThread property [Plugin: com.android.tools.design]
+	at com.intellij.diagnostic.PluginProblemReporterImpl.createPluginExceptionByClass(PluginProblemReporterImpl.java:23)
+	at com.intellij.diagnostic.PluginException.createByClass(PluginException.java:89)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.computeOnEdt(ActionUpdater.java:256)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.callAction(ActionUpdater.java:207)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.callAction(ActionUpdater.java:165)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.updateActionReal(ActionUpdater.java:141)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.lambda$new$0(ActionUpdater.java:128)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.update(ActionUpdater.java:711)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.expandGroupChild(ActionUpdater.java:557)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.lambda$doExpandActionGroup$22(ActionUpdater.java:522)
+	at com.intellij.util.containers.ContainerUtil.concat(ContainerUtil.java:1538)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.doExpandActionGroup(ActionUpdater.java:522)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.expandGroupChild(ActionUpdater.java:613)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.lambda$doExpandActionGroup$22(ActionUpdater.java:522)
+	at com.intellij.util.containers.ContainerUtil.concat(ContainerUtil.java:1538)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.doExpandActionGroup(ActionUpdater.java:522)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.expandActionGroup(ActionUpdater.java:310)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.lambda$doExpandActionGroupAsync$14(ActionUpdater.java:373)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.lambda$doExpandActionGroupAsync$15(ActionUpdater.java:393)
+	at com.intellij.openapi.application.impl.ApplicationImpl.tryRunReadAction(ApplicationImpl.java:1100)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.lambda$tryRunReadActionAndCancelBeforeWrite$19(ActionUpdater.java:425)
+	at com.intellij.openapi.progress.util.ProgressIndicatorUtilService.runActionAndCancelBeforeWrite(ProgressIndicatorUtilService.java:63)
+	at com.intellij.openapi.progress.util.ProgressIndicatorUtils.runActionAndCancelBeforeWrite(ProgressIndicatorUtils.java:129)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.tryRunReadActionAndCancelBeforeWrite(ActionUpdater.java:421)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.lambda$doExpandActionGroupAsync$16(ActionUpdater.java:393)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$runProcess$2(CoreProgressManager.java:186)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$executeProcessUnderProgress$13(CoreProgressManager.java:604)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.registerIndicatorAndRun(CoreProgressManager.java:679)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.computeUnderProgress(CoreProgressManager.java:635)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.executeProcessUnderProgress(CoreProgressManager.java:603)
+	at com.intellij.openapi.progress.impl.ProgressManagerImpl.executeProcessUnderProgress(ProgressManagerImpl.java:60)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.runProcess(CoreProgressManager.java:173)
+	at com.intellij.openapi.progress.util.BackgroundTaskUtil.runUnderDisposeAwareIndicator(BackgroundTaskUtil.java:361)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.lambda$doExpandActionGroupAsync$17(ActionUpdater.java:392)
+	at io.opentelemetry.context.Context.lambda$wrap$1(Context.java:212)
+	at com.intellij.util.concurrency.BoundedTaskExecutor.doRun(BoundedTaskExecutor.java:248)
+	at com.intellij.util.concurrency.BoundedTaskExecutor.access$200(BoundedTaskExecutor.java:28)
+	at com.intellij.util.concurrency.BoundedTaskExecutor$1.executeFirstTaskAndHelpQueue(BoundedTaskExecutor.java:221)
+	at com.intellij.util.ConcurrencyUtil.runUnderThreadName(ConcurrencyUtil.java:227)
+	at com.intellij.util.concurrency.BoundedTaskExecutor$1.run(BoundedTaskExecutor.java:210)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1$1.run(Executors.java:702)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1$1.run(Executors.java:699)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1.run(Executors.java:699)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-03-27 22:01:17,580 [14982363]   WARN - #com.android.tools.idea.editors.fast.EmbeddedCompilerClientImpl - Compile request failed with exception
+com.android.tools.idea.run.deployment.liveedit.LiveEditUpdateException: Analyze Error. NAMED_PARAMETER_NOT_FOUND(a = REFERENCE_EXPRESSION)
+	at com.android.tools.idea.run.deployment.liveedit.LiveEditUpdateException$Companion.analysisError(LiveEditUpdateException.kt:56)
+	at com.android.tools.idea.run.deployment.liveedit.LiveEditUpdateException$Companion.analysisError$default(LiveEditUpdateException.kt:55)
+	at com.android.tools.idea.run.deployment.liveedit.CompileScopeImpl$analyze$analysisResult$1.callback(CompileScope.kt:152)
+	at org.jetbrains.kotlin.idea.caches.resolve.PerFileAnalysisCache.getAnalysisResults$handleResult(PerFileAnalysisCache.kt:108)
+	at org.jetbrains.kotlin.idea.caches.resolve.PerFileAnalysisCache.access$getAnalysisResults$handleResult(PerFileAnalysisCache.kt:59)
+	at org.jetbrains.kotlin.idea.caches.resolve.PerFileAnalysisCache.getAnalysisResults$kotlin_base_fe10_analysis(PerFileAnalysisCache.kt:115)
+	at org.jetbrains.kotlin.idea.caches.resolve.ProjectResolutionFacade.analysisResultForElement(ProjectResolutionFacade.kt:243)
+	at org.jetbrains.kotlin.idea.caches.resolve.ProjectResolutionFacade.getAnalysisResultsForElements$kotlin_base_fe10_analysis(ProjectResolutionFacade.kt:199)
+	at org.jetbrains.kotlin.idea.caches.resolve.ModuleResolutionFacadeImpl$analyzeWithAllCompilerChecks$2.invoke(ModuleResolutionFacadeImpl.kt:90)
+	at org.jetbrains.kotlin.idea.caches.resolve.ModuleResolutionFacadeImpl$analyzeWithAllCompilerChecks$2.invoke(ModuleResolutionFacadeImpl.kt:89)
+	at com.intellij.openapi.progress.impl.CancellationCheck.withCancellationCheck(CancellationCheck.kt:59)
+	at com.intellij.openapi.progress.impl.CancellationCheck$Companion.runWithCancellationCheck(CancellationCheck.kt:105)
+	at org.jetbrains.kotlin.idea.util.application.ApplicationUtilsKt.runWithCancellationCheck(ApplicationUtils.kt:63)
+	at org.jetbrains.kotlin.idea.caches.resolve.ModuleResolutionFacadeImpl.analyzeWithAllCompilerChecks(ModuleResolutionFacadeImpl.kt:89)
+	at org.jetbrains.kotlin.idea.caches.resolve.ResolutionFacadeWithDebugInfo.analyzeWithAllCompilerChecks(ResolutionFacadeWithDebugInfo.kt:67)
+	at com.android.tools.idea.run.deployment.liveedit.CompileScopeImpl.analyze(CompileScope.kt:150)
+	at com.android.tools.idea.editors.fast.EmbeddedCompilerClientImpl$compileKtFiles$generationState$1$1.invoke(EmbeddedCompilerClientImpl.kt:199)
+	at com.android.tools.idea.editors.fast.EmbeddedCompilerClientImpl$compileKtFiles$generationState$1$1.invoke(EmbeddedCompilerClientImpl.kt:192)
+	at com.android.tools.idea.run.deployment.liveedit.CompileScopeKt.runWithCompileLock(CompileScope.kt:267)
+	at com.android.tools.idea.editors.fast.EmbeddedCompilerClientImpl$compileKtFiles$generationState$1.invoke(EmbeddedCompilerClientImpl.kt:192)
+	at com.android.tools.idea.editors.fast.EmbeddedCompilerClientImpl$compileKtFiles$generationState$1.invoke(EmbeddedCompilerClientImpl.kt:191)
+	at com.android.tools.idea.editors.fast.EmbeddedCompilerClientImplKt$retryInNonBlockingReadAction$1$1.call(EmbeddedCompilerClientImpl.kt:102)
+	at com.android.tools.idea.editors.fast.EmbeddedCompilerClientImplKt$retryInNonBlockingReadAction$1$1.call(EmbeddedCompilerClientImpl.kt:99)
+	at com.intellij.openapi.application.impl.NonBlockingReadActionImpl$OTelMonitor.callWrapped(NonBlockingReadActionImpl.java:746)
+	at com.intellij.openapi.application.impl.NonBlockingReadActionImpl$OTelMonitor$MonitoredComputation.call(NonBlockingReadActionImpl.java:778)
+	at com.intellij.openapi.application.impl.NonBlockingReadActionImpl$Submission.insideReadAction(NonBlockingReadActionImpl.java:573)
+	at com.intellij.openapi.application.impl.NonBlockingReadActionImpl$Submission.lambda$attemptComputation$3(NonBlockingReadActionImpl.java:537)
+	at com.intellij.openapi.application.impl.ApplicationImpl.tryRunReadAction(ApplicationImpl.java:1100)
+	at com.intellij.openapi.progress.util.ProgressIndicatorUtils.lambda$runInReadActionWithWriteActionPriority$0(ProgressIndicatorUtils.java:72)
+	at com.intellij.openapi.progress.util.ProgressIndicatorUtilService.runActionAndCancelBeforeWrite(ProgressIndicatorUtilService.java:63)
+	at com.intellij.openapi.progress.util.ProgressIndicatorUtils.runActionAndCancelBeforeWrite(ProgressIndicatorUtils.java:129)
+	at com.intellij.openapi.progress.util.ProgressIndicatorUtils.lambda$runWithWriteActionPriority$1(ProgressIndicatorUtils.java:110)
+	at com.intellij.openapi.progress.ProgressManager.lambda$runProcess$1(ProgressManager.java:70)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$runProcess$2(CoreProgressManager.java:186)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$executeProcessUnderProgress$13(CoreProgressManager.java:604)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.registerIndicatorAndRun(CoreProgressManager.java:679)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.computeUnderProgress(CoreProgressManager.java:635)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.executeProcessUnderProgress(CoreProgressManager.java:603)
+	at com.intellij.openapi.progress.impl.ProgressManagerImpl.executeProcessUnderProgress(ProgressManagerImpl.java:60)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.runProcess(CoreProgressManager.java:173)
+	at com.intellij.openapi.progress.ProgressManager.runProcess(ProgressManager.java:70)
+	at com.intellij.openapi.progress.util.ProgressIndicatorUtils.runWithWriteActionPriority(ProgressIndicatorUtils.java:107)
+	at com.intellij.openapi.progress.util.ProgressIndicatorUtils.runInReadActionWithWriteActionPriority(ProgressIndicatorUtils.java:72)
+	at com.intellij.openapi.application.impl.NonBlockingReadActionImpl$Submission.attemptComputation(NonBlockingReadActionImpl.java:537)
+	at com.intellij.openapi.application.impl.NonBlockingReadActionImpl$Submission.lambda$transferToBgThread$1(NonBlockingReadActionImpl.java:444)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1$1.run(Executors.java:702)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1$1.run(Executors.java:699)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1.run(Executors.java:699)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-03-27 22:01:18,707 [14983490]   WARN - #com.android.tools.idea.uibuilder.scene.LayoutlibSceneManager - com.thanasis.e_thessbike.components.TopBar
+java.lang.ClassNotFoundException: com.thanasis.e_thessbike.components.TopBar
+	at com.android.tools.rendering.classloading.loaders.DelegatingClassLoader.findClass(DelegatingClassLoader.kt:76)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:587)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:520)
+	at com.android.tools.rendering.classloading.loaders.DelegatingClassLoader.loadClass(DelegatingClassLoader.kt:62)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:375)
+	at androidx.compose.ui.tooling.ComposableInvoker.invokeComposable(ComposableInvoker.kt:196)
+	at androidx.compose.ui.tooling.ComposeViewAdapter$init$3$1$composable$1.invoke(ComposeViewAdapter.kt:509)
+	at androidx.compose.ui.tooling.ComposeViewAdapter$init$3$1$composable$1.invoke(ComposeViewAdapter.kt:507)
+	at androidx.compose.ui.tooling.ComposeViewAdapter$init$3$1.invoke(ComposeViewAdapter.kt:544)
+	at androidx.compose.ui.tooling.ComposeViewAdapter$init$3$1.invoke(ComposeViewAdapter.kt:502)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:108)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:35)
+	at androidx.compose.runtime.CompositionLocalKt.CompositionLocalProvider(CompositionLocal.kt:228)
+	at androidx.compose.ui.tooling.InspectableKt.Inspectable(Inspectable.kt:61)
+	at androidx.compose.ui.tooling.ComposeViewAdapter$WrapPreview$1.invoke(ComposeViewAdapter.kt:449)
+	at androidx.compose.ui.tooling.ComposeViewAdapter$WrapPreview$1.invoke(ComposeViewAdapter.kt:448)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:108)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:35)
+	at androidx.compose.runtime.CompositionLocalKt.CompositionLocalProvider(CompositionLocal.kt:228)
+	at androidx.compose.ui.tooling.ComposeViewAdapter.WrapPreview(ComposeViewAdapter.kt:443)
+	at androidx.compose.ui.tooling.ComposeViewAdapter.access$WrapPreview(ComposeViewAdapter.kt:127)
+	at androidx.compose.ui.tooling.ComposeViewAdapter$init$3.invoke(ComposeViewAdapter.kt:502)
+	at androidx.compose.ui.tooling.ComposeViewAdapter$init$3.invoke(ComposeViewAdapter.kt:499)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:108)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:35)
+	at androidx.compose.ui.platform.ComposeView.Content(ComposeView.android.kt:428)
+	at androidx.compose.ui.platform.AbstractComposeView$ensureCompositionCreated$1.invoke(ComposeView.android.kt:252)
+	at androidx.compose.ui.platform.AbstractComposeView$ensureCompositionCreated$1.invoke(ComposeView.android.kt:251)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:108)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:35)
+	at androidx.compose.runtime.CompositionLocalKt.CompositionLocalProvider(CompositionLocal.kt:228)
+	at androidx.compose.ui.platform.CompositionLocalsKt.ProvideCommonCompositionLocals(CompositionLocals.kt:195)
+	at androidx.compose.ui.platform.AndroidCompositionLocals_androidKt$ProvideAndroidCompositionLocals$3.invoke(AndroidCompositionLocals.android.kt:119)
+	at androidx.compose.ui.platform.AndroidCompositionLocals_androidKt$ProvideAndroidCompositionLocals$3.invoke(AndroidCompositionLocals.android.kt:118)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:108)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:35)
+	at androidx.compose.runtime.CompositionLocalKt.CompositionLocalProvider(CompositionLocal.kt:228)
+	at androidx.compose.ui.platform.AndroidCompositionLocals_androidKt.ProvideAndroidCompositionLocals(AndroidCompositionLocals.android.kt:110)
+	at androidx.compose.ui.platform.WrappedComposition$setContent$1$1$2.invoke(Wrapper.android.kt:158)
+	at androidx.compose.ui.platform.WrappedComposition$setContent$1$1$2.invoke(Wrapper.android.kt:157)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:108)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:35)
+	at androidx.compose.runtime.CompositionLocalKt.CompositionLocalProvider(CompositionLocal.kt:228)
+	at androidx.compose.ui.platform.WrappedComposition$setContent$1$1.invoke(Wrapper.android.kt:157)
+	at androidx.compose.ui.platform.WrappedComposition$setContent$1$1.invoke(Wrapper.android.kt:142)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:108)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:35)
+	at androidx.compose.runtime.ActualJvm_jvmKt.invokeComposable(ActualJvm.jvm.kt:78)
+	at androidx.compose.runtime.ComposerImpl.doCompose(Composer.kt:3340)
+	at androidx.compose.runtime.ComposerImpl.composeContent$runtime_release(Composer.kt:3273)
+	at androidx.compose.runtime.CompositionImpl.composeContent(Composition.kt:588)
+	at androidx.compose.runtime.Recomposer.composeInitial$runtime_release(Recomposer.kt:1013)
+	at androidx.compose.runtime.CompositionImpl.setContent(Composition.kt:520)
+	at androidx.compose.ui.platform.WrappedComposition$setContent$1.invoke(Wrapper.android.kt:142)
+	at androidx.compose.ui.platform.WrappedComposition$setContent$1.invoke(Wrapper.android.kt:133)
+	at androidx.compose.ui.platform.AndroidComposeView.setOnViewTreeOwnersAvailable(AndroidComposeView.android.kt:1191)
+	at androidx.compose.ui.platform.WrappedComposition.setContent(Wrapper.android.kt:133)
+	at androidx.compose.ui.platform.WrappedComposition.onStateChanged(Wrapper.android.kt:183)
+	at androidx.lifecycle.LifecycleRegistry$ObserverWithState.dispatchEvent(LifecycleRegistry.kt:322)
+	at androidx.lifecycle.LifecycleRegistry.addObserver(LifecycleRegistry.kt:199)
+	at androidx.compose.ui.platform.WrappedComposition$setContent$1.invoke(Wrapper.android.kt:140)
+	at androidx.compose.ui.platform.WrappedComposition$setContent$1.invoke(Wrapper.android.kt:133)
+	at androidx.compose.ui.platform.AndroidComposeView.onAttachedToWindow(AndroidComposeView.android.kt:1266)
+	at android.view.View.dispatchAttachedToWindow(View.java:21291)
+	at android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3491)
+	at android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3498)
+	at android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3498)
+	at android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3498)
+	at android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3498)
+	at android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3498)
+	at android.view.AttachInfo_Accessor.setAttachInfo(AttachInfo_Accessor.java:54)
+	at com.android.layoutlib.bridge.impl.RenderSessionImpl.inflate(RenderSessionImpl.java:372)
+	at com.android.layoutlib.bridge.Bridge.createSession(Bridge.java:450)
+	at com.android.tools.idea.layoutlib.LayoutLibrary.createSession(LayoutLibrary.java:122)
+	at com.android.tools.rendering.RenderTask.createRenderSession(RenderTask.java:742)
+	at com.android.tools.rendering.RenderTask.lambda$inflate$7(RenderTask.java:889)
+	at com.android.tools.rendering.RenderExecutor$runAsyncActionWithTimeout$3.run(RenderExecutor.kt:202)
+	at com.android.tools.rendering.RenderExecutor$PriorityRunnable.run(RenderExecutor.kt:316)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-03-27 22:01:19,879 [14984662]   WARN - #com.android.tools.idea.uibuilder.scene.LayoutlibSceneManager - com.thanasis.e_thessbike.components.TopBar
+java.lang.ClassNotFoundException: com.thanasis.e_thessbike.components.TopBar
+	at com.android.tools.rendering.classloading.loaders.DelegatingClassLoader.findClass(DelegatingClassLoader.kt:76)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:587)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:520)
+	at com.android.tools.rendering.classloading.loaders.DelegatingClassLoader.loadClass(DelegatingClassLoader.kt:62)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:375)
+	at androidx.compose.ui.tooling.ComposableInvoker.invokeComposable(ComposableInvoker.kt:196)
+	at androidx.compose.ui.tooling.ComposeViewAdapter$init$3$1$composable$1.invoke(ComposeViewAdapter.kt:509)
+	at androidx.compose.ui.tooling.ComposeViewAdapter$init$3$1$composable$1.invoke(ComposeViewAdapter.kt:507)
+	at androidx.compose.ui.tooling.ComposeViewAdapter$init$3$1.invoke(ComposeViewAdapter.kt:544)
+	at androidx.compose.ui.tooling.ComposeViewAdapter$init$3$1.invoke(ComposeViewAdapter.kt:502)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:108)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:35)
+	at androidx.compose.runtime.CompositionLocalKt.CompositionLocalProvider(CompositionLocal.kt:228)
+	at androidx.compose.ui.tooling.InspectableKt.Inspectable(Inspectable.kt:61)
+	at androidx.compose.ui.tooling.ComposeViewAdapter$WrapPreview$1.invoke(ComposeViewAdapter.kt:449)
+	at androidx.compose.ui.tooling.ComposeViewAdapter$WrapPreview$1.invoke(ComposeViewAdapter.kt:448)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:108)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:35)
+	at androidx.compose.runtime.CompositionLocalKt.CompositionLocalProvider(CompositionLocal.kt:228)
+	at androidx.compose.ui.tooling.ComposeViewAdapter.WrapPreview(ComposeViewAdapter.kt:443)
+	at androidx.compose.ui.tooling.ComposeViewAdapter.access$WrapPreview(ComposeViewAdapter.kt:127)
+	at androidx.compose.ui.tooling.ComposeViewAdapter$init$3.invoke(ComposeViewAdapter.kt:502)
+	at androidx.compose.ui.tooling.ComposeViewAdapter$init$3.invoke(ComposeViewAdapter.kt:499)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:108)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:35)
+	at androidx.compose.ui.platform.ComposeView.Content(ComposeView.android.kt:428)
+	at androidx.compose.ui.platform.AbstractComposeView$ensureCompositionCreated$1.invoke(ComposeView.android.kt:252)
+	at androidx.compose.ui.platform.AbstractComposeView$ensureCompositionCreated$1.invoke(ComposeView.android.kt:251)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:108)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:35)
+	at androidx.compose.runtime.CompositionLocalKt.CompositionLocalProvider(CompositionLocal.kt:228)
+	at androidx.compose.ui.platform.CompositionLocalsKt.ProvideCommonCompositionLocals(CompositionLocals.kt:195)
+	at androidx.compose.ui.platform.AndroidCompositionLocals_androidKt$ProvideAndroidCompositionLocals$3.invoke(AndroidCompositionLocals.android.kt:119)
+	at androidx.compose.ui.platform.AndroidCompositionLocals_androidKt$ProvideAndroidCompositionLocals$3.invoke(AndroidCompositionLocals.android.kt:118)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:108)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:35)
+	at androidx.compose.runtime.CompositionLocalKt.CompositionLocalProvider(CompositionLocal.kt:228)
+	at androidx.compose.ui.platform.AndroidCompositionLocals_androidKt.ProvideAndroidCompositionLocals(AndroidCompositionLocals.android.kt:110)
+	at androidx.compose.ui.platform.WrappedComposition$setContent$1$1$2.invoke(Wrapper.android.kt:158)
+	at androidx.compose.ui.platform.WrappedComposition$setContent$1$1$2.invoke(Wrapper.android.kt:157)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:108)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:35)
+	at androidx.compose.runtime.CompositionLocalKt.CompositionLocalProvider(CompositionLocal.kt:228)
+	at androidx.compose.ui.platform.WrappedComposition$setContent$1$1.invoke(Wrapper.android.kt:157)
+	at androidx.compose.ui.platform.WrappedComposition$setContent$1$1.invoke(Wrapper.android.kt:142)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:108)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:35)
+	at androidx.compose.runtime.ActualJvm_jvmKt.invokeComposable(ActualJvm.jvm.kt:78)
+	at androidx.compose.runtime.ComposerImpl.doCompose(Composer.kt:3340)
+	at androidx.compose.runtime.ComposerImpl.composeContent$runtime_release(Composer.kt:3273)
+	at androidx.compose.runtime.CompositionImpl.composeContent(Composition.kt:588)
+	at androidx.compose.runtime.Recomposer.composeInitial$runtime_release(Recomposer.kt:1013)
+	at androidx.compose.runtime.CompositionImpl.setContent(Composition.kt:520)
+	at androidx.compose.ui.platform.WrappedComposition$setContent$1.invoke(Wrapper.android.kt:142)
+	at androidx.compose.ui.platform.WrappedComposition$setContent$1.invoke(Wrapper.android.kt:133)
+	at androidx.compose.ui.platform.AndroidComposeView.setOnViewTreeOwnersAvailable(AndroidComposeView.android.kt:1191)
+	at androidx.compose.ui.platform.WrappedComposition.setContent(Wrapper.android.kt:133)
+	at androidx.compose.ui.platform.WrappedComposition.onStateChanged(Wrapper.android.kt:183)
+	at androidx.lifecycle.LifecycleRegistry$ObserverWithState.dispatchEvent(LifecycleRegistry.kt:322)
+	at androidx.lifecycle.LifecycleRegistry.addObserver(LifecycleRegistry.kt:199)
+	at androidx.compose.ui.platform.WrappedComposition$setContent$1.invoke(Wrapper.android.kt:140)
+	at androidx.compose.ui.platform.WrappedComposition$setContent$1.invoke(Wrapper.android.kt:133)
+	at androidx.compose.ui.platform.AndroidComposeView.onAttachedToWindow(AndroidComposeView.android.kt:1266)
+	at android.view.View.dispatchAttachedToWindow(View.java:21291)
+	at android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3491)
+	at android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3498)
+	at android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3498)
+	at android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3498)
+	at android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3498)
+	at android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3498)
+	at android.view.AttachInfo_Accessor.setAttachInfo(AttachInfo_Accessor.java:54)
+	at com.android.layoutlib.bridge.impl.RenderSessionImpl.inflate(RenderSessionImpl.java:372)
+	at com.android.layoutlib.bridge.Bridge.createSession(Bridge.java:450)
+	at com.android.tools.idea.layoutlib.LayoutLibrary.createSession(LayoutLibrary.java:122)
+	at com.android.tools.rendering.RenderTask.createRenderSession(RenderTask.java:742)
+	at com.android.tools.rendering.RenderTask.lambda$inflate$7(RenderTask.java:889)
+	at com.android.tools.rendering.RenderExecutor$runAsyncActionWithTimeout$3.run(RenderExecutor.kt:202)
+	at com.android.tools.rendering.RenderExecutor$PriorityRunnable.run(RenderExecutor.kt:316)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+kotlin.text.MatcherMatchResult@704a80f5
+kotlin.text.MatcherMatchResult@2c957cb0
+kotlin.text.MatcherMatchResult@194f6726
+kotlin.text.MatcherMatchResult@566ab270
+kotlin.text.MatcherMatchResult@1b5b07a3
+kotlin.text.MatcherMatchResult@1cac8884
+kotlin.text.MatcherMatchResult@1be6daef
+kotlin.text.MatcherMatchResult@152137e3
+2024-03-27 22:05:19,050 [15223833]   WARN - #com.android.tools.idea.editors.fast.EmbeddedCompilerClientImpl - Compile request failed with exception
+com.android.tools.idea.run.deployment.liveedit.LiveEditUpdateException: Analyze Error. TYPE_MISMATCH(a = [@androidx.compose.runtime.Composable] Function0<Unit>, b = Unit)
+	at com.android.tools.idea.run.deployment.liveedit.LiveEditUpdateException$Companion.analysisError(LiveEditUpdateException.kt:56)
+	at com.android.tools.idea.run.deployment.liveedit.LiveEditUpdateException$Companion.analysisError$default(LiveEditUpdateException.kt:55)
+	at com.android.tools.idea.run.deployment.liveedit.CompileScopeImpl$analyze$analysisResult$1.callback(CompileScope.kt:152)
+	at org.jetbrains.kotlin.idea.caches.resolve.PerFileAnalysisCache.getAnalysisResults$handleResult(PerFileAnalysisCache.kt:108)
+	at org.jetbrains.kotlin.idea.caches.resolve.PerFileAnalysisCache.access$getAnalysisResults$handleResult(PerFileAnalysisCache.kt:59)
+	at org.jetbrains.kotlin.idea.caches.resolve.PerFileAnalysisCache.getAnalysisResults$kotlin_base_fe10_analysis(PerFileAnalysisCache.kt:115)
+	at org.jetbrains.kotlin.idea.caches.resolve.ProjectResolutionFacade.analysisResultForElement(ProjectResolutionFacade.kt:243)
+	at org.jetbrains.kotlin.idea.caches.resolve.ProjectResolutionFacade.getAnalysisResultsForElements$kotlin_base_fe10_analysis(ProjectResolutionFacade.kt:199)
+	at org.jetbrains.kotlin.idea.caches.resolve.ModuleResolutionFacadeImpl$analyzeWithAllCompilerChecks$2.invoke(ModuleResolutionFacadeImpl.kt:90)
+	at org.jetbrains.kotlin.idea.caches.resolve.ModuleResolutionFacadeImpl$analyzeWithAllCompilerChecks$2.invoke(ModuleResolutionFacadeImpl.kt:89)
+	at com.intellij.openapi.progress.impl.CancellationCheck.withCancellationCheck(CancellationCheck.kt:59)
+	at com.intellij.openapi.progress.impl.CancellationCheck$Companion.runWithCancellationCheck(CancellationCheck.kt:105)
+	at org.jetbrains.kotlin.idea.util.application.ApplicationUtilsKt.runWithCancellationCheck(ApplicationUtils.kt:63)
+	at org.jetbrains.kotlin.idea.caches.resolve.ModuleResolutionFacadeImpl.analyzeWithAllCompilerChecks(ModuleResolutionFacadeImpl.kt:89)
+	at org.jetbrains.kotlin.idea.caches.resolve.ResolutionFacadeWithDebugInfo.analyzeWithAllCompilerChecks(ResolutionFacadeWithDebugInfo.kt:67)
+	at com.android.tools.idea.run.deployment.liveedit.CompileScopeImpl.analyze(CompileScope.kt:150)
+	at com.android.tools.idea.editors.fast.EmbeddedCompilerClientImpl$compileKtFiles$generationState$1$1.invoke(EmbeddedCompilerClientImpl.kt:199)
+	at com.android.tools.idea.editors.fast.EmbeddedCompilerClientImpl$compileKtFiles$generationState$1$1.invoke(EmbeddedCompilerClientImpl.kt:192)
+	at com.android.tools.idea.run.deployment.liveedit.CompileScopeKt.runWithCompileLock(CompileScope.kt:267)
+	at com.android.tools.idea.editors.fast.EmbeddedCompilerClientImpl$compileKtFiles$generationState$1.invoke(EmbeddedCompilerClientImpl.kt:192)
+	at com.android.tools.idea.editors.fast.EmbeddedCompilerClientImpl$compileKtFiles$generationState$1.invoke(EmbeddedCompilerClientImpl.kt:191)
+	at com.android.tools.idea.editors.fast.EmbeddedCompilerClientImplKt$retryInNonBlockingReadAction$1$1.call(EmbeddedCompilerClientImpl.kt:102)
+	at com.android.tools.idea.editors.fast.EmbeddedCompilerClientImplKt$retryInNonBlockingReadAction$1$1.call(EmbeddedCompilerClientImpl.kt:99)
+	at com.intellij.openapi.application.impl.NonBlockingReadActionImpl$OTelMonitor.callWrapped(NonBlockingReadActionImpl.java:746)
+	at com.intellij.openapi.application.impl.NonBlockingReadActionImpl$OTelMonitor$MonitoredComputation.call(NonBlockingReadActionImpl.java:778)
+	at com.intellij.openapi.application.impl.NonBlockingReadActionImpl$Submission.insideReadAction(NonBlockingReadActionImpl.java:573)
+	at com.intellij.openapi.application.impl.NonBlockingReadActionImpl$Submission.lambda$attemptComputation$3(NonBlockingReadActionImpl.java:537)
+	at com.intellij.openapi.application.impl.ApplicationImpl.tryRunReadAction(ApplicationImpl.java:1100)
+	at com.intellij.openapi.progress.util.ProgressIndicatorUtils.lambda$runInReadActionWithWriteActionPriority$0(ProgressIndicatorUtils.java:72)
+	at com.intellij.openapi.progress.util.ProgressIndicatorUtilService.runActionAndCancelBeforeWrite(ProgressIndicatorUtilService.java:63)
+	at com.intellij.openapi.progress.util.ProgressIndicatorUtils.runActionAndCancelBeforeWrite(ProgressIndicatorUtils.java:129)
+	at com.intellij.openapi.progress.util.ProgressIndicatorUtils.lambda$runWithWriteActionPriority$1(ProgressIndicatorUtils.java:110)
+	at com.intellij.openapi.progress.ProgressManager.lambda$runProcess$1(ProgressManager.java:70)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$runProcess$2(CoreProgressManager.java:186)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$executeProcessUnderProgress$13(CoreProgressManager.java:604)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.registerIndicatorAndRun(CoreProgressManager.java:679)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.computeUnderProgress(CoreProgressManager.java:635)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.executeProcessUnderProgress(CoreProgressManager.java:603)
+	at com.intellij.openapi.progress.impl.ProgressManagerImpl.executeProcessUnderProgress(ProgressManagerImpl.java:60)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.runProcess(CoreProgressManager.java:173)
+	at com.intellij.openapi.progress.ProgressManager.runProcess(ProgressManager.java:70)
+	at com.intellij.openapi.progress.util.ProgressIndicatorUtils.runWithWriteActionPriority(ProgressIndicatorUtils.java:107)
+	at com.intellij.openapi.progress.util.ProgressIndicatorUtils.runInReadActionWithWriteActionPriority(ProgressIndicatorUtils.java:72)
+	at com.intellij.openapi.application.impl.NonBlockingReadActionImpl$Submission.attemptComputation(NonBlockingReadActionImpl.java:537)
+	at com.intellij.openapi.application.impl.NonBlockingReadActionImpl$Submission.lambda$transferToBgThread$1(NonBlockingReadActionImpl.java:444)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1$1.run(Executors.java:702)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1$1.run(Executors.java:699)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1.run(Executors.java:699)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-03-27 22:10:41,606 [15546389]   WARN - #c.i.o.a.i.ActionUpdater - 765 ms to grab EDT for EditorMarkupModelImpl$TrafficLightAction#update@EditorInspectionsToolbar (com.intellij.openapi.editor.impl.EditorMarkupModelImpl$TrafficLightAction)
+2024-03-27 23:43:55,470 [21140253]   WARN - #com.android.tools.idea.adb.processnamemonitor.ProcessNameMonitorService - Agent tracker error
+java.io.EOFException: Unexpected end of channel
+	at com.android.adblib.AdbInputChannel.readExactly$suspendImpl(AdbInputChannel.kt:70)
+	at com.android.adblib.AdbInputChannel$readExactly$1.invokeSuspend(AdbInputChannel.kt)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:106)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:570)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:750)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:677)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:664)
+2024-03-28 00:07:22,830 [22547613] SEVERE - #c.i.i.n.ide - Element class com.intellij.psi.impl.source.tree.CompositeElement of type PROPERTY (class org.jetbrains.kotlin.psi.stubs.elements.KtPropertyElementType)
+com.intellij.psi.PsiInvalidElementAccessException: Element class com.intellij.psi.impl.source.tree.CompositeElement of type PROPERTY (class org.jetbrains.kotlin.psi.stubs.elements.KtPropertyElementType)
+	at com.intellij.psi.PsiInvalidElementAccessException.createByNode(PsiInvalidElementAccessException.java:80)
+	at com.intellij.psi.impl.source.SubstrateRef$2.getContainingFile(SubstrateRef.java:98)
+	at com.intellij.extapi.psi.StubBasedPsiElementBase.getContainingFile(StubBasedPsiElementBase.java:239)
+	at com.intellij.extapi.psi.StubBasedPsiElementBase.getProject(StubBasedPsiElementBase.java:276)
+	at com.intellij.ide.navbar.impl.DefaultNavBarItemProvider.findParent(DefaultNavBarItemProvider.kt:39)
+	at com.intellij.ide.navbar.impl.ImplKt.findParent(impl.kt:21)
+	at com.intellij.ide.navbar.impl.ImplKt.access$findParent(impl.kt:1)
+	at com.intellij.ide.navbar.impl.ImplKt$pathToItem$1.invoke(impl.kt:15)
+	at com.intellij.ide.navbar.impl.ImplKt$pathToItem$1.invoke(impl.kt:14)
+	at kotlin.sequences.GeneratorSequence$iterator$1.calcNext(Sequences.kt:591)
+	at kotlin.sequences.GeneratorSequence$iterator$1.hasNext(Sequences.kt:609)
+	at kotlin.sequences.SequencesKt___SequencesKt.toCollection(_Sequences.kt:787)
+	at kotlin.sequences.SequencesKt___SequencesKt.toMutableList(_Sequences.kt:817)
+	at kotlin.sequences.SequencesKt___SequencesKt.toList(_Sequences.kt:808)
+	at com.intellij.ide.navbar.impl.ImplKt.pathToItem(impl.kt:16)
+	at com.intellij.ide.navbar.ide.NavBarServiceKt.contextModelInner(NavBarService.kt:154)
+	at com.intellij.ide.navbar.ide.NavBarServiceKt.access$contextModelInner(NavBarService.kt:1)
+	at com.intellij.ide.navbar.ide.NavBarServiceKt$contextModel$2.invoke(NavBarService.kt:136)
+	at com.intellij.ide.navbar.ide.NavBarServiceKt$contextModel$2.invoke(NavBarService.kt:135)
+	at com.intellij.openapi.application.rw.InternalReadAction.insideReadAction(InternalReadAction.kt:108)
+	at com.intellij.openapi.application.rw.InternalReadAction.access$insideReadAction(InternalReadAction.kt:15)
+	at com.intellij.openapi.application.rw.InternalReadAction$tryReadCancellable$1.invoke(InternalReadAction.kt:92)
+	at com.intellij.openapi.application.rw.InternalReadAction$tryReadCancellable$1.invoke(InternalReadAction.kt:91)
+	at com.intellij.openapi.progress.CancellationKt.withCurrentJob$lambda$0(cancellation.kt:17)
+	at com.intellij.openapi.progress.Cancellation.withCurrentJob(Cancellation.java:60)
+	at com.intellij.openapi.progress.CancellationKt.withCurrentJob(cancellation.kt:17)
+	at com.intellij.openapi.progress.CancellationKt.executeWithJobAndCompleteIt(cancellation.kt:126)
+	at com.intellij.openapi.application.rw.CancellableReadActionKt.cancellableReadActionInternal$lambda$1$lambda$0(cancellableReadAction.kt:49)
+	at com.intellij.openapi.application.impl.ApplicationImpl.tryRunReadAction(ApplicationImpl.java:1100)
+	at com.intellij.openapi.application.rw.CancellableReadActionKt.cancellableReadActionInternal$lambda$1(cancellableReadAction.kt:47)
+	at com.intellij.openapi.progress.util.ProgressIndicatorUtilService.runActionAndCancelBeforeWrite(ProgressIndicatorUtilService.java:63)
+	at com.intellij.openapi.progress.util.ProgressIndicatorUtils.runActionAndCancelBeforeWrite(ProgressIndicatorUtils.java:129)
+	at com.intellij.openapi.application.rw.CancellableReadActionKt.cancellableReadActionInternal(cancellableReadAction.kt:45)
+	at com.intellij.openapi.application.rw.InternalReadAction.tryReadCancellable(InternalReadAction.kt:91)
+	at com.intellij.openapi.application.rw.InternalReadAction.access$tryReadCancellable(InternalReadAction.kt:15)
+	at com.intellij.openapi.application.rw.InternalReadAction$tryReadAction$2.invoke(InternalReadAction.kt:77)
+	at com.intellij.openapi.application.rw.InternalReadAction$tryReadAction$2.invoke(InternalReadAction.kt:72)
+	at com.intellij.openapi.progress.CancellationKt.withCurrentJob$lambda$0(cancellation.kt:17)
+	at com.intellij.openapi.progress.Cancellation.withCurrentJob(Cancellation.java:60)
+	at com.intellij.openapi.progress.CancellationKt.withCurrentJob(cancellation.kt:17)
+	at com.intellij.openapi.progress.CoroutinesKt.blockingContext(coroutines.kt:193)
+	at com.intellij.openapi.application.rw.InternalReadAction.tryReadAction(InternalReadAction.kt:72)
+	at com.intellij.openapi.application.rw.InternalReadAction.readLoop(InternalReadAction.kt:64)
+	at com.intellij.openapi.application.rw.InternalReadAction.access$readLoop(InternalReadAction.kt:15)
+	at com.intellij.openapi.application.rw.InternalReadAction$readLoop$1.invokeSuspend(InternalReadAction.kt)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:106)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:570)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:750)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:677)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:664)
+2024-03-28 00:07:22,835 [22547618] SEVERE - #c.i.i.n.ide - Android Studio Hedgehog | 2023.1.1 Patch 2  Build #AI-231.9392.1.2311.11330709
+2024-03-28 00:07:22,835 [22547618] SEVERE - #c.i.i.n.ide - JDK: 17.0.7; VM: OpenJDK 64-Bit Server VM; Vendor: JetBrains s.r.o.
+2024-03-28 00:07:22,835 [22547618] SEVERE - #c.i.i.n.ide - OS: Linux
+2024-03-28 00:09:12,786 [22657569]   WARN - #com.android.tools.idea.editors.fast.EmbeddedCompilerClientImpl - Compile request failed with exception
+com.android.tools.idea.run.deployment.liveedit.LiveEditUpdateException: Analyze Error. UNRESOLVED_REFERENCE(a = REFERENCE_EXPRESSION)
+	at com.android.tools.idea.run.deployment.liveedit.LiveEditUpdateException$Companion.analysisError(LiveEditUpdateException.kt:56)
+	at com.android.tools.idea.run.deployment.liveedit.LiveEditUpdateException$Companion.analysisError$default(LiveEditUpdateException.kt:55)
+	at com.android.tools.idea.run.deployment.liveedit.CompileScopeImpl$analyze$analysisResult$1.callback(CompileScope.kt:152)
+	at org.jetbrains.kotlin.idea.caches.resolve.PerFileAnalysisCache.getAnalysisResults$handleResult(PerFileAnalysisCache.kt:108)
+	at org.jetbrains.kotlin.idea.caches.resolve.PerFileAnalysisCache.access$getAnalysisResults$handleResult(PerFileAnalysisCache.kt:59)
+	at org.jetbrains.kotlin.idea.caches.resolve.PerFileAnalysisCache.getAnalysisResults$kotlin_base_fe10_analysis(PerFileAnalysisCache.kt:115)
+	at org.jetbrains.kotlin.idea.caches.resolve.ProjectResolutionFacade.analysisResultForElement(ProjectResolutionFacade.kt:243)
+	at org.jetbrains.kotlin.idea.caches.resolve.ProjectResolutionFacade.getAnalysisResultsForElements$kotlin_base_fe10_analysis(ProjectResolutionFacade.kt:199)
+	at org.jetbrains.kotlin.idea.caches.resolve.ModuleResolutionFacadeImpl$analyzeWithAllCompilerChecks$2.invoke(ModuleResolutionFacadeImpl.kt:90)
+	at org.jetbrains.kotlin.idea.caches.resolve.ModuleResolutionFacadeImpl$analyzeWithAllCompilerChecks$2.invoke(ModuleResolutionFacadeImpl.kt:89)
+	at com.intellij.openapi.progress.impl.CancellationCheck.withCancellationCheck(CancellationCheck.kt:59)
+	at com.intellij.openapi.progress.impl.CancellationCheck$Companion.runWithCancellationCheck(CancellationCheck.kt:105)
+	at org.jetbrains.kotlin.idea.util.application.ApplicationUtilsKt.runWithCancellationCheck(ApplicationUtils.kt:63)
+	at org.jetbrains.kotlin.idea.caches.resolve.ModuleResolutionFacadeImpl.analyzeWithAllCompilerChecks(ModuleResolutionFacadeImpl.kt:89)
+	at org.jetbrains.kotlin.idea.caches.resolve.ResolutionFacadeWithDebugInfo.analyzeWithAllCompilerChecks(ResolutionFacadeWithDebugInfo.kt:67)
+	at com.android.tools.idea.run.deployment.liveedit.CompileScopeImpl.analyze(CompileScope.kt:150)
+	at com.android.tools.idea.editors.fast.EmbeddedCompilerClientImpl$compileKtFiles$generationState$1$1.invoke(EmbeddedCompilerClientImpl.kt:199)
+	at com.android.tools.idea.editors.fast.EmbeddedCompilerClientImpl$compileKtFiles$generationState$1$1.invoke(EmbeddedCompilerClientImpl.kt:192)
+	at com.android.tools.idea.run.deployment.liveedit.CompileScopeKt.runWithCompileLock(CompileScope.kt:267)
+	at com.android.tools.idea.editors.fast.EmbeddedCompilerClientImpl$compileKtFiles$generationState$1.invoke(EmbeddedCompilerClientImpl.kt:192)
+	at com.android.tools.idea.editors.fast.EmbeddedCompilerClientImpl$compileKtFiles$generationState$1.invoke(EmbeddedCompilerClientImpl.kt:191)
+	at com.android.tools.idea.editors.fast.EmbeddedCompilerClientImplKt$retryInNonBlockingReadAction$1$1.call(EmbeddedCompilerClientImpl.kt:102)
+	at com.android.tools.idea.editors.fast.EmbeddedCompilerClientImplKt$retryInNonBlockingReadAction$1$1.call(EmbeddedCompilerClientImpl.kt:99)
+	at com.intellij.openapi.application.impl.NonBlockingReadActionImpl$OTelMonitor.callWrapped(NonBlockingReadActionImpl.java:746)
+	at com.intellij.openapi.application.impl.NonBlockingReadActionImpl$OTelMonitor$MonitoredComputation.call(NonBlockingReadActionImpl.java:778)
+	at com.intellij.openapi.application.impl.NonBlockingReadActionImpl$Submission.insideReadAction(NonBlockingReadActionImpl.java:573)
+	at com.intellij.openapi.application.impl.NonBlockingReadActionImpl$Submission.lambda$attemptComputation$3(NonBlockingReadActionImpl.java:537)
+	at com.intellij.openapi.application.impl.ApplicationImpl.tryRunReadAction(ApplicationImpl.java:1100)
+	at com.intellij.openapi.progress.util.ProgressIndicatorUtils.lambda$runInReadActionWithWriteActionPriority$0(ProgressIndicatorUtils.java:72)
+	at com.intellij.openapi.progress.util.ProgressIndicatorUtilService.runActionAndCancelBeforeWrite(ProgressIndicatorUtilService.java:63)
+	at com.intellij.openapi.progress.util.ProgressIndicatorUtils.runActionAndCancelBeforeWrite(ProgressIndicatorUtils.java:129)
+	at com.intellij.openapi.progress.util.ProgressIndicatorUtils.lambda$runWithWriteActionPriority$1(ProgressIndicatorUtils.java:110)
+	at com.intellij.openapi.progress.ProgressManager.lambda$runProcess$1(ProgressManager.java:70)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$runProcess$2(CoreProgressManager.java:186)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$executeProcessUnderProgress$13(CoreProgressManager.java:604)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.registerIndicatorAndRun(CoreProgressManager.java:679)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.computeUnderProgress(CoreProgressManager.java:635)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.executeProcessUnderProgress(CoreProgressManager.java:603)
+	at com.intellij.openapi.progress.impl.ProgressManagerImpl.executeProcessUnderProgress(ProgressManagerImpl.java:60)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.runProcess(CoreProgressManager.java:173)
+	at com.intellij.openapi.progress.ProgressManager.runProcess(ProgressManager.java:70)
+	at com.intellij.openapi.progress.util.ProgressIndicatorUtils.runWithWriteActionPriority(ProgressIndicatorUtils.java:107)
+	at com.intellij.openapi.progress.util.ProgressIndicatorUtils.runInReadActionWithWriteActionPriority(ProgressIndicatorUtils.java:72)
+	at com.intellij.openapi.application.impl.NonBlockingReadActionImpl$Submission.attemptComputation(NonBlockingReadActionImpl.java:537)
+	at com.intellij.openapi.application.impl.NonBlockingReadActionImpl$Submission.lambda$transferToBgThread$1(NonBlockingReadActionImpl.java:444)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1$1.run(Executors.java:702)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1$1.run(Executors.java:699)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1.run(Executors.java:699)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-03-28 00:24:32,709 [23577492]   WARN - SyncUtil.kt - parentDisposable was already disposed, callback will not be called.
+2024-03-28 00:25:32,874 [23637657]   WARN - #c.i.o.a.i.ActionUpdater - 343 ms to call on EDT EditorMarkupModelImpl$TrafficLightAction#update@EditorInspectionsToolbar (com.intellij.openapi.editor.impl.EditorMarkupModelImpl$TrafficLightAction). Revise AnAction.getActionUpdateThread property
+com.intellij.diagnostic.PluginException: 343 ms to call on EDT EditorMarkupModelImpl$TrafficLightAction#update@EditorInspectionsToolbar (com.intellij.openapi.editor.impl.EditorMarkupModelImpl$TrafficLightAction). Revise AnAction.getActionUpdateThread property
+	at com.intellij.diagnostic.PluginProblemReporterImpl.createPluginExceptionByClass(PluginProblemReporterImpl.java:23)
+	at com.intellij.diagnostic.PluginException.createByClass(PluginException.java:89)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.computeOnEdt(ActionUpdater.java:256)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.callAction(ActionUpdater.java:207)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.callAction(ActionUpdater.java:165)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.updateActionReal(ActionUpdater.java:141)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.lambda$new$0(ActionUpdater.java:128)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.update(ActionUpdater.java:711)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.expandGroupChild(ActionUpdater.java:557)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.lambda$doExpandActionGroup$22(ActionUpdater.java:522)
+	at com.intellij.util.containers.ContainerUtil.concat(ContainerUtil.java:1538)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.doExpandActionGroup(ActionUpdater.java:522)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.expandActionGroup(ActionUpdater.java:310)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.lambda$doExpandActionGroupAsync$14(ActionUpdater.java:373)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.lambda$doExpandActionGroupAsync$15(ActionUpdater.java:393)
+	at com.intellij.openapi.application.impl.ApplicationImpl.tryRunReadAction(ApplicationImpl.java:1100)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.lambda$tryRunReadActionAndCancelBeforeWrite$19(ActionUpdater.java:425)
+	at com.intellij.openapi.progress.util.ProgressIndicatorUtilService.runActionAndCancelBeforeWrite(ProgressIndicatorUtilService.java:63)
+	at com.intellij.openapi.progress.util.ProgressIndicatorUtils.runActionAndCancelBeforeWrite(ProgressIndicatorUtils.java:129)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.tryRunReadActionAndCancelBeforeWrite(ActionUpdater.java:421)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.lambda$doExpandActionGroupAsync$16(ActionUpdater.java:393)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$runProcess$2(CoreProgressManager.java:186)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$executeProcessUnderProgress$13(CoreProgressManager.java:604)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.registerIndicatorAndRun(CoreProgressManager.java:679)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.computeUnderProgress(CoreProgressManager.java:635)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.executeProcessUnderProgress(CoreProgressManager.java:603)
+	at com.intellij.openapi.progress.impl.ProgressManagerImpl.executeProcessUnderProgress(ProgressManagerImpl.java:60)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.runProcess(CoreProgressManager.java:173)
+	at com.intellij.openapi.progress.util.BackgroundTaskUtil.runUnderDisposeAwareIndicator(BackgroundTaskUtil.java:361)
+	at com.intellij.openapi.actionSystem.impl.ActionUpdater.lambda$doExpandActionGroupAsync$17(ActionUpdater.java:392)
+	at io.opentelemetry.context.Context.lambda$wrap$1(Context.java:212)
+	at com.intellij.util.concurrency.BoundedTaskExecutor.doRun(BoundedTaskExecutor.java:248)
+	at com.intellij.util.concurrency.BoundedTaskExecutor.access$200(BoundedTaskExecutor.java:28)
+	at com.intellij.util.concurrency.BoundedTaskExecutor$1.executeFirstTaskAndHelpQueue(BoundedTaskExecutor.java:221)
+	at com.intellij.util.ConcurrencyUtil.runUnderThreadName(ConcurrencyUtil.java:227)
+	at com.intellij.util.concurrency.BoundedTaskExecutor$1.run(BoundedTaskExecutor.java:210)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1$1.run(Executors.java:702)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1$1.run(Executors.java:699)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1.run(Executors.java:699)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-03-28 00:25:40,323 [23645106]   WARN - #c.i.o.a.i.ActionUpdater - 1091 ms to grab EDT for ToolWindowHeader$2#update@ToolwindowTitle (com.intellij.toolWindow.ToolWindowHeader$2)
+2024-03-28 00:25:40,583 [23645366]   WARN - #c.i.o.a.i.ActionUpdater - 741 ms to grab EDT for BuildTreeConsoleView$ScrollEditorToTheEndAction#update@BuildConsole (com.intellij.build.BuildTreeConsoleView$ScrollEditorToTheEndAction)
+2024-03-28 00:25:41,474 [23646257]   WARN - #c.i.o.a.i.ActionUpdater - 403 ms to grab EDT for DeviceAndSnapshotComboBoxAction#update@MainToolbar (com.android.tools.idea.run.deployment.DeviceAndSnapshotComboBoxAction)
+2024-03-28 00:25:43,924 [23648707]   WARN - #c.i.o.a.i.ActionUpdater - 336 ms to grab EDT for BuildTreeConsoleView$ScrollEditorToTheEndAction#update@BuildConsole (com.intellij.build.BuildTreeConsoleView$ScrollEditorToTheEndAction)
+2024-03-28 00:25:44,335 [23649118]   WARN - #c.i.o.a.i.ActionUpdater - 329 ms to grab EDT for AndroidConnectDebuggerAction#update@MainToolbar (org.jetbrains.android.actions.AndroidConnectDebuggerAction)
+2024-03-28 00:26:44,794 [23709577]   WARN - #c.i.o.a.i.ActionUpdater - 448 ms to grab EDT for DeviceAndSnapshotComboBoxAction#update@MainToolbar (com.android.tools.idea.run.deployment.DeviceAndSnapshotComboBoxAction)
+2024-03-28 00:26:45,737 [23710520]   WARN - #c.i.o.a.i.ActionUpdater - 363 ms to grab EDT for LiveEditIssueNotificationAction#update@EditorInspectionsToolbar (com.android.tools.idea.editors.liveedit.ui.LiveEditIssueNotificationAction)
+2024-03-28 00:26:46,859 [23711642]   WARN - #c.i.o.a.i.ActionUpdater - 337 ms to grab EDT for TextEditorWithMultiRepresentationPreview$SplitEditorActionDelegate#update@TabsMoreToolbar (com.android.tools.idea.uibuilder.editor.multirepresentation.TextEditorWithMultiRepresentationPreview$SplitEditorActionDelegate)
+2024-03-28 00:26:50,414 [23715197]   WARN - #c.i.o.a.i.ActionUpdater - 335 ms to grab EDT for LiveEditIssueNotificationAction#update@EditorInspectionsToolbar (com.android.tools.idea.editors.liveedit.ui.LiveEditIssueNotificationAction)
+2024-03-28 00:26:51,110 [23715893]   WARN - #c.i.o.a.i.ActionUpdater - 984 ms to grab EDT for SyncProjectAction#update@MainToolbar (com.android.tools.idea.gradle.actions.SyncProjectAction)
+2024-03-28 00:26:51,314 [23716097]   WARN - #c.i.o.a.i.ActionUpdater - 788 ms to grab EDT for EditorMarkupModelImpl$TrafficLightAction#update@EditorInspectionsToolbar (com.intellij.openapi.editor.impl.EditorMarkupModelImpl$TrafficLightAction)
+2024-03-28 00:26:51,829 [23716612]   WARN - #c.i.o.a.i.ActionUpdater - 461 ms to grab EDT for EditorMarkupModelImpl$1#update@EditorInspectionsToolbar (com.intellij.openapi.editor.impl.EditorMarkupModelImpl$1)
+2024-03-28 00:26:52,068 [23716851]   WARN - #c.i.o.a.i.ActionUpdater - 462 ms to grab EDT for TextEditorWithMultiRepresentationPreview$SplitEditorActionDelegate#update@TabsMoreToolbar (com.android.tools.idea.uibuilder.editor.multirepresentation.TextEditorWithMultiRepresentationPreview$SplitEditorActionDelegate)
+2024-03-28 00:26:52,846 [23717629]   WARN - #c.i.o.a.i.ActionUpdater - 738 ms to grab EDT for TextEditorWithMultiRepresentationPreview$SplitEditorActionDelegate#update@TabsMoreToolbar (com.android.tools.idea.uibuilder.editor.multirepresentation.TextEditorWithMultiRepresentationPreview$SplitEditorActionDelegate)
+2024-03-28 00:26:55,961 [23720744]   WARN - #c.i.o.a.i.ActionUpdater - 904 ms to grab EDT for AndroidConnectDebuggerAction#update@MainToolbar (org.jetbrains.android.actions.AndroidConnectDebuggerAction)
+2024-03-28 00:26:56,552 [23721335]   WARN - #c.i.o.a.i.ActionUpdater - 1066 ms to grab EDT for EditorMarkupModelImpl$1#update@EditorInspectionsToolbar (com.intellij.openapi.editor.impl.EditorMarkupModelImpl$1)
+2024-03-28 00:26:57,250 [23722033]   WARN - #c.i.o.a.i.ActionUpdater - 1198 ms to grab EDT for SyncProjectAction#update@MainToolbar (com.android.tools.idea.gradle.actions.SyncProjectAction)
+2024-03-28 00:26:59,009 [23723792]   WARN - #c.i.o.a.i.ActionUpdater - 1523 ms to grab EDT for TextEditorWithMultiRepresentationPreview$SplitEditorActionDelegate#update@TabsMoreToolbar (com.android.tools.idea.uibuilder.editor.multirepresentation.TextEditorWithMultiRepresentationPreview$SplitEditorActionDelegate)
+2024-03-28 00:27:09,548 [23734331]   WARN - #c.i.o.a.i.ActionUpdater - 491 ms to grab EDT for DeviceAndSnapshotComboBoxAction#update@MainToolbar (com.android.tools.idea.run.deployment.DeviceAndSnapshotComboBoxAction)
+2024-03-28 00:27:10,711 [23735494]   WARN - #c.i.o.a.i.ActionUpdater - 334 ms to grab EDT for LiveEditIssueNotificationAction#update@EditorInspectionsToolbar (com.android.tools.idea.editors.liveedit.ui.LiveEditIssueNotificationAction)
+2024-03-28 00:27:11,249 [23736032]   WARN - #c.i.o.a.i.ActionUpdater - 402 ms to grab EDT for EditorMarkupModelImpl$TrafficLightAction#update@EditorInspectionsToolbar (com.intellij.openapi.editor.impl.EditorMarkupModelImpl$TrafficLightAction)
+2024-03-28 00:27:11,578 [23736361]   WARN - #c.i.o.a.i.ActionUpdater - 611 ms to grab EDT for AndroidConnectDebuggerAction#update@MainToolbar (org.jetbrains.android.actions.AndroidConnectDebuggerAction)
+2024-03-28 00:27:13,806 [23738589]   WARN - #c.i.o.a.i.ActionUpdater - 460 ms to grab EDT for DeviceAndSnapshotComboBoxAction#update@MainToolbar (com.android.tools.idea.run.deployment.DeviceAndSnapshotComboBoxAction)
+2024-03-28 00:27:14,849 [23739632]   WARN - #c.i.o.a.i.ActionUpdater - 315 ms to grab EDT for LiveEditIssueNotificationAction#update@EditorInspectionsToolbar (com.android.tools.idea.editors.liveedit.ui.LiveEditIssueNotificationAction)
+2024-03-28 00:27:15,135 [23739918]   WARN - #c.i.o.a.i.ActionUpdater - 456 ms to grab EDT for AndroidConnectDebuggerAction#update@MainToolbar (org.jetbrains.android.actions.AndroidConnectDebuggerAction)
+2024-03-28 00:27:15,213 [23739996]   WARN - #c.i.o.a.i.ActionUpdater - 327 ms to grab EDT for EditorMarkupModelImpl$TrafficLightAction#update@EditorInspectionsToolbar (com.intellij.openapi.editor.impl.EditorMarkupModelImpl$TrafficLightAction)
+2024-03-28 00:27:18,992 [23743775]   WARN - #c.i.o.a.i.ActionUpdater - 766 ms to grab EDT for LiveEditIssueNotificationAction#update@EditorInspectionsToolbar (com.android.tools.idea.editors.liveedit.ui.LiveEditIssueNotificationAction)
+2024-03-28 00:27:19,558 [23744341]   WARN - #c.i.o.a.i.ActionUpdater - 787 ms to grab EDT for SyncProjectAction#update@MainToolbar (com.android.tools.idea.gradle.actions.SyncProjectAction)
+2024-03-28 00:27:19,747 [23744530]   WARN - #c.i.o.a.i.ActionUpdater - 654 ms to grab EDT for EditorMarkupModelImpl$TrafficLightAction#update@EditorInspectionsToolbar (com.intellij.openapi.editor.impl.EditorMarkupModelImpl$TrafficLightAction)
+2024-03-28 00:27:20,294 [23745077]   WARN - #c.i.o.a.i.ActionUpdater - 442 ms to grab EDT for EditorMarkupModelImpl$1#update@EditorInspectionsToolbar (com.intellij.openapi.editor.impl.EditorMarkupModelImpl$1)
+2024-03-28 00:27:20,593 [23745376]   WARN - #c.i.o.a.i.ActionUpdater - 573 ms to grab EDT for TextEditorWithMultiRepresentationPreview$SplitEditorActionDelegate#update@TabsMoreToolbar (com.android.tools.idea.uibuilder.editor.multirepresentation.TextEditorWithMultiRepresentationPreview$SplitEditorActionDelegate)
+2024-03-28 00:27:21,292 [23746075]   WARN - #c.i.o.a.i.ActionUpdater - 614 ms to grab EDT for TextEditorWithMultiRepresentationPreview$SplitEditorActionDelegate#update@TabsMoreToolbar (com.android.tools.idea.uibuilder.editor.multirepresentation.TextEditorWithMultiRepresentationPreview$SplitEditorActionDelegate)
+2024-03-28 00:27:23,254 [23748037]   WARN - #c.i.o.a.i.ActionUpdater - 566 ms to grab EDT for DeviceAndSnapshotComboBoxAction#update@MainToolbar (com.android.tools.idea.run.deployment.DeviceAndSnapshotComboBoxAction)
+2024-03-28 00:27:24,872 [23749655]   WARN - #c.i.o.a.i.ActionUpdater - 490 ms to grab EDT for TextEditorWithMultiRepresentationPreview$SplitEditorActionDelegate#update@TabsMoreToolbar (com.android.tools.idea.uibuilder.editor.multirepresentation.TextEditorWithMultiRepresentationPreview$SplitEditorActionDelegate)
+2024-03-28 00:27:24,900 [23749683]   WARN - #c.i.o.a.i.ActionUpdater - 517 ms to grab EDT for AndroidConnectDebuggerAction#update@MainToolbar (org.jetbrains.android.actions.AndroidConnectDebuggerAction)
+java.nio.channels.ClosedByInterruptException
+	at java.base/java.nio.channels.spi.AbstractInterruptibleChannel.end(AbstractInterruptibleChannel.java:199)
+	at java.base/sun.nio.ch.FileChannelImpl.endBlocking(FileChannelImpl.java:171)
+	at java.base/sun.nio.ch.FileChannelImpl.write(FileChannelImpl.java:293)
+	at com.intellij.util.lang.FileLoader.saveIndex(FileLoader.java:252)
+	at com.intellij.util.lang.FileLoader.buildData(FileLoader.java:290)
+	at com.intellij.util.lang.FileLoader.createCachingFileLoader(FileLoader.java:59)
+	at com.intellij.util.lang.ClassPath.createLoader(ClassPath.java:383)
+	at com.intellij.util.lang.ClassPath.getLoaderSlowPath(ClassPath.java:342)
+	at com.intellij.util.lang.ClassPath.getLoader(ClassPath.java:325)
+	at com.intellij.util.lang.ClassPath.findResource(ClassPath.java:272)
+	at com.intellij.util.lang.UrlClassLoader.doFindResource(UrlClassLoader.java:319)
+	at com.intellij.util.lang.UrlClassLoader.findResource(UrlClassLoader.java:276)
+	at java.base/java.lang.ClassLoader.getResource(ClassLoader.java:1403)
+	at com.android.tools.rendering.classloading.loaders.ClassLoaderLoader.loadClass(ClassLoaderLoader.kt:36)
+	at org.jetbrains.android.uipreview.ModuleClassLoaderOverlays$classLoaderLoader$1.loadClass(ModuleClassLoaderOverlays.kt:66)
+	at org.jetbrains.android.uipreview.OverlayLoader.loadClass(OverlayLoader.kt:35)
+	at com.android.tools.idea.rendering.classloading.loaders.ListeningLoader.loadClass(ListeningLoader.kt:30)
+	at com.android.tools.idea.rendering.classloading.loaders.ListeningLoader.loadClass(ListeningLoader.kt:30)
+	at com.android.tools.idea.rendering.classloading.loaders.AsmTransformingLoader.loadClass(AsmTransformingLoader.kt:43)
+	at com.android.tools.idea.rendering.classloading.loaders.MultiLoader$loadClass$1.invoke(MultiLoader.kt:33)
+	at com.android.tools.idea.rendering.classloading.loaders.MultiLoader$loadClass$1.invoke(MultiLoader.kt:33)
+	at kotlin.sequences.TransformingSequence$iterator$1.next(Sequences.kt:210)
+	at kotlin.sequences.FilteringSequence$iterator$1.calcNext(Sequences.kt:170)
+	at kotlin.sequences.FilteringSequence$iterator$1.hasNext(Sequences.kt:194)
+	at kotlin.sequences.SequencesKt___SequencesKt.firstOrNull(_Sequences.kt:168)
+	at com.android.tools.idea.rendering.classloading.loaders.MultiLoader.loadClass(MultiLoader.kt:34)
+	at com.android.tools.idea.rendering.classloading.loaders.MultiLoaderWithAffinity$loadClass$affineClass$1.invoke(MultiLoader.kt:84)
+	at com.android.tools.idea.rendering.classloading.loaders.MultiLoaderWithAffinity$loadClass$affineClass$1.invoke(MultiLoader.kt:84)
+	at kotlin.sequences.TransformingSequence$iterator$1.next(Sequences.kt:210)
+	at kotlin.sequences.FilteringSequence$iterator$1.calcNext(Sequences.kt:170)
+	at kotlin.sequences.FilteringSequence$iterator$1.hasNext(Sequences.kt:194)
+	at kotlin.sequences.SequencesKt___SequencesKt.firstOrNull(_Sequences.kt:168)
+	at com.android.tools.idea.rendering.classloading.loaders.MultiLoaderWithAffinity.loadClass(MultiLoader.kt:84)
+	at org.jetbrains.android.uipreview.ModuleClassLoaderImpl.loadClass(ModuleClassLoaderUtil.kt:324)
+	at com.android.tools.rendering.classloading.loaders.DelegatingClassLoader.findClass(DelegatingClassLoader.kt:76)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:587)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:520)
+	at com.android.tools.rendering.classloading.loaders.DelegatingClassLoader.loadClass(DelegatingClassLoader.kt:62)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:375)
+	at androidx.compose.ui.tooling.ComposableInvoker.invokeComposable(ComposableInvoker.kt:196)
+	at androidx.compose.ui.tooling.ComposeViewAdapter$init$3$1$composable$1.invoke(ComposeViewAdapter.kt:509)
+	at androidx.compose.ui.tooling.ComposeViewAdapter$init$3$1$composable$1.invoke(ComposeViewAdapter.kt:507)
+	at androidx.compose.ui.tooling.ComposeViewAdapter$init$3$1.invoke(ComposeViewAdapter.kt:544)
+	at androidx.compose.ui.tooling.ComposeViewAdapter$init$3$1.invoke(ComposeViewAdapter.kt:502)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:108)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:35)
+	at androidx.compose.runtime.CompositionLocalKt.CompositionLocalProvider(CompositionLocal.kt:228)
+	at androidx.compose.ui.tooling.InspectableKt.Inspectable(Inspectable.kt:61)
+	at androidx.compose.ui.tooling.ComposeViewAdapter$WrapPreview$1.invoke(ComposeViewAdapter.kt:449)
+	at androidx.compose.ui.tooling.ComposeViewAdapter$WrapPreview$1.invoke(ComposeViewAdapter.kt:448)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:108)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:35)
+	at androidx.compose.runtime.CompositionLocalKt.CompositionLocalProvider(CompositionLocal.kt:228)
+	at androidx.compose.ui.tooling.ComposeViewAdapter.WrapPreview(ComposeViewAdapter.kt:443)
+	at androidx.compose.ui.tooling.ComposeViewAdapter.access$WrapPreview(ComposeViewAdapter.kt:127)
+	at androidx.compose.ui.tooling.ComposeViewAdapter$init$3.invoke(ComposeViewAdapter.kt:502)
+	at androidx.compose.ui.tooling.ComposeViewAdapter$init$3.invoke(ComposeViewAdapter.kt:499)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:108)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:35)
+	at androidx.compose.ui.platform.ComposeView.Content(ComposeView.android.kt:428)
+	at androidx.compose.ui.platform.AbstractComposeView$ensureCompositionCreated$1.invoke(ComposeView.android.kt:252)
+	at androidx.compose.ui.platform.AbstractComposeView$ensureCompositionCreated$1.invoke(ComposeView.android.kt:251)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:108)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:35)
+	at androidx.compose.runtime.CompositionLocalKt.CompositionLocalProvider(CompositionLocal.kt:228)
+	at androidx.compose.ui.platform.CompositionLocalsKt.ProvideCommonCompositionLocals(CompositionLocals.kt:195)
+	at androidx.compose.ui.platform.AndroidCompositionLocals_androidKt$ProvideAndroidCompositionLocals$3.invoke(AndroidCompositionLocals.android.kt:119)
+	at androidx.compose.ui.platform.AndroidCompositionLocals_androidKt$ProvideAndroidCompositionLocals$3.invoke(AndroidCompositionLocals.android.kt:118)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:108)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:35)
+	at androidx.compose.runtime.CompositionLocalKt.CompositionLocalProvider(CompositionLocal.kt:228)
+	at androidx.compose.ui.platform.AndroidCompositionLocals_androidKt.ProvideAndroidCompositionLocals(AndroidCompositionLocals.android.kt:110)
+	at androidx.compose.ui.platform.WrappedComposition$setContent$1$1$2.invoke(Wrapper.android.kt:158)
+	at androidx.compose.ui.platform.WrappedComposition$setContent$1$1$2.invoke(Wrapper.android.kt:157)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:108)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:35)
+	at androidx.compose.runtime.CompositionLocalKt.CompositionLocalProvider(CompositionLocal.kt:228)
+	at androidx.compose.ui.platform.WrappedComposition$setContent$1$1.invoke(Wrapper.android.kt:157)
+	at androidx.compose.ui.platform.WrappedComposition$setContent$1$1.invoke(Wrapper.android.kt:142)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:108)
+	at androidx.compose.runtime.internal.ComposableLambdaImpl.invoke(ComposableLambda.jvm.kt:35)
+	at androidx.compose.runtime.ActualJvm_jvmKt.invokeComposable(ActualJvm.jvm.kt:78)
+	at androidx.compose.runtime.ComposerImpl.doCompose(Composer.kt:3340)
+	at androidx.compose.runtime.ComposerImpl.composeContent$runtime_release(Composer.kt:3273)
+	at androidx.compose.runtime.CompositionImpl.composeContent(Composition.kt:588)
+	at androidx.compose.runtime.Recomposer.composeInitial$runtime_release(Recomposer.kt:1013)
+	at androidx.compose.runtime.CompositionImpl.setContent(Composition.kt:520)
+	at androidx.compose.ui.platform.WrappedComposition$setContent$1.invoke(Wrapper.android.kt:142)
+	at androidx.compose.ui.platform.WrappedComposition$setContent$1.invoke(Wrapper.android.kt:133)
+	at androidx.compose.ui.platform.AndroidComposeView.setOnViewTreeOwnersAvailable(AndroidComposeView.android.kt:1191)
+	at androidx.compose.ui.platform.WrappedComposition.setContent(Wrapper.android.kt:133)
+	at androidx.compose.ui.platform.WrappedComposition.onStateChanged(Wrapper.android.kt:183)
+	at androidx.lifecycle.LifecycleRegistry$ObserverWithState.dispatchEvent(LifecycleRegistry.kt:322)
+	at androidx.lifecycle.LifecycleRegistry.addObserver(LifecycleRegistry.kt:199)
+	at androidx.compose.ui.platform.WrappedComposition$setContent$1.invoke(Wrapper.android.kt:140)
+	at androidx.compose.ui.platform.WrappedComposition$setContent$1.invoke(Wrapper.android.kt:133)
+	at androidx.compose.ui.platform.AndroidComposeView.onAttachedToWindow(AndroidComposeView.android.kt:1266)
+	at android.view.View.dispatchAttachedToWindow(View.java:21291)
+	at android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3491)
+	at android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3498)
+	at android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3498)
+	at android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3498)
+	at android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3498)
+	at android.view.ViewGroup.dispatchAttachedToWindow(ViewGroup.java:3498)
+	at android.view.AttachInfo_Accessor.setAttachInfo(AttachInfo_Accessor.java:54)
+	at com.android.layoutlib.bridge.impl.RenderSessionImpl.inflate(RenderSessionImpl.java:372)
+	at com.android.layoutlib.bridge.Bridge.createSession(Bridge.java:450)
+	at com.android.tools.idea.layoutlib.LayoutLibrary.createSession(LayoutLibrary.java:122)
+	at com.android.tools.rendering.RenderTask.createRenderSession(RenderTask.java:742)
+	at com.android.tools.rendering.RenderTask.lambda$inflate$7(RenderTask.java:889)
+	at com.android.tools.rendering.RenderExecutor$runAsyncActionWithTimeout$3.run(RenderExecutor.kt:202)
+	at com.android.tools.rendering.RenderExecutor$PriorityRunnable.run(RenderExecutor.kt:316)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2024-03-28 00:33:59,373 [24144156]   WARN - #com.android.tools.idea.uibuilder.scene.LayoutlibSceneManager - null
+java.lang.StackOverflowError
+	at android.os.StrictMode$InstanceTracker.<init>(StrictMode.java:3124)
+	at android.os.StrictMode.trackActivity(StrictMode.java:2759)
+	at android.app.Activity.<init>(Activity.java:965)
+	at androidx.core.app.ComponentActivity.<init>(ComponentActivity.java:48)
+	at androidx.activity.ComponentActivity.<init>(ComponentActivity.java:263)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:16)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at omitted.omitted(omitted)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+2024-03-28 00:34:00,431 [24145214]   WARN - #com.android.tools.idea.uibuilder.scene.LayoutlibSceneManager - null
+java.lang.StackOverflowError
+	at android.os.StrictMode$InstanceTracker.<init>(StrictMode.java:3124)
+	at android.os.StrictMode.trackActivity(StrictMode.java:2759)
+	at android.app.Activity.<init>(Activity.java:965)
+	at androidx.core.app.ComponentActivity.<init>(ComponentActivity.java:48)
+	at androidx.activity.ComponentActivity.<init>(ComponentActivity.java:263)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:16)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at omitted.omitted(omitted)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+	at com.thanasis.e_thessbike.components.NavDrawer.<init>(NavDrawer.kt:20)
+	at com.thanasis.e_thessbike.fragments.ProfileFragment.<init>(ProfileFragment.kt:17)
+	at com.thanasis.e_thessbike.components.TopBar.<init>(TopBar.kt:22)
+2024-03-28 00:34:02,829 [24147612]   WARN - #c.i.o.a.ActionStub - ActionGroup should be registered using <group> tag: id="Android.Designer.IssuePanel.SeverityFilter" class="com.android.tools.idea.common.error.IssuePanelViewOptionActionGroup"
+2024-03-28 00:34:28,012 [24172795]   WARN - #com.android.tools.idea.compose.annotator.PreviewPickerAnnotationInspection - Failed when checking annotation: Preview target must be a composable function or an annotation class
+2024-03-28 00:44:54,326 [24799109]   WARN - #c.i.o.a.i.ActionUpdater - 3041 ms to call on BGT precache-slow-data@AndroidConnectDebuggerAction#update@MainToolbar (org.jetbrains.android.actions.AndroidConnectDebuggerAction)
+2024-03-28 00:46:48,118 [24912901]   WARN - #com.android.tools.idea.rendering.ConfigurationMatcher - 'default' is not a best match for any device/locale combination for file:///home/thanasis/programming/personal/android/e-ThessBike/app/src/main/AndroidManifest.xml.
+Displaying it with
+  , , , , Left To Right, sw412dp, w412dp, h732dp, Normal Screen, Short screen aspect ratio, Not Round screen, , , Portrait Orientation, Normal, Day time, 420 DPI Density, Finger-based touchscreen, Soft keyboard, No keyboard, Hidden navigation, No navigation, Screen resolution 1920x1080, API Level 34
+which is compatible, but will actually be displayed with another more specific version of the layout.
+2024-03-28 00:47:37,250 [24962033]   WARN - #com.android.tools.idea.run.util.LaunchUtils - com.android.tools.idea.model.MergedManifestException$ParsingError: Error parsing the merged manifest for module "e-ThessBike.app.main": Unexpected error parsing document
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.thanasis.e_thessbike"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="29"
+        android:targetSdkVersion="34" />
+
+    <permission
+        android:name="com.thanasis.e_thessbike.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.thanasis.e_thessbike.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+
+    <application
+        android:allowBackup="true"
+        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.EThessBike" >
+        <activity
+            android:name="com.thanasis.e_thessbike.MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.EThessBike" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=""
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.EThessBike" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="androidx.compose.ui.tooling.PreviewActivity"
+            android:exported="true" />
+        <activity
+            android:name="androidx.activity.ComponentActivity"
+            android:exported="true" />
+    </application>
+
+</manifest>
+
+java.util.concurrent.ExecutionException: com.android.tools.idea.model.MergedManifestException$ParsingError: Error parsing the merged manifest for module "e-ThessBike.app.main": Unexpected error parsing document
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.thanasis.e_thessbike"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="29"
+        android:targetSdkVersion="34" />
+
+    <permission
+        android:name="com.thanasis.e_thessbike.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.thanasis.e_thessbike.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+
+    <application
+        android:allowBackup="true"
+        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.EThessBike" >
+        <activity
+            android:name="com.thanasis.e_thessbike.MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.EThessBike" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=""
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.EThessBike" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="androidx.compose.ui.tooling.PreviewActivity"
+            android:exported="true" />
+        <activity
+            android:name="androidx.activity.ComponentActivity"
+            android:exported="true" />
+    </application>
+
+</manifest>
+
+	at com.google.common.util.concurrent.AbstractFuture.getDoneValue(AbstractFuture.java:588)
+	at com.google.common.util.concurrent.AbstractFuture.get(AbstractFuture.java:567)
+	at com.google.common.util.concurrent.AbstractFuture$TrustedFuture.get(AbstractFuture.java:113)
+	at com.android.tools.idea.run.util.LaunchUtils.isWatchFeatureRequired(LaunchUtils.java:74)
+	at com.android.tools.idea.run.LaunchCompatibilityCheckerImpl.getRequiredHardwareFeatures(LaunchCompatibilityCheckerImpl.java:118)
+	at com.android.tools.idea.run.LaunchCompatibility.canRunOnDevice(LaunchCompatibility.java:121)
+	at com.android.tools.idea.run.LaunchableAndroidDevice.canRun(LaunchableAndroidDevice.java:209)
+	at com.android.tools.idea.run.LaunchCompatibilityCheckerImpl.validate(LaunchCompatibilityCheckerImpl.java:106)
+	at com.android.tools.idea.run.deployment.VirtualDevicesTask.newDisconnectedDevice(VirtualDevicesTask.java:184)
+	at com.android.tools.idea.run.deployment.VirtualDevicesTask.lambda$getVirtualDevices$0(VirtualDevicesTask.java:105)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1625)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
+	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
+	at com.android.tools.idea.run.deployment.VirtualDevicesTask.getVirtualDevices(VirtualDevicesTask.java:106)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask$TrustedFutureInterruptibleTask.runInterruptibly(TrustedListenableFutureTask.java:131)
+	at com.google.common.util.concurrent.InterruptibleTask.run(InterruptibleTask.java:74)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask.run(TrustedListenableFutureTask.java:82)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1$1.run(Executors.java:702)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1$1.run(Executors.java:699)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1.run(Executors.java:699)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: com.android.tools.idea.model.MergedManifestException$ParsingError: Error parsing the merged manifest for module "e-ThessBike.app.main": Unexpected error parsing document
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.thanasis.e_thessbike"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="29"
+        android:targetSdkVersion="34" />
+
+    <permission
+        android:name="com.thanasis.e_thessbike.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.thanasis.e_thessbike.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+
+    <application
+        android:allowBackup="true"
+        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.EThessBike" >
+        <activity
+            android:name="com.thanasis.e_thessbike.MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.EThessBike" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=""
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.EThessBike" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="androidx.compose.ui.tooling.PreviewActivity"
+            android:exported="true" />
+        <activity
+            android:name="androidx.activity.ComponentActivity"
+            android:exported="true" />
+    </application>
+
+</manifest>
+
+	at com.android.tools.idea.model.MergedManifestSnapshotFactory.createMergedManifestSnapshot(MergedManifestSnapshotFactory.java:324)
+	at com.android.tools.idea.model.MergedManifestSupplier.createMergedManifestSnapshot(MergedManifestManager.kt:126)
+	at com.android.tools.idea.model.MergedManifestSupplier.access$createMergedManifestSnapshot(MergedManifestManager.kt:60)
+	at com.android.tools.idea.model.MergedManifestSupplier$getOrCreateSnapshot$1.compute(MergedManifestManager.kt:109)
+	at com.android.tools.idea.model.MergedManifestSupplier$getOrCreateSnapshot$1.compute(MergedManifestManager.kt:102)
+	at com.android.tools.idea.model.MergedManifestSupplier$runCancellableReadAction$1.call(MergedManifestManager.kt:269)
+	at com.intellij.openapi.application.impl.NonBlockingReadActionImpl$OTelMonitor.callWrapped(NonBlockingReadActionImpl.java:746)
+	at com.intellij.openapi.application.impl.NonBlockingReadActionImpl$OTelMonitor$MonitoredComputation.call(NonBlockingReadActionImpl.java:778)
+	at com.intellij.openapi.application.impl.NonBlockingReadActionImpl$Submission.insideReadAction(NonBlockingReadActionImpl.java:573)
+	at com.intellij.openapi.application.impl.NonBlockingReadActionImpl$Submission.lambda$attemptComputation$3(NonBlockingReadActionImpl.java:537)
+	at com.intellij.openapi.application.impl.ApplicationImpl.tryRunReadAction(ApplicationImpl.java:1100)
+	at com.intellij.openapi.progress.util.ProgressIndicatorUtils.lambda$runInReadActionWithWriteActionPriority$0(ProgressIndicatorUtils.java:72)
+	at com.intellij.openapi.progress.util.ProgressIndicatorUtilService.runActionAndCancelBeforeWrite(ProgressIndicatorUtilService.java:63)
+	at com.intellij.openapi.progress.util.ProgressIndicatorUtils.runActionAndCancelBeforeWrite(ProgressIndicatorUtils.java:129)
+	at com.intellij.openapi.progress.util.ProgressIndicatorUtils.lambda$runWithWriteActionPriority$1(ProgressIndicatorUtils.java:110)
+	at com.intellij.openapi.progress.ProgressManager.lambda$runProcess$1(ProgressManager.java:70)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$runProcess$2(CoreProgressManager.java:186)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$executeProcessUnderProgress$13(CoreProgressManager.java:604)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.registerIndicatorAndRun(CoreProgressManager.java:679)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.computeUnderProgress(CoreProgressManager.java:635)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.executeProcessUnderProgress(CoreProgressManager.java:603)
+	at com.intellij.openapi.progress.impl.ProgressManagerImpl.executeProcessUnderProgress(ProgressManagerImpl.java:60)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.runProcess(CoreProgressManager.java:173)
+	at com.intellij.openapi.progress.ProgressManager.runProcess(ProgressManager.java:70)
+	at com.intellij.openapi.progress.util.ProgressIndicatorUtils.runWithWriteActionPriority(ProgressIndicatorUtils.java:107)
+	at com.intellij.openapi.progress.util.ProgressIndicatorUtils.runInReadActionWithWriteActionPriority(ProgressIndicatorUtils.java:72)
+	at com.intellij.openapi.application.impl.NonBlockingReadActionImpl$Submission.attemptComputation(NonBlockingReadActionImpl.java:537)
+	at com.intellij.openapi.application.impl.NonBlockingReadActionImpl$Submission.executeSynchronously(NonBlockingReadActionImpl.java:464)
+	at com.intellij.openapi.application.impl.NonBlockingReadActionImpl.executeSynchronously(NonBlockingReadActionImpl.java:218)
+	at com.android.tools.idea.model.MergedManifestSupplier.runCancellableReadAction(MergedManifestManager.kt:269)
+	at com.android.tools.idea.model.MergedManifestSupplier.getOrCreateSnapshot(MergedManifestManager.kt:102)
+	at com.android.tools.idea.model.MergedManifestSupplier.getOrCreateSnapshotFromDelegate(MergedManifestManager.kt:224)
+	at com.android.tools.idea.model.MergedManifestSupplier.access$getOrCreateSnapshotFromDelegate(MergedManifestManager.kt:60)
+	at com.android.tools.idea.model.MergedManifestSupplier$delegate$1.invoke(MergedManifestManager.kt:62)
+	at com.android.tools.idea.model.MergedManifestSupplier$delegate$1.invoke(MergedManifestManager.kt:62)
+	at com.android.tools.idea.concurrency.ThrottlingAsyncSupplier.runScheduledComputation(ThrottlingAsyncSupplier.kt:119)
+	at com.android.tools.idea.concurrency.ThrottlingAsyncSupplier.access$runScheduledComputation(ThrottlingAsyncSupplier.kt:41)
+	at com.android.tools.idea.concurrency.ThrottlingAsyncSupplier$get$1.run(ThrottlingAsyncSupplier.kt:92)
+	at com.intellij.util.concurrency.QueueProcessor.runSafely(QueueProcessor.java:249)
+	at com.intellij.util.Alarm$Request.runSafely(Alarm.java:365)
+	at com.intellij.util.Alarm$Request.run(Alarm.java:354)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at com.intellij.util.concurrency.SchedulingWrapper$MyScheduledFutureTask.run(SchedulingWrapper.java:272)
+	at com.intellij.util.concurrency.BoundedTaskExecutor.doRun(BoundedTaskExecutor.java:248)
+	at com.intellij.util.concurrency.BoundedTaskExecutor.access$200(BoundedTaskExecutor.java:28)
+	at com.intellij.util.concurrency.BoundedTaskExecutor$1.executeFirstTaskAndHelpQueue(BoundedTaskExecutor.java:221)
+	at com.intellij.util.ConcurrencyUtil.runUnderThreadName(ConcurrencyUtil.java:227)
+	at com.intellij.util.concurrency.BoundedTaskExecutor$1.run(BoundedTaskExecutor.java:210)
+	... 7 more
+Caused by: java.lang.RuntimeException: Activity name cannot be empty.
+	at com.android.tools.idea.model.MergedManifestSnapshotFactory.createActivityAttributesSnapshot(MergedManifestSnapshotFactory.java:335)
+	at com.android.tools.idea.model.MergedManifestSnapshotFactory.createMergedManifestSnapshot(MergedManifestSnapshotFactory.java:249)
+	... 55 more
+2024-03-28 00:47:37,261 [24962044]   WARN - #com.android.tools.idea.run.util.LaunchUtils - com.android.tools.idea.model.MergedManifestException$ParsingError: Error parsing the merged manifest for module "e-ThessBike.app.main": Unexpected error parsing document
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.thanasis.e_thessbike"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="29"
+        android:targetSdkVersion="34" />
+
+    <permission
+        android:name="com.thanasis.e_thessbike.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.thanasis.e_thessbike.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+
+    <application
+        android:allowBackup="true"
+        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.EThessBike" >
+        <activity
+            android:name="com.thanasis.e_thessbike.MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.EThessBike" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=""
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.EThessBike" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="androidx.compose.ui.tooling.PreviewActivity"
+            android:exported="true" />
+        <activity
+            android:name="androidx.activity.ComponentActivity"
+            android:exported="true" />
+    </application>
+
+</manifest>
+
+java.util.concurrent.ExecutionException: com.android.tools.idea.model.MergedManifestException$ParsingError: Error parsing the merged manifest for module "e-ThessBike.app.main": Unexpected error parsing document
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.thanasis.e_thessbike"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="29"
+        android:targetSdkVersion="34" />
+
+    <permission
+        android:name="com.thanasis.e_thessbike.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.thanasis.e_thessbike.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+
+    <application
+        android:allowBackup="true"
+        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.EThessBike" >
+        <activity
+            android:name="com.thanasis.e_thessbike.MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.EThessBike" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=""
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.EThessBike" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="androidx.compose.ui.tooling.PreviewActivity"
+            android:exported="true" />
+        <activity
+            android:name="androidx.activity.ComponentActivity"
+            android:exported="true" />
+    </application>
+
+</manifest>
+
+	at com.google.common.util.concurrent.AbstractFuture.getDoneValue(AbstractFuture.java:588)
+	at com.google.common.util.concurrent.AbstractFuture.get(AbstractFuture.java:567)
+	at com.google.common.util.concurrent.AbstractFuture$TrustedFuture.get(AbstractFuture.java:113)
+	at com.android.tools.idea.run.util.LaunchUtils.isWatchFeatureRequired(LaunchUtils.java:74)
+	at com.android.tools.idea.run.LaunchCompatibilityCheckerImpl.getRequiredHardwareFeatures(LaunchCompatibilityCheckerImpl.java:118)
+	at com.android.tools.idea.run.LaunchCompatibility.canRunOnDevice(LaunchCompatibility.java:121)
+	at com.android.tools.idea.run.ConnectedAndroidDevice.canRun(ConnectedAndroidDevice.java:193)
+	at com.android.tools.idea.run.LaunchCompatibilityCheckerImpl.validate(LaunchCompatibilityCheckerImpl.java:106)
+	at com.android.tools.idea.run.deployment.ConnectedDevicesTask.lambda$getLaunchCompatibilityAsync$4(ConnectedDevicesTask.java:169)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask$TrustedFutureInterruptibleTask.runInterruptibly(TrustedListenableFutureTask.java:131)
+	at com.google.common.util.concurrent.InterruptibleTask.run(InterruptibleTask.java:74)
+	at com.google.common.util.concurrent.TrustedListenableFutureTask.run(TrustedListenableFutureTask.java:82)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1$1.run(Executors.java:702)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1$1.run(Executors.java:699)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:399)
+	at java.base/java.util.concurrent.Executors$PrivilegedThreadFactory$1.run(Executors.java:699)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: com.android.tools.idea.model.MergedManifestException$ParsingError: Error parsing the merged manifest for module "e-ThessBike.app.main": Unexpected error parsing document
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.thanasis.e_thessbike"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="29"
+        android:targetSdkVersion="34" />
+
+    <permission
+        android:name="com.thanasis.e_thessbike.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.thanasis.e_thessbike.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+
+    <application
+        android:allowBackup="true"
+        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.EThessBike" >
+        <activity
+            android:name="com.thanasis.e_thessbike.MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.EThessBike" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=""
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.EThessBike" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="androidx.compose.ui.tooling.PreviewActivity"
+            android:exported="true" />
+        <activity
+            android:name="androidx.activity.ComponentActivity"
+            android:exported="true" />
+    </application>
+
+</manifest>
+
+	at com.android.tools.idea.model.MergedManifestSnapshotFactory.createMergedManifestSnapshot(MergedManifestSnapshotFactory.java:324)
+	at com.android.tools.idea.model.MergedManifestSupplier.createMergedManifestSnapshot(MergedManifestManager.kt:126)
+	at com.android.tools.idea.model.MergedManifestSupplier.access$createMergedManifestSnapshot(MergedManifestManager.kt:60)
+	at com.android.tools.idea.model.MergedManifestSupplier$getOrCreateSnapshot$1.compute(MergedManifestManager.kt:109)
+	at com.android.tools.idea.model.MergedManifestSupplier$getOrCreateSnapshot$1.compute(MergedManifestManager.kt:102)
+	at com.android.tools.idea.model.MergedManifestSupplier$runCancellableReadAction$1.call(MergedManifestManager.kt:269)
+	at com.intellij.openapi.application.impl.NonBlockingReadActionImpl$OTelMonitor.callWrapped(NonBlockingReadActionImpl.java:746)
+	at com.intellij.openapi.application.impl.NonBlockingReadActionImpl$OTelMonitor$MonitoredComputation.call(NonBlockingReadActionImpl.java:778)
+	at com.intellij.openapi.application.impl.NonBlockingReadActionImpl$Submission.insideReadAction(NonBlockingReadActionImpl.java:573)
+	at com.intellij.openapi.application.impl.NonBlockingReadActionImpl$Submission.lambda$attemptComputation$3(NonBlockingReadActionImpl.java:537)
+	at com.intellij.openapi.application.impl.ApplicationImpl.tryRunReadAction(ApplicationImpl.java:1100)
+	at com.intellij.openapi.progress.util.ProgressIndicatorUtils.lambda$runInReadActionWithWriteActionPriority$0(ProgressIndicatorUtils.java:72)
+	at com.intellij.openapi.progress.util.ProgressIndicatorUtilService.runActionAndCancelBeforeWrite(ProgressIndicatorUtilService.java:63)
+	at com.intellij.openapi.progress.util.ProgressIndicatorUtils.runActionAndCancelBeforeWrite(ProgressIndicatorUtils.java:129)
+	at com.intellij.openapi.progress.util.ProgressIndicatorUtils.lambda$runWithWriteActionPriority$1(ProgressIndicatorUtils.java:110)
+	at com.intellij.openapi.progress.ProgressManager.lambda$runProcess$1(ProgressManager.java:70)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$runProcess$2(CoreProgressManager.java:186)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$executeProcessUnderProgress$13(CoreProgressManager.java:604)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.registerIndicatorAndRun(CoreProgressManager.java:679)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.computeUnderProgress(CoreProgressManager.java:635)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.executeProcessUnderProgress(CoreProgressManager.java:603)
+	at com.intellij.openapi.progress.impl.ProgressManagerImpl.executeProcessUnderProgress(ProgressManagerImpl.java:60)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.runProcess(CoreProgressManager.java:173)
+	at com.intellij.openapi.progress.ProgressManager.runProcess(ProgressManager.java:70)
+	at com.intellij.openapi.progress.util.ProgressIndicatorUtils.runWithWriteActionPriority(ProgressIndicatorUtils.java:107)
+	at com.intellij.openapi.progress.util.ProgressIndicatorUtils.runInReadActionWithWriteActionPriority(ProgressIndicatorUtils.java:72)
+	at com.intellij.openapi.application.impl.NonBlockingReadActionImpl$Submission.attemptComputation(NonBlockingReadActionImpl.java:537)
+	at com.intellij.openapi.application.impl.NonBlockingReadActionImpl$Submission.executeSynchronously(NonBlockingReadActionImpl.java:464)
+	at com.intellij.openapi.application.impl.NonBlockingReadActionImpl.executeSynchronously(NonBlockingReadActionImpl.java:218)
+	at com.android.tools.idea.model.MergedManifestSupplier.runCancellableReadAction(MergedManifestManager.kt:269)
+	at com.android.tools.idea.model.MergedManifestSupplier.getOrCreateSnapshot(MergedManifestManager.kt:102)
+	at com.android.tools.idea.model.MergedManifestSupplier.getOrCreateSnapshotFromDelegate(MergedManifestManager.kt:224)
+	at com.android.tools.idea.model.MergedManifestSupplier.access$getOrCreateSnapshotFromDelegate(MergedManifestManager.kt:60)
+	at com.android.tools.idea.model.MergedManifestSupplier$delegate$1.invoke(MergedManifestManager.kt:62)
+	at com.android.tools.idea.model.MergedManifestSupplier$delegate$1.invoke(MergedManifestManager.kt:62)
+	at com.android.tools.idea.concurrency.ThrottlingAsyncSupplier.runScheduledComputation(ThrottlingAsyncSupplier.kt:119)
+	at com.android.tools.idea.concurrency.ThrottlingAsyncSupplier.access$runScheduledComputation(ThrottlingAsyncSupplier.kt:41)
+	at com.android.tools.idea.concurrency.ThrottlingAsyncSupplier$get$1.run(ThrottlingAsyncSupplier.kt:92)
+	at com.intellij.util.concurrency.QueueProcessor.runSafely(QueueProcessor.java:249)
+	at com.intellij.util.Alarm$Request.runSafely(Alarm.java:365)
+	at com.intellij.util.Alarm$Request.run(Alarm.java:354)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at com.intellij.util.concurrency.SchedulingWrapper$MyScheduledFutureTask.run(SchedulingWrapper.java:272)
+	at com.intellij.util.concurrency.BoundedTaskExecutor.doRun(BoundedTaskExecutor.java:248)
+	at com.intellij.util.concurrency.BoundedTaskExecutor.access$200(BoundedTaskExecutor.java:28)
+	at com.intellij.util.concurrency.BoundedTaskExecutor$1.executeFirstTaskAndHelpQueue(BoundedTaskExecutor.java:221)
+	at com.intellij.util.ConcurrencyUtil.runUnderThreadName(ConcurrencyUtil.java:227)
+	at com.intellij.util.concurrency.BoundedTaskExecutor$1.run(BoundedTaskExecutor.java:210)
+	... 7 more
+Caused by: java.lang.RuntimeException: Activity name cannot be empty.
+	at com.android.tools.idea.model.MergedManifestSnapshotFactory.createActivityAttributesSnapshot(MergedManifestSnapshotFactory.java:335)
+	at com.android.tools.idea.model.MergedManifestSnapshotFactory.createMergedManifestSnapshot(MergedManifestSnapshotFactory.java:249)
+	... 55 more
+2024-03-28 01:04:11,826 [25956609]   WARN - #c.i.o.v.i.j.JrtFileSystemImpl - Cannot load into VFS: /usr/local/android-studio/jbr/release
+2024-03-28 01:04:11,886 [25956669]   WARN - #c.i.o.v.i.l.NativeFileWatcherImpl - File watcher is still alive, doing a force quit.
+2024-03-28 01:04:11,956 [25956739]   WARN - #c.i.e.p.OSProcessHandler - Process has been already terminated: fsnotifier
