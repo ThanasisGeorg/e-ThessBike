@@ -17,7 +17,6 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.thanasis.e_thessbike.EThessBikeApp
 import com.thanasis.e_thessbike.ui.fragments.Init
-import com.thanasis.e_thessbike.ui.fragments.RegisterScreen
 
 @Composable
 fun MenuTitle() {
@@ -62,10 +61,6 @@ fun MenuDrawer(navController: NavHostController, selectedIndex: String) {
     ) {
 
         when (selectedIndex) {
-            "register" -> {
-                TopAppBar_(navController, "e-ThessBike")
-                RegisterScreen()
-            }
             "home" -> {
                 TopAppBar_(navController, "e-ThessBike")
                 //HomeInfo()
