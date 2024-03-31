@@ -1,5 +1,6 @@
 package com.thanasis.e_thessbike
 
+import androidx.activity.compose.BackHandler
 import androidx.annotation.StyleRes
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -26,9 +27,11 @@ fun MainApp() {
     Surface(color = MaterialTheme.colorScheme.background) {
         NavHost(navController = navController, startDestination = EThessBikeApp.Register.name) {
             composable(EThessBikeApp.Register.name) {
+                BackHandler(true) {}
                 RegisterScreen(navController)
             }
             composable(EThessBikeApp.Login.name) {
+                BackHandler(true) {}
                 LoginScreen(navController)
             }
             composable(EThessBikeApp.Home.name) {

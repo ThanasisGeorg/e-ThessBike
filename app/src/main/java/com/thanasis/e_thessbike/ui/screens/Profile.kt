@@ -2,6 +2,8 @@ package com.thanasis.e_thessbike.ui.screens
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -12,6 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.thanasis.e_thessbike.ui.components.EditButton
+import com.thanasis.e_thessbike.ui.components.LogoutButton
 import com.thanasis.e_thessbike.ui.components.ProfileCard
 import com.thanasis.e_thessbike.ui.components.TopBar
 
@@ -23,8 +26,12 @@ fun ProfileInit(navController: NavHostController, value: String) {
             TopBar(navController, title = value)
         },
         floatingActionButton = {
-            EditButton()
-        }
+            Row {
+                EditButton()
+                Spacer(modifier = Modifier.padding(5.dp, 0.dp))
+                LogoutButton(navController)
+            }
+        },
     ) {
         Column(
             Modifier
