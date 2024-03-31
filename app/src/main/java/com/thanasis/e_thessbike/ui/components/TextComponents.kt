@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.text.ClickableText
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Visibility
@@ -20,16 +21,20 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -78,7 +83,9 @@ fun TextField(labelValue: String){
         modifier = Modifier.fillMaxWidth(),
         label = {Text(text = labelValue)},
         //colors = TextFieldDefaults.colors(),
-        keyboardOptions = KeyboardOptions.Default,
+        keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
+        singleLine = true,
+        maxLines = 1,
         value = textValue.value,
         onValueChange = {
             textValue.value = it
@@ -87,6 +94,8 @@ fun TextField(labelValue: String){
 }
 @Composable
 fun PasswordTextField(labelValue: String){
+    val localFocusManager = LocalFocusManager.current
+
     val password = remember {
         mutableStateOf("")
     }
@@ -99,7 +108,12 @@ fun PasswordTextField(labelValue: String){
         modifier = Modifier.fillMaxWidth(),
         label = {Text(text = labelValue)},
         //colors = TextFieldDefaults.colors(),
-        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password, imeAction = ImeAction.Done),
+        singleLine = true,
+        keyboardActions = KeyboardActions {
+            localFocusManager.clearFocus()
+        },
+        maxLines = 1,
         value = password.value,
         onValueChange = {
             password.value = it
@@ -126,7 +140,7 @@ fun PasswordTextField(labelValue: String){
 }
 
 @Composable
-fun CheckBox(value: String) {
+fun CheckBox() {
     Row(modifier = Modifier
         .fillMaxWidth()
         .heightIn(56.dp),
@@ -141,12 +155,12 @@ fun CheckBox(value: String) {
                 state.value = !state.value
             })
         
-        ClickableTextComp(value)
+        ClickableTextComp()
     }
 }
 
 @Composable
-fun ClickableTextComp(value: String) {
+fun ClickableTextComp() {
     val initialText = "By continuing you accept our "
     val privacyPolicyText = "Privacy Policy "
     val andText = "and "
@@ -173,9 +187,9 @@ fun ClickableTextComp(value: String) {
 }
 
 @Composable
-fun ClickableLoginTextComp(onTextSelected: (String) -> Unit) {
-    val initialText = "Already have an account? "
-    val loginText = "Login"
+fun ClickableLoginTextComp(loginAttempt: Boolean = true, onTextSelected: (String) -> Unit) {
+    val initialText = if (loginAttempt) "Already have an account? " else "Don't have an account yet? "
+    val loginText = if (loginAttempt) "Login" else "Register"
 
     val annotatedString = buildAnnotatedString {
         append(initialText)
@@ -205,4 +219,22 @@ fun ClickableLoginTextComp(onTextSelected: (String) -> Unit) {
             }
         }
     })
+}
+
+@Composable
+fun UnderLinedText(value: String) {
+    Text(
+        text = value,
+        modifier = Modifier
+            .fillMaxWidth()
+            .heightIn(min = 40.dp),
+        style = TextStyle(
+            fontSize = 16.sp,
+            fontWeight = FontWeight.Normal,
+            fontStyle = FontStyle.Normal
+        ),
+        color = Color.Gray,
+        textAlign = TextAlign.Center,
+        textDecoration = TextDecoration.Underline
+    )
 }

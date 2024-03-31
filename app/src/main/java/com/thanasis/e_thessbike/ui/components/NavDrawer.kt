@@ -16,7 +16,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.thanasis.e_thessbike.EThessBikeApp
-import com.thanasis.e_thessbike.ui.fragments.Init
+import com.thanasis.e_thessbike.ui.screens.HomeInit
+import com.thanasis.e_thessbike.ui.screens.ProfileInit
+import com.thanasis.e_thessbike.ui.screens.SettingsInit
 
 @Composable
 fun MenuTitle() {
@@ -59,19 +61,15 @@ fun MenuDrawer(navController: NavHostController, selectedIndex: String) {
             }
         }
     ) {
-
         when (selectedIndex) {
             "home" -> {
-                TopAppBar_(navController, "e-ThessBike")
-                //HomeInfo()
+                HomeInit(navController, "e-ThessBike")
             }
             "settings" -> {
-                TopAppBar_(navController, "Settings")
-                //SettingsInfo()
+                SettingsInit(navController, "Settings")
             }
             "profile" -> {
-                TopAppBar_(navController, "Profile")
-                Init()
+                ProfileInit(navController, "Profile")
             }
         }
     }

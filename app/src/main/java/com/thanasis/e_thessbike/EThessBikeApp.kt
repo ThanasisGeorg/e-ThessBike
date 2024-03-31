@@ -8,12 +8,14 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.thanasis.e_thessbike.ui.components.MenuDrawer
-import com.thanasis.e_thessbike.ui.fragments.RegisterScreen
+import com.thanasis.e_thessbike.ui.screens.LoginScreen
+import com.thanasis.e_thessbike.ui.screens.RegisterScreen
 
 enum class EThessBikeApp(@StyleRes val title: Int) {
     Home(title = R.string.app_name),
     Profile(title = R.string.profile),
     Register(title = R.string.register),
+    Login(title = R.string.login),
     Settings(title = R.string.settings)
 }
 
@@ -26,6 +28,9 @@ fun MainApp() {
             composable(EThessBikeApp.Register.name) {
                 RegisterScreen(navController)
             }
+            composable(EThessBikeApp.Login.name) {
+                LoginScreen(navController)
+            }
             composable(EThessBikeApp.Home.name) {
                 MenuDrawer(navController, selectedIndex = "home")
             }
@@ -37,11 +42,5 @@ fun MainApp() {
             }
         }
     }
-
-
 }
 
-@Composable
-fun HomeInfo() {
-
-}
