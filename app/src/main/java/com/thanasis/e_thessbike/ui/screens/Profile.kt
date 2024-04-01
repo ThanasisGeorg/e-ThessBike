@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -13,9 +14,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.thanasis.e_thessbike.ui.components.AddButton
 import com.thanasis.e_thessbike.ui.components.EditButton
 import com.thanasis.e_thessbike.ui.components.LogoutButton
 import com.thanasis.e_thessbike.ui.components.ProfileCard
+import com.thanasis.e_thessbike.ui.components.RemoveButton
 import com.thanasis.e_thessbike.ui.components.TopBar
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -39,6 +42,12 @@ fun ProfileInit(navController: NavHostController, value: String) {
                 .padding(10.dp, 77.dp)
         ) {
             ProfileCard()
+            Spacer(modifier = Modifier.height(15.dp))
+            Row {
+                AddButton()
+                Spacer(modifier = Modifier.padding(55.dp))
+                RemoveButton()
+            }
         }
     }
 }
