@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -30,7 +31,9 @@ fun ProfileInit(navController: NavHostController, value: String) {
         },
         floatingActionButton = {
             Row {
-                EditButton()
+                AddButton()
+                Spacer(modifier = Modifier.padding(5.dp, 0.dp))
+                RemoveButton()
                 Spacer(modifier = Modifier.padding(5.dp, 0.dp))
                 LogoutButton(navController)
             }
@@ -41,12 +44,15 @@ fun ProfileInit(navController: NavHostController, value: String) {
                 .fillMaxSize()
                 .padding(10.dp, 77.dp)
         ) {
-            ProfileCard()
+            Scaffold(
+                modifier = Modifier.height(250.dp),
+                floatingActionButton = { EditButton() }
+            ) {
+                ProfileCard()
+            }
             Spacer(modifier = Modifier.height(15.dp))
-            Row {
-                AddButton()
-                Spacer(modifier = Modifier.padding(55.dp))
-                RemoveButton()
+            Scaffold {
+                Text(text = "Hello World")
             }
         }
     }

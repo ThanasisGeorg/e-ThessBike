@@ -12,17 +12,20 @@ import androidx.compose.material3.NavigationDrawerItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.thanasis.e_thessbike.EThessBikeApp
+import com.thanasis.e_thessbike.R
 import com.thanasis.e_thessbike.ui.screens.HomeInit
 import com.thanasis.e_thessbike.ui.screens.ProfileInit
 import com.thanasis.e_thessbike.ui.screens.SettingsInit
 
 @Composable
 fun MenuTitle() {
-    Text("Main menu",
+    Text(
+        stringResource(id = R.string.main_menu),
         fontSize = 34.sp,
         modifier = Modifier.padding(16.dp)
     )
@@ -31,7 +34,7 @@ fun MenuTitle() {
 @Composable
 fun HomeItem(navHostController: NavHostController) {
     NavigationDrawerItem(
-        label = { Text(text = "Home") },
+        label = { Text(text = stringResource(id = R.string.home)) },
         selected = false,
         onClick = { navHostController.navigate(EThessBikeApp.Home.name) },
         icon = { Icon(Icons.Filled.Home, contentDescription = "Home") }
@@ -41,7 +44,7 @@ fun HomeItem(navHostController: NavHostController) {
 @Composable
 fun SettingsItem(navHostController: NavHostController) {
     NavigationDrawerItem(
-        label = { Text(text = "Settings") },
+        label = { Text(text = stringResource(id = R.string.settings)) },
         selected = false,
         onClick = { navHostController.navigate(EThessBikeApp.Settings.name) },
         icon = { Icon(Icons.Filled.Settings, contentDescription = "Settings") }
@@ -55,7 +58,7 @@ fun MenuDrawer(navController: NavHostController, selectedIndex: String) {
         drawerContent = {
             ModalDrawerSheet {
                 MenuTitle()
-                Divider()
+                Divider(thickness = 2.dp)
                 HomeItem(navController)
                 SettingsItem(navController)
             }
@@ -63,13 +66,13 @@ fun MenuDrawer(navController: NavHostController, selectedIndex: String) {
     ) {
         when (selectedIndex) {
             "home" -> {
-                HomeInit(navController, "e-ThessBike")
+                HomeInit(navController, stringResource(id = R.string.app_name))
             }
             "settings" -> {
-                SettingsInit(navController, "Settings")
+                SettingsInit(navController, stringResource(id = R.string.settings))
             }
             "profile" -> {
-                ProfileInit(navController, "Profile")
+                ProfileInit(navController, stringResource(id = R.string.profile))
             }
         }
     }

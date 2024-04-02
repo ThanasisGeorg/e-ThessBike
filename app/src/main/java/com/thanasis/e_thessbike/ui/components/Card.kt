@@ -29,7 +29,8 @@ fun ProfileCard() {
             containerColor = MaterialTheme.colorScheme.surfaceVariant,
         ),
         modifier = Modifier
-            .size(width = 383.dp, height = 167.dp)
+            .size(width = 383.dp, height = 250.dp)
+
     ) {
         Column {
             Row {

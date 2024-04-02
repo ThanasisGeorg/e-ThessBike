@@ -1,22 +1,25 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name" translatable="false">e-ThessBike</string>
-    <string name="profile" translatable="false">Profile</string>
+    <string name="profile">Profile</string>
     <string name="register" tools:ignore="MissingTranslation">Register</string>
-    <string name="login" translatable="false">Login</string>>
-    <string name="settings" translatable="false">Settings</string>
-
-    <string name="hello" translatable="false">Hey there,</string>
-    <string name="create_account" translatable="false">Create an Account</string>
-    <string name="first_name" translatable="false">First name</string>
-    <string name="last_name" translatable="false">Last name</string>
+    <string name="login">Login</string>>
+    <string name="settings">Settings</string>
+    <string name="home">Home</string>
+    <string name="main_menu">Main menu</string>
+    <string name="hello">Hey there,</string>
+    <string name="create_account">Create an Account</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
     <string name="email" translatable="false">Email</string>
-    <string name="password" translatable="false">Password</string>
-    <string name="welcome_back" translatable="false">Welcome Back</string>
-    <string name="hide_password" translatable="false">Hide password</string>
-    <string name="show_password" translatable="false">Show password</string>
+    <string name="password">Password</string>
+    <string name="welcome_back">Welcome Back</string>
+    <string name="hide_password">Hide password</string>
+    <string name="show_password">Show password</string>
     <string name="terms_of_use" translatable="false">By continuing you accept our Privacy and Term of Use</string>
-    <string name="forgot_password" translatable="false">Forgot your password</string>
+    <string name="forgot_password">Forgot your password</string>
     <string name="first_name_indicator">First name: </string>
     <string name="last_name_indicator">Last name: </string>
-    <string name="email_indicator">Email: </string>
+    <string name="email_indicator" translatable="false">Email: </string>
+    <string name="add_bike">Add bike</string>
+    <string name="remove_bike">Remove bike</string>
 </resources>
