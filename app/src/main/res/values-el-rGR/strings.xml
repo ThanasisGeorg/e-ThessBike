@@ -19,4 +19,8 @@
     <string name="main_menu">Κεντρικό μενού</string>
     <string name="add_bike">Πρόσθεσε ποδήλατο</string>
     <string name="remove_bike">Αφαίρεσε ποδήλατο</string>
+    <string name="light">Φωτεινό</string>
+    <string name="dark">Σκοτεινό</string>
+    <string name="theme">Θέμα</string>
+    <string name="language">Γλώσσα</string>
 </resources>

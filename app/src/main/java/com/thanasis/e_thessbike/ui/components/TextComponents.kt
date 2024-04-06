@@ -238,3 +238,34 @@ fun UnderLinedText(value: String) {
         textDecoration = TextDecoration.Underline
     )
 }
+
+@Composable
+fun CategoryIndicator(category: String, textSize: Int) {
+    when (category) {
+        "theme" -> {
+            Text(
+                text = stringResource(R.string.theme),
+                fontSize = 25.sp
+            )
+        }
+        "dark" -> {
+            Text(
+                text = stringResource(R.string.dark),
+                fontSize = 15.sp
+            )
+        }
+        "light" -> {
+            Text(
+                text = stringResource(R.string.light),
+                fontSize = 15.sp
+            )
+        }
+        "language" -> {
+            Text(
+                text = stringResource(R.string.language),
+                fontSize = 25.sp
+            )
+        }
+    }
+
+}
