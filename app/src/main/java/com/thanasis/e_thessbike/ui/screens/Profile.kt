@@ -46,7 +46,7 @@ fun ProfileInit(navController: NavHostController, value: String) {
         ) {
             Scaffold(
                 modifier = Modifier.height(250.dp),
-                floatingActionButton = { EditButton() }
+                floatingActionButton = { EditButton(navController) }
             ) {
                 ProfileCard()
             }

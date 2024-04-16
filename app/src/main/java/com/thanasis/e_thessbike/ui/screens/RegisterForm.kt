@@ -15,6 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
+import com.google.firebase.firestore.FirebaseFirestore
 import com.thanasis.e_thessbike.EThessBikeApp
 import com.thanasis.e_thessbike.R
 import com.thanasis.e_thessbike.backend.signUp.SignUpUIEvent
@@ -29,7 +30,7 @@ import com.thanasis.e_thessbike.ui.components.PasswordTextField
 import com.thanasis.e_thessbike.ui.components.TextField
 
 @Composable
-fun RegisterScreen(navController: NavHostController, signUpViewModel: SignUpViewModel = viewModel()) {
+fun RegisterScreen(navController: NavHostController, db: FirebaseFirestore, signUpViewModel: SignUpViewModel = viewModel()) {
     Surface(
         modifier = Modifier
             .fillMaxSize()
@@ -45,7 +46,7 @@ fun RegisterScreen(navController: NavHostController, signUpViewModel: SignUpView
             TextField(
                 labelValue = stringResource(id = R.string.first_name),
                 onTextSelected = {
-                    signUpViewModel.onEvent(SignUpUIEvent.FirstNameChanged(it), navController)
+                    signUpViewModel.onEvent(SignUpUIEvent.FirstNameChanged(it), navController, db)
                 },
                 errorStatus = signUpViewModel.signUpUIState.value.firstNameError
                 //painterResource(id = R.drawable.rounded_account_circle_24)
@@ -53,7 +54,7 @@ fun RegisterScreen(navController: NavHostController, signUpViewModel: SignUpView
             TextField(
                 labelValue = stringResource(id = R.string.last_name),
                 onTextSelected = {
-                    signUpViewModel.onEvent(SignUpUIEvent.LastNameChanged(it), navController)
+                    signUpViewModel.onEvent(SignUpUIEvent.LastNameChanged(it), navController, db)
                 },
                 errorStatus = signUpViewModel.signUpUIState.value.lastNameError
                 //painterResource(id = R.drawable.rounded_account_circle_24)
@@ -61,7 +62,7 @@ fun RegisterScreen(navController: NavHostController, signUpViewModel: SignUpView
             TextField(
                 labelValue = stringResource(id = R.string.email),
                 onTextSelected = {
-                    signUpViewModel.onEvent(SignUpUIEvent.EmailChanged(it), navController)
+                    signUpViewModel.onEvent(SignUpUIEvent.EmailChanged(it), navController, db)
                 },
                 errorStatus = signUpViewModel.signUpUIState.value.emailError
                 //painterResource(id = android.R.drawable.ic_dialog_email)
@@ -69,14 +70,14 @@ fun RegisterScreen(navController: NavHostController, signUpViewModel: SignUpView
             PasswordTextField(
                 labelValue = stringResource(id = R.string.password),
                 onTextSelected = {
-                    signUpViewModel.onEvent(SignUpUIEvent.PasswordChanged(it), navController)
+                    signUpViewModel.onEvent(SignUpUIEvent.PasswordChanged(it), navController, db)
                 },
                 errorStatus = signUpViewModel.signUpUIState.value.passwordError
                 //painterResource(id = android.R.drawable.ic_lock_idle_lock)
             )
             CheckBox(
                 onCheckedChange = {
-                    signUpViewModel.onEvent(SignUpUIEvent.ConditionsAndPrivacyClicked(it), navController)
+                    signUpViewModel.onEvent(SignUpUIEvent.ConditionsAndPrivacyClicked(it), navController, db)
                 }
             )
 
@@ -86,9 +87,10 @@ fun RegisterScreen(navController: NavHostController, signUpViewModel: SignUpView
                 value = stringResource(id = R.string.register),
                 navController,
                 onBtnClicked = {
-                    signUpViewModel.onEvent(SignUpUIEvent.RegisterBtnClicked, navController)
+                    signUpViewModel.onEvent(SignUpUIEvent.RegisterBtnClicked, navController, db)
+                    //navController.navigate(EThessBikeApp.Home.name)
                 },
-                isEnabled = signUpViewModel.allValidationsPassed.value
+                isEnabled = true
             )
 
             Spacer(modifier = Modifier.height(20.dp))

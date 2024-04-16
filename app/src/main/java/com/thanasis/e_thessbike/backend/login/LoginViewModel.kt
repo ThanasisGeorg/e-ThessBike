@@ -4,56 +4,56 @@ import android.util.Log
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavHostController
-import com.google.firebase.auth.FirebaseAuth
-import com.thanasis.e_thessbike.EThessBikeApp
+import com.google.firebase.firestore.FirebaseFirestore
 import com.thanasis.e_thessbike.backend.rules.Verifier
 import com.thanasis.e_thessbike.backend.signUp.SignUpViewModel
 
 class LoginViewModel: ViewModel() {
-    var loginUIState = mutableStateOf(LoginUIState())
+    private var loginUIState = mutableStateOf(LoginUIState())
     var allValidationsPassed = mutableStateOf(false)
     private val TAG = SignUpViewModel::class.simpleName
 
-    fun onEvent(event: LoginUIEvent, navHostController: NavHostController){
+    fun onEvent(event: LoginUIEvent, navHostController: NavHostController, db: FirebaseFirestore){
         when (event) {
             is LoginUIEvent.EmailChanged -> {
                 loginUIState.value = loginUIState.value.copy(
                     email = event.email
                 )
-                printState()
+                //printState()
             }
             is LoginUIEvent.PasswordChanged -> {
                 loginUIState.value = loginUIState.value.copy(
                     password = event.password
                 )
-                printState()
+                //printState()
             }
             is LoginUIEvent.LoginBtnClicked -> {
-                login(navHostController)
+                login(navHostController, db)
             }
             else -> {}
         }
-        verifyDataWithRules()
+        //verifyDataWithRules()
     }
 
-    private fun login(navHostController: NavHostController) {
-        val email = loginUIState.value.email
-        val password = loginUIState.value.password
+    private fun login(navHostController: NavHostController, db: FirebaseFirestore) {
+        val emailResult = loginUIState.value.email
+        val passwordResult = loginUIState.value.password
+        var email: Boolean = false
+        var password: Boolean = false
 
-        FirebaseAuth
-            .getInstance()
-            .signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener{
-                Log.d(TAG, "Inside_OnCompleteListener")
-                Log.d(TAG, "isSuccessful = ${it.isSuccessful}")
+        db.collection("users")
+            .document("users")
+            .get().addOnSuccessListener { document ->
+                if (document.data?.equals(emailResult) == true) {
+                    email = true
+                }
+            }
+        Log.d(TAG, "Inside email thing...")
+        Log.d(TAG, "email: $email")
 
-                if (it.isSuccessful) navHostController.navigate(EThessBikeApp.Home.name)
-            }
-            .addOnFailureListener {
-                Log.d(TAG, "Inside_OnFailureListener")
-                Log.d(TAG, "Exception = ${it.message}")
-                Log.d(TAG, "Exception = ${it.localizedMessage}")
-            }
+        /*if (emailResult.equals(email) && passwordResult == "123456") {
+            navHostController.navigate(EThessBikeApp.Home.name)
+        }*/
     }
 
     private fun printState() {

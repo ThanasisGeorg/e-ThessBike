@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavHostController
-import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.thanasis.e_thessbike.EThessBikeApp
 import com.thanasis.e_thessbike.backend.Account
 import com.thanasis.e_thessbike.backend.rules.Validator
@@ -14,61 +14,58 @@ class SignUpViewModel: ViewModel() {
     var allValidationsPassed = mutableStateOf(false)
     private val TAG = SignUpViewModel::class.simpleName
 
-    fun onEvent(event: SignUpUIEvent, navHostController: NavHostController){
+    fun onEvent(event: SignUpUIEvent, navHostController: NavHostController, db: FirebaseFirestore){
         validateDataWithRules()
         when (event) {
             is SignUpUIEvent.FirstNameChanged -> {
                 signUpUIState.value = signUpUIState.value.copy(
                     firstName = event.firstName
                 )
-                printState()
+                //printState()
             }
             is SignUpUIEvent.LastNameChanged -> {
                 signUpUIState.value = signUpUIState.value.copy(
                     lastName = event.lastName
                 )
-                printState()
+                //printState()
             }
             is SignUpUIEvent.EmailChanged -> {
                 signUpUIState.value = signUpUIState.value.copy(
                     email = event.email
                 )
-                printState()
+                //printState()
             }
             is SignUpUIEvent.PasswordChanged -> {
                 signUpUIState.value = signUpUIState.value.copy(
                     password = event.password
                 )
-                printState()
+                //printState()
             }
             is SignUpUIEvent.ConditionsAndPrivacyClicked -> {
                 signUpUIState.value = signUpUIState.value.copy(
                     conditionsAndPrivacyAccepted = event.status
                 )
                 validateDataWithRules()
-                printState()
+                //printState()
             }
             is SignUpUIEvent.RegisterBtnClicked -> {
-                signUp(navHostController)
+                signUp(navHostController, db)
             }
             else -> {}
         }
     }
 
-    private fun signUp(navHostController: NavHostController){
+    private fun signUp(navHostController: NavHostController, db: FirebaseFirestore){
         val account = Account()
-        Log.d(TAG, "Inside_signUp")
-        printState()
+        //Log.d(TAG, "Inside_signUp")
+        //printState()
 
         account.setFirstName(fName = signUpUIState.value.firstName)
         account.setLastName(lName = signUpUIState.value.lastName)
         account.setEmail(email = signUpUIState.value.email)
 
-        createUser(
-            email = signUpUIState.value.email,
-            password = signUpUIState.value.password,
-            navHostController
-        )
+        createUser(db, navHostController)
+
     }
 
     private fun validateDataWithRules() {
@@ -92,12 +89,12 @@ class SignUpViewModel: ViewModel() {
             statusValue = signUpUIState.value.conditionsAndPrivacyAccepted
         )
 
-        Log.d(TAG, "Inside_validateDataWithRules")
+        /*Log.d(TAG, "Inside_validateDataWithRules")
         Log.d(TAG, "fNameResult = $fNameResult")
         Log.d(TAG, "lNameResult = $lNameResult")
         Log.d(TAG, "emailResult = $emailResult")
         Log.d(TAG, "passwordResult = $passwordResult")
-        Log.d(TAG, "conditionsAndPrivacyResult = $conditionsAndPrivacyResult")
+        Log.d(TAG, "conditionsAndPrivacyResult = $conditionsAndPrivacyResult")*/
 
         signUpUIState.value = signUpUIState.value.copy(
             firstNameError = fNameResult,
@@ -115,19 +112,27 @@ class SignUpViewModel: ViewModel() {
         Log.d(TAG, signUpUIState.value.toString())
     }
 
-    private fun createUser(email: String, password: String, navHostController: NavHostController){
-        FirebaseAuth.getInstance()
-            .createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener {
-                Log.d(TAG, "Inside_OnCompleteListener")
-                Log.d(TAG, "isSuccessful = ${it.isSuccessful}")
+    private fun createUser(db: FirebaseFirestore, navHostController: NavHostController) {
+        val userInfo = hashMapOf(
+            "name" to signUpUIState.value.firstName,
+            "surname" to signUpUIState.value.lastName,
+            "email" to signUpUIState.value.email
+        )
 
-                if (it.isSuccessful) navHostController.navigate(EThessBikeApp.Home.name)
+        val user = hashMapOf(
+            "email" to signUpUIState.value.email
+        )
+
+        db.collection("users_info")
+            .add(userInfo)
+            .addOnSuccessListener { documentReference ->
+                Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+                db.collection("users")
+                    .add(user)
+                navHostController.navigate(EThessBikeApp.Home.name)
             }
-            .addOnFailureListener {
-                Log.d(TAG, "Inside_OnFailureListener")
-                Log.d(TAG, "Exception = ${it.message}")
-                Log.d(TAG, "Exception = ${it.localizedMessage}")
+            .addOnFailureListener { e ->
+                Log.w(TAG, "Error adding document", e)
             }
     }
 }

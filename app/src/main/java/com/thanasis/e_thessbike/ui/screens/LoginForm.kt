@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.google.firebase.firestore.FirebaseFirestore
 import com.thanasis.e_thessbike.EThessBikeApp
 import com.thanasis.e_thessbike.R
 import com.thanasis.e_thessbike.backend.login.LoginUIEvent
@@ -31,7 +32,7 @@ import com.thanasis.e_thessbike.ui.components.TextField
 import com.thanasis.e_thessbike.ui.components.UnderLinedText
 
 @Composable
-fun LoginScreen(navController: NavHostController, loginViewModel: LoginViewModel = viewModel()) {
+fun LoginScreen(navController: NavHostController, db: FirebaseFirestore, loginViewModel: LoginViewModel = viewModel()) {
     Surface(
         modifier = Modifier
             .fillMaxSize()
@@ -50,16 +51,16 @@ fun LoginScreen(navController: NavHostController, loginViewModel: LoginViewModel
             TextField(
                 labelValue = stringResource(id = R.string.email),
                 onTextSelected = {
-                    loginViewModel.onEvent(LoginUIEvent.EmailChanged(it), navController)
+                    loginViewModel.onEvent(LoginUIEvent.EmailChanged(it), navController, db)
                 },
-                errorStatus = loginViewModel.loginUIState.value.emailError
+                //errorStatus = loginViewModel.loginUIState.value.emailError
             )
             PasswordTextField(
                 labelValue = stringResource(id = R.string.password),
                 onTextSelected = {
-                    loginViewModel.onEvent(LoginUIEvent.PasswordChanged(it), navController)
+                    loginViewModel.onEvent(LoginUIEvent.PasswordChanged(it), navController, db)
                 },
-                errorStatus = loginViewModel.loginUIState.value.passwordError
+                //errorStatus = loginViewModel.loginUIState.value.passwordError
             )
 
             Spacer(modifier = Modifier.heightIn(20.dp))
@@ -72,9 +73,10 @@ fun LoginScreen(navController: NavHostController, loginViewModel: LoginViewModel
                 value = stringResource(id = R.string.login),
                 navHostController = navController,
                 onBtnClicked = {
-                    loginViewModel.onEvent(LoginUIEvent.LoginBtnClicked, navController)
+                    loginViewModel.onEvent(LoginUIEvent.LoginBtnClicked, navController, db)
+                    //navController.navigate(EThessBikeApp.Home.name)
                 },
-                isEnabled = loginViewModel.allValidationsPassed.value
+                isEnabled = true
             )
 
             Spacer(modifier = Modifier.height(20.dp))
@@ -94,5 +96,5 @@ fun LoginScreen(navController: NavHostController, loginViewModel: LoginViewModel
 @Composable
 fun LoginScreenPreview() {
     val navController = rememberNavController()
-    LoginScreen(navController)
+    //LoginScreen(navController)
 }

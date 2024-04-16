@@ -1,26 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="profile">Προφίλ</string>
-    <string name="register">Εγγραφή</string>
-    <string name="login">Σύνδεση</string>
-    <string name="settings">Ρυθμίσεις</string>
-    <string name="hello">Γειά σου,</string>
-    <string name="create_account">Δημιόργησε Λογαριασμό</string>
-    <string name="password">Κωδικός</string>
-    <string name="welcome_back">Καλωσήρθες πίσω</string>
-    <string name="hide_password">Απόκρυψη κωδικού</string>
-    <string name="show_password">Εμφάνιση κωδικού</string>
-    <string name="forgot_password">Ξέχασες τον κωδικό σου</string>
-    <string name="first_name_indicator">Όνομα</string>
-    <string name="last_name_indicator">Επίθετο</string>
-    <string name="first_name">Όνομα</string>
-    <string name="last_name">Επίθετο</string>
-    <string name="home">Αρχική</string>
-    <string name="main_menu">Κεντρικό μενού</string>
-    <string name="add_bike">Πρόσθεσε ποδήλατο</string>
-    <string name="remove_bike">Αφαίρεσε ποδήλατο</string>
-    <string name="light">Φωτεινό</string>
-    <string name="dark">Σκοτεινό</string>
-    <string name="theme">Θέμα</string>
-    <string name="language">Γλώσσα</string>
-</resources>
+<resources></resources>

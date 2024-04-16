@@ -1,6 +1,5 @@
 package com.thanasis.e_thessbike.backend.rules
 
-import android.util.Log
 import com.thanasis.e_thessbike.backend.signUp.SignUpViewModel
 
 object Validator {
@@ -24,7 +23,6 @@ object Validator {
     }
 
     fun validateConditionsAndPrivacy(statusValue: Boolean): Boolean {
-        Log.d(TAG, "statusValue: $statusValue")
         return statusValue
     }
 }

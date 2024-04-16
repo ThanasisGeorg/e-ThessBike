@@ -1,6 +1,5 @@
 package com.thanasis.e_thessbike.ui.components
 
-import android.util.Log
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
@@ -187,9 +186,6 @@ fun ClickableTextComp() {
     }
 
     ClickableText(text = annotatedString, onClick = { offset -> annotatedString.getStringAnnotations(offset, offset)
-        .firstOrNull()?.also { span ->
-            Log.d("ClickableTextComp", "{$span}")
-        }
     })
 }
 
@@ -219,8 +215,6 @@ fun ClickableLoginTextComp(loginAttempt: Boolean = true, onTextSelected: (String
         text = annotatedString,
         onClick = { offset -> annotatedString.getStringAnnotations(offset, offset)
         .firstOrNull()?.also { span ->
-            Log.d("ClickableTextComp", "{$span}")
-
             if (span.item == loginText) {
                 onTextSelected(span.item)
             }

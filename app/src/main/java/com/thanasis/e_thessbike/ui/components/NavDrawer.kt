@@ -16,8 +16,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.google.firebase.firestore.FirebaseFirestore
 import com.thanasis.e_thessbike.EThessBikeApp
 import com.thanasis.e_thessbike.R
+import com.thanasis.e_thessbike.ui.screens.EditInfoInit
 import com.thanasis.e_thessbike.ui.screens.HomeInit
 import com.thanasis.e_thessbike.ui.screens.ProfileInit
 import com.thanasis.e_thessbike.ui.screens.SettingsInit
@@ -52,7 +54,7 @@ fun SettingsItem(navHostController: NavHostController) {
 }
 
 @Composable
-fun MenuDrawer(navController: NavHostController, selectedIndex: String) {
+fun MenuDrawer(navController: NavHostController, selectedIndex: String, db: FirebaseFirestore) {
     // [START android_compose_layout_material_modal_drawer]
     ModalNavigationDrawer(
         drawerContent = {
@@ -73,6 +75,9 @@ fun MenuDrawer(navController: NavHostController, selectedIndex: String) {
             }
             "profile" -> {
                 ProfileInit(navController, stringResource(id = R.string.profile))
+            }
+            "editInfo" -> {
+                EditInfoInit(navController, stringResource(id = R.string.edit_info), db)
             }
         }
     }

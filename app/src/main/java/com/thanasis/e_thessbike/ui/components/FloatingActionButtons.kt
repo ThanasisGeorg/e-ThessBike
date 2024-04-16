@@ -22,13 +22,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.thanasis.e_thessbike.EThessBikeApp
 import com.thanasis.e_thessbike.R
 import com.thanasis.e_thessbike.backend.logout.logout
 
 @Composable
-fun EditButton() {
+fun EditButton(navHostController: NavHostController) {
     FloatingActionButton(
-        onClick = { /*TODO*/ },
+        onClick = { navHostController.navigate(EThessBikeApp.EditInfo.name) },
         content = { Icon(Icons.Filled.Edit, "Floating action button.") },
     )
 }
