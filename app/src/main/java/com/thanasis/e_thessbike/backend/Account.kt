@@ -11,9 +11,21 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 class Account {
-    private val firstName = "Athanasios"
-    private val lastName = "Georgalis"
-    private val email = "example@gmail.com"
+    private var firstName = ""
+    private var lastName = ""
+    private var email = ""
+
+    fun setFirstName(fName: String) {
+        firstName = fName
+    }
+
+    fun setLastName(lName: String) {
+        lastName = lName
+    }
+
+    fun setEmail(email: String) {
+        this.email = email
+    }
 
     @Composable
     fun FirstName() {

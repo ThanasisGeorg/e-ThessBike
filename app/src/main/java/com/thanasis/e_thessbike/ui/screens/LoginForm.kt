@@ -44,8 +44,20 @@ fun LoginScreen(navController: NavHostController) {
 
             Spacer(modifier = Modifier.heightIn(20.dp))
 
-            TextField(labelValue = stringResource(id = R.string.email))
-            PasswordTextField(labelValue = stringResource(id = R.string.password))
+            TextField(
+                labelValue = stringResource(id = R.string.email),
+                onTextSelected = {
+
+                },
+                errorStatus = false
+            )
+            PasswordTextField(
+                labelValue = stringResource(id = R.string.password),
+                onTextSelected = {
+
+                },
+                errorStatus = false
+            )
 
             Spacer(modifier = Modifier.heightIn(20.dp))
 
@@ -53,15 +65,23 @@ fun LoginScreen(navController: NavHostController) {
 
             Spacer(modifier = Modifier.heightIn(20.dp))
 
-            ButtonComp(value = stringResource(id = R.string.login), navHostController = navController)
+            ButtonComp(
+                value = stringResource(id = R.string.login),
+                navHostController = navController,
+                onBtnClicked = {
+
+                }
+            )
 
             Spacer(modifier = Modifier.height(20.dp))
             DividerComp()
             Spacer(modifier = Modifier.height(20.dp))
 
-            ClickableLoginTextComp(loginAttempt = false, onTextSelected = {
+            ClickableLoginTextComp(
+                loginAttempt = false, onTextSelected = {
                 navController.navigate(EThessBikeApp.Register.name)
-            })
+                }
+            )
         }
     }
 }

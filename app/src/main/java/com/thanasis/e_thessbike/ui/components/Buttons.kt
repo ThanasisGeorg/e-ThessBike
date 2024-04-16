@@ -23,9 +23,12 @@ import com.thanasis.e_thessbike.ui.theme.Purple40
 import com.thanasis.e_thessbike.ui.theme.Purple80
 
 @Composable
-fun ButtonComp(value: String, navHostController: NavHostController) {
+fun ButtonComp(value: String, navHostController: NavHostController, onBtnClicked: () -> Unit, isEnabled: Boolean = false) {
     Button(
-        onClick = { navHostController.navigate(EThessBikeApp.Home.name) },
+        onClick = {
+            onBtnClicked.invoke()
+            navHostController.navigate(EThessBikeApp.Home.name)
+        },
         modifier = Modifier
             .fillMaxWidth()
             .heightIn(48.dp).background(
@@ -33,7 +36,8 @@ fun ButtonComp(value: String, navHostController: NavHostController) {
                 shape = RoundedCornerShape(50.dp)
             ),
         contentPadding = PaddingValues(),
-        colors = ButtonDefaults.buttonColors(Color.Transparent)
+        colors = ButtonDefaults.buttonColors(Color.Transparent),
+        enabled = isEnabled
     ) {
         Box(
             modifier = Modifier

@@ -74,7 +74,7 @@ fun HeadingText(value: String) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TextField(labelValue: String){
+fun TextField(labelValue: String, onTextSelected: (String) -> Unit, errorStatus: Boolean = true){
     val textValue = remember {
         mutableStateOf("")
     }
@@ -89,11 +89,13 @@ fun TextField(labelValue: String){
         value = textValue.value,
         onValueChange = {
             textValue.value = it
-        }
+            onTextSelected(it)
+        },
+        isError = !errorStatus
     )
 }
 @Composable
-fun PasswordTextField(labelValue: String){
+fun PasswordTextField(labelValue: String, onTextSelected: (String) -> Unit, errorStatus: Boolean = true){
     val localFocusManager = LocalFocusManager.current
 
     val password = remember {
@@ -117,6 +119,7 @@ fun PasswordTextField(labelValue: String){
         value = password.value,
         onValueChange = {
             password.value = it
+            onTextSelected(it)
         },
         trailingIcon = {
             val iconImage = if (passwordVisible.value) {
@@ -135,25 +138,29 @@ fun PasswordTextField(labelValue: String){
                 Icon(imageVector = iconImage, contentDescription = description)
             }
         },
-        visualTransformation = if (passwordVisible.value) VisualTransformation.None else PasswordVisualTransformation()
+        visualTransformation = if (passwordVisible.value) VisualTransformation.None else PasswordVisualTransformation(),
+        isError = !errorStatus
     )
 }
 
 @Composable
-fun CheckBox() {
+fun CheckBox(onCheckedChange: (Boolean) -> Unit) {
     Row(modifier = Modifier
         .fillMaxWidth()
         .heightIn(56.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        val state = remember {
+        val checkedState = remember {
             mutableStateOf(false)
         }
 
-        Checkbox(checked = state.value,
+        Checkbox(
+            checked = checkedState.value,
             onCheckedChange = {
-                state.value = !state.value
-            })
+                checkedState.value = !checkedState.value
+                onCheckedChange.invoke(it)
+            }
+        )
         
         ClickableTextComp()
     }
