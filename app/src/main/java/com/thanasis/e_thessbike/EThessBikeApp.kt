@@ -37,10 +37,10 @@ fun MainApp() {
             composable(EThessBikeApp.Home.name) {
                 MenuDrawer(navController, selectedIndex = "home")
             }
-            composable(EThessBikeApp.Settings.name){
+            composable(EThessBikeApp.Settings.name) {
                 MenuDrawer(navController, selectedIndex = "settings")
             }
-            composable(EThessBikeApp.Profile.name){
+            composable(EThessBikeApp.Profile.name) {
                 MenuDrawer(navController, selectedIndex = "profile")
             }
         }

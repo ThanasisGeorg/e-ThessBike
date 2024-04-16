@@ -17,8 +17,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.thanasis.e_thessbike.EThessBikeApp
 import com.thanasis.e_thessbike.R
-import com.thanasis.e_thessbike.backend.LoginViewModel
-import com.thanasis.e_thessbike.backend.UIEvent
+import com.thanasis.e_thessbike.backend.signUp.SignUpUIEvent
+import com.thanasis.e_thessbike.backend.signUp.SignUpViewModel
 import com.thanasis.e_thessbike.ui.components.ButtonComp
 import com.thanasis.e_thessbike.ui.components.CheckBox
 import com.thanasis.e_thessbike.ui.components.ClickableLoginTextComp
@@ -29,7 +29,7 @@ import com.thanasis.e_thessbike.ui.components.PasswordTextField
 import com.thanasis.e_thessbike.ui.components.TextField
 
 @Composable
-fun RegisterScreen(navController: NavHostController, loginViewModel: LoginViewModel = viewModel()) {
+fun RegisterScreen(navController: NavHostController, signUpViewModel: SignUpViewModel = viewModel()) {
     Surface(
         modifier = Modifier
             .fillMaxSize()
@@ -45,38 +45,38 @@ fun RegisterScreen(navController: NavHostController, loginViewModel: LoginViewMo
             TextField(
                 labelValue = stringResource(id = R.string.first_name),
                 onTextSelected = {
-                    loginViewModel.onEvent(UIEvent.FirstNameChanged(it))
+                    signUpViewModel.onEvent(SignUpUIEvent.FirstNameChanged(it), navController)
                 },
-                errorStatus = loginViewModel.registrationUIState.value.firstNameError
+                errorStatus = signUpViewModel.signUpUIState.value.firstNameError
                 //painterResource(id = R.drawable.rounded_account_circle_24)
             )
             TextField(
                 labelValue = stringResource(id = R.string.last_name),
                 onTextSelected = {
-                    loginViewModel.onEvent(UIEvent.LastNameChanged(it))
+                    signUpViewModel.onEvent(SignUpUIEvent.LastNameChanged(it), navController)
                 },
-                errorStatus = loginViewModel.registrationUIState.value.lastNameError
+                errorStatus = signUpViewModel.signUpUIState.value.lastNameError
                 //painterResource(id = R.drawable.rounded_account_circle_24)
             )
             TextField(
                 labelValue = stringResource(id = R.string.email),
                 onTextSelected = {
-                    loginViewModel.onEvent(UIEvent.EmailChanged(it))
+                    signUpViewModel.onEvent(SignUpUIEvent.EmailChanged(it), navController)
                 },
-                errorStatus = loginViewModel.registrationUIState.value.emailError
+                errorStatus = signUpViewModel.signUpUIState.value.emailError
                 //painterResource(id = android.R.drawable.ic_dialog_email)
             )
             PasswordTextField(
                 labelValue = stringResource(id = R.string.password),
                 onTextSelected = {
-                    loginViewModel.onEvent(UIEvent.PasswordChanged(it))
+                    signUpViewModel.onEvent(SignUpUIEvent.PasswordChanged(it), navController)
                 },
-                errorStatus = loginViewModel.registrationUIState.value.passwordError
+                errorStatus = signUpViewModel.signUpUIState.value.passwordError
                 //painterResource(id = android.R.drawable.ic_lock_idle_lock)
             )
             CheckBox(
                 onCheckedChange = {
-                    loginViewModel.onEvent(UIEvent.ConditionsAndPrivacyClicked(it))
+                    signUpViewModel.onEvent(SignUpUIEvent.ConditionsAndPrivacyClicked(it), navController)
                 }
             )
 
@@ -86,9 +86,9 @@ fun RegisterScreen(navController: NavHostController, loginViewModel: LoginViewMo
                 value = stringResource(id = R.string.register),
                 navController,
                 onBtnClicked = {
-                    loginViewModel.onEvent(UIEvent.RegisterBtnClicked)
+                    signUpViewModel.onEvent(SignUpUIEvent.RegisterBtnClicked, navController)
                 },
-                isEnabled = loginViewModel.allValidationsPassed.value
+                isEnabled = signUpViewModel.allValidationsPassed.value
             )
 
             Spacer(modifier = Modifier.height(20.dp))

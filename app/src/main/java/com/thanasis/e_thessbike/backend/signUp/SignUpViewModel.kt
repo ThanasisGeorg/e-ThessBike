@@ -1,90 +1,95 @@
-package com.thanasis.e_thessbike.backend
+package com.thanasis.e_thessbike.backend.signUp
 
 import android.util.Log
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
+import androidx.navigation.NavHostController
 import com.google.firebase.auth.FirebaseAuth
+import com.thanasis.e_thessbike.EThessBikeApp
+import com.thanasis.e_thessbike.backend.Account
 import com.thanasis.e_thessbike.backend.rules.Validator
 
-class LoginViewModel: ViewModel() {
-    var registrationUIState = mutableStateOf(RegistrationUIState())
+class SignUpViewModel: ViewModel() {
+    var signUpUIState = mutableStateOf(SignUpUIState())
     var allValidationsPassed = mutableStateOf(false)
-    private val TAG = LoginViewModel::class.simpleName
+    private val TAG = SignUpViewModel::class.simpleName
 
-    fun onEvent(event: UIEvent){
+    fun onEvent(event: SignUpUIEvent, navHostController: NavHostController){
         validateDataWithRules()
         when (event) {
-            is UIEvent.FirstNameChanged -> {
-                registrationUIState.value = registrationUIState.value.copy(
+            is SignUpUIEvent.FirstNameChanged -> {
+                signUpUIState.value = signUpUIState.value.copy(
                     firstName = event.firstName
                 )
                 printState()
             }
-            is UIEvent.LastNameChanged -> {
-                registrationUIState.value = registrationUIState.value.copy(
+            is SignUpUIEvent.LastNameChanged -> {
+                signUpUIState.value = signUpUIState.value.copy(
                     lastName = event.lastName
                 )
                 printState()
             }
-            is UIEvent.EmailChanged -> {
-                registrationUIState.value = registrationUIState.value.copy(
+            is SignUpUIEvent.EmailChanged -> {
+                signUpUIState.value = signUpUIState.value.copy(
                     email = event.email
                 )
                 printState()
             }
-            is UIEvent.PasswordChanged -> {
-                registrationUIState.value = registrationUIState.value.copy(
+            is SignUpUIEvent.PasswordChanged -> {
+                signUpUIState.value = signUpUIState.value.copy(
                     password = event.password
                 )
                 printState()
             }
-            is UIEvent.ConditionsAndPrivacyClicked -> {
-                registrationUIState.value = registrationUIState.value.copy(
+            is SignUpUIEvent.ConditionsAndPrivacyClicked -> {
+                signUpUIState.value = signUpUIState.value.copy(
                     conditionsAndPrivacyAccepted = event.status
                 )
+                validateDataWithRules()
                 printState()
             }
-            is UIEvent.RegisterBtnClicked -> {
-                signUp()
+            is SignUpUIEvent.RegisterBtnClicked -> {
+                signUp(navHostController)
             }
             else -> {}
         }
     }
 
-    private fun signUp(){
+    private fun signUp(navHostController: NavHostController){
         val account = Account()
         Log.d(TAG, "Inside_signUp")
         printState()
 
-        account.setFirstName(fName = registrationUIState.value.firstName)
-        account.setLastName(lName = registrationUIState.value.lastName)
-        account.setEmail(email = registrationUIState.value.email)
+        account.setFirstName(fName = signUpUIState.value.firstName)
+        account.setLastName(lName = signUpUIState.value.lastName)
+        account.setEmail(email = signUpUIState.value.email)
 
         createUser(
-            email = registrationUIState.value.email,
-            password = registrationUIState.value.password
+            email = signUpUIState.value.email,
+            password = signUpUIState.value.password,
+            navHostController
         )
     }
 
     private fun validateDataWithRules() {
         val fNameResult = Validator.validateFirstName(
-            fName = registrationUIState.value.firstName
+            fName = signUpUIState.value.firstName
         )
 
         val lNameResult = Validator.validateLastName(
-            lName = registrationUIState.value.lastName
+            lName = signUpUIState.value.lastName
         )
 
         val emailResult = Validator.validateEmail(
-            email = registrationUIState.value.email
+            email = signUpUIState.value.email
         )
 
         val passwordResult = Validator.validatePassword(
-            password = registrationUIState.value.password
+            password = signUpUIState.value.password
         )
 
         val conditionsAndPrivacyResult = Validator.validateConditionsAndPrivacy(
-            statusValue = registrationUIState.value.conditionsAndPrivacyAccepted
+            statusValue = signUpUIState.value.conditionsAndPrivacyAccepted
         )
 
         Log.d(TAG, "Inside_validateDataWithRules")
@@ -92,9 +97,9 @@ class LoginViewModel: ViewModel() {
         Log.d(TAG, "lNameResult = $lNameResult")
         Log.d(TAG, "emailResult = $emailResult")
         Log.d(TAG, "passwordResult = $passwordResult")
-        Log.d(TAG, "conditionsAndPrivacy = $conditionsAndPrivacyResult")
+        Log.d(TAG, "conditionsAndPrivacyResult = $conditionsAndPrivacyResult")
 
-        registrationUIState.value = registrationUIState.value.copy(
+        signUpUIState.value = signUpUIState.value.copy(
             firstNameError = fNameResult,
             lastNameError = lNameResult,
             emailError = emailResult,
@@ -107,15 +112,17 @@ class LoginViewModel: ViewModel() {
 
     private fun printState(){
         Log.d(TAG, "Inside_printState")
-        Log.d(TAG, registrationUIState.value.toString())
+        Log.d(TAG, signUpUIState.value.toString())
     }
 
-    private fun createUser(email: String, password: String){
+    private fun createUser(email: String, password: String, navHostController: NavHostController){
         FirebaseAuth.getInstance()
             .createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener {
                 Log.d(TAG, "Inside_OnCompleteListener")
                 Log.d(TAG, "isSuccessful = ${it.isSuccessful}")
+
+                if (it.isSuccessful) navHostController.navigate(EThessBikeApp.Home.name)
             }
             .addOnFailureListener {
                 Log.d(TAG, "Inside_OnFailureListener")

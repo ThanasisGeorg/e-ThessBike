@@ -22,8 +22,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import com.thanasis.e_thessbike.EThessBikeApp
 import com.thanasis.e_thessbike.R
+import com.thanasis.e_thessbike.backend.logout.logout
 
 @Composable
 fun EditButton() {
@@ -36,7 +36,9 @@ fun EditButton() {
 @Composable
 fun LogoutButton(navController: NavHostController) {
     FloatingActionButton(
-        onClick = { navController.navigate(EThessBikeApp.Login.name) },
+        onClick = {
+            logout(navController)
+        },
         content = { Icon(Icons.AutoMirrored.Filled.Logout, "Floating action button.") }
     )
 }

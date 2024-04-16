@@ -1,6 +1,11 @@
 package com.thanasis.e_thessbike.backend.rules
 
+import android.util.Log
+import com.thanasis.e_thessbike.backend.signUp.SignUpViewModel
+
 object Validator {
+    private val TAG = SignUpViewModel::class.simpleName
+
     fun validateFirstName(fName: String): Boolean {
         return fName.isNotEmpty() && fName.length >= 4
     }
@@ -19,7 +24,7 @@ object Validator {
     }
 
     fun validateConditionsAndPrivacy(statusValue: Boolean): Boolean {
+        Log.d(TAG, "statusValue: $statusValue")
         return statusValue
     }
-
 }

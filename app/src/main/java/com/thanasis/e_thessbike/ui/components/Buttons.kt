@@ -18,7 +18,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import com.thanasis.e_thessbike.EThessBikeApp
 import com.thanasis.e_thessbike.ui.theme.Purple40
 import com.thanasis.e_thessbike.ui.theme.Purple80
 
@@ -27,7 +26,6 @@ fun ButtonComp(value: String, navHostController: NavHostController, onBtnClicked
     Button(
         onClick = {
             onBtnClicked.invoke()
-            navHostController.navigate(EThessBikeApp.Home.name)
         },
         modifier = Modifier
             .fillMaxWidth()

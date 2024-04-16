@@ -1,6 +1,6 @@
-package com.thanasis.e_thessbike.backend
+package com.thanasis.e_thessbike.backend.signUp
 
-data class RegistrationUIState(
+data class SignUpUIState(
     var firstName: String = "",
     var lastName: String = "",
     var email: String = "",
