@@ -74,7 +74,6 @@ fun LoginScreen(navController: NavHostController, db: FirebaseFirestore, loginVi
                 navHostController = navController,
                 onBtnClicked = {
                     loginViewModel.onEvent(LoginUIEvent.LoginBtnClicked, navController, db)
-                    //navController.navigate(EThessBikeApp.Home.name)
                 },
                 isEnabled = true
             )
@@ -84,8 +83,9 @@ fun LoginScreen(navController: NavHostController, db: FirebaseFirestore, loginVi
             Spacer(modifier = Modifier.height(20.dp))
 
             ClickableLoginTextComp(
-                loginAttempt = false, onTextSelected = {
-                navController.navigate(EThessBikeApp.Register.name)
+                loginAttempt = false,
+                onTextSelected = {
+                    navController.navigate(EThessBikeApp.Register.name)
                 }
             )
         }

@@ -1,7 +1,22 @@
 package com.thanasis.e_thessbike.ui.components
 
+import androidx.compose.animation.core.AnimationSpec
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.LightMode
 import androidx.compose.material.icons.filled.Nightlight
 import androidx.compose.material.icons.filled.WbSunny
 import androidx.compose.material3.Icon
@@ -10,51 +25,125 @@ import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 
 @Composable
-fun ThemeSwitch() {
-    var checked by remember { mutableStateOf(false) }
-
+fun ThemeSwitcher(darkTheme: Boolean, onThemeUpdated: () -> Unit) {
+    var checked = darkTheme
     Switch(
-        checked = checked,
+        checked = !darkTheme,
         onCheckedChange = {
             checked = it
+            onThemeUpdated()
         },
         colors = SwitchDefaults.colors(
-            checkedThumbColor = MaterialTheme.colorScheme.primaryContainer,
-            checkedTrackColor = MaterialTheme.colorScheme.primary,
+            checkedThumbColor = MaterialTheme.colorScheme.primary,
+            checkedTrackColor = MaterialTheme.colorScheme.primaryContainer,
             uncheckedThumbColor = MaterialTheme.colorScheme.primary,
             uncheckedTrackColor = MaterialTheme.colorScheme.primaryContainer,
             uncheckedBorderColor = MaterialTheme.colorScheme.primaryContainer
         ),
-        thumbContent = if (checked) {
-            {
+        thumbContent =
+            if (!checked) {
+                {
+                    Icon(
+                        imageVector = Icons.Filled.WbSunny,
+                        contentDescription = null,
+                        modifier = Modifier.size(SwitchDefaults.IconSize),
+                        tint = MaterialTheme.colorScheme.primaryContainer
+                    )
+                }
+            } else {
+                {
+                    Icon(
+                        imageVector = Icons.Filled.Nightlight,
+                        contentDescription = null,
+                        modifier = Modifier.size(SwitchDefaults.IconSize),
+                        tint = MaterialTheme.colorScheme.primaryContainer
+                    )
+                }
+            }
+    )
+}
+
+@Composable
+fun ThemeSwitch(
+    darkTheme: Boolean = false,
+    size: Dp = 150.dp,
+    iconSize: Dp = size / 3,
+    padding: Dp = 10.dp,
+    borderWidth: Dp = 1.dp,
+    parentShape: Shape = CircleShape,
+    toggleShape: Shape = CircleShape,
+    animationSpec: AnimationSpec<Dp> = tween(durationMillis = 300),
+    onClick: () -> Unit
+) {
+    val offset by animateDpAsState(
+        targetValue = if (darkTheme) 0.dp else size,
+        animationSpec = animationSpec, label = ""
+    )
+
+    Box(modifier = Modifier
+        .width(size * 2)
+        .height(size)
+        .clip(shape = parentShape)
+        .clickable { onClick() }
+        .background(MaterialTheme.colorScheme.secondaryContainer)
+    ) {
+        Box(
+            modifier = Modifier
+                .size(size)
+                .offset(x = offset)
+                .padding(all = padding)
+                .clip(shape = toggleShape)
+                .background(MaterialTheme.colorScheme.primary)
+        ) {}
+        Row(
+            modifier = Modifier
+                .border(
+                    border = BorderStroke(
+                        width = borderWidth,
+                        color = MaterialTheme.colorScheme.primary
+                    ),
+                    shape = parentShape
+                )
+        ) {
+            Box(
+                modifier = Modifier.size(size),
+                contentAlignment = Alignment.Center
+            ) {
                 Icon(
-                    imageVector = Icons.Filled.WbSunny,
-                    contentDescription = null,
-                    modifier = Modifier.size(SwitchDefaults.IconSize),
+                    modifier = Modifier.size(iconSize),
+                    imageVector = Icons.Default.Nightlight,
+                    contentDescription = "Theme Icon",
+                    tint = if (darkTheme) MaterialTheme.colorScheme.secondaryContainer
+                    else MaterialTheme.colorScheme.primary
                 )
             }
-        } else {
-            {
+            Box(
+                modifier = Modifier.size(size),
+                contentAlignment = Alignment.Center
+            ) {
                 Icon(
-                    imageVector = Icons.Filled.Nightlight,
-                    contentDescription = null,
-                    modifier = Modifier.size(SwitchDefaults.IconSize),
+                    modifier = Modifier.size(iconSize),
+                    imageVector = Icons.Default.LightMode,
+                    contentDescription = "Theme Icon",
+                    tint = if (darkTheme) MaterialTheme.colorScheme.primary
+                    else MaterialTheme.colorScheme.secondaryContainer
                 )
             }
         }
-
-    )
+    }
 }
 
 @Preview
 @Composable
 fun ThemeSwitchPreview() {
-    ThemeSwitch()
+    //ThemeSwitch()
 }

@@ -9,6 +9,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.google.firebase.firestore.FirebaseFirestore
+import com.thanasis.e_thessbike.backend.signUp.SignUpViewModel
 import com.thanasis.e_thessbike.ui.components.MenuDrawer
 import com.thanasis.e_thessbike.ui.screens.LoginScreen
 import com.thanasis.e_thessbike.ui.screens.RegisterScreen
@@ -23,8 +24,9 @@ enum class EThessBikeApp(@StyleRes val title: Int) {
 }
 
 @Composable
-fun MainApp(db: FirebaseFirestore) {
+fun MainApp(db: FirebaseFirestore, darkTheme: Boolean, onThemeUpdated: () -> Unit) {
     val navController = rememberNavController()
+    val TAG: String? = SignUpViewModel::class.simpleName
 
     Surface(color = MaterialTheme.colorScheme.background) {
         NavHost(navController = navController, startDestination = EThessBikeApp.Register.name) {
@@ -37,16 +39,16 @@ fun MainApp(db: FirebaseFirestore) {
                 LoginScreen(navController, db)
             }
             composable(EThessBikeApp.Home.name) {
-                MenuDrawer(navController, selectedIndex = "home", db)
+                MenuDrawer(navController, selectedIndex = "home", db, darkTheme, onThemeUpdated)
             }
             composable(EThessBikeApp.Settings.name) {
-                MenuDrawer(navController, selectedIndex = "settings", db)
+                MenuDrawer(navController, selectedIndex = "settings", db, darkTheme, onThemeUpdated)
             }
             composable(EThessBikeApp.Profile.name) {
-                MenuDrawer(navController, selectedIndex = "profile", db)
+                MenuDrawer(navController, selectedIndex = "profile", db, darkTheme, onThemeUpdated)
             }
             composable(EThessBikeApp.EditInfo.name)  {
-                MenuDrawer(navController, selectedIndex = "editInfo", db)
+                MenuDrawer(navController, selectedIndex = "editInfo", db, darkTheme, onThemeUpdated)
             }
         }
     }

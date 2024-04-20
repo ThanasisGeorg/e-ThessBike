@@ -7,6 +7,7 @@ import androidx.navigation.NavHostController
 import com.google.firebase.firestore.FirebaseFirestore
 import com.thanasis.e_thessbike.EThessBikeApp
 import com.thanasis.e_thessbike.backend.Account
+import com.thanasis.e_thessbike.backend.initInfo
 import com.thanasis.e_thessbike.backend.rules.Validator
 
 class SignUpViewModel: ViewModel() {
@@ -50,22 +51,26 @@ class SignUpViewModel: ViewModel() {
             }
             is SignUpUIEvent.RegisterBtnClicked -> {
                 signUp(navHostController, db)
+                initInfo("users_info", 0, "name")
+                initInfo("users_info", 0, "surname")
+                initInfo("users", 0, "email")
             }
             else -> {}
         }
     }
 
     private fun signUp(navHostController: NavHostController, db: FirebaseFirestore){
-        val account = Account()
+        val account = mutableStateOf(Account())
         //Log.d(TAG, "Inside_signUp")
         //printState()
 
-        account.setFirstName(fName = signUpUIState.value.firstName)
-        account.setLastName(lName = signUpUIState.value.lastName)
-        account.setEmail(email = signUpUIState.value.email)
+        account.value = account.value.copy(
+            signUpUIState.value.firstName,
+            signUpUIState.value.lastName,
+            signUpUIState.value.email
+        )
 
         createUser(db, navHostController)
-
     }
 
     private fun validateDataWithRules() {

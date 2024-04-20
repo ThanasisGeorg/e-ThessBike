@@ -17,12 +17,12 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.thanasis.e_thessbike.ui.components.CategoryIndicator
-import com.thanasis.e_thessbike.ui.components.ThemeSwitch
+import com.thanasis.e_thessbike.ui.components.ThemeSwitcher
 import com.thanasis.e_thessbike.ui.components.TopBar
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun SettingsInit(navController: NavHostController, value: String){
+fun SettingsInit(navController: NavHostController, value: String, darkTheme: Boolean, onThemeUpdated: () -> Unit){
     Scaffold(
         topBar = {
             TopBar(navController, title = value)
@@ -41,8 +41,14 @@ fun SettingsInit(navController: NavHostController, value: String){
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 CategoryIndicator(category = "dark", textSize = 15)
-                Spacer(modifier = Modifier.padding(5.dp, 0.dp))
-                ThemeSwitch()
+                Spacer(modifier = Modifier.padding(5.dp, 10.dp))
+                /*ThemeSwitch(
+                    darkTheme = darkTheme,
+                    size = 40.dp,
+                    padding = 5.dp,
+                    onClick = onThemeUpdated
+                )*/
+                ThemeSwitcher(darkTheme, onThemeUpdated)
                 Spacer(modifier = Modifier.padding(5.dp, 0.dp))
                 CategoryIndicator(category = "light", textSize = 15)
             }
@@ -59,5 +65,5 @@ fun SettingsInit(navController: NavHostController, value: String){
 @Composable
 fun SettingsInitPreview() {
     val navController = rememberNavController()
-    SettingsInit(navController = navController, value = "Settings")
+    //SettingsInit(navController = navController, value = "Settings")
 }
