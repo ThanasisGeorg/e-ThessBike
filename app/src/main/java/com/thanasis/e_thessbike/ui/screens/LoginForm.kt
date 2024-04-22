@@ -22,6 +22,7 @@ import com.thanasis.e_thessbike.EThessBikeApp
 import com.thanasis.e_thessbike.R
 import com.thanasis.e_thessbike.backend.login.LoginUIEvent
 import com.thanasis.e_thessbike.backend.login.LoginViewModel
+import com.thanasis.e_thessbike.backend.roomAPI.AppDatabase
 import com.thanasis.e_thessbike.ui.components.ButtonComp
 import com.thanasis.e_thessbike.ui.components.ClickableLoginTextComp
 import com.thanasis.e_thessbike.ui.components.DividerComp
@@ -32,7 +33,7 @@ import com.thanasis.e_thessbike.ui.components.TextField
 import com.thanasis.e_thessbike.ui.components.UnderLinedText
 
 @Composable
-fun LoginScreen(navController: NavHostController, db: FirebaseFirestore, loginViewModel: LoginViewModel = viewModel()) {
+fun LoginScreen(navController: NavHostController, db: FirebaseFirestore, roomDb: AppDatabase, loginViewModel: LoginViewModel = viewModel()) {
     Surface(
         modifier = Modifier
             .fillMaxSize()
@@ -51,14 +52,14 @@ fun LoginScreen(navController: NavHostController, db: FirebaseFirestore, loginVi
             TextField(
                 labelValue = stringResource(id = R.string.email),
                 onTextSelected = {
-                    loginViewModel.onEvent(LoginUIEvent.EmailChanged(it), navController, db)
+                    loginViewModel.onEvent(LoginUIEvent.EmailChanged(it), navController, db, roomDb)
                 },
                 //errorStatus = loginViewModel.loginUIState.value.emailError
             )
             PasswordTextField(
                 labelValue = stringResource(id = R.string.password),
                 onTextSelected = {
-                    loginViewModel.onEvent(LoginUIEvent.PasswordChanged(it), navController, db)
+                    loginViewModel.onEvent(LoginUIEvent.PasswordChanged(it), navController, db, roomDb)
                 },
                 //errorStatus = loginViewModel.loginUIState.value.passwordError
             )
@@ -73,7 +74,7 @@ fun LoginScreen(navController: NavHostController, db: FirebaseFirestore, loginVi
                 value = stringResource(id = R.string.login),
                 navHostController = navController,
                 onBtnClicked = {
-                    loginViewModel.onEvent(LoginUIEvent.LoginBtnClicked, navController, db)
+                    loginViewModel.onEvent(LoginUIEvent.LoginBtnClicked, navController, db, roomDb)
                 },
                 isEnabled = true
             )

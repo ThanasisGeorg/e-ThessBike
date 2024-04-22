@@ -13,7 +13,7 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
@@ -100,54 +100,62 @@ fun InfoSection() {
 @SuppressLint("UnrememberedMutableState")
 @Composable
 fun FirstName() {
-    val account: MutableState<Account> = initInfo("users_info", 0, "name")
+    val data = initInfo("users_info", 0, "name")
     val TAG: String? = SignUpViewModel::class.simpleName
-    Log.d(TAG, "fName: ${account.value.firstName}")
-    Text(
-        text = account.value.firstName,
-        modifier = Modifier.padding(16.dp),
-        style = TextStyle(
-            fontSize = 18.sp,
-            fontWeight = FontWeight.Normal
-        ),
-        textAlign = TextAlign.Center,
-    )
+
+    //Log.d(TAG, "fName: ${account.value.firstName}")
+    if (data != null) {
+        Text(
+            text = data.documents[0].getString("name").toString(),
+            modifier = Modifier.padding(16.dp),
+            style = TextStyle(
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Normal
+            ),
+            textAlign = TextAlign.Center,
+        )
+    }
 }
 
 @SuppressLint("CoroutineCreationDuringComposition", "UnrememberedMutableState")
 @Composable
 fun LastName() {
-    val account = Account()
+    val data = initInfo("users_info", 0, "surname")
     val TAG: String? = SignUpViewModel::class.simpleName
 
-    Log.d(TAG, "lName: ${account.lastName}")
-    Text(
-        text = account.lastName,
-        modifier = Modifier.padding(16.dp),
-        style = TextStyle(
-            fontSize = 18.sp,
-            fontWeight = FontWeight.Normal
-        ),
-        textAlign = TextAlign.Center,
-    )
+    //Log.d(TAG, "lName: ${account.value.lastName}")
+    if (data != null) {
+        Text(
+            text = data.documents[0].getString("surname").toString(),
+            modifier = Modifier.padding(16.dp),
+            style = TextStyle(
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Normal
+            ),
+            textAlign = TextAlign.Center,
+        )
+    }
 }
 
 @SuppressLint("CoroutineCreationDuringComposition", "UnrememberedMutableState")
 @Composable
 fun Email() {
-    val account = Account()
+    val data = initInfo("users_info", 0, "email")
     val TAG: String? = SignUpViewModel::class.simpleName
 
-    Log.d(TAG, "email: ${account.email}")
-    Text(
-        text = account.email,
-        modifier = Modifier.padding(16.dp),
-        style = TextStyle(
-            fontSize = 18.sp,
-            fontWeight = FontWeight.Normal
-        ),
-        textAlign = TextAlign.Center,
-    )
+    val account = mutableStateOf(Account())
+    Log.d(TAG, "email: ${account.value.email}")
+    if (data != null) {
+        Text(
+            text = data.documents[0].getString("email").toString(),
+            modifier = Modifier.padding(16.dp),
+            style = TextStyle(
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Normal
+            ),
+            textAlign = TextAlign.Center,
+        )
+    }
 }
 
 @Preview

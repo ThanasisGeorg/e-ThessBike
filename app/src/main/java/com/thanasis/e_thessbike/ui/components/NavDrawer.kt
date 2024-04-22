@@ -4,7 +4,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.material3.ModalNavigationDrawer
@@ -19,6 +19,7 @@ import androidx.navigation.NavHostController
 import com.google.firebase.firestore.FirebaseFirestore
 import com.thanasis.e_thessbike.EThessBikeApp
 import com.thanasis.e_thessbike.R
+import com.thanasis.e_thessbike.backend.roomAPI.AppDatabase
 import com.thanasis.e_thessbike.ui.screens.EditInfoInit
 import com.thanasis.e_thessbike.ui.screens.HomeInit
 import com.thanasis.e_thessbike.ui.screens.ProfileInit
@@ -54,13 +55,13 @@ fun SettingsItem(navHostController: NavHostController) {
 }
 
 @Composable
-fun MenuDrawer(navController: NavHostController, selectedIndex: String, db: FirebaseFirestore, darkTheme: Boolean, onThemeUpdated: () -> Unit) {
+fun MenuDrawer(navController: NavHostController, selectedIndex: String, db: FirebaseFirestore, roomDb: AppDatabase, darkTheme: Boolean, onThemeUpdated: () -> Unit) {
     // [START android_compose_layout_material_modal_drawer]
     ModalNavigationDrawer(
         drawerContent = {
             ModalDrawerSheet {
                 MenuTitle()
-                Divider(thickness = 2.dp)
+                HorizontalDivider(thickness = 2.dp)
                 HomeItem(navController)
                 SettingsItem(navController)
             }
@@ -71,13 +72,13 @@ fun MenuDrawer(navController: NavHostController, selectedIndex: String, db: Fire
                 HomeInit(navController, stringResource(id = R.string.app_name))
             }
             "settings" -> {
-                SettingsInit(navController, stringResource(id = R.string.settings), darkTheme, onThemeUpdated)
+                SettingsInit(navController, stringResource(id = R.string.settings), roomDb, darkTheme, onThemeUpdated)
             }
             "profile" -> {
                 ProfileInit(navController, stringResource(id = R.string.profile))
             }
             "editInfo" -> {
-                EditInfoInit(navController, stringResource(id = R.string.edit_info), db, onThemeUpdated)
+                EditInfoInit(navController, stringResource(id = R.string.edit_info), db)
             }
         }
     }

@@ -1,16 +1,20 @@
 package com.thanasis.e_thessbike.backend
 
+import android.annotation.SuppressLint
 import android.util.Log
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import com.google.firebase.Firebase
+import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.firestore.firestore
 import com.thanasis.e_thessbike.backend.signUp.SignUpViewModel
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.tasks.asDeferred
 
-fun initInfo(collectionName: String, numOfDocument: Int, fieldName: String): MutableState<Account> {
+@OptIn(ExperimentalCoroutinesApi::class)
+@SuppressLint("UnrememberedMutableState")
+fun initInfo(collectionName: String, numOfDocument: Int, fieldName: String): QuerySnapshot? {
     val account = mutableStateOf(Account())
     val TAG: String? = SignUpViewModel::class.simpleName
 
@@ -18,65 +22,43 @@ fun initInfo(collectionName: String, numOfDocument: Int, fieldName: String): Mut
         "name" -> {
             val onSuccess: (String?) -> Unit = {
                 if (it != null) {
-                    Log.d(TAG, "it: $it")
                     account.value.firstName = it
                 }
             }
 
-            runBlocking {
-                launch {
-                    getData(collectionName, numOfDocument, fieldName, onSuccess)
-                }
-            }
-
-            return account
+            return getData(collectionName, numOfDocument, fieldName, onSuccess).getCompleted()
         }
         "surname" -> {
             val onSuccess: (String?) -> Unit = {
                 if (it != null) {
-                    Log.d(TAG, "it: $it")
                     account.value.lastName = it
                 }
             }
 
-            runBlocking {
-                launch {
-                    getData("users_info", 0, fieldName, onSuccess)
-                }
-            }
-
-            return account
+            return getData(collectionName, numOfDocument, fieldName, onSuccess).getCompleted()
         }
         "email" -> {
             val onSuccess: (String?) -> Unit = {
                 if (it != null) {
-                    Log.d(TAG, "it: $it")
                     account.value.email = it
                 }
             }
 
-            runBlocking {
-                launch {
-                    getData(collectionName, numOfDocument, fieldName, onSuccess)
-                }
-            }
-
-            return account
+            return getData(collectionName, numOfDocument, fieldName, onSuccess).getCompleted()
         }
     }
-    return account
+    return null
 }
 
-suspend fun getData(collectionName: String, numOfDocument: Int, fieldName: String, onSuccess: (String?) -> Unit){
+fun getData(collectionName: String, numOfDocument: Int, fieldName: String, onSuccess: (String?) -> Unit): Deferred<QuerySnapshot> {
     val db = Firebase.firestore
     val TAG = SignUpViewModel::class.simpleName
 
-    delay(500)
-    db.collection(collectionName)
+    val task = db.collection(collectionName)
         .get()
         .addOnSuccessListener {
             if (it != null) {
-                Log.d(TAG, "Inside setInfo()")
+                Log.d(TAG, "Inside getData()")
                 Log.d(TAG, "result: ${it.documents[numOfDocument].getString(fieldName).toString()}")
                 onSuccess(it.documents[numOfDocument].getString(fieldName).toString())
             }
@@ -84,4 +66,9 @@ suspend fun getData(collectionName: String, numOfDocument: Int, fieldName: Strin
         .addOnFailureListener { e ->
             Log.d(TAG, "Operation failed", e)
         }
+        .asDeferred()
+
+    runBlocking { task.await() }
+
+    return task
 }

@@ -24,7 +24,7 @@ import com.thanasis.e_thessbike.ui.components.TextField
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter", "UnrememberedMutableState")
 @Composable
-fun EditInfoInit(navController: NavHostController, value: String, db: FirebaseFirestore, onThemeUpdated: () -> Unit) {
+fun EditInfoInit(navController: NavHostController, value: String, db: FirebaseFirestore) {
     val account = mutableStateOf(Account())
     Scaffold {
         Column(

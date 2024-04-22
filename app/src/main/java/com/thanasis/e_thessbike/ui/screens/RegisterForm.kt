@@ -18,6 +18,7 @@ import androidx.navigation.NavHostController
 import com.google.firebase.firestore.FirebaseFirestore
 import com.thanasis.e_thessbike.EThessBikeApp
 import com.thanasis.e_thessbike.R
+import com.thanasis.e_thessbike.backend.roomAPI.AppDatabase
 import com.thanasis.e_thessbike.backend.signUp.SignUpUIEvent
 import com.thanasis.e_thessbike.backend.signUp.SignUpViewModel
 import com.thanasis.e_thessbike.ui.components.ButtonComp
@@ -30,7 +31,7 @@ import com.thanasis.e_thessbike.ui.components.PasswordTextField
 import com.thanasis.e_thessbike.ui.components.TextField
 
 @Composable
-fun RegisterScreen(navController: NavHostController, db: FirebaseFirestore, signUpViewModel: SignUpViewModel = viewModel()) {
+fun RegisterScreen(navController: NavHostController, db: FirebaseFirestore, roomDb: AppDatabase, signUpViewModel: SignUpViewModel = viewModel()) {
     Surface(
         modifier = Modifier
             .fillMaxSize()
@@ -46,7 +47,7 @@ fun RegisterScreen(navController: NavHostController, db: FirebaseFirestore, sign
             TextField(
                 labelValue = stringResource(id = R.string.first_name),
                 onTextSelected = {
-                    signUpViewModel.onEvent(SignUpUIEvent.FirstNameChanged(it), navController, db)
+                    signUpViewModel.onEvent(SignUpUIEvent.FirstNameChanged(it), navController, db, roomDb)
                 },
                 errorStatus = signUpViewModel.signUpUIState.value.firstNameError
                 //painterResource(id = R.drawable.rounded_account_circle_24)
@@ -54,7 +55,7 @@ fun RegisterScreen(navController: NavHostController, db: FirebaseFirestore, sign
             TextField(
                 labelValue = stringResource(id = R.string.last_name),
                 onTextSelected = {
-                    signUpViewModel.onEvent(SignUpUIEvent.LastNameChanged(it), navController, db)
+                    signUpViewModel.onEvent(SignUpUIEvent.LastNameChanged(it), navController, db, roomDb)
                 },
                 errorStatus = signUpViewModel.signUpUIState.value.lastNameError
                 //painterResource(id = R.drawable.rounded_account_circle_24)
@@ -62,7 +63,7 @@ fun RegisterScreen(navController: NavHostController, db: FirebaseFirestore, sign
             TextField(
                 labelValue = stringResource(id = R.string.email),
                 onTextSelected = {
-                    signUpViewModel.onEvent(SignUpUIEvent.EmailChanged(it), navController, db)
+                    signUpViewModel.onEvent(SignUpUIEvent.EmailChanged(it), navController, db, roomDb)
                 },
                 errorStatus = signUpViewModel.signUpUIState.value.emailError
                 //painterResource(id = android.R.drawable.ic_dialog_email)
@@ -70,14 +71,14 @@ fun RegisterScreen(navController: NavHostController, db: FirebaseFirestore, sign
             PasswordTextField(
                 labelValue = stringResource(id = R.string.password),
                 onTextSelected = {
-                    signUpViewModel.onEvent(SignUpUIEvent.PasswordChanged(it), navController, db)
+                    signUpViewModel.onEvent(SignUpUIEvent.PasswordChanged(it), navController, db, roomDb)
                 },
                 errorStatus = signUpViewModel.signUpUIState.value.passwordError
                 //painterResource(id = android.R.drawable.ic_lock_idle_lock)
             )
             CheckBox(
                 onCheckedChange = {
-                    signUpViewModel.onEvent(SignUpUIEvent.ConditionsAndPrivacyClicked(it), navController, db)
+                    signUpViewModel.onEvent(SignUpUIEvent.ConditionsAndPrivacyClicked(it), navController, db, roomDb)
                 }
             )
 
@@ -87,7 +88,7 @@ fun RegisterScreen(navController: NavHostController, db: FirebaseFirestore, sign
                 value = stringResource(id = R.string.register),
                 navController,
                 onBtnClicked = {
-                    signUpViewModel.onEvent(SignUpUIEvent.RegisterBtnClicked, navController, db)
+                    signUpViewModel.onEvent(SignUpUIEvent.RegisterBtnClicked, navController, db, roomDb)
                     //navController.navigate(EThessBikeApp.Home.name)
                 },
                 isEnabled = true

@@ -1,5 +1,6 @@
 package com.thanasis.e_thessbike.ui.components
 
+import android.util.Log
 import androidx.compose.animation.core.AnimationSpec
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.tween
@@ -32,10 +33,19 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.thanasis.e_thessbike.backend.roomAPI.AppDatabase
+import com.thanasis.e_thessbike.backend.roomAPI.Settings
+import com.thanasis.e_thessbike.backend.signUp.SignUpViewModel
 
 @Composable
-fun ThemeSwitcher(darkTheme: Boolean, onThemeUpdated: () -> Unit) {
+fun ThemeSwitcher(roomDb: AppDatabase, darkTheme: Boolean ,onThemeUpdated: () -> Unit) {
     var checked = darkTheme
+    val settingsDao = roomDb.settingsDao()
+    val settings = Settings(settingsDao.getSettings().userId, settingsDao.getSettings().theme)
+    val TAG: String? = SignUpViewModel::class.simpleName
+
+    if (settingsDao.getTheme() == "light") checked = true
+
     Switch(
         checked = !darkTheme,
         onCheckedChange = {
@@ -58,6 +68,10 @@ fun ThemeSwitcher(darkTheme: Boolean, onThemeUpdated: () -> Unit) {
                         modifier = Modifier.size(SwitchDefaults.IconSize),
                         tint = MaterialTheme.colorScheme.primaryContainer
                     )
+
+                    settingsDao.updateSettings(settings.copy(theme = "light"))
+                    Log.d(TAG, settingsDao.getSettings().toString())
+                    Log.d(TAG, settingsDao.getTheme().toString())
                 }
             } else {
                 {
@@ -67,9 +81,20 @@ fun ThemeSwitcher(darkTheme: Boolean, onThemeUpdated: () -> Unit) {
                         modifier = Modifier.size(SwitchDefaults.IconSize),
                         tint = MaterialTheme.colorScheme.primaryContainer
                     )
+
+                    settingsDao.updateSettings(settings.copy(theme = "dark"))
+                    Log.d(TAG, settingsDao.getSettings().toString())
+                    Log.d(TAG, settingsDao.getTheme().toString())
                 }
             }
+
+
     )
+}
+
+@Composable
+fun LanguageSwitcher(roomDb: AppDatabase) {
+
 }
 
 @Composable

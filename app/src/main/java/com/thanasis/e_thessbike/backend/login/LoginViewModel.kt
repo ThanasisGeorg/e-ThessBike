@@ -7,14 +7,15 @@ import androidx.navigation.NavHostController
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
 import com.thanasis.e_thessbike.EThessBikeApp
-import com.thanasis.e_thessbike.backend.initInfo
+import com.thanasis.e_thessbike.backend.roomAPI.AppDatabase
+import com.thanasis.e_thessbike.backend.roomAPI.initAfterLogin
 import com.thanasis.e_thessbike.backend.signUp.SignUpViewModel
 
 class LoginViewModel: ViewModel() {
     private var loginUIState = mutableStateOf(LoginUIState())
     private val TAG = SignUpViewModel::class.simpleName
 
-    fun onEvent(event: LoginUIEvent, navHostController: NavHostController, db: FirebaseFirestore){
+    fun onEvent(event: LoginUIEvent, navHostController: NavHostController, db: FirebaseFirestore, roomDb: AppDatabase){
         when (event) {
             is LoginUIEvent.EmailChanged -> {
                 loginUIState.value = loginUIState.value.copy(
@@ -29,22 +30,23 @@ class LoginViewModel: ViewModel() {
                 //printState()
             }
             is LoginUIEvent.LoginBtnClicked -> {
-                login(navHostController, db)
-                initInfo("users_info", 0, "name")
-                initInfo("users_info", 0, "surname")
-                initInfo("users_info", 0, "email")
+                login(navHostController, db, roomDb)
             }
             else -> {}
         }
     }
 
-    private fun login(navHostController: NavHostController, db: FirebaseFirestore) {
+    private fun login(navHostController: NavHostController, db: FirebaseFirestore, roomDb: AppDatabase) {
         db.collection("users")
             .get().addOnSuccessListener { document ->
                 Log.d(TAG, "Inside email thing")
                 Log.d(TAG, "email: ${document.documents[0].getString("email")}")
-                if (verifyData(document)) {
+                val userLoggedIn = verifyData(document)
+                if (!userLoggedIn.isNullOrEmpty()) {
+                    initAfterLogin(userLoggedIn, roomDb)
                     navHostController.navigate(EThessBikeApp.Home.name)
+                } else {
+                    Log.d(TAG, "Something went wrong")
                 }
             }
     }
@@ -54,9 +56,16 @@ class LoginViewModel: ViewModel() {
         Log.d(TAG, loginUIState.value.toString())
     }
 
-    private fun verifyData(document: QuerySnapshot): Boolean {
+    private fun verifyData(document: QuerySnapshot): String? {
         val emailResult = loginUIState.value.email
-        val password = loginUIState.value.password
-        return document.documents[0].getString("email")?.equals(emailResult) == true && password == "123456"
+        val passwordResult = loginUIState.value.password
+
+        for (i in document.documents.indices) {
+            if (document.documents[i].getString("email").equals(emailResult) && passwordResult == "123456") {
+                return emailResult
+            }
+        }
+
+        return null
     }
 }
