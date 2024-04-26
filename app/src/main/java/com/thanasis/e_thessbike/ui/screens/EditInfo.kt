@@ -2,13 +2,13 @@ package com.thanasis.e_thessbike.ui.screens
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -17,16 +17,26 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.google.firebase.firestore.FirebaseFirestore
 import com.thanasis.e_thessbike.R
-import com.thanasis.e_thessbike.backend.Account
+import com.thanasis.e_thessbike.backend.initInfo
+import com.thanasis.e_thessbike.ui.components.ApplyButton
 import com.thanasis.e_thessbike.ui.components.HeadingText
 import com.thanasis.e_thessbike.ui.components.PasswordTextField
 import com.thanasis.e_thessbike.ui.components.TextField
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter", "UnrememberedMutableState")
 @Composable
-fun EditInfoInit(navController: NavHostController, value: String, db: FirebaseFirestore) {
-    val account = mutableStateOf(Account())
-    Scaffold {
+fun EditInfoInit(navController: NavHostController, value: String, db: FirebaseFirestore, userLoggedIn: Array<String>) {
+    val nameData = initInfo("users_info", userLoggedIn[0].toInt(), "name")
+    val surnameData = initInfo("users_info", userLoggedIn[0].toInt(), "surname")
+    val emailData = initInfo("users_info", userLoggedIn[0].toInt(), "email")
+
+    Scaffold(
+        floatingActionButton = {
+            Row {
+                ApplyButton(navController)
+            }
+        }
+    ) {
         Column(
             Modifier
                 .fillMaxSize()
@@ -34,32 +44,38 @@ fun EditInfoInit(navController: NavHostController, value: String, db: FirebaseFi
         ) {
             HeadingText(value = stringResource(id = R.string.edit_info))
             Spacer(modifier = Modifier.height(40.dp))
-            TextField(
-                labelValue = account.value.firstName,
-                onTextSelected = {
+            if (nameData != null) {
+                TextField(
+                    labelValue = nameData.documents[userLoggedIn[0].toInt()].getString("name").toString(),
+                    onTextSelected = {
 
-                },
-                //errorStatus = signUpViewModel.signUpUIState.value.firstNameError
-                //painterResource(id = R.drawable.rounded_account_circle_24)
-            )
+                    },
+                    //errorStatus = signUpViewModel.signUpUIState.value.firstNameError
+                    //painterResource(id = R.drawable.rounded_account_circle_24)
+                )
+            }
             Spacer(modifier = Modifier.height(15.dp))
-            TextField(
-                labelValue = account.value.lastName,
-                onTextSelected = {
+            if (surnameData != null) {
+                TextField(
+                    labelValue = surnameData.documents[userLoggedIn[0].toInt()].getString("surname").toString(),
+                    onTextSelected = {
 
-                },
-                //errorStatus = signUpViewModel.signUpUIState.value.lastNameError
-                //painterResource(id = R.drawable.rounded_account_circle_24)
-            )
+                    },
+                    //errorStatus = signUpViewModel.signUpUIState.value.lastNameError
+                    //painterResource(id = R.drawable.rounded_account_circle_24)
+                )
+            }
             Spacer(modifier = Modifier.height(15.dp))
-            TextField(
-                labelValue = account.value.email,
-                onTextSelected = {
+            if (emailData != null) {
+                TextField(
+                    labelValue = emailData.documents[userLoggedIn[0].toInt()].getString("email").toString(),
+                    onTextSelected = {
 
-                },
-                //errorStatus = signUpViewModel.signUpUIState.value.emailError
-                //painterResource(id = android.R.drawable.ic_dialog_email)
-            )
+                    },
+                    //errorStatus = signUpViewModel.signUpUIState.value.emailError
+                    //painterResource(id = android.R.drawable.ic_dialog_email)
+                )
+            }
             Spacer(modifier = Modifier.height(15.dp))
             /*PasswordTextField(
                 labelValue = "",
@@ -75,7 +91,13 @@ fun EditInfoInit(navController: NavHostController, value: String, db: FirebaseFi
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun EditInfoInit(navController: NavHostController, value: String) {
-    Scaffold {
+    Scaffold(
+        floatingActionButton = {
+            Row {
+                ApplyButton(navController)
+            }
+        }
+    ) {
         Column(
             Modifier
                 .fillMaxSize()

@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Logout
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Remove
 import androidx.compose.material3.ExtendedFloatingActionButton
@@ -22,6 +23,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.thanasis.e_thessbike.EThessBikeApp
 import com.thanasis.e_thessbike.R
 import com.thanasis.e_thessbike.backend.logout.logout
@@ -41,6 +43,16 @@ fun LogoutButton(navController: NavHostController) {
             logout(navController)
         },
         content = { Icon(Icons.AutoMirrored.Filled.Logout, "Floating action button.") }
+    )
+}
+
+@Composable
+fun ApplyButton(navController: NavHostController) {
+    FloatingActionButton(
+        onClick = {
+            logout(navController)
+        },
+        content = { Icon(Icons.Filled.Check, "Floating action button.") }
     )
 }
 
@@ -79,5 +91,6 @@ fun ButtonContent(icon: ImageVector, value: String, horizontal: Int) {
 @Preview
 @Composable
 fun ButtonPreview() {
-    RemoveButton()
+    val navController = rememberNavController()
+    ApplyButton(navController)
 }

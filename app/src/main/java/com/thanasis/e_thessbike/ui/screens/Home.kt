@@ -1,5 +1,6 @@
 package com.thanasis.e_thessbike.ui.screens
 
+//import com.thanasis.e_thessbike.backend.roomAPI.initLocalDB
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,12 +12,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
+import com.thanasis.e_thessbike.backend.roomAPI.AppDatabase
+import com.thanasis.e_thessbike.backend.roomAPI.initLocalDB
+import com.thanasis.e_thessbike.backend.signUp.SignUpViewModel
 import com.thanasis.e_thessbike.ui.components.TopBar
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun HomeInit(navController: NavHostController, value: String){
+fun HomeInit(navController: NavHostController, value: String, userLoggedIn: Array<String>, roomDb: AppDatabase){
+    val TAG = SignUpViewModel::class.simpleName
+
     Scaffold(
         topBar = {
             TopBar(navController, title = value)
@@ -30,11 +35,13 @@ fun HomeInit(navController: NavHostController, value: String){
             Text(text = "Home Information")
         }
     }
+
+    initLocalDB(userLoggedIn, roomDb)
 }
 
 @Preview
 @Composable
 fun HomeInitPreview() {
-    val navController = rememberNavController()
-    HomeInit(navController = navController, value = "e-ThessBike")
+    //val navController = rememberNavController()
+    //HomeInit(navController = navController, value = "e-ThessBike")
 }

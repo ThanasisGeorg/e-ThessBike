@@ -1,66 +1,69 @@
 package com.thanasis.e_thessbike.backend.signUp
 
+import android.content.ContentValues.TAG
 import android.util.Log
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavHostController
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.QuerySnapshot
 import com.thanasis.e_thessbike.EThessBikeApp
 import com.thanasis.e_thessbike.backend.Account
+import com.thanasis.e_thessbike.backend.login.LoginViewModel
 import com.thanasis.e_thessbike.backend.roomAPI.AppDatabase
-import com.thanasis.e_thessbike.backend.roomAPI.initAfterRegister
 import com.thanasis.e_thessbike.backend.rules.Validator
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.tasks.await
 
 class SignUpViewModel: ViewModel() {
     var signUpUIState = mutableStateOf(SignUpUIState())
     private var allValidationsPassed = mutableStateOf(false)
-    private val TAG = SignUpViewModel::class.simpleName
+    private var userLoggedIn = arrayOf("", "")
 
-    fun onEvent(event: SignUpUIEvent, navHostController: NavHostController, db: FirebaseFirestore, roomDb: AppDatabase){
+    fun onEvent(event: SignUpUIEvent, navHostController: NavHostController, db: FirebaseFirestore, roomDb: AppDatabase): Array<String>{
         validateDataWithRules()
         when (event) {
             is SignUpUIEvent.FirstNameChanged -> {
                 signUpUIState.value = signUpUIState.value.copy(
                     firstName = event.firstName
                 )
-                //printState()
             }
             is SignUpUIEvent.LastNameChanged -> {
                 signUpUIState.value = signUpUIState.value.copy(
                     lastName = event.lastName
                 )
-                //printState()
             }
             is SignUpUIEvent.EmailChanged -> {
                 signUpUIState.value = signUpUIState.value.copy(
                     email = event.email
                 )
-                //printState()
             }
             is SignUpUIEvent.PasswordChanged -> {
                 signUpUIState.value = signUpUIState.value.copy(
                     password = event.password
                 )
-                //printState()
             }
             is SignUpUIEvent.ConditionsAndPrivacyClicked -> {
                 signUpUIState.value = signUpUIState.value.copy(
                     conditionsAndPrivacyAccepted = event.status
                 )
                 validateDataWithRules()
-                //printState()
             }
             is SignUpUIEvent.RegisterBtnClicked -> {
-                signUp(navHostController, db, roomDb)
+                userLoggedIn = signUp(db, roomDb)
+                Log.d(TAG, userLoggedIn.toString())
+                //initLocalDB(userLoggedIn, roomDb)
+                navHostController.navigate(EThessBikeApp.Home.name)
             }
-            else -> {}
         }
+
+        return userLoggedIn
     }
 
-    private fun signUp(navHostController: NavHostController, db: FirebaseFirestore, roomDb: AppDatabase){
+    @OptIn(ExperimentalCoroutinesApi::class)
+    private fun signUp(db: FirebaseFirestore, roomDb: AppDatabase): Array<String> {
         val account = mutableStateOf(Account())
-        //Log.d(TAG, "Inside_signUp")
-        //printState()
 
         account.value = account.value.copy(
             signUpUIState.value.firstName,
@@ -68,7 +71,25 @@ class SignUpViewModel: ViewModel() {
             signUpUIState.value.email
         )
 
-        createUser(db, navHostController, roomDb)
+        createUser(db)
+
+        val document = LoginViewModel().getDocument(db).getCompleted()
+
+        return verifyData(document)
+    }
+
+    private fun verifyData(document: QuerySnapshot): Array<String> {
+        val emailResult = signUpUIState.value.email
+        val userLoggedIn = arrayOf("", "")
+
+        for (i in document.documents.indices) {
+            if (document.documents[i].getString("email").equals(emailResult)) {
+                userLoggedIn[0] = i.toString()
+                userLoggedIn[1] = emailResult
+            }
+        }
+
+        return userLoggedIn
     }
 
     private fun validateDataWithRules() {
@@ -103,12 +124,7 @@ class SignUpViewModel: ViewModel() {
         allValidationsPassed.value = fNameResult && lNameResult && emailResult && passwordResult && conditionsAndPrivacyResult
     }
 
-    private fun printState(){
-        Log.d(TAG, "Inside_printState")
-        Log.d(TAG, signUpUIState.value.toString())
-    }
-
-    private fun createUser(db: FirebaseFirestore, navHostController: NavHostController, roomDb: AppDatabase) {
+    private fun createUser(db: FirebaseFirestore) {
         val userInfo = hashMapOf(
             "name" to signUpUIState.value.firstName,
             "surname" to signUpUIState.value.lastName,
@@ -119,17 +135,14 @@ class SignUpViewModel: ViewModel() {
             "email" to signUpUIState.value.email
         )
 
-        db.collection("users_info")
-            .add(userInfo)
-            .addOnSuccessListener { userInfoReference ->
-                Log.d(TAG, "DocumentSnapshot added with ID: ${userInfoReference.id}")
-                db.collection("users")
-                    .add(user)
-                initAfterRegister(user["email"].toString(), roomDb)
-                navHostController.navigate(EThessBikeApp.Home.name)
-            }
-            .addOnFailureListener { e ->
-                Log.w(TAG, "Error adding document", e)
-            }
+        runBlocking {
+            db.collection("users")
+                .add(user)
+                .await()
+
+            db.collection("users_info")
+                .add(userInfo)
+                .await()
+        }
     }
 }

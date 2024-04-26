@@ -55,7 +55,7 @@ fun SettingsItem(navHostController: NavHostController) {
 }
 
 @Composable
-fun MenuDrawer(navController: NavHostController, selectedIndex: String, db: FirebaseFirestore, roomDb: AppDatabase, darkTheme: Boolean, onThemeUpdated: () -> Unit) {
+fun MenuDrawer(navController: NavHostController, selectedIndex: String, db: FirebaseFirestore, roomDb: AppDatabase, darkTheme: Boolean, onThemeUpdated: () -> Unit, userLoggedIn: Array<String>) {
     // [START android_compose_layout_material_modal_drawer]
     ModalNavigationDrawer(
         drawerContent = {
@@ -69,16 +69,16 @@ fun MenuDrawer(navController: NavHostController, selectedIndex: String, db: Fire
     ) {
         when (selectedIndex) {
             "home" -> {
-                HomeInit(navController, stringResource(id = R.string.app_name))
+                HomeInit(navController, stringResource(id = R.string.app_name), userLoggedIn, roomDb)
             }
             "settings" -> {
                 SettingsInit(navController, stringResource(id = R.string.settings), roomDb, darkTheme, onThemeUpdated)
             }
             "profile" -> {
-                ProfileInit(navController, stringResource(id = R.string.profile))
+                ProfileInit(navController, stringResource(id = R.string.profile), userLoggedIn, roomDb)
             }
             "editInfo" -> {
-                EditInfoInit(navController, stringResource(id = R.string.edit_info), db)
+                EditInfoInit(navController, stringResource(id = R.string.edit_info), db, userLoggedIn)
             }
         }
     }

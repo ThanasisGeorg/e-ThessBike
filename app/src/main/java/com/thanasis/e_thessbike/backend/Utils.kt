@@ -16,13 +16,13 @@ import kotlinx.coroutines.tasks.asDeferred
 @SuppressLint("UnrememberedMutableState")
 fun initInfo(collectionName: String, numOfDocument: Int, fieldName: String): QuerySnapshot? {
     val account = mutableStateOf(Account())
-    val TAG: String? = SignUpViewModel::class.simpleName
+    //val TAG: String? = SignUpViewModel::class.simpleName
 
     when (fieldName) {
         "name" -> {
             val onSuccess: (String?) -> Unit = {
                 if (it != null) {
-                    account.value.firstName = it
+                    account.value = account.value.copy(firstName = it)
                 }
             }
 
@@ -31,7 +31,7 @@ fun initInfo(collectionName: String, numOfDocument: Int, fieldName: String): Que
         "surname" -> {
             val onSuccess: (String?) -> Unit = {
                 if (it != null) {
-                    account.value.lastName = it
+                    account.value = account.value.copy(lastName = it)
                 }
             }
 
@@ -40,7 +40,7 @@ fun initInfo(collectionName: String, numOfDocument: Int, fieldName: String): Que
         "email" -> {
             val onSuccess: (String?) -> Unit = {
                 if (it != null) {
-                    account.value.email = it
+                    account.value = account.value.copy(email = it)
                 }
             }
 
@@ -58,8 +58,6 @@ fun getData(collectionName: String, numOfDocument: Int, fieldName: String, onSuc
         .get()
         .addOnSuccessListener {
             if (it != null) {
-                Log.d(TAG, "Inside getData()")
-                Log.d(TAG, "result: ${it.documents[numOfDocument].getString(fieldName).toString()}")
                 onSuccess(it.documents[numOfDocument].getString(fieldName).toString())
             }
         }

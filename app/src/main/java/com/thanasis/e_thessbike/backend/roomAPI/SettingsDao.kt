@@ -1,7 +1,9 @@
 package com.thanasis.e_thessbike.backend.roomAPI
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 
@@ -16,9 +18,12 @@ interface SettingsDao {
     @Query("SELECT theme FROM Settings")
     fun getTheme(): String
 
-    @Insert
-    fun insertSettings(vararg settings: Settings)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertSettings(settings: Settings)
 
-    @Update
-    fun updateSettings(vararg settings: Settings)
+    @Update(onConflict = OnConflictStrategy.REPLACE)
+    fun updateSettings(settings: Settings)
+
+    @Delete
+    fun deleteSettings(vararg settings: Settings)
 }

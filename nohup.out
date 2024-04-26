@@ -1745,3 +1745,4 @@ Caused by: java.lang.RuntimeException: Activity name cannot be empty.
 2024-03-28 01:04:11,826 [25956609]   WARN - #c.i.o.v.i.j.JrtFileSystemImpl - Cannot load into VFS: /usr/local/android-studio/jbr/release
 2024-03-28 01:04:11,886 [25956669]   WARN - #c.i.o.v.i.l.NativeFileWatcherImpl - File watcher is still alive, doing a force quit.
 2024-03-28 01:04:11,956 [25956739]   WARN - #c.i.e.p.OSProcessHandler - Process has been already terminated: fsnotifier
+CompileCommand: exclude com/intellij/openapi/vfs/impl/FilePartNodeRoot.trieDescend bool exclude = true

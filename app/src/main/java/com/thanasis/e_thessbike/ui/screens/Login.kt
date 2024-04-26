@@ -1,5 +1,6 @@
 package com.thanasis.e_thessbike.ui.screens
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -10,6 +11,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -23,7 +28,7 @@ import com.thanasis.e_thessbike.R
 import com.thanasis.e_thessbike.backend.login.LoginUIEvent
 import com.thanasis.e_thessbike.backend.login.LoginViewModel
 import com.thanasis.e_thessbike.backend.roomAPI.AppDatabase
-import com.thanasis.e_thessbike.ui.components.ButtonComp
+import com.thanasis.e_thessbike.backend.signUp.SignUpViewModel
 import com.thanasis.e_thessbike.ui.components.ClickableLoginTextComp
 import com.thanasis.e_thessbike.ui.components.DividerComp
 import com.thanasis.e_thessbike.ui.components.HeadingText
@@ -31,9 +36,13 @@ import com.thanasis.e_thessbike.ui.components.NormalText
 import com.thanasis.e_thessbike.ui.components.PasswordTextField
 import com.thanasis.e_thessbike.ui.components.TextField
 import com.thanasis.e_thessbike.ui.components.UnderLinedText
+import com.thanasis.e_thessbike.ui.components.buttonComp
 
 @Composable
-fun LoginScreen(navController: NavHostController, db: FirebaseFirestore, roomDb: AppDatabase, loginViewModel: LoginViewModel = viewModel()) {
+fun loginScreen(navController: NavHostController, db: FirebaseFirestore, roomDb: AppDatabase, loginViewModel: LoginViewModel = viewModel()): Array<String> {
+    var userLoggedIn by remember{ mutableStateOf(arrayOf("", "")) }
+    val TAG: String? = SignUpViewModel::class.simpleName
+
     Surface(
         modifier = Modifier
             .fillMaxSize()
@@ -70,14 +79,16 @@ fun LoginScreen(navController: NavHostController, db: FirebaseFirestore, roomDb:
 
             Spacer(modifier = Modifier.heightIn(20.dp))
 
-            ButtonComp(
+            userLoggedIn = buttonComp(
                 value = stringResource(id = R.string.login),
-                navHostController = navController,
-                onBtnClicked = {
-                    loginViewModel.onEvent(LoginUIEvent.LoginBtnClicked, navController, db, roomDb)
-                },
+                navController,
+                db,
+                roomDb,
+                loginViewModel,
                 isEnabled = true
             )
+
+            Log.d(TAG, "Here")
 
             Spacer(modifier = Modifier.height(20.dp))
             DividerComp()
@@ -91,6 +102,8 @@ fun LoginScreen(navController: NavHostController, db: FirebaseFirestore, roomDb:
             )
         }
     }
+
+    return userLoggedIn
 }
 
 @Preview

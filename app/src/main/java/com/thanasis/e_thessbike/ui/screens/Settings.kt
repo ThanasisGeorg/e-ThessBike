@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Divider
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -45,12 +44,6 @@ fun SettingsInit(navController: NavHostController, value: String, roomDb: AppDat
             ) {
                 CategoryIndicator(category = "dark", textSize = 15)
                 Spacer(modifier = Modifier.padding(5.dp, 10.dp))
-                /*ThemeSwitch(
-                    darkTheme = darkTheme,
-                    size = 40.dp,
-                    padding = 5.dp,
-                    onClick = onThemeUpdated
-                )*/
                 ThemeSwitcher(roomDb, darkTheme, onThemeUpdated)
                 Spacer(modifier = Modifier.padding(5.dp, 0.dp))
                 CategoryIndicator(category = "light", textSize = 15)
@@ -79,7 +72,7 @@ fun SettingsInit(navController: NavHostController, value: String, darkTheme: Boo
         ) {
             Spacer(modifier = Modifier.padding(5.dp))
             CategoryIndicator(category = "theme", textSize = 25)
-            Divider()
+            HorizontalDivider()
             Row(
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically

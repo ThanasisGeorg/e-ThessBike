@@ -1,7 +1,6 @@
 package com.thanasis.e_thessbike.ui.components
 
 import android.annotation.SuppressLint
-import android.util.Log
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -13,7 +12,6 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
@@ -23,12 +21,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.thanasis.e_thessbike.R
-import com.thanasis.e_thessbike.backend.Account
 import com.thanasis.e_thessbike.backend.initInfo
-import com.thanasis.e_thessbike.backend.signUp.SignUpViewModel
 
 @Composable
-fun ProfileCard() {
+fun ProfileCard(userLoggedIn: Array<String>) {
     Card(
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surfaceVariant,
@@ -40,7 +36,7 @@ fun ProfileCard() {
         Column {
             Row {
                 IndicatorsSection()
-                InfoSection()
+                InfoSection(userLoggedIn)
             }
         }
     }
@@ -79,34 +75,30 @@ fun IndicatorsSection() {
 }
 
 @Composable
-fun InfoSection() {
-    val TAG = SignUpViewModel::class.simpleName
-
+fun InfoSection(userLoggedIn: Array<String>) {
     Column {
         Spacer(modifier = Modifier.height(1.dp))
 
-        FirstName()
+        FirstName(userLoggedIn)
 
         Spacer(modifier = Modifier.height(3.dp))
 
-        LastName()
+        LastName(userLoggedIn)
 
         Spacer(modifier = Modifier.height(1.dp))
 
-        Email()
+        Email(userLoggedIn)
     }
 }
 
 @SuppressLint("UnrememberedMutableState")
 @Composable
-fun FirstName() {
-    val data = initInfo("users_info", 0, "name")
-    val TAG: String? = SignUpViewModel::class.simpleName
+fun FirstName(userLoggedIn: Array<String>) {
+    val data = initInfo("users_info", userLoggedIn[0].toInt(), "name")
 
-    //Log.d(TAG, "fName: ${account.value.firstName}")
     if (data != null) {
         Text(
-            text = data.documents[0].getString("name").toString(),
+            text = data.documents[userLoggedIn[0].toInt()].getString("name").toString(),
             modifier = Modifier.padding(16.dp),
             style = TextStyle(
                 fontSize = 18.sp,
@@ -119,14 +111,12 @@ fun FirstName() {
 
 @SuppressLint("CoroutineCreationDuringComposition", "UnrememberedMutableState")
 @Composable
-fun LastName() {
-    val data = initInfo("users_info", 0, "surname")
-    val TAG: String? = SignUpViewModel::class.simpleName
+fun LastName(userLoggedIn: Array<String>) {
+    val data = initInfo("users_info", userLoggedIn[0].toInt(), "surname")
 
-    //Log.d(TAG, "lName: ${account.value.lastName}")
     if (data != null) {
         Text(
-            text = data.documents[0].getString("surname").toString(),
+            text = data.documents[userLoggedIn[0].toInt()].getString("surname").toString(),
             modifier = Modifier.padding(16.dp),
             style = TextStyle(
                 fontSize = 18.sp,
@@ -139,15 +129,12 @@ fun LastName() {
 
 @SuppressLint("CoroutineCreationDuringComposition", "UnrememberedMutableState")
 @Composable
-fun Email() {
-    val data = initInfo("users_info", 0, "email")
-    val TAG: String? = SignUpViewModel::class.simpleName
+fun Email(userLoggedIn: Array<String>) {
+    val data = initInfo("users_info", userLoggedIn[0].toInt(), "email")
 
-    val account = mutableStateOf(Account())
-    Log.d(TAG, "email: ${account.value.email}")
     if (data != null) {
         Text(
-            text = data.documents[0].getString("email").toString(),
+            text = data.documents[userLoggedIn[0].toInt()].getString("email").toString(),
             modifier = Modifier.padding(16.dp),
             style = TextStyle(
                 fontSize = 18.sp,
@@ -161,5 +148,5 @@ fun Email() {
 @Preview
 @Composable
 fun ProfileCardPreview() {
-    ProfileCard()
+    //ProfileCard()
 }

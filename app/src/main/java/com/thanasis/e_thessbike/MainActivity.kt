@@ -12,14 +12,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.room.Room
 import com.google.firebase.Firebase
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.auth
 import com.google.firebase.firestore.firestore
 import com.thanasis.e_thessbike.backend.roomAPI.AppDatabase
 import com.thanasis.e_thessbike.ui.theme.EThessBikeTheme
 
 class MainActivity : ComponentActivity() {
-    private var auth: FirebaseAuth = Firebase.auth
     private val db = Firebase.firestore
 
     @SuppressLint("UnrememberedMutableState")
@@ -44,9 +41,5 @@ class MainActivity : ComponentActivity() {
                 )
             }
         }
-    }
-
-    fun getAuth(): FirebaseAuth {
-        return auth
     }
 }

@@ -1,5 +1,7 @@
 package com.thanasis.e_thessbike.ui.screens
 
+import android.content.ContentValues.TAG
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -9,6 +11,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -21,7 +27,6 @@ import com.thanasis.e_thessbike.R
 import com.thanasis.e_thessbike.backend.roomAPI.AppDatabase
 import com.thanasis.e_thessbike.backend.signUp.SignUpUIEvent
 import com.thanasis.e_thessbike.backend.signUp.SignUpViewModel
-import com.thanasis.e_thessbike.ui.components.ButtonComp
 import com.thanasis.e_thessbike.ui.components.CheckBox
 import com.thanasis.e_thessbike.ui.components.ClickableLoginTextComp
 import com.thanasis.e_thessbike.ui.components.DividerComp
@@ -29,9 +34,12 @@ import com.thanasis.e_thessbike.ui.components.HeadingText
 import com.thanasis.e_thessbike.ui.components.NormalText
 import com.thanasis.e_thessbike.ui.components.PasswordTextField
 import com.thanasis.e_thessbike.ui.components.TextField
+import com.thanasis.e_thessbike.ui.components.buttonComp
 
 @Composable
-fun RegisterScreen(navController: NavHostController, db: FirebaseFirestore, roomDb: AppDatabase, signUpViewModel: SignUpViewModel = viewModel()) {
+fun registerScreen(navController: NavHostController, db: FirebaseFirestore, roomDb: AppDatabase, signUpViewModel: SignUpViewModel = viewModel()): Array<String> {
+    var userLoggedIn by remember { mutableStateOf(arrayOf("", "")) }
+
     Surface(
         modifier = Modifier
             .fillMaxSize()
@@ -84,13 +92,12 @@ fun RegisterScreen(navController: NavHostController, db: FirebaseFirestore, room
 
             Spacer(modifier = Modifier.height(80.dp))
 
-            ButtonComp(
+             userLoggedIn = buttonComp(
                 value = stringResource(id = R.string.register),
                 navController,
-                onBtnClicked = {
-                    signUpViewModel.onEvent(SignUpUIEvent.RegisterBtnClicked, navController, db, roomDb)
-                    //navController.navigate(EThessBikeApp.Home.name)
-                },
+                db,
+                roomDb,
+                signUpViewModel,
                 isEnabled = true
             )
 
@@ -105,6 +112,10 @@ fun RegisterScreen(navController: NavHostController, db: FirebaseFirestore, room
             )
         }
     }
+
+    Log.d(TAG, "After UI init")
+
+    return userLoggedIn
 }
 
 @Preview

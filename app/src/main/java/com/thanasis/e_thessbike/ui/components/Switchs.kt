@@ -41,7 +41,7 @@ import com.thanasis.e_thessbike.backend.signUp.SignUpViewModel
 fun ThemeSwitcher(roomDb: AppDatabase, darkTheme: Boolean ,onThemeUpdated: () -> Unit) {
     var checked = darkTheme
     val settingsDao = roomDb.settingsDao()
-    val settings = Settings(settingsDao.getSettings().userId, settingsDao.getSettings().theme)
+    var settings = Settings(settingsDao.getSettings().userId, settingsDao.getSettings().theme)
     val TAG: String? = SignUpViewModel::class.simpleName
 
     if (settingsDao.getTheme() == "light") checked = true
@@ -69,9 +69,10 @@ fun ThemeSwitcher(roomDb: AppDatabase, darkTheme: Boolean ,onThemeUpdated: () ->
                         tint = MaterialTheme.colorScheme.primaryContainer
                     )
 
-                    settingsDao.updateSettings(settings.copy(theme = "light"))
+                    settings = settings.copy(theme = "light")
+
+                    settingsDao.updateSettings(Settings(settingsDao.getSettings().userId, "light"))
                     Log.d(TAG, settingsDao.getSettings().toString())
-                    Log.d(TAG, settingsDao.getTheme().toString())
                 }
             } else {
                 {
@@ -82,9 +83,10 @@ fun ThemeSwitcher(roomDb: AppDatabase, darkTheme: Boolean ,onThemeUpdated: () ->
                         tint = MaterialTheme.colorScheme.primaryContainer
                     )
 
-                    settingsDao.updateSettings(settings.copy(theme = "dark"))
+                    settings = settings.copy(theme = "dark")
+
+                    settingsDao.updateSettings(Settings(settingsDao.getSettings().userId, "dark"))
                     Log.d(TAG, settingsDao.getSettings().toString())
-                    Log.d(TAG, settingsDao.getTheme().toString())
                 }
             }
 

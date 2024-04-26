@@ -15,6 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.thanasis.e_thessbike.backend.roomAPI.AppDatabase
 import com.thanasis.e_thessbike.ui.components.AddButton
 import com.thanasis.e_thessbike.ui.components.EditButton
 import com.thanasis.e_thessbike.ui.components.LogoutButton
@@ -24,7 +25,7 @@ import com.thanasis.e_thessbike.ui.components.TopBar
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun ProfileInit(navController: NavHostController, value: String) {
+fun ProfileInit(navController: NavHostController, value: String, userLoggedIn: Array<String>, roomDb: AppDatabase) {
     Scaffold(
         topBar = {
             TopBar(navController, title = value)
@@ -37,7 +38,7 @@ fun ProfileInit(navController: NavHostController, value: String) {
                 Spacer(modifier = Modifier.padding(5.dp, 0.dp))
                 LogoutButton(navController)
             }
-        },
+        }
     ) {
         Column(
             Modifier
@@ -48,7 +49,7 @@ fun ProfileInit(navController: NavHostController, value: String) {
                 modifier = Modifier.height(250.dp),
                 floatingActionButton = { EditButton(navController) }
             ) {
-                ProfileCard()
+                ProfileCard(userLoggedIn)
             }
             Spacer(modifier = Modifier.height(15.dp))
             Scaffold {
@@ -62,5 +63,5 @@ fun ProfileInit(navController: NavHostController, value: String) {
 @Composable
 fun ProfileInitPreview() {
     val navController = rememberNavController()
-    ProfileInit(navController, "Profile")
+    //ProfileInit(navController, "Profile")
 }
