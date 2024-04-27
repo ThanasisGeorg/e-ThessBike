@@ -1,9 +1,9 @@
 package com.thanasis.e_thessbike.backend.roomAPI
 
+import android.content.ContentValues.TAG
 import android.util.Log
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.thanasis.e_thessbike.backend.signUp.SignUpViewModel
 
 @Database(entities = [Settings::class], version = 1, exportSchema = false)
 abstract class AppDatabase: RoomDatabase() {
@@ -12,10 +12,11 @@ abstract class AppDatabase: RoomDatabase() {
 
 fun initLocalDB(userLoggedIn: Array<String>, roomDb: AppDatabase) {
     val settingsDao = roomDb.settingsDao()
-    val TAG: String? = SignUpViewModel::class.simpleName
 
     Log.d(TAG, userLoggedIn[1])
-
-    settingsDao.updateSettings(Settings(userLoggedIn[1], "dark"))
-    //Log.d(TAG, settingsDao.getSettings().toString())
+    //settingsDao.insertSettings(Settings(userLoggedIn[1], "dark"))
+    if (settingsDao.getSettings() == null) {
+        settingsDao.insertSettings(Settings(userLoggedIn[1], "dark"))
+    } else settingsDao.updateSettings(Settings(userLoggedIn[1], "dark"))
+    Log.d(TAG, settingsDao.getSettings().toString())
 }

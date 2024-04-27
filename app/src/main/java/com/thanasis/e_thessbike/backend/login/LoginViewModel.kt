@@ -7,6 +7,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
 import com.thanasis.e_thessbike.EThessBikeApp
 import com.thanasis.e_thessbike.backend.roomAPI.AppDatabase
+import com.thanasis.e_thessbike.backend.roomAPI.initLocalDB
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
@@ -33,7 +34,8 @@ class LoginViewModel: ViewModel() {
                 val document = getDocument(db).getCompleted()
 
                 userLoggedIn = verifyData(document)
-                //initLocalDB(userLoggedIn, roomDb)
+                initLocalDB(userLoggedIn, roomDb)
+                initLocalDB(userLoggedIn, roomDb)
                 navHostController.navigate(EThessBikeApp.Home.name)
             }
         }

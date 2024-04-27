@@ -37,6 +37,7 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.google.firebase.firestore.FirebaseFirestore
 import com.thanasis.e_thessbike.R
 import com.thanasis.e_thessbike.ui.theme.Purple40
 
@@ -93,6 +94,29 @@ fun TextField(labelValue: String, onTextSelected: (String) -> Unit, errorStatus:
         isError = !errorStatus
     )
 }
+
+@Composable
+fun TextField(labelValue: String, textValue: String, onTextSelected: (String) -> Unit, errorStatus: Boolean = true, db: FirebaseFirestore){
+    val newValue = remember {
+        mutableStateOf("")
+    }
+
+    OutlinedTextField(
+        modifier = Modifier.fillMaxWidth(),
+        label = {Text(text = labelValue)},
+        //colors = TextFieldDefaults.colors(),
+        keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
+        singleLine = true,
+        maxLines = 1,
+        value = textValue,
+        onValueChange = {
+            newValue.value = it
+            onTextSelected(it)
+        },
+        isError = !errorStatus
+    )
+}
+
 @Composable
 fun PasswordTextField(labelValue: String, onTextSelected: (String) -> Unit, errorStatus: Boolean = true){
     val localFocusManager = LocalFocusManager.current

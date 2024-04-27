@@ -1,5 +1,6 @@
 package com.thanasis.e_thessbike.ui.screens
 
+import android.content.ContentValues.TAG
 import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -28,7 +29,6 @@ import com.thanasis.e_thessbike.R
 import com.thanasis.e_thessbike.backend.login.LoginUIEvent
 import com.thanasis.e_thessbike.backend.login.LoginViewModel
 import com.thanasis.e_thessbike.backend.roomAPI.AppDatabase
-import com.thanasis.e_thessbike.backend.signUp.SignUpViewModel
 import com.thanasis.e_thessbike.ui.components.ClickableLoginTextComp
 import com.thanasis.e_thessbike.ui.components.DividerComp
 import com.thanasis.e_thessbike.ui.components.HeadingText
@@ -41,7 +41,6 @@ import com.thanasis.e_thessbike.ui.components.buttonComp
 @Composable
 fun loginScreen(navController: NavHostController, db: FirebaseFirestore, roomDb: AppDatabase, loginViewModel: LoginViewModel = viewModel()): Array<String> {
     var userLoggedIn by remember{ mutableStateOf(arrayOf("", "")) }
-    val TAG: String? = SignUpViewModel::class.simpleName
 
     Surface(
         modifier = Modifier
@@ -88,8 +87,6 @@ fun loginScreen(navController: NavHostController, db: FirebaseFirestore, roomDb:
                 isEnabled = true
             )
 
-            Log.d(TAG, "Here")
-
             Spacer(modifier = Modifier.height(20.dp))
             DividerComp()
             Spacer(modifier = Modifier.height(20.dp))
@@ -102,6 +99,8 @@ fun loginScreen(navController: NavHostController, db: FirebaseFirestore, roomDb:
             )
         }
     }
+
+    Log.d(TAG, "Here")
 
     return userLoggedIn
 }

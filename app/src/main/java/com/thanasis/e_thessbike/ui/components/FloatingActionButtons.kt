@@ -50,7 +50,7 @@ fun LogoutButton(navController: NavHostController) {
 fun ApplyButton(navController: NavHostController) {
     FloatingActionButton(
         onClick = {
-            logout(navController)
+            navController.navigate(EThessBikeApp.Profile.name)
         },
         content = { Icon(Icons.Filled.Check, "Floating action button.") }
     )

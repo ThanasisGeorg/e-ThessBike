@@ -94,54 +94,60 @@ fun InfoSection(userLoggedIn: Array<String>) {
 @SuppressLint("UnrememberedMutableState")
 @Composable
 fun FirstName(userLoggedIn: Array<String>) {
-    val data = initInfo("users_info", userLoggedIn[0].toInt(), "name")
+    if (userLoggedIn[0].isNotEmpty()) {
+        val data = initInfo("users_info", userLoggedIn[0].toInt(), "name")
 
-    if (data != null) {
-        Text(
-            text = data.documents[userLoggedIn[0].toInt()].getString("name").toString(),
-            modifier = Modifier.padding(16.dp),
-            style = TextStyle(
-                fontSize = 18.sp,
-                fontWeight = FontWeight.Normal
-            ),
-            textAlign = TextAlign.Center,
-        )
+        if (data != null) {
+            Text(
+                text = data.documents[userLoggedIn[0].toInt()].getString("name").toString(),
+                modifier = Modifier.padding(16.dp),
+                style = TextStyle(
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Normal
+                ),
+                textAlign = TextAlign.Center,
+            )
+        }
     }
 }
 
 @SuppressLint("CoroutineCreationDuringComposition", "UnrememberedMutableState")
 @Composable
 fun LastName(userLoggedIn: Array<String>) {
-    val data = initInfo("users_info", userLoggedIn[0].toInt(), "surname")
+    if (userLoggedIn[0].isNotEmpty()) {
+        val data = initInfo("users_info", userLoggedIn[0].toInt(), "surname")
 
-    if (data != null) {
-        Text(
-            text = data.documents[userLoggedIn[0].toInt()].getString("surname").toString(),
-            modifier = Modifier.padding(16.dp),
-            style = TextStyle(
-                fontSize = 18.sp,
-                fontWeight = FontWeight.Normal
-            ),
-            textAlign = TextAlign.Center,
-        )
+        if (data != null) {
+            Text(
+                text = data.documents[userLoggedIn[0].toInt()].getString("surname").toString(),
+                modifier = Modifier.padding(16.dp),
+                style = TextStyle(
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Normal
+                ),
+                textAlign = TextAlign.Center,
+            )
+        }
     }
 }
 
 @SuppressLint("CoroutineCreationDuringComposition", "UnrememberedMutableState")
 @Composable
 fun Email(userLoggedIn: Array<String>) {
-    val data = initInfo("users_info", userLoggedIn[0].toInt(), "email")
+    if (userLoggedIn[0].isNotEmpty()) {
+        val data = initInfo("users_info", userLoggedIn[0].toInt(), "email")
 
-    if (data != null) {
-        Text(
-            text = data.documents[userLoggedIn[0].toInt()].getString("email").toString(),
-            modifier = Modifier.padding(16.dp),
-            style = TextStyle(
-                fontSize = 18.sp,
-                fontWeight = FontWeight.Normal
-            ),
-            textAlign = TextAlign.Center,
-        )
+        if (data != null) {
+            Text(
+                text = data.documents[userLoggedIn[0].toInt()].getString("email").toString(),
+                modifier = Modifier.padding(16.dp),
+                style = TextStyle(
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Normal
+                ),
+                textAlign = TextAlign.Center,
+            )
+        }
     }
 }
 

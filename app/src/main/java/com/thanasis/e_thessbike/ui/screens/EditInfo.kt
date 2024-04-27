@@ -20,7 +20,6 @@ import com.thanasis.e_thessbike.R
 import com.thanasis.e_thessbike.backend.initInfo
 import com.thanasis.e_thessbike.ui.components.ApplyButton
 import com.thanasis.e_thessbike.ui.components.HeadingText
-import com.thanasis.e_thessbike.ui.components.PasswordTextField
 import com.thanasis.e_thessbike.ui.components.TextField
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter", "UnrememberedMutableState")
@@ -42,37 +41,43 @@ fun EditInfoInit(navController: NavHostController, value: String, db: FirebaseFi
                 .fillMaxSize()
                 .padding(15.dp, 30.dp)
         ) {
-            HeadingText(value = stringResource(id = R.string.edit_info))
+            HeadingText(value = value)
             Spacer(modifier = Modifier.height(40.dp))
             if (nameData != null) {
                 TextField(
-                    labelValue = nameData.documents[userLoggedIn[0].toInt()].getString("name").toString(),
+                    labelValue = stringResource(id = R.string.first_name),
+                    textValue = nameData.documents[userLoggedIn[0].toInt()].getString("name").toString(),
                     onTextSelected = {
-
+                        /*TODO*/
                     },
-                    //errorStatus = signUpViewModel.signUpUIState.value.firstNameError
+                    errorStatus = true,
+                    db = db
                     //painterResource(id = R.drawable.rounded_account_circle_24)
                 )
             }
             Spacer(modifier = Modifier.height(15.dp))
             if (surnameData != null) {
                 TextField(
-                    labelValue = surnameData.documents[userLoggedIn[0].toInt()].getString("surname").toString(),
+                    labelValue = stringResource(id = R.string.last_name),
+                    textValue = surnameData.documents[userLoggedIn[0].toInt()].getString("surname").toString(),
                     onTextSelected = {
-
+                        /*TODO*/
                     },
-                    //errorStatus = signUpViewModel.signUpUIState.value.lastNameError
+                    errorStatus = true,
+                    db = db
                     //painterResource(id = R.drawable.rounded_account_circle_24)
                 )
             }
             Spacer(modifier = Modifier.height(15.dp))
             if (emailData != null) {
                 TextField(
-                    labelValue = emailData.documents[userLoggedIn[0].toInt()].getString("email").toString(),
+                    labelValue = stringResource(id = R.string.email),
+                    textValue = emailData.documents[userLoggedIn[0].toInt()].getString("email").toString(),
                     onTextSelected = {
-
+                        /*TODO*/
                     },
-                    //errorStatus = signUpViewModel.signUpUIState.value.emailError
+                    errorStatus = true,
+                    db = db
                     //painterResource(id = android.R.drawable.ic_dialog_email)
                 )
             }
@@ -107,39 +112,49 @@ fun EditInfoInit(navController: NavHostController, value: String) {
             Spacer(modifier = Modifier.height(40.dp))
             TextField(
                 labelValue = stringResource(id = R.string.first_name),
+                textValue = stringResource(id = R.string.first_name),
                 onTextSelected = {
 
                 },
+                errorStatus = true,
+                db = FirebaseFirestore.getInstance()
                 //errorStatus = signUpViewModel.signUpUIState.value.firstNameError
                 //painterResource(id = R.drawable.rounded_account_circle_24)
             )
             Spacer(modifier = Modifier.height(15.dp))
             TextField(
                 labelValue = stringResource(id = R.string.last_name),
+                textValue = stringResource(id = R.string.last_name),
                 onTextSelected = {
 
                 },
+                errorStatus = true,
+                db = FirebaseFirestore.getInstance()
                 //errorStatus = signUpViewModel.signUpUIState.value.lastNameError
                 //painterResource(id = R.drawable.rounded_account_circle_24)
             )
             Spacer(modifier = Modifier.height(15.dp))
             TextField(
                 labelValue = stringResource(id = R.string.email),
+                textValue = stringResource(id = R.string.email),
                 onTextSelected = {
 
                 },
+                errorStatus = true,
+                db = FirebaseFirestore.getInstance()
                 //errorStatus = signUpViewModel.signUpUIState.value.emailError
                 //painterResource(id = android.R.drawable.ic_dialog_email)
             )
             Spacer(modifier = Modifier.height(15.dp))
-            PasswordTextField(
+            /*PasswordTextField(
                 labelValue = stringResource(id = R.string.password),
                 onTextSelected = {
 
                 },
+                errorStatus = true
                 //errorStatus = signUpViewModel.signUpUIState.value.passwordError
                 //painterResource(id = android.R.drawable.ic_lock_idle_lock)
-            )
+            )*/
         }
     }
 }

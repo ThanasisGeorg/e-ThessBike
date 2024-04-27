@@ -13,15 +13,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.thanasis.e_thessbike.backend.roomAPI.AppDatabase
-import com.thanasis.e_thessbike.backend.roomAPI.initLocalDB
-import com.thanasis.e_thessbike.backend.signUp.SignUpViewModel
 import com.thanasis.e_thessbike.ui.components.TopBar
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun HomeInit(navController: NavHostController, value: String, userLoggedIn: Array<String>, roomDb: AppDatabase){
-    val TAG = SignUpViewModel::class.simpleName
-
     Scaffold(
         topBar = {
             TopBar(navController, title = value)
@@ -36,7 +32,7 @@ fun HomeInit(navController: NavHostController, value: String, userLoggedIn: Arra
         }
     }
 
-    initLocalDB(userLoggedIn, roomDb)
+    //initLocalDB(userLoggedIn, roomDb)
 }
 
 @Preview

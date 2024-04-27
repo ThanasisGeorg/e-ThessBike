@@ -1,7 +1,5 @@
 package com.thanasis.e_thessbike.backend.signUp
 
-import android.content.ContentValues.TAG
-import android.util.Log
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavHostController
@@ -11,6 +9,7 @@ import com.thanasis.e_thessbike.EThessBikeApp
 import com.thanasis.e_thessbike.backend.Account
 import com.thanasis.e_thessbike.backend.login.LoginViewModel
 import com.thanasis.e_thessbike.backend.roomAPI.AppDatabase
+import com.thanasis.e_thessbike.backend.roomAPI.initLocalDB
 import com.thanasis.e_thessbike.backend.rules.Validator
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
@@ -52,8 +51,9 @@ class SignUpViewModel: ViewModel() {
             }
             is SignUpUIEvent.RegisterBtnClicked -> {
                 userLoggedIn = signUp(db, roomDb)
-                Log.d(TAG, userLoggedIn.toString())
-                //initLocalDB(userLoggedIn, roomDb)
+                //Log.d(TAG, userLoggedIn.toString())
+                initLocalDB(userLoggedIn, roomDb)
+                initLocalDB(userLoggedIn, roomDb)
                 navHostController.navigate(EThessBikeApp.Home.name)
             }
         }
