@@ -78,7 +78,7 @@ fun MenuDrawer(navController: NavHostController, selectedIndex: String, db: Fire
                 ProfileInit(navController, stringResource(id = R.string.profile), userLoggedIn, roomDb)
             }
             "editInfo" -> {
-                EditInfoInit(navController, stringResource(id = R.string.edit_info), db, userLoggedIn)
+                EditInfoInit(navController, stringResource(id = R.string.edit_info), db, roomDb, userLoggedIn)
             }
         }
     }

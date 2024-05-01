@@ -9,7 +9,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -18,21 +20,26 @@ import androidx.navigation.compose.rememberNavController
 import com.google.firebase.firestore.FirebaseFirestore
 import com.thanasis.e_thessbike.R
 import com.thanasis.e_thessbike.backend.initInfo
+import com.thanasis.e_thessbike.backend.onEditEvent
+import com.thanasis.e_thessbike.backend.roomAPI.AppDatabase
+import com.thanasis.e_thessbike.backend.signUp.SignUpUIEvent
+import com.thanasis.e_thessbike.backend.signUp.SignUpUIState
 import com.thanasis.e_thessbike.ui.components.ApplyButton
 import com.thanasis.e_thessbike.ui.components.HeadingText
 import com.thanasis.e_thessbike.ui.components.TextField
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter", "UnrememberedMutableState")
 @Composable
-fun EditInfoInit(navController: NavHostController, value: String, db: FirebaseFirestore, userLoggedIn: Array<String>) {
-    val nameData = initInfo("users_info", userLoggedIn[0].toInt(), "name")
-    val surnameData = initInfo("users_info", userLoggedIn[0].toInt(), "surname")
-    val emailData = initInfo("users_info", userLoggedIn[0].toInt(), "email")
+fun EditInfoInit(navController: NavHostController, value: String, db: FirebaseFirestore, roomDb: AppDatabase, userLoggedIn: Array<String>) {
+    val signUpUIState = mutableStateOf(SignUpUIState())
+    val context = LocalContext.current
+    val nameData = initInfo("users_info", "name")
+    val surnameData = initInfo("users_info", "surname")
 
     Scaffold(
         floatingActionButton = {
             Row {
-                ApplyButton(navController)
+                ApplyButton(navController, signUpUIState, db, context, userLoggedIn)
             }
         }
     ) {
@@ -48,10 +55,9 @@ fun EditInfoInit(navController: NavHostController, value: String, db: FirebaseFi
                     labelValue = stringResource(id = R.string.first_name),
                     textValue = nameData.documents[userLoggedIn[0].toInt()].getString("name").toString(),
                     onTextSelected = {
-                        /*TODO*/
+                        onEditEvent(SignUpUIEvent.FirstNameChanged(it), signUpUIState, navController, db, context, userLoggedIn)
                     },
-                    errorStatus = true,
-                    db = db
+                    errorStatus = true
                     //painterResource(id = R.drawable.rounded_account_circle_24)
                 )
             }
@@ -61,20 +67,19 @@ fun EditInfoInit(navController: NavHostController, value: String, db: FirebaseFi
                     labelValue = stringResource(id = R.string.last_name),
                     textValue = surnameData.documents[userLoggedIn[0].toInt()].getString("surname").toString(),
                     onTextSelected = {
-                        /*TODO*/
+                        onEditEvent(SignUpUIEvent.LastNameChanged(it), signUpUIState, navController, db, context, userLoggedIn)
                     },
-                    errorStatus = true,
-                    db = db
+                    errorStatus = true
                     //painterResource(id = R.drawable.rounded_account_circle_24)
                 )
             }
-            Spacer(modifier = Modifier.height(15.dp))
+            /*Spacer(modifier = Modifier.height(15.dp))
             if (emailData != null) {
                 TextField(
                     labelValue = stringResource(id = R.string.email),
                     textValue = emailData.documents[userLoggedIn[0].toInt()].getString("email").toString(),
                     onTextSelected = {
-                        /*TODO*/
+                        signUpViewModel.onEvent(SignUpUIEvent.EmailChanged(it), navController, db, roomDb)
                     },
                     errorStatus = true,
                     db = db
@@ -82,7 +87,7 @@ fun EditInfoInit(navController: NavHostController, value: String, db: FirebaseFi
                 )
             }
             Spacer(modifier = Modifier.height(15.dp))
-            /*PasswordTextField(
+            PasswordTextField(
                 labelValue = "",
                 onTextSelected = {
 
@@ -99,7 +104,7 @@ fun EditInfoInit(navController: NavHostController, value: String) {
     Scaffold(
         floatingActionButton = {
             Row {
-                ApplyButton(navController)
+                //ApplyButton(navController)
             }
         }
     ) {
@@ -116,8 +121,7 @@ fun EditInfoInit(navController: NavHostController, value: String) {
                 onTextSelected = {
 
                 },
-                errorStatus = true,
-                db = FirebaseFirestore.getInstance()
+                errorStatus = true
                 //errorStatus = signUpViewModel.signUpUIState.value.firstNameError
                 //painterResource(id = R.drawable.rounded_account_circle_24)
             )
@@ -128,8 +132,7 @@ fun EditInfoInit(navController: NavHostController, value: String) {
                 onTextSelected = {
 
                 },
-                errorStatus = true,
-                db = FirebaseFirestore.getInstance()
+                errorStatus = true
                 //errorStatus = signUpViewModel.signUpUIState.value.lastNameError
                 //painterResource(id = R.drawable.rounded_account_circle_24)
             )
@@ -140,8 +143,7 @@ fun EditInfoInit(navController: NavHostController, value: String) {
                 onTextSelected = {
 
                 },
-                errorStatus = true,
-                db = FirebaseFirestore.getInstance()
+                errorStatus = true
                 //errorStatus = signUpViewModel.signUpUIState.value.emailError
                 //painterResource(id = android.R.drawable.ic_dialog_email)
             )

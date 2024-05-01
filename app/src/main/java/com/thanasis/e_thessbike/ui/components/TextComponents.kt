@@ -37,7 +37,6 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.google.firebase.firestore.FirebaseFirestore
 import com.thanasis.e_thessbike.R
 import com.thanasis.e_thessbike.ui.theme.Purple40
 
@@ -96,9 +95,9 @@ fun TextField(labelValue: String, onTextSelected: (String) -> Unit, errorStatus:
 }
 
 @Composable
-fun TextField(labelValue: String, textValue: String, onTextSelected: (String) -> Unit, errorStatus: Boolean = true, db: FirebaseFirestore){
+fun TextField(labelValue: String, textValue: String, onTextSelected: (String) -> Unit, errorStatus: Boolean = true){
     val newValue = remember {
-        mutableStateOf("")
+        mutableStateOf(textValue)
     }
 
     OutlinedTextField(
@@ -108,7 +107,7 @@ fun TextField(labelValue: String, textValue: String, onTextSelected: (String) ->
         keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
         singleLine = true,
         maxLines = 1,
-        value = textValue,
+        value = newValue.value,
         onValueChange = {
             newValue.value = it
             onTextSelected(it)

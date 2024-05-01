@@ -1,5 +1,7 @@
 package com.thanasis.e_thessbike.backend.login
 
+import android.content.Context
+import android.widget.Toast
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavHostController
@@ -16,9 +18,10 @@ import kotlinx.coroutines.tasks.asDeferred
 class LoginViewModel: ViewModel() {
     private var loginUIState = mutableStateOf(LoginUIState())
     private var userLoggedIn = arrayOf("", "")
+    private var allValidationsPassed = mutableStateOf(false)
 
     @OptIn(ExperimentalCoroutinesApi::class)
-    fun onEvent(event: LoginUIEvent, navHostController: NavHostController, db: FirebaseFirestore, roomDb: AppDatabase): Array<String> {
+    fun onEvent(event: LoginUIEvent, navHostController: NavHostController, db: FirebaseFirestore, roomDb: AppDatabase, context: Context): Array<String> {
         when (event) {
             is LoginUIEvent.EmailChanged -> {
                 loginUIState.value = loginUIState.value.copy(
@@ -34,9 +37,11 @@ class LoginViewModel: ViewModel() {
                 val document = getDocument(db).getCompleted()
 
                 userLoggedIn = verifyData(document)
-                initLocalDB(userLoggedIn, roomDb)
-                initLocalDB(userLoggedIn, roomDb)
-                navHostController.navigate(EThessBikeApp.Home.name)
+
+                if (allValidationsPassed.value) {
+                    initLocalDB(userLoggedIn, roomDb)
+                    navHostController.navigate(EThessBikeApp.Home.name)
+                } else Toast.makeText(context, "Login failed. Incorrect email or password", Toast.LENGTH_LONG).show()
             }
         }
 
@@ -62,6 +67,8 @@ class LoginViewModel: ViewModel() {
             if (document.documents[i].getString("email").equals(emailResult) && passwordResult == "123456") {
                 userLoggedIn[0] = i.toString()
                 userLoggedIn[1] = emailResult
+                allValidationsPassed.value = true
+                break
             }
         }
 

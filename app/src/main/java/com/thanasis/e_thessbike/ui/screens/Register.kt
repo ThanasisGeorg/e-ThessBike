@@ -16,6 +16,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -39,6 +40,7 @@ import com.thanasis.e_thessbike.ui.components.buttonComp
 @Composable
 fun registerScreen(navController: NavHostController, db: FirebaseFirestore, roomDb: AppDatabase, signUpViewModel: SignUpViewModel = viewModel()): Array<String> {
     var userLoggedIn by remember { mutableStateOf(arrayOf("", "")) }
+    val context = LocalContext.current
 
     Surface(
         modifier = Modifier
@@ -55,7 +57,7 @@ fun registerScreen(navController: NavHostController, db: FirebaseFirestore, room
             TextField(
                 labelValue = stringResource(id = R.string.first_name),
                 onTextSelected = {
-                    signUpViewModel.onEvent(SignUpUIEvent.FirstNameChanged(it), navController, db, roomDb)
+                    signUpViewModel.onEvent(SignUpUIEvent.FirstNameChanged(it), navController, db, roomDb, context)
                 },
                 errorStatus = signUpViewModel.signUpUIState.value.firstNameError
                 //painterResource(id = R.drawable.rounded_account_circle_24)
@@ -63,7 +65,7 @@ fun registerScreen(navController: NavHostController, db: FirebaseFirestore, room
             TextField(
                 labelValue = stringResource(id = R.string.last_name),
                 onTextSelected = {
-                    signUpViewModel.onEvent(SignUpUIEvent.LastNameChanged(it), navController, db, roomDb)
+                    signUpViewModel.onEvent(SignUpUIEvent.LastNameChanged(it), navController, db, roomDb, context)
                 },
                 errorStatus = signUpViewModel.signUpUIState.value.lastNameError
                 //painterResource(id = R.drawable.rounded_account_circle_24)
@@ -71,7 +73,7 @@ fun registerScreen(navController: NavHostController, db: FirebaseFirestore, room
             TextField(
                 labelValue = stringResource(id = R.string.email),
                 onTextSelected = {
-                    signUpViewModel.onEvent(SignUpUIEvent.EmailChanged(it), navController, db, roomDb)
+                    signUpViewModel.onEvent(SignUpUIEvent.EmailChanged(it), navController, db, roomDb, context)
                 },
                 errorStatus = signUpViewModel.signUpUIState.value.emailError
                 //painterResource(id = android.R.drawable.ic_dialog_email)
@@ -79,14 +81,14 @@ fun registerScreen(navController: NavHostController, db: FirebaseFirestore, room
             PasswordTextField(
                 labelValue = stringResource(id = R.string.password),
                 onTextSelected = {
-                    signUpViewModel.onEvent(SignUpUIEvent.PasswordChanged(it), navController, db, roomDb)
+                    signUpViewModel.onEvent(SignUpUIEvent.PasswordChanged(it), navController, db, roomDb, context)
                 },
                 errorStatus = signUpViewModel.signUpUIState.value.passwordError
                 //painterResource(id = android.R.drawable.ic_lock_idle_lock)
             )
             CheckBox(
                 onCheckedChange = {
-                    signUpViewModel.onEvent(SignUpUIEvent.ConditionsAndPrivacyClicked(it), navController, db, roomDb)
+                    signUpViewModel.onEvent(SignUpUIEvent.ConditionsAndPrivacyClicked(it), navController, db, roomDb, context)
                 }
             )
 
@@ -97,6 +99,7 @@ fun registerScreen(navController: NavHostController, db: FirebaseFirestore, room
                 navController,
                 db,
                 roomDb,
+                context,
                 signUpViewModel,
                 isEnabled = true
             )

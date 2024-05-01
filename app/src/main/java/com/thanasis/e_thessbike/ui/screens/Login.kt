@@ -17,6 +17,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -41,6 +42,7 @@ import com.thanasis.e_thessbike.ui.components.buttonComp
 @Composable
 fun loginScreen(navController: NavHostController, db: FirebaseFirestore, roomDb: AppDatabase, loginViewModel: LoginViewModel = viewModel()): Array<String> {
     var userLoggedIn by remember{ mutableStateOf(arrayOf("", "")) }
+    val context = LocalContext.current
 
     Surface(
         modifier = Modifier
@@ -60,14 +62,14 @@ fun loginScreen(navController: NavHostController, db: FirebaseFirestore, roomDb:
             TextField(
                 labelValue = stringResource(id = R.string.email),
                 onTextSelected = {
-                    loginViewModel.onEvent(LoginUIEvent.EmailChanged(it), navController, db, roomDb)
+                    loginViewModel.onEvent(LoginUIEvent.EmailChanged(it), navController, db, roomDb, context)
                 },
                 //errorStatus = loginViewModel.loginUIState.value.emailError
             )
             PasswordTextField(
                 labelValue = stringResource(id = R.string.password),
                 onTextSelected = {
-                    loginViewModel.onEvent(LoginUIEvent.PasswordChanged(it), navController, db, roomDb)
+                    loginViewModel.onEvent(LoginUIEvent.PasswordChanged(it), navController, db, roomDb, context)
                 },
                 //errorStatus = loginViewModel.loginUIState.value.passwordError
             )
@@ -83,6 +85,7 @@ fun loginScreen(navController: NavHostController, db: FirebaseFirestore, roomDb:
                 navController,
                 db,
                 roomDb,
+                context,
                 loginViewModel,
                 isEnabled = true
             )

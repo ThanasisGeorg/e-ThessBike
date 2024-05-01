@@ -1,5 +1,6 @@
 package com.thanasis.e_thessbike.ui.components
 
+import android.content.Context
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
@@ -33,16 +34,16 @@ import com.thanasis.e_thessbike.ui.theme.Purple40
 import com.thanasis.e_thessbike.ui.theme.Purple80
 
 @Composable
-fun buttonComp(value: String, navController: NavHostController, db: FirebaseFirestore, roomDb: AppDatabase, viewModel: ViewModel, isEnabled: Boolean = false): Array<String> {
+fun buttonComp(value: String, navController: NavHostController, db: FirebaseFirestore, roomDb: AppDatabase, context: Context, viewModel: ViewModel, isEnabled: Boolean = false): Array<String> {
     var userLoggedIn by remember { mutableStateOf(arrayOf("", "")) }
     val TAG: String? = SignUpViewModel::class.simpleName
 
     Button(
         onClick = {
             if (viewModel is LoginViewModel) {
-                userLoggedIn = viewModel.onEvent(LoginUIEvent.LoginBtnClicked, navController, db, roomDb)
+                userLoggedIn = viewModel.onEvent(LoginUIEvent.LoginBtnClicked, navController, db, roomDb, context)
             } else if (viewModel is SignUpViewModel) {
-                userLoggedIn = viewModel.onEvent(SignUpUIEvent.RegisterBtnClicked, navController, db, roomDb)
+                userLoggedIn = viewModel.onEvent(SignUpUIEvent.RegisterBtnClicked, navController, db, roomDb, context)
             }
 
         },

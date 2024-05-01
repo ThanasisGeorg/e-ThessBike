@@ -1,5 +1,8 @@
 package com.thanasis.e_thessbike.backend.signUp
 
+import android.content.Context
+import android.util.Log
+import android.widget.Toast
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavHostController
@@ -16,11 +19,12 @@ import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.tasks.await
 
 class SignUpViewModel: ViewModel() {
+    val TAG: String? = SignUpViewModel::class.simpleName
     var signUpUIState = mutableStateOf(SignUpUIState())
     private var allValidationsPassed = mutableStateOf(false)
     private var userLoggedIn = arrayOf("", "")
 
-    fun onEvent(event: SignUpUIEvent, navHostController: NavHostController, db: FirebaseFirestore, roomDb: AppDatabase): Array<String>{
+    fun onEvent(event: SignUpUIEvent, navHostController: NavHostController, db: FirebaseFirestore, roomDb: AppDatabase, context: Context): Array<String>{
         validateDataWithRules()
         when (event) {
             is SignUpUIEvent.FirstNameChanged -> {
@@ -50,12 +54,18 @@ class SignUpViewModel: ViewModel() {
                 validateDataWithRules()
             }
             is SignUpUIEvent.RegisterBtnClicked -> {
-                userLoggedIn = signUp(db, roomDb)
-                //Log.d(TAG, userLoggedIn.toString())
-                initLocalDB(userLoggedIn, roomDb)
-                initLocalDB(userLoggedIn, roomDb)
-                navHostController.navigate(EThessBikeApp.Home.name)
+                Log.d(TAG, "AllValidationsPassed: ${allValidationsPassed.value}")
+                if (allValidationsPassed.value) {
+                    userLoggedIn = signUp(db, roomDb)
+                    //Log.d(TAG, userLoggedIn.toString())
+                    initLocalDB(userLoggedIn, roomDb)
+                    initLocalDB(userLoggedIn, roomDb)
+                    navHostController.navigate(EThessBikeApp.Home.name)
+                } else {
+                    Toast.makeText(context, "Some field are completed incorrectly!", Toast.LENGTH_LONG).show()
+                }
             }
+            else -> {}
         }
 
         return userLoggedIn

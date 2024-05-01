@@ -95,7 +95,7 @@ fun InfoSection(userLoggedIn: Array<String>) {
 @Composable
 fun FirstName(userLoggedIn: Array<String>) {
     if (userLoggedIn[0].isNotEmpty()) {
-        val data = initInfo("users_info", userLoggedIn[0].toInt(), "name")
+        val data = initInfo("users_info", "name")
 
         if (data != null) {
             Text(
@@ -115,7 +115,7 @@ fun FirstName(userLoggedIn: Array<String>) {
 @Composable
 fun LastName(userLoggedIn: Array<String>) {
     if (userLoggedIn[0].isNotEmpty()) {
-        val data = initInfo("users_info", userLoggedIn[0].toInt(), "surname")
+        val data = initInfo("users_info", "surname")
 
         if (data != null) {
             Text(
@@ -135,7 +135,7 @@ fun LastName(userLoggedIn: Array<String>) {
 @Composable
 fun Email(userLoggedIn: Array<String>) {
     if (userLoggedIn[0].isNotEmpty()) {
-        val data = initInfo("users_info", userLoggedIn[0].toInt(), "email")
+        val data = initInfo("users_info", "email")
 
         if (data != null) {
             Text(

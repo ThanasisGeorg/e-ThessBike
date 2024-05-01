@@ -8,4 +8,5 @@ sealed class SignUpUIEvent {
     data class ConditionsAndPrivacyClicked(val status: Boolean): SignUpUIEvent()
 
     data object RegisterBtnClicked: SignUpUIEvent()
+    data object ApplyBtnClicked: SignUpUIEvent()
 }

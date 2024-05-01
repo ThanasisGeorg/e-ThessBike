@@ -1,5 +1,6 @@
 package com.thanasis.e_thessbike.ui.components
 
+import android.content.Context
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -14,6 +15,7 @@ import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -23,10 +25,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
+import com.google.firebase.firestore.FirebaseFirestore
 import com.thanasis.e_thessbike.EThessBikeApp
 import com.thanasis.e_thessbike.R
 import com.thanasis.e_thessbike.backend.logout.logout
+import com.thanasis.e_thessbike.backend.onEditEvent
+import com.thanasis.e_thessbike.backend.signUp.SignUpUIEvent
+import com.thanasis.e_thessbike.backend.signUp.SignUpUIState
 
 @Composable
 fun EditButton(navHostController: NavHostController) {
@@ -47,10 +52,10 @@ fun LogoutButton(navController: NavHostController) {
 }
 
 @Composable
-fun ApplyButton(navController: NavHostController) {
+fun ApplyButton(navController: NavHostController, signUpUIState: MutableState<SignUpUIState>, db: FirebaseFirestore, context: Context, userLoggedIn: Array<String>) {
     FloatingActionButton(
         onClick = {
-            navController.navigate(EThessBikeApp.Profile.name)
+            onEditEvent(SignUpUIEvent.ApplyBtnClicked, signUpUIState, navController, db, context, userLoggedIn)
         },
         content = { Icon(Icons.Filled.Check, "Floating action button.") }
     )
@@ -91,6 +96,6 @@ fun ButtonContent(icon: ImageVector, value: String, horizontal: Int) {
 @Preview
 @Composable
 fun ButtonPreview() {
-    val navController = rememberNavController()
-    ApplyButton(navController)
+    //val navController = rememberNavController()
+    //ApplyButton(navController)
 }
