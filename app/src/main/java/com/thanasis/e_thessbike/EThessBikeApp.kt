@@ -24,7 +24,9 @@ enum class EThessBikeApp(@StyleRes val title: Int) {
     Register(title = R.string.register),
     Login(title = R.string.login),
     Settings(title = R.string.settings),
-    EditInfo(title = R.string.edit_info)
+    Search(title = R.string.search),
+    EditInfo(title = R.string.edit_info),
+    AddBike(title = R.string.add_bike)
 }
 
 @Composable
@@ -53,6 +55,12 @@ fun MainApp(db: FirebaseFirestore, roomDb: AppDatabase, darkTheme: Boolean, onTh
             }
             composable(EThessBikeApp.EditInfo.name)  {
                 MenuDrawer(navController, selectedIndex = "editInfo", db, roomDb, darkTheme, onThemeUpdated, userLoggedIn)
+            }
+            composable(EThessBikeApp.Search.name)  {
+                MenuDrawer(navController, selectedIndex = "search", db, roomDb, darkTheme, onThemeUpdated, userLoggedIn)
+            }
+            composable(EThessBikeApp.AddBike.name)  {
+                MenuDrawer(navController, selectedIndex = "add_bike", db, roomDb, darkTheme, onThemeUpdated, userLoggedIn)
             }
         }
     }

@@ -3,6 +3,7 @@ package com.thanasis.e_thessbike.ui.components
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
@@ -20,9 +21,11 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.thanasis.e_thessbike.EThessBikeApp
 import com.thanasis.e_thessbike.R
 import com.thanasis.e_thessbike.backend.roomAPI.AppDatabase
+import com.thanasis.e_thessbike.ui.screens.AddBikeInit
 import com.thanasis.e_thessbike.ui.screens.EditInfoInit
 import com.thanasis.e_thessbike.ui.screens.HomeInit
 import com.thanasis.e_thessbike.ui.screens.ProfileInit
+import com.thanasis.e_thessbike.ui.screens.SearchInit
 import com.thanasis.e_thessbike.ui.screens.SettingsInit
 
 @Composable
@@ -45,6 +48,16 @@ fun HomeItem(navHostController: NavHostController) {
 }
 
 @Composable
+fun SearchItem(navHostController: NavHostController) {
+    NavigationDrawerItem(
+        label = { Text(text = stringResource(id = R.string.search)) },
+        selected = false,
+        onClick = { navHostController.navigate(EThessBikeApp.Home.name) },
+        icon = { Icon(Icons.Filled.Search, contentDescription = "Home") }
+    )
+}
+
+@Composable
 fun SettingsItem(navHostController: NavHostController) {
     NavigationDrawerItem(
         label = { Text(text = stringResource(id = R.string.settings)) },
@@ -55,30 +68,36 @@ fun SettingsItem(navHostController: NavHostController) {
 }
 
 @Composable
-fun MenuDrawer(navController: NavHostController, selectedIndex: String, db: FirebaseFirestore, roomDb: AppDatabase, darkTheme: Boolean, onThemeUpdated: () -> Unit, userLoggedIn: Array<String>) {
-    // [START android_compose_layout_material_modal_drawer]
+fun MenuDrawer(navHostController: NavHostController, selectedIndex: String, db: FirebaseFirestore, roomDb: AppDatabase, darkTheme: Boolean, onThemeUpdated: () -> Unit, userLoggedIn: Array<String>) {
     ModalNavigationDrawer(
         drawerContent = {
             ModalDrawerSheet {
                 MenuTitle()
                 HorizontalDivider(thickness = 2.dp)
-                HomeItem(navController)
-                SettingsItem(navController)
+                HomeItem(navHostController)
+                SearchItem(navHostController)
+                SettingsItem(navHostController)
             }
         }
     ) {
         when (selectedIndex) {
             "home" -> {
-                HomeInit(navController, stringResource(id = R.string.app_name), userLoggedIn, roomDb)
+                HomeInit(navHostController, stringResource(id = R.string.app_name), userLoggedIn, roomDb)
+            }
+            "search" -> {
+                SearchInit(navHostController, stringResource(id = R.string.search))
             }
             "settings" -> {
-                SettingsInit(navController, stringResource(id = R.string.settings), roomDb, darkTheme, onThemeUpdated)
+                SettingsInit(navHostController, stringResource(id = R.string.settings), roomDb, darkTheme, onThemeUpdated)
             }
             "profile" -> {
-                ProfileInit(navController, stringResource(id = R.string.profile), userLoggedIn, roomDb)
+                ProfileInit(navHostController, stringResource(id = R.string.profile), userLoggedIn, roomDb)
             }
             "editInfo" -> {
-                EditInfoInit(navController, stringResource(id = R.string.edit_info), db, roomDb, userLoggedIn)
+                EditInfoInit(navHostController, stringResource(id = R.string.edit_info), db, roomDb, userLoggedIn)
+            }
+            "add_bike" -> {
+                AddBikeInit(navHostController, stringResource(id = R.string.add_bike), db, userLoggedIn)
             }
         }
     }

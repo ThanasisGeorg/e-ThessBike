@@ -62,9 +62,9 @@ fun ApplyButton(navController: NavHostController, signUpUIState: MutableState<Si
 }
 
 @Composable
-fun AddButton() {
+fun AddButton(navHostController: NavHostController) {
     ExtendedFloatingActionButton(
-        onClick = { /*TODO*/ },
+        onClick = { navHostController.navigate(EThessBikeApp.AddBike.name) },
         content = { ButtonContent(Icons.Filled.Add, stringResource(id = R.string.add_bike), 15) },
     )
 }

@@ -5,6 +5,10 @@ import com.thanasis.e_thessbike.backend.signUp.SignUpViewModel
 object Validator {
     private val TAG = SignUpViewModel::class.simpleName
 
+    fun validateBrandName(brandName: String): Boolean {
+        return brandName.isNotEmpty() && brandName.length >= 4
+    }
+
     fun validateFirstName(fName: String): Boolean {
         return fName.isNotEmpty() && fName.length >= 4
     }

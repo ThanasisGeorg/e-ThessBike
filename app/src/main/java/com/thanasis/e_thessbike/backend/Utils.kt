@@ -117,7 +117,6 @@ fun onEditEvent(event: SignUpUIEvent, signUpUIState: MutableState<SignUpUIState>
         }
         else -> {}
     }
-
 }
 
 fun validateData(signUpUIState: MutableState<SignUpUIState>): Boolean {

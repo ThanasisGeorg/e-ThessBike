@@ -32,7 +32,7 @@ fun ProfileInit(navController: NavHostController, value: String, userLoggedIn: A
         },
         floatingActionButton = {
             Row {
-                AddButton()
+                AddButton(navController)
                 Spacer(modifier = Modifier.padding(5.dp, 0.dp))
                 RemoveButton()
                 Spacer(modifier = Modifier.padding(5.dp, 0.dp))

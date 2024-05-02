@@ -26,5 +26,8 @@
     <string name="dark" translatable="false">Dark</string>
     <string name="theme" translatable="false">Theme</string>
     <string name="language" translatable="false">Language</string>
-    <string name="edit_info">Edit your information</string>
+    <string name="edit_info" translatable="false">Edit your information</string>
+    <string name="search" translatable="false">Search</string>
+    <string name="brand_name" translatable="false">Brand name</string>
+    <string name="color" translatable="false">Color</string>
 </resources>
