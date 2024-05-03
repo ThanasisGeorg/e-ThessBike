@@ -18,6 +18,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.thanasis.e_thessbike.R
 import com.thanasis.e_thessbike.backend.addBike.AddBikeUIEvent
 import com.thanasis.e_thessbike.backend.addBike.AddBikeUIViewModel
+import com.thanasis.e_thessbike.ui.components.ApplyButton
 import com.thanasis.e_thessbike.ui.components.HeadingText
 import com.thanasis.e_thessbike.ui.components.TextField
 
@@ -27,8 +28,8 @@ fun AddBikeInit(navHostController: NavHostController, value: String, db: Firebas
     val context = LocalContext.current
 
     Scaffold(
-        topBar = {
-            //TopBar(navHostController, title = value)
+        bottomBar = {
+            ApplyButton(navHostController, addBikeUIViewModel, db, context, userLoggedIn)
         }
     ) {
         Column(

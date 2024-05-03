@@ -28,6 +28,8 @@ import androidx.navigation.NavHostController
 import com.google.firebase.firestore.FirebaseFirestore
 import com.thanasis.e_thessbike.EThessBikeApp
 import com.thanasis.e_thessbike.R
+import com.thanasis.e_thessbike.backend.addBike.AddBikeUIEvent
+import com.thanasis.e_thessbike.backend.addBike.AddBikeUIViewModel
 import com.thanasis.e_thessbike.backend.logout.logout
 import com.thanasis.e_thessbike.backend.onEditEvent
 import com.thanasis.e_thessbike.backend.signUp.SignUpUIEvent
@@ -56,6 +58,16 @@ fun ApplyButton(navController: NavHostController, signUpUIState: MutableState<Si
     FloatingActionButton(
         onClick = {
             onEditEvent(SignUpUIEvent.ApplyBtnClicked, signUpUIState, navController, db, context, userLoggedIn)
+        },
+        content = { Icon(Icons.Filled.Check, "Floating action button.") }
+    )
+}
+
+@Composable
+fun ApplyButton(navController: NavHostController, addBikeUIViewModel: AddBikeUIViewModel, db: FirebaseFirestore, context: Context, userLoggedIn: Array<String>) {
+    FloatingActionButton(
+        onClick = {
+            addBikeUIViewModel.onAddEvent(AddBikeUIEvent.AddBtnClicked, navController, db, context, userLoggedIn)
         },
         content = { Icon(Icons.Filled.Check, "Floating action button.") }
     )

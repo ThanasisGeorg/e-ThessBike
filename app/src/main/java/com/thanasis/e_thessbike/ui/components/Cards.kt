@@ -24,6 +24,23 @@ import com.thanasis.e_thessbike.R
 import com.thanasis.e_thessbike.backend.initInfo
 
 @Composable
+fun BikeCard(userLoggedIn: Array<String>) {
+    Card(
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceVariant,
+        ),
+        modifier = Modifier
+            .size(width = 350.dp, height = 150.dp)
+    ) {
+        Column {
+            Row {
+
+            }
+        }
+    }
+}
+
+@Composable
 fun ProfileCard(userLoggedIn: Array<String>) {
     Card(
         colors = CardDefaults.cardColors(

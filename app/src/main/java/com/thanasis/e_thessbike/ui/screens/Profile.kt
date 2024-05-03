@@ -8,15 +8,14 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.thanasis.e_thessbike.backend.roomAPI.AppDatabase
 import com.thanasis.e_thessbike.ui.components.AddButton
+import com.thanasis.e_thessbike.ui.components.BikeCard
 import com.thanasis.e_thessbike.ui.components.EditButton
 import com.thanasis.e_thessbike.ui.components.LogoutButton
 import com.thanasis.e_thessbike.ui.components.ProfileCard
@@ -25,7 +24,7 @@ import com.thanasis.e_thessbike.ui.components.TopBar
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun ProfileInit(navController: NavHostController, value: String, userLoggedIn: Array<String>, roomDb: AppDatabase) {
+fun ProfileInit(navController: NavHostController, value: String, userLoggedIn: Array<String>) {
     Scaffold(
         topBar = {
             TopBar(navController, title = value)
@@ -53,7 +52,15 @@ fun ProfileInit(navController: NavHostController, value: String, userLoggedIn: A
             }
             Spacer(modifier = Modifier.height(15.dp))
             Scaffold {
-                Text(text = "Hello World")
+                Column {
+                    BikeCard(userLoggedIn)
+                    Spacer(modifier = Modifier.height(10.dp))
+                    BikeCard(userLoggedIn)
+                    Spacer(modifier = Modifier.height(10.dp))
+                    BikeCard(userLoggedIn)
+                    Spacer(modifier = Modifier.height(10.dp))
+                    BikeCard(userLoggedIn)
+                }
             }
         }
     }
@@ -63,5 +70,5 @@ fun ProfileInit(navController: NavHostController, value: String, userLoggedIn: A
 @Composable
 fun ProfileInitPreview() {
     val navController = rememberNavController()
-    //ProfileInit(navController, "Profile")
+    ProfileInit(navController, "Profile", userLoggedIn = arrayOf("", ""))
 }

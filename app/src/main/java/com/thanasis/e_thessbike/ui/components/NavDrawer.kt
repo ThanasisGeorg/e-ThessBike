@@ -91,7 +91,7 @@ fun MenuDrawer(navHostController: NavHostController, selectedIndex: String, db: 
                 SettingsInit(navHostController, stringResource(id = R.string.settings), roomDb, darkTheme, onThemeUpdated)
             }
             "profile" -> {
-                ProfileInit(navHostController, stringResource(id = R.string.profile), userLoggedIn, roomDb)
+                ProfileInit(navHostController, stringResource(id = R.string.profile), userLoggedIn)
             }
             "editInfo" -> {
                 EditInfoInit(navHostController, stringResource(id = R.string.edit_info), db, roomDb, userLoggedIn)
