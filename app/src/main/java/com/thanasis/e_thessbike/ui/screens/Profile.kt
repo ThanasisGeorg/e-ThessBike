@@ -1,25 +1,28 @@
 package com.thanasis.e_thessbike.ui.screens
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.thanasis.e_thessbike.ui.components.AddButton
-import com.thanasis.e_thessbike.ui.components.BikeCard
+import com.thanasis.e_thessbike.R
+import com.thanasis.e_thessbike.ui.components.ButtonComp
 import com.thanasis.e_thessbike.ui.components.EditButton
 import com.thanasis.e_thessbike.ui.components.LogoutButton
 import com.thanasis.e_thessbike.ui.components.ProfileCard
-import com.thanasis.e_thessbike.ui.components.RemoveButton
 import com.thanasis.e_thessbike.ui.components.TopBar
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -31,10 +34,6 @@ fun ProfileInit(navController: NavHostController, value: String, userLoggedIn: A
         },
         floatingActionButton = {
             Row {
-                AddButton(navController)
-                Spacer(modifier = Modifier.padding(5.dp, 0.dp))
-                RemoveButton()
-                Spacer(modifier = Modifier.padding(5.dp, 0.dp))
                 LogoutButton(navController)
             }
         }
@@ -51,15 +50,28 @@ fun ProfileInit(navController: NavHostController, value: String, userLoggedIn: A
                 ProfileCard(userLoggedIn)
             }
             Spacer(modifier = Modifier.height(15.dp))
-            Scaffold {
-                Column {
-                    BikeCard(userLoggedIn)
-                    Spacer(modifier = Modifier.height(10.dp))
-                    BikeCard(userLoggedIn)
-                    Spacer(modifier = Modifier.height(10.dp))
-                    BikeCard(userLoggedIn)
-                    Spacer(modifier = Modifier.height(10.dp))
-                    BikeCard(userLoggedIn)
+            HorizontalDivider()
+            Scaffold(
+                modifier = Modifier.padding(20.dp)
+            ) {
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center,
+                    modifier = Modifier.padding(0.dp, 35.dp)
+                ) {
+                    Row(
+                        horizontalArrangement = Arrangement.Center
+                    ) {
+                        ButtonComp(stringResource(id = R.string.bike_list), navController)
+                        Spacer(modifier = Modifier.padding(5.dp, 0.dp))
+                        ButtonComp(stringResource(id = R.string.favourites), navController)
+                    }
+                    Spacer(modifier = Modifier.padding(0.dp, 5.dp))
+                    Row(
+                        horizontalArrangement = Arrangement.Center
+                    ) {
+                        ButtonComp(stringResource(id = R.string.available_bikes), navController)
+                    }
                 }
             }
         }

@@ -35,7 +35,7 @@ import com.thanasis.e_thessbike.ui.components.HeadingText
 import com.thanasis.e_thessbike.ui.components.NormalText
 import com.thanasis.e_thessbike.ui.components.PasswordTextField
 import com.thanasis.e_thessbike.ui.components.TextField
-import com.thanasis.e_thessbike.ui.components.buttonComp
+import com.thanasis.e_thessbike.ui.components.loginRegisterButtonComp
 
 @Composable
 fun registerScreen(navController: NavHostController, db: FirebaseFirestore, roomDb: AppDatabase, signUpViewModel: SignUpViewModel = viewModel()): Array<String> {
@@ -94,7 +94,7 @@ fun registerScreen(navController: NavHostController, db: FirebaseFirestore, room
 
             Spacer(modifier = Modifier.height(80.dp))
 
-             userLoggedIn = buttonComp(
+             userLoggedIn = loginRegisterButtonComp(
                 value = stringResource(id = R.string.register),
                 navController,
                 db,

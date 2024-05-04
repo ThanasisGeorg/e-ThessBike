@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -20,11 +21,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.google.firebase.firestore.FirebaseFirestore
+import com.thanasis.e_thessbike.EThessBikeApp
 import com.thanasis.e_thessbike.backend.login.LoginUIEvent
 import com.thanasis.e_thessbike.backend.login.LoginViewModel
 import com.thanasis.e_thessbike.backend.roomAPI.AppDatabase
@@ -34,7 +38,7 @@ import com.thanasis.e_thessbike.ui.theme.Purple40
 import com.thanasis.e_thessbike.ui.theme.Purple80
 
 @Composable
-fun buttonComp(value: String, navController: NavHostController, db: FirebaseFirestore, roomDb: AppDatabase, context: Context, viewModel: ViewModel, isEnabled: Boolean = false): Array<String> {
+fun loginRegisterButtonComp(value: String, navController: NavHostController, db: FirebaseFirestore, roomDb: AppDatabase, context: Context, viewModel: ViewModel, isEnabled: Boolean = false): Array<String> {
     var userLoggedIn by remember { mutableStateOf(arrayOf("", "")) }
     val TAG: String? = SignUpViewModel::class.simpleName
 
@@ -74,3 +78,42 @@ fun buttonComp(value: String, navController: NavHostController, db: FirebaseFire
 
     return userLoggedIn
 }
+
+@Composable
+fun ButtonComp(value: String, navHostController: NavHostController) {
+    Button(
+        onClick = {
+            if (value == "My bike list") navHostController.navigate(EThessBikeApp.MyBikeList.name)
+            else navHostController.navigate(EThessBikeApp.AllBikeList.name)
+        },
+        modifier = Modifier
+            .size(160.dp, 100.dp)
+            .heightIn(48.dp)
+            .background(
+                color = Purple40,
+                shape = RoundedCornerShape(30.dp)
+            )
+            .fillMaxWidth(),
+        contentPadding = PaddingValues(),
+        colors = ButtonDefaults.buttonColors(Color.Transparent)
+    ) {
+        Box(
+            modifier = Modifier
+                .heightIn(48.dp),
+            contentAlignment = Alignment.Center
+        ) {
+            Text(
+                text = value,
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold
+            )
+        }
+    }
+}
+
+@Preview
+@Composable
+fun ButtonCompPreview() {
+    ButtonComp(value = "", navHostController = rememberNavController())
+}
+

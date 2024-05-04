@@ -28,7 +28,7 @@ fun AddBikeInit(navHostController: NavHostController, value: String, db: Firebas
     val context = LocalContext.current
 
     Scaffold(
-        bottomBar = {
+        floatingActionButton = {
             ApplyButton(navHostController, addBikeUIViewModel, db, context, userLoggedIn)
         }
     ) {
@@ -56,6 +56,4 @@ fun AddBikeInit(navHostController: NavHostController, value: String, db: Firebas
             )
         }
     }
-
-    //initLocalDB(userLoggedIn, roomDb)
 }

@@ -9,6 +9,10 @@ object Validator {
         return brandName.isNotEmpty() && brandName.length >= 4
     }
 
+    fun validateColor(color: String): Boolean {
+        return color.isNotEmpty() && (color == "blue" || color == "Blue" || color == "red" || color == "Red" || color == "black" || color == "Black" || color == "green" || color == "Green")
+    }
+
     fun validateFirstName(fName: String): Boolean {
         return fName.isNotEmpty() && fName.length >= 4
     }

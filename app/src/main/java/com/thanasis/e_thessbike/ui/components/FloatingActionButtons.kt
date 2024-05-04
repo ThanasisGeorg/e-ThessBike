@@ -9,15 +9,23 @@ import androidx.compose.material.icons.automirrored.filled.Logout
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.Remove
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconToggleButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -34,6 +42,7 @@ import com.thanasis.e_thessbike.backend.logout.logout
 import com.thanasis.e_thessbike.backend.onEditEvent
 import com.thanasis.e_thessbike.backend.signUp.SignUpUIEvent
 import com.thanasis.e_thessbike.backend.signUp.SignUpUIState
+import com.thanasis.e_thessbike.ui.theme.Purple40
 
 @Composable
 fun EditButton(navHostController: NavHostController) {
@@ -87,6 +96,30 @@ fun RemoveButton() {
         onClick = { /*TODO*/ },
         content = { ButtonContent(Icons.Filled.Remove, stringResource(id = R.string.remove_bike), 30) },
     )
+}
+
+@Composable
+fun FavouriteButton() {
+    var isFavourite by remember { mutableStateOf(false) }
+
+    IconToggleButton(
+        checked = isFavourite,
+        onCheckedChange = {
+            isFavourite = !isFavourite
+        }
+    ) {
+        Icon(
+            tint = Purple40,
+            modifier = Modifier.graphicsLayer {
+                scaleX = 1.3f
+                scaleY = 1.3f
+            },
+            imageVector =
+                if (isFavourite) Icons.Filled.Favorite
+                else Icons.Default.FavoriteBorder,
+            contentDescription = null
+        )
+    }
 }
 
 @Composable

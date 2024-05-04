@@ -37,7 +37,7 @@ import com.thanasis.e_thessbike.ui.components.NormalText
 import com.thanasis.e_thessbike.ui.components.PasswordTextField
 import com.thanasis.e_thessbike.ui.components.TextField
 import com.thanasis.e_thessbike.ui.components.UnderLinedText
-import com.thanasis.e_thessbike.ui.components.buttonComp
+import com.thanasis.e_thessbike.ui.components.loginRegisterButtonComp
 
 @Composable
 fun loginScreen(navController: NavHostController, db: FirebaseFirestore, roomDb: AppDatabase, loginViewModel: LoginViewModel = viewModel()): Array<String> {
@@ -80,7 +80,7 @@ fun loginScreen(navController: NavHostController, db: FirebaseFirestore, roomDb:
 
             Spacer(modifier = Modifier.heightIn(20.dp))
 
-            userLoggedIn = buttonComp(
+            userLoggedIn = loginRegisterButtonComp(
                 value = stringResource(id = R.string.login),
                 navController,
                 db,

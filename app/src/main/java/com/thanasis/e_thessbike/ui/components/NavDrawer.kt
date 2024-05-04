@@ -22,8 +22,11 @@ import com.thanasis.e_thessbike.EThessBikeApp
 import com.thanasis.e_thessbike.R
 import com.thanasis.e_thessbike.backend.roomAPI.AppDatabase
 import com.thanasis.e_thessbike.ui.screens.AddBikeInit
+import com.thanasis.e_thessbike.ui.screens.AvailableBikeListInit
 import com.thanasis.e_thessbike.ui.screens.EditInfoInit
+import com.thanasis.e_thessbike.ui.screens.FavouritesInit
 import com.thanasis.e_thessbike.ui.screens.HomeInit
+import com.thanasis.e_thessbike.ui.screens.MyBikeListInit
 import com.thanasis.e_thessbike.ui.screens.ProfileInit
 import com.thanasis.e_thessbike.ui.screens.SearchInit
 import com.thanasis.e_thessbike.ui.screens.SettingsInit
@@ -98,6 +101,15 @@ fun MenuDrawer(navHostController: NavHostController, selectedIndex: String, db: 
             }
             "add_bike" -> {
                 AddBikeInit(navHostController, stringResource(id = R.string.add_bike), db, userLoggedIn)
+            }
+            "my_bike_list" -> {
+                MyBikeListInit(navHostController, stringResource(id = R.string.bike_list), userLoggedIn)
+            }
+            "favourites" -> {
+                FavouritesInit(navHostController, stringResource(id = R.string.favourites), userLoggedIn)
+            }
+            "available_bikes" -> {
+                AvailableBikeListInit(navHostController, stringResource(id = R.string.available_bikes))
             }
         }
     }
