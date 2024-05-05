@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.navigation.NavHostController
 import com.google.firebase.firestore.FirebaseFirestore
 import com.thanasis.e_thessbike.EThessBikeApp
+import com.thanasis.e_thessbike.NotificationService
 import com.thanasis.e_thessbike.backend.rules.Validator
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.tasks.await
@@ -15,7 +16,14 @@ class AddBikeUIViewModel: ViewModel() {
     private var addBikeUIState = mutableStateOf(AddBikeUIState())
     private var allValidationsPassed = mutableStateOf(false)
 
-    fun onAddEvent(event: AddBikeUIEvent, navHostController: NavHostController, db: FirebaseFirestore, context: Context, userLoggedIn: Array<String>) {
+    fun onAddEvent(
+        event: AddBikeUIEvent,
+        navHostController: NavHostController,
+        db: FirebaseFirestore,
+        context: Context,
+        userLoggedIn: Array<String>,
+        notificationService: NotificationService
+    ) {
         validateWithRules()
         when (event) {
             is AddBikeUIEvent.BrandNameChanged -> {
@@ -28,9 +36,15 @@ class AddBikeUIViewModel: ViewModel() {
                     color = event.color
                 )
             }
+            is AddBikeUIEvent.LocationChanged -> {
+                addBikeUIState.value = addBikeUIState.value.copy(
+                    location = event.location
+                )
+            }
             is AddBikeUIEvent.AddBtnClicked -> {
                 if (allValidationsPassed.value) {
                     createBike(db, userLoggedIn)
+                    notificationService.showBasicNotification()
                     navHostController.navigate(EThessBikeApp.MyBikeList.name)
                 } else {
                     Toast.makeText(context, "Some field are completed incorrectly! Make sure you pick a valid color", Toast.LENGTH_LONG).show()
@@ -55,6 +69,7 @@ class AddBikeUIViewModel: ViewModel() {
         val bike = hashMapOf(
             "brand_name" to addBikeUIState.value.brandName,
             "color" to addBikeUIState.value.color,
+            "location" to addBikeUIState.value.location,
             "email" to userLoggedIn[1]
         )
 

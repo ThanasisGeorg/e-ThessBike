@@ -74,6 +74,8 @@ dependencies {
     implementation("com.google.firebase:firebase-database:20.3.1")
     implementation("com.google.firebase:firebase-firestore:24.11.1")
 
+    implementation("com.google.accompanist:accompanist-permissions:0.35.0-alpha")
+
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("androidx.navigation:navigation-compose:$nav_version")
     implementation("androidx.core:core-ktx:1.13.0")

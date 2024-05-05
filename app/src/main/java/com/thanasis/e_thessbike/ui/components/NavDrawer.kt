@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.google.firebase.firestore.FirebaseFirestore
 import com.thanasis.e_thessbike.EThessBikeApp
+import com.thanasis.e_thessbike.NotificationService
 import com.thanasis.e_thessbike.R
 import com.thanasis.e_thessbike.backend.roomAPI.AppDatabase
 import com.thanasis.e_thessbike.ui.screens.AddBikeInit
@@ -71,7 +72,16 @@ fun SettingsItem(navHostController: NavHostController) {
 }
 
 @Composable
-fun MenuDrawer(navHostController: NavHostController, selectedIndex: String, db: FirebaseFirestore, roomDb: AppDatabase, darkTheme: Boolean, onThemeUpdated: () -> Unit, userLoggedIn: Array<String>) {
+fun MenuDrawer(
+    navHostController: NavHostController,
+    selectedIndex: String,
+    db: FirebaseFirestore,
+    roomDb: AppDatabase,
+    darkTheme: Boolean,
+    onThemeUpdated: () -> Unit,
+    userLoggedIn: Array<String>,
+    notificationService: NotificationService
+) {
     ModalNavigationDrawer(
         drawerContent = {
             ModalDrawerSheet {
@@ -100,7 +110,7 @@ fun MenuDrawer(navHostController: NavHostController, selectedIndex: String, db: 
                 EditInfoInit(navHostController, stringResource(id = R.string.edit_info), db, roomDb, userLoggedIn)
             }
             "add_bike" -> {
-                AddBikeInit(navHostController, stringResource(id = R.string.add_bike), db, userLoggedIn)
+                AddBikeInit(navHostController, stringResource(id = R.string.add_bike), db, userLoggedIn, notificationService)
             }
             "my_bike_list" -> {
                 MyBikeListInit(navHostController, stringResource(id = R.string.bike_list), userLoggedIn)

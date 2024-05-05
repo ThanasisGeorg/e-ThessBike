@@ -13,6 +13,10 @@ object Validator {
         return color.isNotEmpty() && (color == "blue" || color == "Blue" || color == "red" || color == "Red" || color == "black" || color == "Black" || color == "green" || color == "Green")
     }
 
+    fun validateLocation(location: String): Boolean {
+        return location.isNotEmpty() && (location == "Sikies" || location == "Neapoli" || location == "Stavroupoli" || location == "Evosmos" || location == "Polichni" || location == "Thessaloniki" || location == "Kalamaria" || location == "Meteora")
+    }
+
     fun validateFirstName(fName: String): Boolean {
         return fName.isNotEmpty() && fName.length >= 4
     }

@@ -35,4 +35,5 @@
     <string name="bike_list" translatable="false">My bike list</string>
     <string name="favourites" translatable="false">My favourites</string>
     <string name="available_bikes" translatable="false">All available bikes</string>
+    <string name="location" translatable="false">Available to rent from:</string>
 </resources>

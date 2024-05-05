@@ -33,7 +33,13 @@ enum class EThessBikeApp(@StyleRes val title: Int) {
 }
 
 @Composable
-fun MainApp(db: FirebaseFirestore, roomDb: AppDatabase, darkTheme: Boolean, onThemeUpdated: () -> Unit) {
+fun MainApp(
+    db: FirebaseFirestore,
+    roomDb: AppDatabase,
+    darkTheme: Boolean,
+    onThemeUpdated: () -> Unit,
+    notificationService: NotificationService
+) {
     val navController = rememberNavController()
     var userLoggedIn by remember { mutableStateOf(arrayOf("", "")) }
 
@@ -48,33 +54,111 @@ fun MainApp(db: FirebaseFirestore, roomDb: AppDatabase, darkTheme: Boolean, onTh
                 userLoggedIn = loginScreen(navController, db, roomDb)
             }
             composable(EThessBikeApp.Home.name) {
-                MenuDrawer(navController, selectedIndex = "home", db, roomDb, darkTheme, onThemeUpdated, userLoggedIn)
+                MenuDrawer(
+                    navController,
+                    selectedIndex = "home",
+                    db,
+                    roomDb,
+                    darkTheme,
+                    onThemeUpdated,
+                    userLoggedIn,
+                    notificationService
+                )
             }
             composable(EThessBikeApp.Settings.name) {
-                MenuDrawer(navController, selectedIndex = "settings", db, roomDb, darkTheme, onThemeUpdated, userLoggedIn)
+                MenuDrawer(
+                    navController,
+                    selectedIndex = "settings",
+                    db,
+                    roomDb,
+                    darkTheme,
+                    onThemeUpdated,
+                    userLoggedIn,
+                    notificationService
+                )
             }
             composable(EThessBikeApp.Profile.name) {
-                MenuDrawer(navController, selectedIndex = "profile", db, roomDb, darkTheme, onThemeUpdated, userLoggedIn)
+                MenuDrawer(
+                    navController,
+                    selectedIndex = "profile",
+                    db,
+                    roomDb,
+                    darkTheme,
+                    onThemeUpdated,
+                    userLoggedIn,
+                    notificationService
+                )
             }
             composable(EThessBikeApp.EditInfo.name)  {
-                MenuDrawer(navController, selectedIndex = "editInfo", db, roomDb, darkTheme, onThemeUpdated, userLoggedIn)
+                MenuDrawer(
+                    navController,
+                    selectedIndex = "editInfo",
+                    db,
+                    roomDb,
+                    darkTheme,
+                    onThemeUpdated,
+                    userLoggedIn,
+                    notificationService
+                )
             }
             composable(EThessBikeApp.Search.name)  {
-                MenuDrawer(navController, selectedIndex = "search", db, roomDb, darkTheme, onThemeUpdated, userLoggedIn)
+                MenuDrawer(
+                    navController,
+                    selectedIndex = "search",
+                    db,
+                    roomDb,
+                    darkTheme,
+                    onThemeUpdated,
+                    userLoggedIn,
+                    notificationService
+                )
             }
             composable(EThessBikeApp.AddBike.name)  {
-                MenuDrawer(navController, selectedIndex = "add_bike", db, roomDb, darkTheme, onThemeUpdated, userLoggedIn)
+                MenuDrawer(
+                    navController,
+                    selectedIndex = "add_bike",
+                    db, roomDb,
+                    darkTheme,
+                    onThemeUpdated,
+                    userLoggedIn,
+                    notificationService)
             }
             composable(EThessBikeApp.MyBikeList.name)  {
-                MenuDrawer(navController, selectedIndex = "my_bike_list", db, roomDb, darkTheme, onThemeUpdated, userLoggedIn)
+                MenuDrawer(
+                    navController,
+                    selectedIndex = "my_bike_list",
+                    db,
+                    roomDb,
+                    darkTheme,
+                    onThemeUpdated,
+                    userLoggedIn,
+                    notificationService
+                )
             }
             composable(EThessBikeApp.Favourites.name)  {
-                MenuDrawer(navController, selectedIndex = "favourites", db, roomDb, darkTheme, onThemeUpdated, userLoggedIn)
+                MenuDrawer(
+                    navController,
+                    selectedIndex = "favourites",
+                    db,
+                    roomDb,
+                    darkTheme,
+                    onThemeUpdated,
+                    userLoggedIn,
+                    notificationService
+                )
             }
             composable(EThessBikeApp.AllBikeList.name)  {
-                MenuDrawer(navController, selectedIndex = "available_bikes", db, roomDb, darkTheme, onThemeUpdated, userLoggedIn)
+                MenuDrawer(
+                    navController,
+                    selectedIndex = "available_bikes",
+                    db,
+                    roomDb,
+                    darkTheme,
+                    onThemeUpdated,
+                    userLoggedIn,
+                    notificationService
+                )
             }
         }
     }
 }
-
