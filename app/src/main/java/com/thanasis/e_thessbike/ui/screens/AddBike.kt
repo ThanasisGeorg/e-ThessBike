@@ -31,7 +31,7 @@ import com.thanasis.e_thessbike.ui.components.TextField
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun AddBikeInit(navHostController: NavHostController, value: String, db: FirebaseFirestore, userLoggedIn: Array<String>, notificationService: NotificationService, addBikeUIViewModel: AddBikeUIViewModel = viewModel()){
-    val itemList = listOf<String>("Sikies", "Neapoli", "Stavroupoli", "Evosmos", "Polichni", "Thessaloiniki", "Kalamaria", "Meteora")
+    val itemList = listOf("Sikies", "Neapoli", "Stavroupoli", "Evosmos", "Polichni", "Thessaloiniki", "Kalamaria", "Meteora")
     var selectedIndex by rememberSaveable { mutableIntStateOf(0) }
     val context = LocalContext.current
 
@@ -45,7 +45,7 @@ fun AddBikeInit(navHostController: NavHostController, value: String, db: Firebas
                 .fillMaxSize()
                 .padding(15.dp, 30.dp)
         ) {
-            HeadingText(value = stringResource(id = R.string.add_bike))
+            HeadingText(value = value)
             TextField(
                 labelValue = stringResource(id = R.string.brand_name),
                 onTextSelected = {

@@ -136,3 +136,17 @@ fun getIndexesOfAvailableBikes(): ArrayList<Int> {
     return indexes
 }
 
+@OptIn(ExperimentalCoroutinesApi::class)
+fun getIndexesOfSpecificBikes(brandName: String): ArrayList<Int> {
+    val task = getData("bikes").getCompleted()
+    val indexes = arrayListOf<Int>()
+
+    for (i in task.documents.indices) {
+        if (task.documents[i].getString("brand_name")?.contains(brandName) == true) {
+            indexes.add(i)
+        }
+    }
+
+    return indexes
+}
+

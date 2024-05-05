@@ -39,14 +39,14 @@ fun BikeCard(indexesOfBikes: ArrayList<Int>, index: Int, task: QuerySnapshot) {
     val context = LocalContext.current
 
     Scaffold(
-        modifier = Modifier.height(190.dp),
-        floatingActionButton = { FavouriteButton() }
+        modifier = Modifier.height(210.dp),
+        //floatingActionButton = { FavouriteButton() }
     ) {
         Card(
             colors = CardDefaults.cardColors(
                 containerColor = MaterialTheme.colorScheme.surfaceVariant,
             ),
-            modifier = Modifier.size(width = 410.dp, height = 190.dp),
+            modifier = Modifier.size(width = 410.dp, height = 210.dp),
             onClick = {
                 Toast.makeText(context, "Card clicked", Toast.LENGTH_LONG).show()
             }
@@ -78,13 +78,13 @@ fun BikeCard_() {
 
     Scaffold(
         modifier = Modifier.height(190.dp),
-        floatingActionButton = { FavouriteButton() }
+        //floatingActionButton = { FavouriteButton() }
     ) {
         Card(
             colors = CardDefaults.cardColors(
                 containerColor = MaterialTheme.colorScheme.surfaceVariant,
             ),
-            modifier = Modifier.size(width = 410.dp, height = 190.dp),
+            modifier = Modifier.size(width = 410.dp, height = 210.dp),
             onClick = {
                 Toast.makeText(context, "Card clicked", Toast.LENGTH_LONG).show()
             }
@@ -96,6 +96,24 @@ fun BikeCard_() {
                 Column {
                     Text(
                         text = stringResource(id = R.string.brand_name_indicators),
+                        modifier = Modifier.padding(16.dp),
+                        style = TextStyle(
+                            fontSize = 25.sp,
+                            fontWeight = FontWeight.Bold
+                        ),
+                        textAlign = TextAlign.Center,
+                    )
+                    Text(
+                        text = stringResource(id = R.string.color_indicators),
+                        modifier = Modifier.padding(16.dp),
+                        style = TextStyle(
+                            fontSize = 25.sp,
+                            fontWeight = FontWeight.Bold
+                        ),
+                        textAlign = TextAlign.Center,
+                    )
+                    Text(
+                        text = stringResource(id = R.string.color_indicators),
                         modifier = Modifier.padding(16.dp),
                         style = TextStyle(
                             fontSize = 25.sp,
@@ -144,6 +162,10 @@ fun BikeInfoSection(indexesOfBikes: ArrayList<Int>, index: Int, task: QuerySnaps
         Spacer(modifier = Modifier.height(1.dp))
 
         Location(indexesOfBikes, index, task)
+
+        Spacer(modifier = Modifier.height(1.dp))
+
+        EmailInfo(indexesOfBikes, index, task)
     }
 }
 
@@ -205,6 +227,32 @@ fun Location(indexesOfBikes: ArrayList<Int>, index: Int, task: QuerySnapshot) {
         Row {
             Text(
                 text = stringResource(id = R.string.location),
+                modifier = Modifier.padding(16.dp),
+                style = TextStyle(
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold
+                ),
+                textAlign = TextAlign.Center,
+            )
+            Text(
+                text = it,
+                modifier = Modifier.padding(10.dp, 17.dp),
+                style = TextStyle(
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Normal
+                ),
+                textAlign = TextAlign.Center,
+            )
+        }
+    }
+}
+
+@Composable
+fun EmailInfo(indexesOfBikes: ArrayList<Int>, index: Int, task: QuerySnapshot) {
+    task.documents[indexesOfBikes[index]].getString("email")?.let {
+        Row {
+            Text(
+                text = stringResource(id = R.string.owner_mail),
                 modifier = Modifier.padding(16.dp),
                 style = TextStyle(
                     fontSize = 20.sp,

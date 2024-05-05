@@ -56,8 +56,8 @@ fun SearchItem(navHostController: NavHostController) {
     NavigationDrawerItem(
         label = { Text(text = stringResource(id = R.string.search)) },
         selected = false,
-        onClick = { navHostController.navigate(EThessBikeApp.Home.name) },
-        icon = { Icon(Icons.Filled.Search, contentDescription = "Home") }
+        onClick = { navHostController.navigate(EThessBikeApp.Search.name) },
+        icon = { Icon(Icons.Filled.Search, contentDescription = "Search") }
     )
 }
 

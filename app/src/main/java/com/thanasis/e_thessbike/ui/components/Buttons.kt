@@ -40,7 +40,6 @@ import com.thanasis.e_thessbike.ui.theme.Purple80
 @Composable
 fun loginRegisterButtonComp(value: String, navController: NavHostController, db: FirebaseFirestore, roomDb: AppDatabase, context: Context, viewModel: ViewModel, isEnabled: Boolean = false): Array<String> {
     var userLoggedIn by remember { mutableStateOf(arrayOf("", "")) }
-    val TAG: String? = SignUpViewModel::class.simpleName
 
     Button(
         onClick = {
