@@ -98,7 +98,7 @@ fun MenuDrawer(
                 HomeInit(navHostController, stringResource(id = R.string.app_name), userLoggedIn, roomDb)
             }
             "search" -> {
-                SearchInit(navHostController, stringResource(id = R.string.search))
+                SearchInit(navHostController, stringResource(id = R.string.search), userLoggedIn, notificationService)
             }
             "settings" -> {
                 SettingsInit(navHostController, stringResource(id = R.string.settings), roomDb, darkTheme, onThemeUpdated)
@@ -113,13 +113,13 @@ fun MenuDrawer(
                 AddBikeInit(navHostController, stringResource(id = R.string.add_bike), db, userLoggedIn, notificationService)
             }
             "my_bike_list" -> {
-                MyBikeListInit(navHostController, stringResource(id = R.string.bike_list), userLoggedIn)
+                MyBikeListInit(navHostController, stringResource(id = R.string.bike_list), userLoggedIn, notificationService)
             }
             "favourites" -> {
                 FavouritesInit(navHostController, stringResource(id = R.string.favourites), userLoggedIn)
             }
             "available_bikes" -> {
-                AvailableBikeListInit(navHostController, stringResource(id = R.string.available_bikes))
+                AvailableBikeListInit(navHostController, stringResource(id = R.string.available_bikes), userLoggedIn, notificationService)
             }
         }
     }

@@ -29,13 +29,15 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.google.firebase.firestore.QuerySnapshot
+import com.thanasis.e_thessbike.NotificationService
 import com.thanasis.e_thessbike.R
 import com.thanasis.e_thessbike.backend.initInfo
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun BikeCard(indexesOfBikes: ArrayList<Int>, index: Int, task: QuerySnapshot) {
+fun BikeCard(indexesOfBikes: ArrayList<Int>, index: Int, task: QuerySnapshot, userLoggedIn: Array<String>, navHostController: NavHostController, notificationService: NotificationService) {
     val context = LocalContext.current
 
     Scaffold(
@@ -48,7 +50,7 @@ fun BikeCard(indexesOfBikes: ArrayList<Int>, index: Int, task: QuerySnapshot) {
             ),
             modifier = Modifier.size(width = 410.dp, height = 210.dp),
             onClick = {
-                Toast.makeText(context, "Card clicked", Toast.LENGTH_LONG).show()
+                //Toast.makeText(context, "Card clicked", Toast.LENGTH_LONG).show()
             }
         ) {
             Row(
@@ -60,12 +62,14 @@ fun BikeCard(indexesOfBikes: ArrayList<Int>, index: Int, task: QuerySnapshot) {
                         BikeInfoSection(indexesOfBikes, index, task)
                     }
                 }
-                IconButton(
-                    enabled = true,
-                    modifier = Modifier.size(50.dp, 50.dp),
-                    content = { Icon(imageVector = Icons.Filled.MoreVert, contentDescription = "") },
-                    onClick = { /*TODO*/ }
-                )
+                if (task.documents[indexesOfBikes[index]].getString("email").equals(userLoggedIn[1])) {
+                    OptionsDropdown(
+                        userLoggedIn,
+                        index,
+                        navHostController,
+                        notificationService
+                    )
+                }
             }
         }
     }
@@ -226,7 +230,7 @@ fun Location(indexesOfBikes: ArrayList<Int>, index: Int, task: QuerySnapshot) {
     task.documents[indexesOfBikes[index]].getString("location")?.let {
         Row {
             Text(
-                text = stringResource(id = R.string.location),
+                text = stringResource(id = R.string.location_indicator),
                 modifier = Modifier.padding(16.dp),
                 style = TextStyle(
                     fontSize = 20.sp,

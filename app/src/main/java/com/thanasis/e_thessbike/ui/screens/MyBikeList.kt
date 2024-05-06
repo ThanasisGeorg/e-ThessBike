@@ -13,21 +13,21 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.thanasis.e_thessbike.backend.getData
+import com.thanasis.e_thessbike.NotificationService
+import com.thanasis.e_thessbike.backend.getDocuments
 import com.thanasis.e_thessbike.backend.getIndexesOfMyBikes
 import com.thanasis.e_thessbike.ui.components.AddButton
 import com.thanasis.e_thessbike.ui.components.BikeCard
-import com.thanasis.e_thessbike.ui.components.RemoveButton
 import com.thanasis.e_thessbike.ui.components.TopBar
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 @OptIn(ExperimentalCoroutinesApi::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun MyBikeListInit(navController: NavHostController, value: String, userLoggedIn: Array<String>){
+fun MyBikeListInit(navController: NavHostController, value: String, userLoggedIn: Array<String>, notificationService: NotificationService){
     val scrollState = rememberScrollState()
     val indexesOfBikes = getIndexesOfMyBikes(userLoggedIn)
-    val task = getData("bikes").getCompleted()
+    val task = getDocuments("bikes").getCompleted()
 
     Scaffold(
         topBar = {
@@ -36,8 +36,6 @@ fun MyBikeListInit(navController: NavHostController, value: String, userLoggedIn
         floatingActionButton = {
             Row {
                 AddButton(navController)
-                Spacer(modifier = Modifier.padding(5.dp, 0.dp))
-                RemoveButton()
             }
         }
     ) {
@@ -48,7 +46,7 @@ fun MyBikeListInit(navController: NavHostController, value: String, userLoggedIn
                 .verticalScroll(state = scrollState)
         ) {
             for (i in indexesOfBikes.indices) {
-                BikeCard(indexesOfBikes, i, task)
+                BikeCard(indexesOfBikes, i, task, userLoggedIn, navController, notificationService)
                 Spacer(modifier = Modifier.padding(0.dp, 5.dp))
             }
         }

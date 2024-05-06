@@ -26,13 +26,13 @@ import kotlinx.coroutines.tasks.asDeferred
 fun initInfo(collectionName: String, fieldName: String): QuerySnapshot? {
     when (fieldName) {
         "name" -> {
-            return getData(collectionName).getCompleted()
+            return getDocuments(collectionName).getCompleted()
         }
         "surname" -> {
-            return getData(collectionName).getCompleted()
+            return getDocuments(collectionName).getCompleted()
         }
         "email" -> {
-            return getData(collectionName).getCompleted()
+            return getDocuments(collectionName).getCompleted()
         }
     }
     return null
@@ -42,7 +42,7 @@ fun initInfo(collectionName: String, fieldName: String): QuerySnapshot? {
 @SuppressLint("UnrememberedMutableState")
 fun updateInfo(db: FirebaseFirestore, collectionName: String, numOfDocument: Int, fieldName: String, value: String): QuerySnapshot? {
     val task = db.collection(collectionName)
-        .document(getData(collectionName).getCompleted().documents[numOfDocument].id)
+        .document(getDocuments(collectionName).getCompleted().documents[numOfDocument].id)
         .update(fieldName, value)
         .asDeferred()
 
@@ -51,7 +51,7 @@ fun updateInfo(db: FirebaseFirestore, collectionName: String, numOfDocument: Int
     return null
 }
 
-fun getData(collectionName: String): Deferred<QuerySnapshot> {
+fun getDocuments(collectionName: String): Deferred<QuerySnapshot> {
     val db = Firebase.firestore
     val TAG = SignUpViewModel::class.simpleName
 
@@ -112,7 +112,7 @@ fun validateData(signUpUIState: MutableState<SignUpUIState>): Boolean {
 }
 @OptIn(ExperimentalCoroutinesApi::class)
 fun getIndexesOfMyBikes(userLoggedIn: Array<String>): ArrayList<Int> {
-    val task = getData("bikes").getCompleted()
+    val task = getDocuments("bikes").getCompleted()
     val indexes = arrayListOf<Int>()
 
     for (i in task.documents.indices) {
@@ -126,7 +126,7 @@ fun getIndexesOfMyBikes(userLoggedIn: Array<String>): ArrayList<Int> {
 
 @OptIn(ExperimentalCoroutinesApi::class)
 fun getIndexesOfAvailableBikes(): ArrayList<Int> {
-    val task = getData("bikes").getCompleted()
+    val task = getDocuments("bikes").getCompleted()
     val indexes = arrayListOf<Int>()
 
     for (i in task.documents.indices) {
@@ -138,7 +138,7 @@ fun getIndexesOfAvailableBikes(): ArrayList<Int> {
 
 @OptIn(ExperimentalCoroutinesApi::class)
 fun getIndexesOfSpecificBikes(brandName: String): ArrayList<Int> {
-    val task = getData("bikes").getCompleted()
+    val task = getDocuments("bikes").getCompleted()
     val indexes = arrayListOf<Int>()
 
     for (i in task.documents.indices) {
@@ -148,5 +148,19 @@ fun getIndexesOfSpecificBikes(brandName: String): ArrayList<Int> {
     }
 
     return indexes
+}
+
+@OptIn(ExperimentalCoroutinesApi::class)
+fun removeBike(userLoggedIn: Array<String>, index: Int, context: Context) {
+    val indexesOfBikes = getIndexesOfMyBikes(userLoggedIn)
+    val task = getDocuments("bikes").getCompleted()
+    val db = Firebase.firestore
+
+    db.collection("bikes")
+        .document(task.documents[indexesOfBikes[index]].id)
+        .delete()
+        .addOnFailureListener{
+            Toast.makeText(context, "Something went wrong. Please try again", Toast.LENGTH_SHORT).show()
+        }
 }
 

@@ -12,6 +12,7 @@ import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.Remove
+import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
@@ -27,6 +28,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -41,6 +43,7 @@ import com.thanasis.e_thessbike.backend.addBike.AddBikeUIEvent
 import com.thanasis.e_thessbike.backend.addBike.AddBikeUIViewModel
 import com.thanasis.e_thessbike.backend.logout.logout
 import com.thanasis.e_thessbike.backend.onEditEvent
+import com.thanasis.e_thessbike.backend.removeBike
 import com.thanasis.e_thessbike.backend.signUp.SignUpUIEvent
 import com.thanasis.e_thessbike.backend.signUp.SignUpUIState
 import com.thanasis.e_thessbike.ui.theme.Purple40
@@ -92,11 +95,30 @@ fun AddButton(navHostController: NavHostController) {
 }
 
 @Composable
-fun RemoveButton() {
+fun RemoveButton(userLoggedIn: Array<String>, index: Int, navHostController: NavHostController, notificationService: NotificationService) {
+    val openAlertDialog = remember { mutableStateOf(false) }
+    val context = LocalContext.current
+
     ExtendedFloatingActionButton(
-        onClick = { /*TODO*/ },
+        onClick = { openAlertDialog.value = !openAlertDialog.value},
         content = { ButtonContent(Icons.Filled.Remove, stringResource(id = R.string.remove_bike), 30) },
     )
+    
+    if (openAlertDialog.value) {
+        RemoveBikeAlertDialog(
+            onDismissRequest = { openAlertDialog.value = false},
+            onConfirmation = {
+                openAlertDialog.value = false
+                removeBike(userLoggedIn, index, context)
+                navHostController.navigate(EThessBikeApp.MyBikeList.name)
+                notificationService.showBasicNotification("Successful remove", "You have successfully removed your bike")
+                //Toast.makeText(context, "Bike removed successfully", Toast.LENGTH_LONG).show()
+            },
+            dialogTitle = "Remove your bike",
+            dialogText = "Are you sure you want to remove this bike?",
+            icon = Icons.Default.Warning
+        )
+    }
 }
 
 @Composable

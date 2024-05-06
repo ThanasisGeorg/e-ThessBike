@@ -156,7 +156,9 @@ fun PasswordTextField(labelValue: String, onTextSelected: (String) -> Unit, erro
                 stringResource(id = R.string.show_password)
             }
             
-            IconButton(onClick = { passwordVisible.value =! passwordVisible.value }) {
+            IconButton(
+                onClick = { passwordVisible.value =! passwordVisible.value }
+            ) {
                 Icon(imageVector = iconImage, contentDescription = description)
             }
         },

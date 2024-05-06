@@ -1,7 +1,9 @@
 package com.thanasis.e_thessbike.ui.screens
 
 import android.annotation.SuppressLint
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -31,8 +33,10 @@ import com.thanasis.e_thessbike.ui.components.TextField
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun AddBikeInit(navHostController: NavHostController, value: String, db: FirebaseFirestore, userLoggedIn: Array<String>, notificationService: NotificationService, addBikeUIViewModel: AddBikeUIViewModel = viewModel()){
-    val itemList = listOf("Sikies", "Neapoli", "Stavroupoli", "Evosmos", "Polichni", "Thessaloiniki", "Kalamaria", "Meteora")
-    var selectedIndex by rememberSaveable { mutableIntStateOf(0) }
+    val locationList = listOf("Sikies", "Neapoli", "Stavroupoli", "Evosmos", "Polichni", "Thessaloiniki", "Kalamaria", "Meteora")
+    val colorList = listOf("Black", "Blue", "Red", "Green", "Purple", "Grey", "Yellow")
+    var locationIndex by rememberSaveable { mutableIntStateOf(0) }
+    var colorIndex by rememberSaveable { mutableIntStateOf(0) }
     val context = LocalContext.current
 
     Scaffold(
@@ -62,36 +66,44 @@ fun AddBikeInit(navHostController: NavHostController, value: String, db: Firebas
                 //painterResource(id = R.drawable.rounded_account_circle_24)
             )
             Spacer(modifier = Modifier.height(15.dp))
-            TextField(
-                labelValue = stringResource(id = R.string.color),
-                onTextSelected = {
-                    addBikeUIViewModel.onAddEvent(
-                        AddBikeUIEvent.ColorChanged(it),
-                        navHostController,
-                        db,
-                        context,
-                        userLoggedIn,
-                        notificationService
-                    )
-                },
-                errorStatus = true
-            )
-            Spacer(modifier = Modifier.height(15.dp))
-            DropdownList(
-                itemList,
-                selectedIndex,
-                onItemClick = {
-                    selectedIndex = it
-                    addBikeUIViewModel.onAddEvent(
-                        AddBikeUIEvent.LocationChanged(itemList[it]),
-                        navHostController,
-                        db,
-                        context,
-                        userLoggedIn,
-                        notificationService
-                    )
-                }
-            )
+            Row(
+                horizontalArrangement = Arrangement.Center
+            ) {
+                DropdownList(
+                    colorList,
+                    colorIndex,
+                    onItemClick = {
+                        colorIndex = it
+                        addBikeUIViewModel.onAddEvent(
+                            AddBikeUIEvent.ColorChanged(colorList[it]),
+                            navHostController,
+                            db,
+                            context,
+                            userLoggedIn,
+                            notificationService
+                        )
+                    },
+                    stringResource(id = R.string.color)
+                )
+                Spacer(modifier = Modifier.padding(5.dp, 0.dp))
+                DropdownList(
+                    locationList,
+                    locationIndex,
+                    onItemClick = {
+                        locationIndex = it
+                        addBikeUIViewModel.onAddEvent(
+                            AddBikeUIEvent.LocationChanged(locationList[it]),
+                            navHostController,
+                            db,
+                            context,
+                            userLoggedIn,
+                            notificationService
+                        )
+                    },
+                    stringResource(id = R.string.location)
+                )
+
+            }
         }
     }
 }

@@ -1,7 +1,6 @@
 package com.thanasis.e_thessbike.ui.screens
 
 import android.annotation.SuppressLint
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -56,10 +55,13 @@ fun ProfileInit(navController: NavHostController, value: String, userLoggedIn: A
             ) {
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.Center,
-                    modifier = Modifier.padding(0.dp, 35.dp)
+                    //verticalArrangement = Arrangement.Center,
+                    modifier = Modifier.padding(85.dp, 50.dp)
                 ) {
-                    Row(
+                    ButtonComp(stringResource(id = R.string.bike_list), navController)
+                    Spacer(modifier = Modifier.padding(0.dp, 10.dp))
+                    ButtonComp(stringResource(id = R.string.available_bikes), navController)
+                    /*Row(
                         horizontalArrangement = Arrangement.Center
                     ) {
                         ButtonComp(stringResource(id = R.string.bike_list), navController)
@@ -71,7 +73,7 @@ fun ProfileInit(navController: NavHostController, value: String, userLoggedIn: A
                         horizontalArrangement = Arrangement.Center
                     ) {
                         ButtonComp(stringResource(id = R.string.available_bikes), navController)
-                    }
+                    }*/
                 }
             }
         }

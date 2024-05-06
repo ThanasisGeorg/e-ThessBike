@@ -44,10 +44,10 @@ class AddBikeUIViewModel: ViewModel() {
             is AddBikeUIEvent.AddBtnClicked -> {
                 if (allValidationsPassed.value) {
                     createBike(db, userLoggedIn)
-                    notificationService.showBasicNotification()
                     navHostController.navigate(EThessBikeApp.MyBikeList.name)
+                    notificationService.showBasicNotification("Successful add", "You have successfully added a new bike")
                 } else {
-                    Toast.makeText(context, "Some field are completed incorrectly! Make sure you pick a valid color", Toast.LENGTH_LONG).show()
+                    Toast.makeText(context, "Some field are completed incorrectly! Make sure you pick a valid color and location", Toast.LENGTH_LONG).show()
                 }
             }
         }
@@ -62,7 +62,11 @@ class AddBikeUIViewModel: ViewModel() {
             color = addBikeUIState.value.color
         )
 
-        allValidationsPassed.value = brandNameResult && colorResult
+        val locationResult = Validator.validateLocation(
+            location = addBikeUIState.value.location
+        )
+
+        allValidationsPassed.value = brandNameResult && colorResult && locationResult
     }
 
     private fun createBike(db: FirebaseFirestore, userLoggedIn: Array<String>) {

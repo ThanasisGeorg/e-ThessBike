@@ -10,11 +10,11 @@ object Validator {
     }
 
     fun validateColor(color: String): Boolean {
-        return color.isNotEmpty() && (color == "blue" || color == "Blue" || color == "red" || color == "Red" || color == "black" || color == "Black" || color == "green" || color == "Green")
+        return color.isNotEmpty() && color.isNotBlank()
     }
 
     fun validateLocation(location: String): Boolean {
-        return location.isNotEmpty() && (location == "Sikies" || location == "Neapoli" || location == "Stavroupoli" || location == "Evosmos" || location == "Polichni" || location == "Thessaloniki" || location == "Kalamaria" || location == "Meteora")
+        return location.isNotEmpty() && location.isNotBlank()
     }
 
     fun validateFirstName(fName: String): Boolean {

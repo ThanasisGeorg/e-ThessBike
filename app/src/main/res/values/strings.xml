@@ -35,6 +35,7 @@
     <string name="bike_list" translatable="false">My bike list</string>
     <string name="favourites" translatable="false">My favourites</string>
     <string name="available_bikes" translatable="false">All available bikes</string>
-    <string name="location" translatable="false">Available to rent from:</string>
+    <string name="location_indicator" translatable="false">Available to rent from:</string>
+    <string name="location" translatable="false">Available to rent from</string>
     <string name="owner_mail" translatable="false">Owner\'s email:</string>
 </resources>
