@@ -14,6 +14,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.navigation.compose.rememberNavController
 import androidx.room.Room
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.isGranted
@@ -34,7 +35,7 @@ class MainActivity: ComponentActivity() {
 
         setContent {
             val isSystemInDarkTheme = isSystemInDarkTheme()
-            var darkTheme by remember {mutableStateOf(isSystemInDarkTheme)}
+            var darkTheme by remember { mutableStateOf(isSystemInDarkTheme) }
             val roomDb = Room.databaseBuilder(
                 applicationContext,
                 AppDatabase::class.java, "Settings"
@@ -43,6 +44,7 @@ class MainActivity: ComponentActivity() {
                 .build()
             val postNotificationPermission = rememberPermissionState(permission = Manifest.permission.POST_NOTIFICATIONS)
             val notificationService = NotificationService(this)
+            val navHostController = rememberNavController()
 
             LaunchedEffect(key1 = true) {
                 if (!postNotificationPermission.status.isGranted) {
@@ -55,8 +57,12 @@ class MainActivity: ComponentActivity() {
                     db,
                     roomDb,
                     darkTheme = darkTheme,
-                    onThemeUpdated = { darkTheme = !darkTheme },
-                    notificationService
+                    onThemeUpdated = {
+                        darkTheme = !darkTheme
+                        navHostController.navigate(EThessBikeApp.Settings.name)
+                    },
+                    notificationService,
+                    navHostController
                 )
             }
         }

@@ -55,7 +55,6 @@ fun ProfileInit(navController: NavHostController, value: String, userLoggedIn: A
             ) {
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
-                    //verticalArrangement = Arrangement.Center,
                     modifier = Modifier.padding(85.dp, 50.dp)
                 ) {
                     ButtonComp(stringResource(id = R.string.bike_list), navController)

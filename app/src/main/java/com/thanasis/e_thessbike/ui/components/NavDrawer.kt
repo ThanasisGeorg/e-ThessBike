@@ -95,7 +95,7 @@ fun MenuDrawer(
     ) {
         when (selectedIndex) {
             "home" -> {
-                HomeInit(navHostController, stringResource(id = R.string.app_name), userLoggedIn, roomDb)
+                HomeInit(navHostController, stringResource(id = R.string.home))
             }
             "search" -> {
                 SearchInit(navHostController, stringResource(id = R.string.search), userLoggedIn, notificationService)

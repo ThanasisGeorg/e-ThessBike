@@ -1,5 +1,6 @@
 package com.thanasis.e_thessbike.ui.components
 
+import android.content.ContentValues.TAG
 import android.util.Log
 import androidx.compose.animation.core.AnimationSpec
 import androidx.compose.animation.core.animateDpAsState
@@ -33,71 +34,11 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import com.thanasis.e_thessbike.EThessBikeApp
 import com.thanasis.e_thessbike.backend.roomAPI.AppDatabase
 import com.thanasis.e_thessbike.backend.roomAPI.Settings
 import com.thanasis.e_thessbike.backend.signUp.SignUpViewModel
-
-@Composable
-fun ThemeSwitcher(roomDb: AppDatabase, darkTheme: Boolean ,onThemeUpdated: () -> Unit) {
-    var checked = darkTheme
-    val settingsDao = roomDb.settingsDao()
-    var settings = Settings(settingsDao.getSettings().userId, settingsDao.getSettings().theme)
-    val TAG: String? = SignUpViewModel::class.simpleName
-
-    if (settingsDao.getTheme() == "light") checked = true
-
-    Switch(
-        checked = !darkTheme,
-        onCheckedChange = {
-            checked = it
-            onThemeUpdated()
-        },
-        colors = SwitchDefaults.colors(
-            checkedThumbColor = MaterialTheme.colorScheme.primary,
-            checkedTrackColor = MaterialTheme.colorScheme.primaryContainer,
-            uncheckedThumbColor = MaterialTheme.colorScheme.primary,
-            uncheckedTrackColor = MaterialTheme.colorScheme.primaryContainer,
-            uncheckedBorderColor = MaterialTheme.colorScheme.primaryContainer
-        ),
-        thumbContent =
-            if (!checked) {
-                {
-                    Icon(
-                        imageVector = Icons.Filled.WbSunny,
-                        contentDescription = null,
-                        modifier = Modifier.size(SwitchDefaults.IconSize),
-                        tint = MaterialTheme.colorScheme.primaryContainer
-                    )
-
-                    settings = settings.copy(theme = "light")
-
-                    settingsDao.updateSettings(Settings(settingsDao.getSettings().userId, "light"))
-                    Log.d(TAG, settingsDao.getSettings().toString())
-                }
-            } else {
-                {
-                    Icon(
-                        imageVector = Icons.Filled.Nightlight,
-                        contentDescription = null,
-                        modifier = Modifier.size(SwitchDefaults.IconSize),
-                        tint = MaterialTheme.colorScheme.primaryContainer
-                    )
-
-                    settings = settings.copy(theme = "dark")
-
-                    settingsDao.updateSettings(Settings(settingsDao.getSettings().userId, "dark"))
-                    Log.d(TAG, settingsDao.getSettings().toString())
-                }
-            }
-
-
-    )
-}
-
-@Composable
-fun LanguageSwitcher(roomDb: AppDatabase) {
-
-}
 
 @Composable
 fun ThemeSwitch(
@@ -109,18 +50,32 @@ fun ThemeSwitch(
     parentShape: Shape = CircleShape,
     toggleShape: Shape = CircleShape,
     animationSpec: AnimationSpec<Dp> = tween(durationMillis = 300),
-    onClick: () -> Unit
+    onClick: () -> Unit,
+    roomDb: AppDatabase
 ) {
     val offset by animateDpAsState(
         targetValue = if (darkTheme) 0.dp else size,
         animationSpec = animationSpec, label = ""
     )
+    val settingsDao = roomDb.settingsDao()
+    var settings = Settings(settingsDao.getSettings().userId, settingsDao.getSettings().theme)
 
     Box(modifier = Modifier
         .width(size * 2)
         .height(size)
         .clip(shape = parentShape)
-        .clickable { onClick() }
+        .clickable {
+            onClick()
+            if (!darkTheme) {
+                settings = settings.copy(theme = "dark")
+                settingsDao.updateSettings(Settings(settingsDao.getSettings().userId, "dark"))
+                Log.d(TAG, settingsDao.getSettings().toString())
+            } else {
+                settings = settings.copy(theme = "light")
+                settingsDao.updateSettings(Settings(settingsDao.getSettings().userId, "light"))
+                Log.d(TAG, settingsDao.getSettings().toString())
+            }
+        }
         .background(MaterialTheme.colorScheme.secondaryContainer)
     ) {
         Box(
@@ -167,6 +122,64 @@ fun ThemeSwitch(
             }
         }
     }
+
+    //navHostController.navigate(EThessBikeApp.Settings.name)
+}
+
+@Composable
+fun ThemeSwitcher(roomDb: AppDatabase, darkTheme: Boolean ,onThemeUpdated: () -> Unit, navHostController: NavHostController) {
+    var checked = darkTheme
+    val settingsDao = roomDb.settingsDao()
+    var settings = Settings(settingsDao.getSettings().userId, settingsDao.getSettings().theme)
+    val TAG: String? = SignUpViewModel::class.simpleName
+
+    if (settingsDao.getTheme() == "light") checked = true
+
+    Switch(
+        checked = !darkTheme,
+        onCheckedChange = {
+            checked = it
+            onThemeUpdated()
+            navHostController.navigate(EThessBikeApp.Settings.name)
+        },
+        colors = SwitchDefaults.colors(
+            checkedThumbColor = MaterialTheme.colorScheme.primary,
+            checkedTrackColor = MaterialTheme.colorScheme.primaryContainer,
+            uncheckedThumbColor = MaterialTheme.colorScheme.primary,
+            uncheckedTrackColor = MaterialTheme.colorScheme.primaryContainer,
+            uncheckedBorderColor = MaterialTheme.colorScheme.primaryContainer
+        ),
+        thumbContent =
+            if (!checked) {
+                {
+                    Icon(
+                        imageVector = Icons.Filled.WbSunny,
+                        contentDescription = null,
+                        modifier = Modifier.size(SwitchDefaults.IconSize),
+                        tint = MaterialTheme.colorScheme.primaryContainer
+                    )
+
+                    settings = settings.copy(theme = "light")
+
+                    settingsDao.updateSettings(Settings(settingsDao.getSettings().userId, "light"))
+                    Log.d(TAG, settingsDao.getSettings().toString())
+                }
+            } else {
+                {
+                    Icon(
+                        imageVector = Icons.Filled.Nightlight,
+                        contentDescription = null,
+                        modifier = Modifier.size(SwitchDefaults.IconSize),
+                        tint = MaterialTheme.colorScheme.primaryContainer
+                    )
+
+                    settings = settings.copy(theme = "dark")
+
+                    settingsDao.updateSettings(Settings(settingsDao.getSettings().userId, "dark"))
+                    Log.d(TAG, settingsDao.getSettings().toString())
+                }
+            }
+    )
 }
 
 @Preview

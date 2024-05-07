@@ -1,14 +1,14 @@
 package com.thanasis.e_thessbike.ui.screens
 
-import android.content.ContentValues.TAG
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
@@ -19,13 +19,26 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import androidx.room.Room
+import com.google.firebase.Firebase
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.firestore
 import com.thanasis.e_thessbike.EThessBikeApp
+import com.thanasis.e_thessbike.MainActivity
 import com.thanasis.e_thessbike.R
 import com.thanasis.e_thessbike.backend.login.LoginUIEvent
 import com.thanasis.e_thessbike.backend.login.LoginViewModel
@@ -36,13 +49,20 @@ import com.thanasis.e_thessbike.ui.components.HeadingText
 import com.thanasis.e_thessbike.ui.components.NormalText
 import com.thanasis.e_thessbike.ui.components.PasswordTextField
 import com.thanasis.e_thessbike.ui.components.TextField
-import com.thanasis.e_thessbike.ui.components.UnderLinedText
 import com.thanasis.e_thessbike.ui.components.loginRegisterButtonComp
+import com.thanasis.e_thessbike.ui.theme.Purple40
 
 @Composable
 fun loginScreen(navController: NavHostController, db: FirebaseFirestore, roomDb: AppDatabase, loginViewModel: LoginViewModel = viewModel()): Array<String> {
     var userLoggedIn by remember{ mutableStateOf(arrayOf("", "")) }
     val context = LocalContext.current
+    val annotatedString = buildAnnotatedString {
+        append(stringResource(id = R.string.forgot_password))
+        withStyle(style = SpanStyle(
+            color = Purple40,
+            textDecoration = TextDecoration.Underline)
+        ) {}
+    }
 
     Surface(
         modifier = Modifier
@@ -76,7 +96,23 @@ fun loginScreen(navController: NavHostController, db: FirebaseFirestore, roomDb:
 
             Spacer(modifier = Modifier.heightIn(20.dp))
 
-            UnderLinedText(value = stringResource(id = R.string.forgot_password))
+            //UnderLinedText(value = stringResource(id = R.string.forgot_password))
+
+            ClickableText(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .heightIn(min = 40.dp),
+                style = TextStyle(
+                    fontSize = 21.sp,
+                    fontWeight = FontWeight.Normal,
+                    fontStyle = FontStyle.Normal,
+                    textAlign = TextAlign.Center
+                ),
+                text = annotatedString,
+                onClick = {
+                    navController.navigate(EThessBikeApp.ForgotPassword.name)
+                }
+            )
 
             Spacer(modifier = Modifier.heightIn(20.dp))
 
@@ -103,14 +139,19 @@ fun loginScreen(navController: NavHostController, db: FirebaseFirestore, roomDb:
         }
     }
 
-    Log.d(TAG, "Here")
-
     return userLoggedIn
 }
 
 @Preview
 @Composable
 fun LoginScreenPreview() {
+    val db = Firebase.firestore
     val navController = rememberNavController()
-    //LoginScreen(navController)
+    val roomDb = Room.databaseBuilder(
+        MainActivity().applicationContext,
+        AppDatabase::class.java, "Settings"
+    ).allowMainThreadQueries()
+        .fallbackToDestructiveMigration()
+        .build()
+    loginScreen(navController, db, roomDb)
 }

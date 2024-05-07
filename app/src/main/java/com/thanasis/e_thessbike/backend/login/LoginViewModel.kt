@@ -34,7 +34,7 @@ class LoginViewModel: ViewModel() {
                 )
             }
             is LoginUIEvent.LoginBtnClicked -> {
-                val document = getDocument(db).getCompleted()
+                val document = getDocument(db, "users").getCompleted()
 
                 userLoggedIn = verifyData(document)
 
@@ -48,8 +48,8 @@ class LoginViewModel: ViewModel() {
         return userLoggedIn
     }
 
-    fun getDocument(db: FirebaseFirestore): Deferred<QuerySnapshot> {
-        val task = db.collection("users_info")
+    fun getDocument(db: FirebaseFirestore, collectionName: String): Deferred<QuerySnapshot> {
+        val task = db.collection(collectionName)
             .get()
             .asDeferred()
 
@@ -60,11 +60,11 @@ class LoginViewModel: ViewModel() {
 
     private fun verifyData(document: QuerySnapshot): Array<String> {
         val emailResult = loginUIState.value.email
-        val passwordResult = loginUIState.value.password
+        val passwordResult = loginUIState.value.password.hashCode().toString()
         val userLoggedIn = arrayOf("", "")
 
         for (i in document.documents.indices) {
-            if (document.documents[i].getString("email").equals(emailResult) && passwordResult == "123456") {
+            if (document.documents[i].getString("email").equals(emailResult) && document.documents[i].getString("password").equals(passwordResult)) {
                 userLoggedIn[0] = i.toString()
                 userLoggedIn[1] = emailResult
                 allValidationsPassed.value = true

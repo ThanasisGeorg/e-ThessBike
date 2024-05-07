@@ -26,6 +26,7 @@ import com.thanasis.e_thessbike.backend.signUp.SignUpUIEvent
 import com.thanasis.e_thessbike.backend.signUp.SignUpUIState
 import com.thanasis.e_thessbike.ui.components.ApplyButton
 import com.thanasis.e_thessbike.ui.components.HeadingText
+import com.thanasis.e_thessbike.ui.components.PasswordTextField
 import com.thanasis.e_thessbike.ui.components.TextField
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter", "UnrememberedMutableState")
@@ -148,7 +149,7 @@ fun EditInfoInit(navController: NavHostController, value: String) {
                 //painterResource(id = android.R.drawable.ic_dialog_email)
             )
             Spacer(modifier = Modifier.height(15.dp))
-            /*PasswordTextField(
+            PasswordTextField(
                 labelValue = stringResource(id = R.string.password),
                 onTextSelected = {
 
@@ -156,7 +157,7 @@ fun EditInfoInit(navController: NavHostController, value: String) {
                 errorStatus = true
                 //errorStatus = signUpViewModel.signUpUIState.value.passwordError
                 //painterResource(id = android.R.drawable.ic_lock_idle_lock)
-            )*/
+            )
         }
     }
 }

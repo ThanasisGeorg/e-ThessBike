@@ -15,11 +15,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import com.thanasis.e_thessbike.backend.roomAPI.AppDatabase
 import com.thanasis.e_thessbike.ui.components.CategoryIndicator
 import com.thanasis.e_thessbike.ui.components.ThemeSwitch
-import com.thanasis.e_thessbike.ui.components.ThemeSwitcher
 import com.thanasis.e_thessbike.ui.components.TopBar
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -38,41 +36,7 @@ fun SettingsInit(navController: NavHostController, value: String, roomDb: AppDat
             Spacer(modifier = Modifier.padding(5.dp))
             CategoryIndicator(category = "theme", textSize = 25)
             HorizontalDivider()
-            Row(
-                horizontalArrangement = Arrangement.Center,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                CategoryIndicator(category = "dark", textSize = 15)
-                Spacer(modifier = Modifier.padding(5.dp, 10.dp))
-                ThemeSwitcher(roomDb, darkTheme, onThemeUpdated)
-                Spacer(modifier = Modifier.padding(5.dp, 0.dp))
-                CategoryIndicator(category = "light", textSize = 15)
-            }
-
-            Spacer(modifier = Modifier.padding(10.dp))
-
-            CategoryIndicator(category = "language", textSize = 25)
-            HorizontalDivider()
-        }
-    }
-}
-
-@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
-@Composable
-fun SettingsInit(navController: NavHostController, value: String, darkTheme: Boolean, onThemeUpdated: () -> Unit){
-    Scaffold(
-        topBar = {
-            TopBar(navController, title = value)
-        }
-    ) {
-        Column(
-            Modifier
-                .fillMaxSize()
-                .padding(18.dp, 77.dp)
-        ) {
-            Spacer(modifier = Modifier.padding(5.dp))
-            CategoryIndicator(category = "theme", textSize = 25)
-            HorizontalDivider()
+            Spacer(modifier = Modifier.padding(0.dp, 5.dp))
             Row(
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
@@ -83,17 +47,17 @@ fun SettingsInit(navController: NavHostController, value: String, darkTheme: Boo
                     darkTheme = darkTheme,
                     size = 40.dp,
                     padding = 5.dp,
-                    onClick = onThemeUpdated
+                    onClick = onThemeUpdated,
+                    roomDb = roomDb
                 )
-                //ThemeSwitcher(darkTheme, onThemeUpdated)
                 Spacer(modifier = Modifier.padding(5.dp, 0.dp))
                 CategoryIndicator(category = "light", textSize = 15)
             }
 
-            Spacer(modifier = Modifier.padding(10.dp))
+            /*Spacer(modifier = Modifier.padding(10.dp))
 
             CategoryIndicator(category = "language", textSize = 25)
-            HorizontalDivider()
+            HorizontalDivider()*/
         }
     }
 }
@@ -101,6 +65,6 @@ fun SettingsInit(navController: NavHostController, value: String, darkTheme: Boo
 @Preview
 @Composable
 fun SettingsInitPreview() {
-    val navController = rememberNavController()
-    SettingsInit(navController = navController, value = "Settings", darkTheme = false, onThemeUpdated = {})
+    //val navController = rememberNavController()
+    //SettingsInit(navController = navController, value = "Settings", roomDb = , darkTheme = false, onThemeUpdated = {})
 }

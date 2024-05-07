@@ -1,6 +1,8 @@
 package com.thanasis.e_thessbike.backend.rules
 
+import com.thanasis.e_thessbike.backend.getDocuments
 import com.thanasis.e_thessbike.backend.signUp.SignUpViewModel
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 object Validator {
     private val TAG = SignUpViewModel::class.simpleName
@@ -36,5 +38,34 @@ object Validator {
 
     fun validateConditionsAndPrivacy(statusValue: Boolean): Boolean {
         return statusValue
+    }
+    @OptIn(ExperimentalCoroutinesApi::class)
+    fun validateExistingEmail(email: String): Boolean {
+        val task = getDocuments("users").getCompleted()
+
+        for (i in task.documents.indices) {
+            if (task.documents[i].getString("email").equals(email)) {
+                return true
+            }
+        }
+
+        return false
+    }
+
+    @OptIn(ExperimentalCoroutinesApi::class)
+    fun validateNewPassword(newPassword: String): Boolean {
+        val task = getDocuments("users").getCompleted()
+
+        for (i in task.documents.indices) {
+            if (!task.documents[i].getString("password").equals(newPassword)) {
+                return true
+            }
+        }
+
+        return false
+    }
+
+    fun validateConfirmNewPassword(newPassword: String, confirmNewPassword: String): Boolean {
+        return confirmNewPassword == newPassword
     }
 }

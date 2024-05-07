@@ -1,7 +1,6 @@
 package com.thanasis.e_thessbike.backend.signUp
 
 import android.content.Context
-import android.util.Log
 import android.widget.Toast
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
@@ -54,10 +53,8 @@ class SignUpViewModel: ViewModel() {
                 validateDataWithRules()
             }
             is SignUpUIEvent.RegisterBtnClicked -> {
-                Log.d(TAG, "AllValidationsPassed: ${allValidationsPassed.value}")
                 if (allValidationsPassed.value) {
-                    userLoggedIn = signUp(db, roomDb)
-                    //Log.d(TAG, userLoggedIn.toString())
+                    userLoggedIn = signUp(db)
                     initLocalDB(userLoggedIn, roomDb)
                     initLocalDB(userLoggedIn, roomDb)
                     navHostController.navigate(EThessBikeApp.Home.name)
@@ -72,18 +69,19 @@ class SignUpViewModel: ViewModel() {
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)
-    private fun signUp(db: FirebaseFirestore, roomDb: AppDatabase): Array<String> {
+    private fun signUp(db: FirebaseFirestore): Array<String> {
         val account = mutableStateOf(Account())
 
         account.value = account.value.copy(
             signUpUIState.value.firstName,
             signUpUIState.value.lastName,
-            signUpUIState.value.email
+            signUpUIState.value.email,
+            signUpUIState.value.password
         )
 
         createUser(db)
 
-        val document = LoginViewModel().getDocument(db).getCompleted()
+        val document = LoginViewModel().getDocument(db, "users_info").getCompleted()
 
         return verifyData(document)
     }
@@ -142,7 +140,8 @@ class SignUpViewModel: ViewModel() {
         )
 
         val user = hashMapOf(
-            "email" to signUpUIState.value.email
+            "email" to signUpUIState.value.email,
+            "password" to signUpUIState.value.password.hashCode().toString()
         )
 
         runBlocking {

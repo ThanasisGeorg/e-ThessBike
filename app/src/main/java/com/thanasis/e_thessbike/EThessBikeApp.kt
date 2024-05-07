@@ -9,12 +9,14 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.res.stringResource
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
 import com.google.firebase.firestore.FirebaseFirestore
 import com.thanasis.e_thessbike.backend.roomAPI.AppDatabase
 import com.thanasis.e_thessbike.ui.components.MenuDrawer
+import com.thanasis.e_thessbike.ui.screens.ForgotPasswordScreen
 import com.thanasis.e_thessbike.ui.screens.loginScreen
 import com.thanasis.e_thessbike.ui.screens.registerScreen
 
@@ -23,6 +25,7 @@ enum class EThessBikeApp(@StyleRes val title: Int) {
     Profile(title = R.string.profile),
     Register(title = R.string.register),
     Login(title = R.string.login),
+    ForgotPassword(title = R.string.forgot_password),
     Settings(title = R.string.settings),
     Search(title = R.string.search),
     EditInfo(title = R.string.edit_info),
@@ -38,24 +41,28 @@ fun MainApp(
     roomDb: AppDatabase,
     darkTheme: Boolean,
     onThemeUpdated: () -> Unit,
-    notificationService: NotificationService
+    notificationService: NotificationService,
+    navHostController: NavHostController
 ) {
-    val navController = rememberNavController()
     var userLoggedIn by remember { mutableStateOf(arrayOf("", "")) }
 
     Surface(color = MaterialTheme.colorScheme.background) {
-        NavHost(navController = navController, startDestination = EThessBikeApp.Login.name) {
+        NavHost(navController = navHostController, startDestination = EThessBikeApp.Login.name) {
             composable(EThessBikeApp.Register.name) {
                 BackHandler(true) {}
-                userLoggedIn = registerScreen(navController, db, roomDb)
+                userLoggedIn = registerScreen(navHostController, db, roomDb)
             }
             composable(EThessBikeApp.Login.name) {
                 BackHandler(true) {}
-                userLoggedIn = loginScreen(navController, db, roomDb)
+                userLoggedIn = loginScreen(navHostController, db, roomDb)
+            }
+            composable(EThessBikeApp.ForgotPassword.name) {
+                BackHandler(true) {}
+                ForgotPasswordScreen(navHostController, stringResource(id = R.string.forgot_password), db)
             }
             composable(EThessBikeApp.Home.name) {
                 MenuDrawer(
-                    navController,
+                    navHostController,
                     selectedIndex = "home",
                     db,
                     roomDb,
@@ -67,7 +74,7 @@ fun MainApp(
             }
             composable(EThessBikeApp.Settings.name) {
                 MenuDrawer(
-                    navController,
+                    navHostController,
                     selectedIndex = "settings",
                     db,
                     roomDb,
@@ -79,7 +86,7 @@ fun MainApp(
             }
             composable(EThessBikeApp.Profile.name) {
                 MenuDrawer(
-                    navController,
+                    navHostController,
                     selectedIndex = "profile",
                     db,
                     roomDb,
@@ -91,7 +98,7 @@ fun MainApp(
             }
             composable(EThessBikeApp.EditInfo.name)  {
                 MenuDrawer(
-                    navController,
+                    navHostController,
                     selectedIndex = "editInfo",
                     db,
                     roomDb,
@@ -103,7 +110,7 @@ fun MainApp(
             }
             composable(EThessBikeApp.Search.name)  {
                 MenuDrawer(
-                    navController,
+                    navHostController,
                     selectedIndex = "search",
                     db,
                     roomDb,
@@ -115,7 +122,7 @@ fun MainApp(
             }
             composable(EThessBikeApp.AddBike.name)  {
                 MenuDrawer(
-                    navController,
+                    navHostController,
                     selectedIndex = "add_bike",
                     db, roomDb,
                     darkTheme,
@@ -125,7 +132,7 @@ fun MainApp(
             }
             composable(EThessBikeApp.MyBikeList.name)  {
                 MenuDrawer(
-                    navController,
+                    navHostController,
                     selectedIndex = "my_bike_list",
                     db,
                     roomDb,
@@ -137,7 +144,7 @@ fun MainApp(
             }
             composable(EThessBikeApp.Favourites.name)  {
                 MenuDrawer(
-                    navController,
+                    navHostController,
                     selectedIndex = "favourites",
                     db,
                     roomDb,
@@ -149,7 +156,7 @@ fun MainApp(
             }
             composable(EThessBikeApp.AllBikeList.name)  {
                 MenuDrawer(
-                    navController,
+                    navHostController,
                     selectedIndex = "available_bikes",
                     db,
                     roomDb,

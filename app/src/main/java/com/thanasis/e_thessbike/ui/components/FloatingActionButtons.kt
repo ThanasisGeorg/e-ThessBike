@@ -41,6 +41,8 @@ import com.thanasis.e_thessbike.NotificationService
 import com.thanasis.e_thessbike.R
 import com.thanasis.e_thessbike.backend.addBike.AddBikeUIEvent
 import com.thanasis.e_thessbike.backend.addBike.AddBikeUIViewModel
+import com.thanasis.e_thessbike.backend.forgotPw.ForgotPasswordUIEvent
+import com.thanasis.e_thessbike.backend.forgotPw.ForgotPasswordUIViewModel
 import com.thanasis.e_thessbike.backend.logout.logout
 import com.thanasis.e_thessbike.backend.onEditEvent
 import com.thanasis.e_thessbike.backend.removeBike
@@ -82,6 +84,24 @@ fun ApplyButton(navController: NavHostController, addBikeUIViewModel: AddBikeUIV
         onClick = {
             addBikeUIViewModel.onAddEvent(AddBikeUIEvent.AddBtnClicked, navController, db, context, userLoggedIn, notificationService)
         },
+        content = { Icon(Icons.Filled.Check, "Floating action button.") }
+    )
+}
+
+@Composable
+fun ApplyButton(navController: NavHostController, forgotPasswordUIViewModel: ForgotPasswordUIViewModel, db: FirebaseFirestore, context: Context) {
+    FloatingActionButton(
+        onClick = {
+            forgotPasswordUIViewModel.onEvent(ForgotPasswordUIEvent.ApplyBtnClicked, navController, db, context)
+        },
+        content = { Icon(Icons.Filled.Check, "Floating action button.") }
+    )
+}
+
+@Composable
+fun ApplyButton() {
+    FloatingActionButton(
+        onClick = {},
         content = { Icon(Icons.Filled.Check, "Floating action button.") }
     )
 }

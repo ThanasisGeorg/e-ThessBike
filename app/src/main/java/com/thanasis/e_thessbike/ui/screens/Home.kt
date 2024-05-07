@@ -1,23 +1,27 @@
 package com.thanasis.e_thessbike.ui.screens
 
-//import com.thanasis.e_thessbike.backend.roomAPI.initLocalDB
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.thanasis.e_thessbike.backend.roomAPI.AppDatabase
+import androidx.navigation.compose.rememberNavController
+import com.thanasis.e_thessbike.R
+import com.thanasis.e_thessbike.ui.components.HeadingText
+import com.thanasis.e_thessbike.ui.components.NormalText
 import com.thanasis.e_thessbike.ui.components.TopBar
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun HomeInit(navController: NavHostController, value: String, userLoggedIn: Array<String>, roomDb: AppDatabase){
+fun HomeInit(navController: NavHostController, value: String){
     Scaffold(
         topBar = {
             TopBar(navController, title = value)
@@ -28,16 +32,20 @@ fun HomeInit(navController: NavHostController, value: String, userLoggedIn: Arra
                 .fillMaxSize()
                 .padding(18.dp, 77.dp)
         ) {
-            Text(text = "Home Information")
+            Spacer(modifier = Modifier.height(30.dp))
+            HeadingText("Welcome to e-ThessBike")
+            Spacer(modifier = Modifier.height(30.dp))
+            NormalText(stringResource(id = R.string.home_text_1))
+            Spacer(modifier = Modifier.height(30.dp))
+            NormalText(stringResource(id = R.string.home_text_2))
+            Spacer(modifier = Modifier.height(30.dp))
+            NormalText(stringResource(id = R.string.home_text_3))
         }
     }
-
-    //initLocalDB(userLoggedIn, roomDb)
 }
 
 @Preview
 @Composable
 fun HomeInitPreview() {
-    //val navController = rememberNavController()
-    //HomeInit(navController = navController, value = "e-ThessBike")
+    HomeInit(navController = rememberNavController(), value = "Home")
 }
