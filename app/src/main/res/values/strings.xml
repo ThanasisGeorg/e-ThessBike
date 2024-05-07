@@ -17,7 +17,7 @@
     <string name="welcome_back" translatable="false">Welcome Back</string>
     <string name="hide_password" translatable="false">Hide password</string>
     <string name="show_password" translatable="false">Show password</string>
-    <string name="terms_of_use" translatable="false">By continuing you accept our Privacy and Term of Use</string>
+    <string name="terms_privacy" translatable="false">By continuing you accept our Privacy and Term of Use</string>
     <string name="forgot_password" translatable="false">Forgot my password</string>
     <string name="first_name_indicator" translatable="false">First name: </string>
     <string name="last_name_indicator" translatable="false">Last name: </string>
@@ -43,4 +43,6 @@
     <string name="home_text_1" translatable="false">Create your profile, list your bikes, check which one you like and contact with the owner to rent it.</string>
     <string name="home_text_2" translatable="false">Whether you\'re seeking a short-term ride or want to earn by renting out your bike, this is your space.</string>
     <string name="home_text_3" translatable="false">Start exploring now and pedal your way to Thessaloniki!</string>
+    <string name="terms_of_use" translatable="false">Terms of Use</string>
+    <string name="privacy_policy" translatable="false">Privacy Policy</string>
 </resources>

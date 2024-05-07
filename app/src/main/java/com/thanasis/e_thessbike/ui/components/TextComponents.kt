@@ -37,22 +37,24 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import com.thanasis.e_thessbike.EThessBikeApp
 import com.thanasis.e_thessbike.R
 import com.thanasis.e_thessbike.ui.theme.Purple40
 
 @Composable
-fun NormalText(value: String) {
+fun NormalText(value: String, textAlign: TextAlign, fontSize: Int) {
     Text(
         text = value,
         modifier = Modifier
             .fillMaxWidth()
             .heightIn(min = 40.dp),
         style = TextStyle(
-            fontSize = 24.sp,
+            fontSize = fontSize.sp,
             fontWeight = FontWeight.Normal,
             fontStyle = FontStyle.Normal
         ),
-        textAlign = TextAlign.Center
+        textAlign = textAlign
     )
 }
 @Composable
@@ -168,7 +170,7 @@ fun PasswordTextField(labelValue: String, onTextSelected: (String) -> Unit, erro
 }
 
 @Composable
-fun CheckBox(onCheckedChange: (Boolean) -> Unit) {
+fun CheckBox(onCheckedChange: (Boolean) -> Unit, navHostController: NavHostController) {
     Row(modifier = Modifier
         .fillMaxWidth()
         .heightIn(56.dp),
@@ -186,12 +188,12 @@ fun CheckBox(onCheckedChange: (Boolean) -> Unit) {
             }
         )
         
-        ClickableTextComp()
+        ClickableTextComp(navHostController)
     }
 }
 
 @Composable
-fun ClickableTextComp() {
+fun ClickableTextComp(navHostController: NavHostController) {
     val initialText = "By continuing you accept our "
     val privacyPolicyText = "Privacy Policy "
     val andText = "and "
@@ -210,8 +212,21 @@ fun ClickableTextComp() {
         }
     }
 
-    ClickableText(text = annotatedString, onClick = { offset -> annotatedString.getStringAnnotations(offset, offset)
-    })
+    ClickableText(
+        text = annotatedString,
+        onClick = {
+            offset ->
+            annotatedString
+                .getStringAnnotations(offset, offset)
+                .firstOrNull()?.also { span ->
+                    if (span.item == termsAndConditionsText) {
+                        navHostController.navigate(EThessBikeApp.TermsOfUse.name)
+                    } else if (span.item == privacyPolicyText) {
+                        navHostController.navigate(EThessBikeApp.PrivacyPolicy.name)
+                    }
+                }
+        }
+    )
 }
 
 @Composable

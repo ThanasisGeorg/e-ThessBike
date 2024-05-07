@@ -74,7 +74,7 @@ fun loginScreen(navController: NavHostController, db: FirebaseFirestore, roomDb:
             modifier = Modifier
                 .fillMaxSize()
         ) {
-            NormalText(value = stringResource(id = R.string.hello))
+            NormalText(value = stringResource(id = R.string.hello), TextAlign.Center, 24)
             HeadingText(value = stringResource(id = R.string.welcome_back))
 
             Spacer(modifier = Modifier.heightIn(20.dp))

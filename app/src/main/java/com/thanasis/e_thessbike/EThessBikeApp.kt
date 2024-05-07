@@ -17,6 +17,8 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.thanasis.e_thessbike.backend.roomAPI.AppDatabase
 import com.thanasis.e_thessbike.ui.components.MenuDrawer
 import com.thanasis.e_thessbike.ui.screens.ForgotPasswordScreen
+import com.thanasis.e_thessbike.ui.screens.PrivacyPolicyScreen
+import com.thanasis.e_thessbike.ui.screens.TermsOfUseScreen
 import com.thanasis.e_thessbike.ui.screens.loginScreen
 import com.thanasis.e_thessbike.ui.screens.registerScreen
 
@@ -32,7 +34,9 @@ enum class EThessBikeApp(@StyleRes val title: Int) {
     AddBike(title = R.string.add_bike),
     MyBikeList(title = R.string.bike_list),
     Favourites(title = R.string.favourites),
-    AllBikeList(title = R.string.available_bikes)
+    AllBikeList(title = R.string.available_bikes),
+    TermsOfUse(title = R.string.terms_of_use),
+    PrivacyPolicy(title = R.string.privacy_policy)
 }
 
 @Composable
@@ -59,6 +63,12 @@ fun MainApp(
             composable(EThessBikeApp.ForgotPassword.name) {
                 BackHandler(true) {}
                 ForgotPasswordScreen(navHostController, stringResource(id = R.string.forgot_password), db)
+            }
+            composable(EThessBikeApp.TermsOfUse.name) {
+                TermsOfUseScreen(stringResource(id = R.string.terms_of_use))
+            }
+            composable(EThessBikeApp.PrivacyPolicy.name) {
+                PrivacyPolicyScreen(stringResource(id = R.string.privacy_policy))
             }
             composable(EThessBikeApp.Home.name) {
                 MenuDrawer(
