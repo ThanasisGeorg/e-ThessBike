@@ -1,7 +1,6 @@
 package com.thanasis.e_thessbike.ui.components
 
 import android.annotation.SuppressLint
-import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -49,9 +48,7 @@ fun BikeCard(indexesOfBikes: ArrayList<Int>, index: Int, task: QuerySnapshot, us
                 containerColor = MaterialTheme.colorScheme.surfaceVariant,
             ),
             modifier = Modifier.size(width = 410.dp, height = 210.dp),
-            onClick = {
-                //Toast.makeText(context, "Card clicked", Toast.LENGTH_LONG).show()
-            }
+            onClick = {}
         ) {
             Row(
                 modifier = Modifier.width(410.dp),
@@ -78,8 +75,6 @@ fun BikeCard(indexesOfBikes: ArrayList<Int>, index: Int, task: QuerySnapshot, us
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun BikeCard_() {
-    val context = LocalContext.current
-
     Scaffold(
         modifier = Modifier.height(190.dp),
         //floatingActionButton = { FavouriteButton() }
@@ -89,9 +84,7 @@ fun BikeCard_() {
                 containerColor = MaterialTheme.colorScheme.surfaceVariant,
             ),
             modifier = Modifier.size(width = 410.dp, height = 210.dp),
-            onClick = {
-                Toast.makeText(context, "Card clicked", Toast.LENGTH_LONG).show()
-            }
+            onClick = {}
         ) {
             Row(
                 modifier = Modifier.width(410.dp),

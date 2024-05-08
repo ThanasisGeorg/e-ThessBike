@@ -12,7 +12,6 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.thanasis.e_thessbike.backend.roomAPI.AppDatabase
@@ -60,11 +59,4 @@ fun SettingsInit(navController: NavHostController, value: String, roomDb: AppDat
             HorizontalDivider()*/
         }
     }
-}
-
-@Preview
-@Composable
-fun SettingsInitPreview() {
-    //val navController = rememberNavController()
-    //SettingsInit(navController = navController, value = "Settings", roomDb = , darkTheme = false, onThemeUpdated = {})
 }

@@ -33,7 +33,6 @@ enum class EThessBikeApp(@StyleRes val title: Int) {
     EditInfo(title = R.string.edit_info),
     AddBike(title = R.string.add_bike),
     MyBikeList(title = R.string.bike_list),
-    Favourites(title = R.string.favourites),
     AllBikeList(title = R.string.available_bikes),
     TermsOfUse(title = R.string.terms_of_use),
     PrivacyPolicy(title = R.string.privacy_policy)
@@ -143,18 +142,6 @@ fun MainApp(
                 MenuDrawer(
                     navHostController,
                     selectedIndex = "my_bike_list",
-                    db,
-                    roomDb,
-                    darkTheme,
-                    onThemeUpdated,
-                    userLoggedIn,
-                    notificationService
-                )
-            }
-            composable(EThessBikeApp.Favourites.name)  {
-                MenuDrawer(
-                    navHostController,
-                    selectedIndex = "favourites",
                     db,
                     roomDb,
                     darkTheme,

@@ -10,7 +10,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Checkbox
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
@@ -73,7 +72,6 @@ fun HeadingText(value: String) {
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TextField(labelValue: String, onTextSelected: (String) -> Unit, errorStatus: Boolean = true) {
     val textValue = remember {
@@ -131,7 +129,6 @@ fun PasswordTextField(labelValue: String, onTextSelected: (String) -> Unit, erro
     OutlinedTextField(
         modifier = Modifier.fillMaxWidth(),
         label = {Text(text = labelValue)},
-        //colors = TextFieldDefaults.colors(),
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password, imeAction = ImeAction.Done),
         singleLine = true,
         keyboardActions = KeyboardActions {

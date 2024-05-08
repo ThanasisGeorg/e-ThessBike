@@ -80,11 +80,9 @@ fun ForgotPasswordScreen(navController: NavHostController, value: String, db: Fi
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun ForgotPasswordScreen(value: String){
-    val context = LocalContext.current
-
     Scaffold (
         floatingActionButton = {
-            ApplyButton()
+            //ApplyButton()
         }
     ){
         Column(

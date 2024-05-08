@@ -27,18 +27,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
-import androidx.room.Room
-import com.google.firebase.Firebase
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.firestore
 import com.thanasis.e_thessbike.EThessBikeApp
-import com.thanasis.e_thessbike.MainActivity
 import com.thanasis.e_thessbike.R
 import com.thanasis.e_thessbike.backend.login.LoginUIEvent
 import com.thanasis.e_thessbike.backend.login.LoginViewModel
@@ -96,8 +90,6 @@ fun loginScreen(navController: NavHostController, db: FirebaseFirestore, roomDb:
 
             Spacer(modifier = Modifier.heightIn(20.dp))
 
-            //UnderLinedText(value = stringResource(id = R.string.forgot_password))
-
             ClickableText(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -140,18 +132,4 @@ fun loginScreen(navController: NavHostController, db: FirebaseFirestore, roomDb:
     }
 
     return userLoggedIn
-}
-
-@Preview
-@Composable
-fun LoginScreenPreview() {
-    val db = Firebase.firestore
-    val navController = rememberNavController()
-    val roomDb = Room.databaseBuilder(
-        MainActivity().applicationContext,
-        AppDatabase::class.java, "Settings"
-    ).allowMainThreadQueries()
-        .fallbackToDestructiveMigration()
-        .build()
-    loginScreen(navController, db, roomDb)
 }

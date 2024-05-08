@@ -23,7 +23,6 @@ import com.thanasis.e_thessbike.backend.initInfo
 import com.thanasis.e_thessbike.ui.components.ApplyButton
 import com.thanasis.e_thessbike.ui.components.BackButton
 import com.thanasis.e_thessbike.ui.components.HeadingText
-import com.thanasis.e_thessbike.ui.components.PasswordTextField
 import com.thanasis.e_thessbike.ui.components.TextField
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter", "UnrememberedMutableState")
@@ -55,7 +54,6 @@ fun EditInfoInit(navController: NavHostController, value: String, db: FirebaseFi
                     textValue = "$it ",
                     onTextSelected = {
                         editInfoUIViewModel.onEditEvent(EditInfoUIEvent.FirstNameChanged(it), navController, db, userLoggedIn)
-                        //Log.d(TAG, editInfoUIViewModel.editInfoUIState.value.firstName)
                     },
                     //errorStatus = editInfoUIViewModel.signUpUIState.value.firstNameError
                     //painterResource(id = R.drawable.rounded_account_circle_24)
@@ -68,7 +66,6 @@ fun EditInfoInit(navController: NavHostController, value: String, db: FirebaseFi
                     textValue = "$it ",
                     onTextSelected = {
                         editInfoUIViewModel.onEditEvent(EditInfoUIEvent.LastNameChanged(it), navController, db, userLoggedIn)
-                        //Log.d(TAG, editInfoUIViewModel.editInfoUIState.value.lastName)
                     },
                     //errorStatus = editInfoUIViewModel.signUpUIState.value.lastNameError
                     //painterResource(id = R.drawable.rounded_account_circle_24)
@@ -114,27 +111,6 @@ fun EditInfoInit() {
                 errorStatus = true
                 //errorStatus = signUpViewModel.signUpUIState.value.lastNameError
                 //painterResource(id = R.drawable.rounded_account_circle_24)
-            )
-            Spacer(modifier = Modifier.height(15.dp))
-            TextField(
-                labelValue = stringResource(id = R.string.email),
-                textValue = stringResource(id = R.string.email),
-                onTextSelected = {
-
-                },
-                errorStatus = true
-                //errorStatus = signUpViewModel.signUpUIState.value.emailError
-                //painterResource(id = android.R.drawable.ic_dialog_email)
-            )
-            Spacer(modifier = Modifier.height(15.dp))
-            PasswordTextField(
-                labelValue = stringResource(id = R.string.password),
-                onTextSelected = {
-
-                },
-                errorStatus = true
-                //errorStatus = signUpViewModel.signUpUIState.value.passwordError
-                //painterResource(id = android.R.drawable.ic_lock_idle_lock)
             )
         }
     }

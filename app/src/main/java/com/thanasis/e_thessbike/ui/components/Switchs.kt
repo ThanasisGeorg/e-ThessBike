@@ -122,8 +122,6 @@ fun ThemeSwitch(
             }
         }
     }
-
-    //navHostController.navigate(EThessBikeApp.Settings.name)
 }
 
 @Composable
