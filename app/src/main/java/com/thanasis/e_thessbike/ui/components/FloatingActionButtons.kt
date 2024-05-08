@@ -1,10 +1,15 @@
 package com.thanasis.e_thessbike.ui.components
 
 import android.content.Context
+import android.widget.Toast
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.Logout
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Check
@@ -13,13 +18,13 @@ import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material.icons.filled.Remove
 import androidx.compose.material.icons.filled.Warning
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconToggleButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -41,13 +46,12 @@ import com.thanasis.e_thessbike.NotificationService
 import com.thanasis.e_thessbike.R
 import com.thanasis.e_thessbike.backend.addBike.AddBikeUIEvent
 import com.thanasis.e_thessbike.backend.addBike.AddBikeUIViewModel
+import com.thanasis.e_thessbike.backend.editInfo.EditInfoUIEvent
+import com.thanasis.e_thessbike.backend.editInfo.EditInfoUIViewModel
 import com.thanasis.e_thessbike.backend.forgotPw.ForgotPasswordUIEvent
 import com.thanasis.e_thessbike.backend.forgotPw.ForgotPasswordUIViewModel
 import com.thanasis.e_thessbike.backend.logout.logout
-import com.thanasis.e_thessbike.backend.onEditEvent
 import com.thanasis.e_thessbike.backend.removeBike
-import com.thanasis.e_thessbike.backend.signUp.SignUpUIEvent
-import com.thanasis.e_thessbike.backend.signUp.SignUpUIState
 import com.thanasis.e_thessbike.ui.theme.Purple40
 
 @Composable
@@ -69,18 +73,33 @@ fun LogoutButton(navController: NavHostController) {
 }
 
 @Composable
-fun ApplyButton(navController: NavHostController, signUpUIState: MutableState<SignUpUIState>, db: FirebaseFirestore, context: Context, userLoggedIn: Array<String>) {
+fun ApplyButton(navController: NavHostController, editInfoUIViewModel: EditInfoUIViewModel, db: FirebaseFirestore, context: Context, userLoggedIn: Array<String>) {
     FloatingActionButton(
         onClick = {
-            onEditEvent(SignUpUIEvent.ApplyBtnClicked, signUpUIState, navController, db, context, userLoggedIn)
+            if (editInfoUIViewModel.allValidationsPassed.value) editInfoUIViewModel.onEditEvent(EditInfoUIEvent.ApplyBtnClicked, navController, db, userLoggedIn)
+            else Toast.makeText(context, "Some fields are completed incorrectly", Toast.LENGTH_LONG).show()
         },
         content = { Icon(Icons.Filled.Check, "Floating action button.") }
     )
 }
 
 @Composable
+fun BackButton(navController: NavHostController) {
+    FloatingActionButton(
+        onClick = {
+            navController.navigate(EThessBikeApp.Profile.name)
+        },
+        content = { Icon(Icons.AutoMirrored.Filled.ArrowBack, "Floating action button.") },
+    )
+}
+
+@Composable
 fun ApplyButton(navController: NavHostController, addBikeUIViewModel: AddBikeUIViewModel, db: FirebaseFirestore, context: Context, userLoggedIn: Array<String>, notificationService: NotificationService) {
     FloatingActionButton(
+        modifier = Modifier.clickable(
+            enabled = false,
+            onClick = {}
+        ),
         onClick = {
             addBikeUIViewModel.onAddEvent(AddBikeUIEvent.AddBtnClicked, navController, db, context, userLoggedIn, notificationService)
         },
@@ -94,14 +113,6 @@ fun ApplyButton(navController: NavHostController, forgotPasswordUIViewModel: For
         onClick = {
             forgotPasswordUIViewModel.onEvent(ForgotPasswordUIEvent.ApplyBtnClicked, navController, db, context)
         },
-        content = { Icon(Icons.Filled.Check, "Floating action button.") }
-    )
-}
-
-@Composable
-fun ApplyButton() {
-    FloatingActionButton(
-        onClick = {},
         content = { Icon(Icons.Filled.Check, "Floating action button.") }
     )
 }
@@ -181,9 +192,18 @@ fun ButtonContent(icon: ImageVector, value: String, horizontal: Int) {
     }
 }
 
+@Composable
+fun ApplyButton() {
+    Button(
+        modifier = Modifier.size(80.dp),
+        onClick = {},
+        content = { Icon(Icons.Filled.Check, "Floating action button.") },
+        shape = CircleShape
+    )
+}
+
 @Preview
 @Composable
 fun ButtonPreview() {
-    //val navController = rememberNavController()
-    //ApplyButton(navController)
+    ApplyButton()
 }

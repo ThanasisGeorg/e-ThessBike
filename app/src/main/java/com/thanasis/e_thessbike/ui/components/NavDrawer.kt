@@ -107,7 +107,7 @@ fun MenuDrawer(
                 ProfileInit(navHostController, stringResource(id = R.string.profile), userLoggedIn)
             }
             "editInfo" -> {
-                EditInfoInit(navHostController, stringResource(id = R.string.edit_info), db, roomDb, userLoggedIn)
+                EditInfoInit(navHostController, stringResource(id = R.string.edit_info), db, userLoggedIn)
             }
             "add_bike" -> {
                 AddBikeInit(navHostController, stringResource(id = R.string.add_bike), db, userLoggedIn, notificationService)

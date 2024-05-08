@@ -9,38 +9,36 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import com.google.firebase.firestore.FirebaseFirestore
 import com.thanasis.e_thessbike.R
+import com.thanasis.e_thessbike.backend.editInfo.EditInfoUIEvent
+import com.thanasis.e_thessbike.backend.editInfo.EditInfoUIViewModel
 import com.thanasis.e_thessbike.backend.initInfo
-import com.thanasis.e_thessbike.backend.onEditEvent
-import com.thanasis.e_thessbike.backend.roomAPI.AppDatabase
-import com.thanasis.e_thessbike.backend.signUp.SignUpUIEvent
-import com.thanasis.e_thessbike.backend.signUp.SignUpUIState
 import com.thanasis.e_thessbike.ui.components.ApplyButton
+import com.thanasis.e_thessbike.ui.components.BackButton
 import com.thanasis.e_thessbike.ui.components.HeadingText
 import com.thanasis.e_thessbike.ui.components.PasswordTextField
 import com.thanasis.e_thessbike.ui.components.TextField
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter", "UnrememberedMutableState")
 @Composable
-fun EditInfoInit(navController: NavHostController, value: String, db: FirebaseFirestore, roomDb: AppDatabase, userLoggedIn: Array<String>) {
-    val signUpUIState = mutableStateOf(SignUpUIState())
+fun EditInfoInit(navController: NavHostController, value: String, db: FirebaseFirestore, userLoggedIn: Array<String>) {
+    val editInfoUIViewModel = EditInfoUIViewModel(userLoggedIn)
     val context = LocalContext.current
-    val nameData = initInfo("users_info", "name")
-    val surnameData = initInfo("users_info", "surname")
+    val data = initInfo("users_info")
 
     Scaffold(
         floatingActionButton = {
             Row {
-                ApplyButton(navController, signUpUIState, db, context, userLoggedIn)
+                ApplyButton(navController, editInfoUIViewModel, db, context, userLoggedIn)
+                Spacer(modifier = Modifier.padding(5.dp, 0.dp))
+                BackButton(navController)
             }
         }
     ) {
@@ -51,57 +49,37 @@ fun EditInfoInit(navController: NavHostController, value: String, db: FirebaseFi
         ) {
             HeadingText(value = value)
             Spacer(modifier = Modifier.height(40.dp))
-            if (nameData != null) {
+            data.documents[userLoggedIn[0].toInt()].getString("name")?.let { it ->
                 TextField(
                     labelValue = stringResource(id = R.string.first_name),
-                    textValue = nameData.documents[userLoggedIn[0].toInt()].getString("name").toString(),
+                    textValue = "$it ",
                     onTextSelected = {
-                        onEditEvent(SignUpUIEvent.FirstNameChanged(it), signUpUIState, navController, db, context, userLoggedIn)
+                        editInfoUIViewModel.onEditEvent(EditInfoUIEvent.FirstNameChanged(it), navController, db, userLoggedIn)
+                        //Log.d(TAG, editInfoUIViewModel.editInfoUIState.value.firstName)
                     },
-                    errorStatus = true
+                    //errorStatus = editInfoUIViewModel.signUpUIState.value.firstNameError
                     //painterResource(id = R.drawable.rounded_account_circle_24)
                 )
             }
             Spacer(modifier = Modifier.height(15.dp))
-            if (surnameData != null) {
+            data.documents[userLoggedIn[0].toInt()].getString("surname")?.let { it ->
                 TextField(
                     labelValue = stringResource(id = R.string.last_name),
-                    textValue = surnameData.documents[userLoggedIn[0].toInt()].getString("surname").toString(),
+                    textValue = "$it ",
                     onTextSelected = {
-                        onEditEvent(SignUpUIEvent.LastNameChanged(it), signUpUIState, navController, db, context, userLoggedIn)
+                        editInfoUIViewModel.onEditEvent(EditInfoUIEvent.LastNameChanged(it), navController, db, userLoggedIn)
+                        //Log.d(TAG, editInfoUIViewModel.editInfoUIState.value.lastName)
                     },
-                    errorStatus = true
+                    //errorStatus = editInfoUIViewModel.signUpUIState.value.lastNameError
                     //painterResource(id = R.drawable.rounded_account_circle_24)
                 )
             }
-            /*Spacer(modifier = Modifier.height(15.dp))
-            if (emailData != null) {
-                TextField(
-                    labelValue = stringResource(id = R.string.email),
-                    textValue = emailData.documents[userLoggedIn[0].toInt()].getString("email").toString(),
-                    onTextSelected = {
-                        signUpViewModel.onEvent(SignUpUIEvent.EmailChanged(it), navController, db, roomDb)
-                    },
-                    errorStatus = true,
-                    db = db
-                    //painterResource(id = android.R.drawable.ic_dialog_email)
-                )
-            }
-            Spacer(modifier = Modifier.height(15.dp))
-            PasswordTextField(
-                labelValue = "",
-                onTextSelected = {
-
-                },
-                //errorStatus = signUpViewModel.signUpUIState.value.passwordError
-                //painterResource(id = android.R.drawable.ic_lock_idle_lock)
-            )*/
         }
     }
 }
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun EditInfoInit(navController: NavHostController, value: String) {
+fun EditInfoInit() {
     Scaffold(
         floatingActionButton = {
             Row {
@@ -165,6 +143,5 @@ fun EditInfoInit(navController: NavHostController, value: String) {
 @Preview
 @Composable
 fun EditInfoPreview() {
-    val navController = rememberNavController()
-    EditInfoInit(navController, value = "Edit your information")
+    EditInfoInit()
 }

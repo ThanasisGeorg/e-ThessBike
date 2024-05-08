@@ -316,28 +316,26 @@ fun ProfileInfoSection(userLoggedIn: Array<String>) {
 @Composable
 fun FirstName(userLoggedIn: Array<String>) {
     if (userLoggedIn[0].isNotEmpty()) {
-        val data = initInfo("users_info", "name")
+        val data = initInfo("users_info")
 
-        if (data != null) {
-            Row {
-                Text(
-                    text = stringResource(id = R.string.first_name_indicator),
-                    modifier = Modifier.padding(16.dp),style = TextStyle(
-                        fontSize = 25.sp,
-                        fontWeight = FontWeight.Bold
-                    ),
-                    textAlign = TextAlign.Center,
-                )
-                Text(
-                    text = data.documents[userLoggedIn[0].toInt()].getString("name").toString(),
-                    modifier = Modifier.padding(20.dp),
-                    style = TextStyle(
-                        fontSize = 18.sp,
-                        fontWeight = FontWeight.Normal
-                    ),
-                    textAlign = TextAlign.Center,
-                )
-            }
+        Row {
+            Text(
+                text = stringResource(id = R.string.first_name_indicator),
+                modifier = Modifier.padding(16.dp),style = TextStyle(
+                    fontSize = 25.sp,
+                    fontWeight = FontWeight.Bold
+                ),
+                textAlign = TextAlign.Center,
+            )
+            Text(
+                text = data.documents[userLoggedIn[0].toInt()].getString("name").toString(),
+                modifier = Modifier.padding(20.dp),
+                style = TextStyle(
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Normal
+                ),
+                textAlign = TextAlign.Center,
+            )
         }
     }
 }
@@ -346,29 +344,27 @@ fun FirstName(userLoggedIn: Array<String>) {
 @Composable
 fun LastName(userLoggedIn: Array<String>) {
     if (userLoggedIn[0].isNotEmpty()) {
-        val data = initInfo("users_info", "surname")
+        val data = initInfo("users_info")
 
-        if (data != null) {
-            Row {
-                Text(
-                    text = stringResource(id = R.string.last_name_indicator),
-                    modifier = Modifier.padding(16.dp),
-                    style = TextStyle(
-                        fontSize = 25.sp,
-                        fontWeight = FontWeight.Bold
-                    ),
-                    textAlign = TextAlign.Center,
-                )
-                Text(
-                    text = data.documents[userLoggedIn[0].toInt()].getString("surname").toString(),
-                    modifier = Modifier.padding(20.dp),
-                    style = TextStyle(
-                        fontSize = 18.sp,
-                        fontWeight = FontWeight.Normal
-                    ),
-                    textAlign = TextAlign.Center,
-                )
-            }
+        Row {
+            Text(
+                text = stringResource(id = R.string.last_name_indicator),
+                modifier = Modifier.padding(16.dp),
+                style = TextStyle(
+                    fontSize = 25.sp,
+                    fontWeight = FontWeight.Bold
+                ),
+                textAlign = TextAlign.Center,
+            )
+            Text(
+                text = data.documents[userLoggedIn[0].toInt()].getString("surname").toString(),
+                modifier = Modifier.padding(20.dp),
+                style = TextStyle(
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Normal
+                ),
+                textAlign = TextAlign.Center,
+            )
         }
     }
 }
@@ -377,29 +373,27 @@ fun LastName(userLoggedIn: Array<String>) {
 @Composable
 fun Email(userLoggedIn: Array<String>) {
     if (userLoggedIn[0].isNotEmpty()) {
-        val data = initInfo("users_info", "email")
+        val data = initInfo("users_info")
 
-        if (data != null) {
-            Row {
-                Text(
-                    text = stringResource(id = R.string.email_indicator),
-                    modifier = Modifier.padding(16.dp),
-                    style = TextStyle(
-                        fontSize = 25.sp,
-                        fontWeight = FontWeight.Bold
-                    ),
-                    textAlign = TextAlign.Center,
-                )
-                Text(
-                    text = data.documents[userLoggedIn[0].toInt()].getString("email").toString(),
-                    modifier = Modifier.padding(20.dp),
-                    style = TextStyle(
-                        fontSize = 18.sp,
-                        fontWeight = FontWeight.Normal
-                    ),
-                    textAlign = TextAlign.Center,
-                )
-            }
+        Row {
+            Text(
+                text = stringResource(id = R.string.email_indicator),
+                modifier = Modifier.padding(16.dp),
+                style = TextStyle(
+                    fontSize = 25.sp,
+                    fontWeight = FontWeight.Bold
+                ),
+                textAlign = TextAlign.Center,
+            )
+            Text(
+                text = data.documents[userLoggedIn[0].toInt()].getString("email").toString(),
+                modifier = Modifier.padding(20.dp),
+                style = TextStyle(
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Normal
+                ),
+                textAlign = TextAlign.Center,
+            )
         }
     }
 }

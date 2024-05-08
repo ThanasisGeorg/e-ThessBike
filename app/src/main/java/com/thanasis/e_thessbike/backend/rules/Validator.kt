@@ -1,5 +1,8 @@
 package com.thanasis.e_thessbike.backend.rules
 
+import android.content.ContentValues
+import android.content.Context
+import android.util.Log
 import com.thanasis.e_thessbike.backend.getDocuments
 import com.thanasis.e_thessbike.backend.signUp.SignUpViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -20,16 +23,29 @@ object Validator {
     }
 
     fun validateFirstName(fName: String): Boolean {
+        Log.d(ContentValues.TAG, "FirstName: $fName")
         return fName.isNotEmpty() && fName.length >= 4
     }
 
     fun validateLastName(lName: String): Boolean {
+        Log.d(ContentValues.TAG, "LastName: $lName")
         return lName.isNotEmpty() && lName.length >= 4
     }
 
-    fun validateEmail(email: String): Boolean {
+    @OptIn(ExperimentalCoroutinesApi::class)
+    fun validateEmail(email: String, context: Context): Int {
         val emailRegex = Regex("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\$")
-        return email.matches(emailRegex)
+        val task = getDocuments("users").getCompleted()
+
+        if (email.isBlank() || email.isEmpty()) return -1
+
+        if (!email.matches(emailRegex)) return -2
+
+        for (i in task.documents.indices) {
+            if (task.documents[i].getString("email").equals(email)) return -3
+        }
+
+        return 1
     }
 
     fun validatePassword(password: String): Boolean {

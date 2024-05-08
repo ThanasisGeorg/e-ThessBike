@@ -75,7 +75,7 @@ fun HeadingText(value: String) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TextField(labelValue: String, onTextSelected: (String) -> Unit, errorStatus: Boolean = true){
+fun TextField(labelValue: String, onTextSelected: (String) -> Unit, errorStatus: Boolean = true) {
     val textValue = remember {
         mutableStateOf("")
     }
@@ -83,7 +83,6 @@ fun TextField(labelValue: String, onTextSelected: (String) -> Unit, errorStatus:
     OutlinedTextField(
         modifier = Modifier.fillMaxWidth(),
         label = {Text(text = labelValue)},
-        //colors = TextFieldDefaults.colors(),
         keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
         singleLine = true,
         maxLines = 1,
@@ -97,7 +96,7 @@ fun TextField(labelValue: String, onTextSelected: (String) -> Unit, errorStatus:
 }
 
 @Composable
-fun TextField(labelValue: String, textValue: String, onTextSelected: (String) -> Unit, errorStatus: Boolean = true){
+fun TextField(labelValue: String, textValue: String, onTextSelected: (String) -> Unit, errorStatus: Boolean = true) {
     val newValue = remember {
         mutableStateOf(textValue)
     }
@@ -105,7 +104,6 @@ fun TextField(labelValue: String, textValue: String, onTextSelected: (String) ->
     OutlinedTextField(
         modifier = Modifier.fillMaxWidth(),
         label = {Text(text = labelValue)},
-        //colors = TextFieldDefaults.colors(),
         keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next),
         singleLine = true,
         maxLines = 1,
@@ -119,7 +117,7 @@ fun TextField(labelValue: String, textValue: String, onTextSelected: (String) ->
 }
 
 @Composable
-fun PasswordTextField(labelValue: String, onTextSelected: (String) -> Unit, errorStatus: Boolean = true){
+fun PasswordTextField(labelValue: String, onTextSelected: (String) -> Unit, errorStatus: Boolean = true) {
     val localFocusManager = LocalFocusManager.current
 
     val password = remember {

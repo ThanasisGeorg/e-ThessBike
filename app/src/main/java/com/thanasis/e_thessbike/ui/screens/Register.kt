@@ -101,7 +101,7 @@ fun registerScreen(navController: NavHostController, db: FirebaseFirestore, room
                 roomDb,
                 context,
                 signUpViewModel,
-                isEnabled = true
+                isEnabled = signUpViewModel.allValidationsPassed.value
             )
 
             Spacer(modifier = Modifier.height(20.dp))

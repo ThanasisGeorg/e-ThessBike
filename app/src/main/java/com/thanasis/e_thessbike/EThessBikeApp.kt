@@ -61,7 +61,6 @@ fun MainApp(
                 userLoggedIn = loginScreen(navHostController, db, roomDb)
             }
             composable(EThessBikeApp.ForgotPassword.name) {
-                BackHandler(true) {}
                 ForgotPasswordScreen(navHostController, stringResource(id = R.string.forgot_password), db)
             }
             composable(EThessBikeApp.TermsOfUse.name) {

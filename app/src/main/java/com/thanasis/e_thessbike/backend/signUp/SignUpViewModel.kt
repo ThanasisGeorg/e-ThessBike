@@ -18,13 +18,12 @@ import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.tasks.await
 
 class SignUpViewModel: ViewModel() {
-    val TAG: String? = SignUpViewModel::class.simpleName
     var signUpUIState = mutableStateOf(SignUpUIState())
-    private var allValidationsPassed = mutableStateOf(false)
+    var allValidationsPassed = mutableStateOf(false)
     private var userLoggedIn = arrayOf("", "")
 
     fun onEvent(event: SignUpUIEvent, navHostController: NavHostController, db: FirebaseFirestore, roomDb: AppDatabase, context: Context): Array<String>{
-        validateDataWithRules()
+        validateDataWithRules(context)
         when (event) {
             is SignUpUIEvent.FirstNameChanged -> {
                 signUpUIState.value = signUpUIState.value.copy(
@@ -50,16 +49,18 @@ class SignUpViewModel: ViewModel() {
                 signUpUIState.value = signUpUIState.value.copy(
                     conditionsAndPrivacyAccepted = event.status
                 )
-                validateDataWithRules()
+                validateDataWithRules(context)
             }
             is SignUpUIEvent.RegisterBtnClicked -> {
-                if (allValidationsPassed.value) {
+                if (Validator.validateEmail(email = signUpUIState.value.email, context = context) == -2) {
+                    Toast.makeText(context, "This email does not match a proper email sequence", Toast.LENGTH_LONG).show()
+                } else if (Validator.validateEmail(email = signUpUIState.value.email, context = context) == -3) {
+                    Toast.makeText(context, "This email is already in use", Toast.LENGTH_LONG).show()
+                } else {
                     userLoggedIn = signUp(db)
                     initLocalDB(userLoggedIn, roomDb)
                     initLocalDB(userLoggedIn, roomDb)
                     navHostController.navigate(EThessBikeApp.Home.name)
-                } else {
-                    Toast.makeText(context, "Some field are completed incorrectly!", Toast.LENGTH_LONG).show()
                 }
             }
             else -> {}
@@ -100,7 +101,9 @@ class SignUpViewModel: ViewModel() {
         return userLoggedIn
     }
 
-    private fun validateDataWithRules() {
+    private fun validateDataWithRules(context: Context) {
+        val emailFlag = mutableStateOf(false)
+
         val fNameResult = Validator.validateFirstName(
             fName = signUpUIState.value.firstName
         )
@@ -110,7 +113,8 @@ class SignUpViewModel: ViewModel() {
         )
 
         val emailResult = Validator.validateEmail(
-            email = signUpUIState.value.email
+            email = signUpUIState.value.email,
+            context = context
         )
 
         val passwordResult = Validator.validatePassword(
@@ -124,12 +128,14 @@ class SignUpViewModel: ViewModel() {
         signUpUIState.value = signUpUIState.value.copy(
             firstNameError = fNameResult,
             lastNameError = lNameResult,
-            emailError = emailResult,
+            emailError = emailFlag.value,
             passwordError = passwordResult,
             conditionsAndPrivacyError = conditionsAndPrivacyResult
         )
 
-        allValidationsPassed.value = fNameResult && lNameResult && emailResult && passwordResult && conditionsAndPrivacyResult
+        emailFlag.value = emailResult != -1
+
+        allValidationsPassed.value = fNameResult && lNameResult && emailFlag.value && passwordResult && conditionsAndPrivacyResult
     }
 
     private fun createUser(db: FirebaseFirestore) {
