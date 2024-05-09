@@ -115,7 +115,7 @@ fun TextField(labelValue: String, textValue: String, onTextSelected: (String) ->
 }
 
 @Composable
-fun PasswordTextField(labelValue: String, onTextSelected: (String) -> Unit, errorStatus: Boolean = true) {
+fun PasswordTextField(labelValue: String, onTextSelected: (String) -> Unit, errorStatus: Boolean = true, isEnabled: Boolean = true) {
     val localFocusManager = LocalFocusManager.current
 
     val password = remember {
@@ -160,7 +160,8 @@ fun PasswordTextField(labelValue: String, onTextSelected: (String) -> Unit, erro
             }
         },
         visualTransformation = if (passwordVisible.value) VisualTransformation.None else PasswordVisualTransformation(),
-        isError = !errorStatus
+        isError = !errorStatus,
+        enabled = isEnabled
     )
 }
 
@@ -281,25 +282,31 @@ fun CategoryIndicator(category: String, textSize: Int) {
         "theme" -> {
             Text(
                 text = stringResource(R.string.theme),
-                fontSize = 25.sp
+                fontSize = textSize.sp
             )
         }
         "dark" -> {
             Text(
                 text = stringResource(R.string.dark),
-                fontSize = 15.sp
+                fontSize = textSize.sp
             )
         }
         "light" -> {
             Text(
                 text = stringResource(R.string.light),
-                fontSize = 15.sp
+                fontSize = textSize.sp
+            )
+        }
+        "security" -> {
+            Text(
+                text = stringResource(R.string.security),
+                fontSize = textSize.sp
             )
         }
         "language" -> {
             Text(
                 text = stringResource(R.string.language),
-                fontSize = 25.sp
+                fontSize = textSize.sp
             )
         }
     }

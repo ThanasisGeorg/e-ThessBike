@@ -11,6 +11,7 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.Logout
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
@@ -23,6 +24,7 @@ import androidx.compose.material3.IconToggleButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -42,6 +44,9 @@ import com.thanasis.e_thessbike.NotificationService
 import com.thanasis.e_thessbike.R
 import com.thanasis.e_thessbike.backend.addBike.AddBikeUIEvent
 import com.thanasis.e_thessbike.backend.addBike.AddBikeUIViewModel
+import com.thanasis.e_thessbike.backend.changePw.ChangePasswordUIEvent
+import com.thanasis.e_thessbike.backend.changePw.ChangePasswordUIViewModel
+import com.thanasis.e_thessbike.backend.deleteAccount
 import com.thanasis.e_thessbike.backend.editInfo.EditInfoUIEvent
 import com.thanasis.e_thessbike.backend.editInfo.EditInfoUIViewModel
 import com.thanasis.e_thessbike.backend.forgotPw.ForgotPasswordUIEvent
@@ -67,6 +72,31 @@ fun LogoutButton(navController: NavHostController) {
         content = { Icon(Icons.AutoMirrored.Filled.Logout, "Floating action button.") }
     )
 }
+
+/*
+@SuppressLint("UnrememberedMutableState")
+@Composable
+fun ChangeOrientationButton(context: Context) {
+    val portrait = remember { mutableStateOf(true) }
+    val activity = context as Activity
+
+    FloatingActionButton(
+        onClick = {
+            if (portrait.value) {
+                activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+            } else {
+                activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+            }
+            portrait.value = !portrait.value
+        }
+    ) {
+        if (portrait.value) {
+            Icon(Icons.Filled.StayCurrentLandscape, "Floating action button.")
+        } else {
+            Icon(Icons.Filled.StayCurrentPortrait, "Floating action button.")
+        }
+    }
+}*/
 
 @Composable
 fun ApplyButton(navController: NavHostController, editInfoUIViewModel: EditInfoUIViewModel, db: FirebaseFirestore, context: Context, userLoggedIn: Array<String>) {
@@ -114,6 +144,18 @@ fun ApplyButton(navController: NavHostController, forgotPasswordUIViewModel: For
 }
 
 @Composable
+fun ApplyButton(navController: NavHostController, changePasswordUIViewModel: ChangePasswordUIViewModel, db: FirebaseFirestore, userLoggedIn: Array<String>, errorList: MutableList<String>, context: Context) {
+    var errorIndex by remember { mutableIntStateOf(0) }
+
+    FloatingActionButton(
+        onClick = {
+            errorIndex = changePasswordUIViewModel.onEvent(ChangePasswordUIEvent.ApplyBtnClicked, navController, db, userLoggedIn, context)
+        },
+        content = { Icon(Icons.Filled.Check, "Floating action button.") }
+    )
+}
+
+@Composable
 fun AddButton(navHostController: NavHostController) {
     ExtendedFloatingActionButton(
         onClick = { navHostController.navigate(EThessBikeApp.AddBike.name) },
@@ -132,7 +174,7 @@ fun RemoveButton(userLoggedIn: Array<String>, index: Int, navHostController: Nav
     )
     
     if (openAlertDialog.value) {
-        RemoveBikeAlertDialog(
+        AlertDialog(
             onDismissRequest = { openAlertDialog.value = false},
             onConfirmation = {
                 openAlertDialog.value = false
@@ -143,6 +185,31 @@ fun RemoveButton(userLoggedIn: Array<String>, index: Int, navHostController: Nav
             },
             dialogTitle = "Remove your bike",
             dialogText = "Are you sure you want to remove this bike?",
+            icon = Icons.Default.Warning
+        )
+    }
+}
+
+@Composable
+fun DeleteButton(userLoggedIn: Array<String>, navHostController: NavHostController, context: Context, notificationService: NotificationService) {
+    val openAlertDialog = remember { mutableStateOf(false) }
+
+    FloatingActionButton(
+        onClick = { openAlertDialog.value = !openAlertDialog.value},
+        content = { Icon(imageVector = Icons.Filled.Delete, contentDescription = "Floating action button") },
+    )
+
+    if (openAlertDialog.value) {
+        AlertDialog(
+            onDismissRequest = { openAlertDialog.value = false},
+            onConfirmation = {
+                openAlertDialog.value = false
+                deleteAccount(userLoggedIn, context)
+                navHostController.navigate(EThessBikeApp.Login.name)
+                notificationService.showBasicNotification("Successful delete", "You have successfully deleted your account")
+            },
+            dialogTitle = "Delete your account",
+            dialogText = "Are you sure you want to delete your account? If you press yes, your bikes will be deleted as well!",
             icon = Icons.Default.Warning
         )
     }

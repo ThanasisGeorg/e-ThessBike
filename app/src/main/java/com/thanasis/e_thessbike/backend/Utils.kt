@@ -92,15 +92,46 @@ fun getIndexesOfSpecificBikes(brandName: String): ArrayList<Int> {
 
 @OptIn(ExperimentalCoroutinesApi::class)
 fun removeBike(userLoggedIn: Array<String>, index: Int, context: Context) {
-    val indexesOfBikes = getIndexesOfMyBikes(userLoggedIn)
+    val indexesOfMyBikes = getIndexesOfMyBikes(userLoggedIn)
     val task = getDocuments("bikes").getCompleted()
     val db = Firebase.firestore
 
     db.collection("bikes")
-        .document(task.documents[indexesOfBikes[index]].id)
+        .document(task.documents[indexesOfMyBikes[index]].id)
         .delete()
         .addOnFailureListener{
             Toast.makeText(context, "Something went wrong. Please try again", Toast.LENGTH_SHORT).show()
         }
+}
+
+@OptIn(ExperimentalCoroutinesApi::class)
+fun deleteAccount(userLoggedIn: Array<String>, context: Context) {
+    val usersTask = getDocuments("users").getCompleted()
+    val usersInfoTask = getDocuments("users_info").getCompleted()
+    val bikeTask = getDocuments("bikes").getCompleted()
+    val indexesOfMyBikes = getIndexesOfMyBikes(userLoggedIn)
+    val db = Firebase.firestore
+
+    runBlocking {
+        db.collection("users")
+            .document(usersTask.documents[userLoggedIn[0].toInt()].id)
+            .delete()
+            .asDeferred()
+            .await()
+
+        db.collection("users_info")
+            .document(usersInfoTask.documents[userLoggedIn[0].toInt()].id)
+            .delete()
+            .asDeferred()
+            .await()
+
+        for (i in indexesOfMyBikes.indices) {
+            db.collection("bikes")
+                .document(bikeTask.documents[indexesOfMyBikes[i]].id)
+                .delete()
+                .asDeferred()
+                .await()
+        }
+    }
 }
 

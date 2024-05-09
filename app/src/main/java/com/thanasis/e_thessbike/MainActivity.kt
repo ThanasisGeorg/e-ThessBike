@@ -14,6 +14,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.navigation.compose.rememberNavController
 import androidx.room.Room
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
@@ -45,6 +46,7 @@ class MainActivity: ComponentActivity() {
             val postNotificationPermission = rememberPermissionState(permission = Manifest.permission.POST_NOTIFICATIONS)
             val notificationService = NotificationService(this)
             val navHostController = rememberNavController()
+            val configuration = LocalConfiguration.current
 
             LaunchedEffect(key1 = true) {
                 if (!postNotificationPermission.status.isGranted) {
@@ -62,7 +64,8 @@ class MainActivity: ComponentActivity() {
                         navHostController.navigate(EThessBikeApp.Settings.name)
                     },
                     notificationService,
-                    navHostController
+                    navHostController,
+                    configuration
                 )
             }
         }

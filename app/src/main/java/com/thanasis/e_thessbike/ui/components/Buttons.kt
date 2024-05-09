@@ -81,7 +81,7 @@ fun loginRegisterButtonComp(value: String, navController: NavHostController, db:
 }
 
 @Composable
-fun ButtonComp(value: String, navHostController: NavHostController) {
+fun BikeListButtonComp(value: String, navHostController: NavHostController) {
     Button(
         onClick = {
             if (value == "My bike list") navHostController.navigate(EThessBikeApp.MyBikeList.name)
@@ -114,9 +114,75 @@ fun ButtonComp(value: String, navHostController: NavHostController) {
     }
 }
 
+@Composable
+fun ButtonComp(value: String, navHostController: NavHostController) {
+    Button(
+        onClick = {
+            navHostController.navigate(EThessBikeApp.ChangePassword.name)
+        },
+        modifier = Modifier
+            .size(160.dp, 100.dp)
+            .heightIn(48.dp)
+            .background(
+                color = Purple40,
+                shape = RoundedCornerShape(30.dp)
+            )
+            .fillMaxWidth(),
+        contentPadding = PaddingValues(),
+        colors = ButtonDefaults.buttonColors(Color.Transparent)
+    ) {
+        Box(
+            modifier = Modifier
+                .heightIn(48.dp),
+            contentAlignment = Alignment.Center
+        ) {
+            Text(
+                text = value,
+                modifier = Modifier.padding(10.dp, 0.dp),
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold,
+                textAlign = TextAlign.Center
+            )
+        }
+    }
+}
+
+@Composable
+fun ButtonComp_(value: String, navHostController: NavHostController) {
+    Button(
+        onClick = {
+            navHostController.navigate(EThessBikeApp.ChangePassword.name)
+        },
+        modifier = Modifier
+            .size(120.dp, 60.dp)
+            .heightIn(48.dp)
+            .background(
+                color = Purple40,
+                shape = RoundedCornerShape(20.dp)
+            )
+            .fillMaxWidth(),
+        contentPadding = PaddingValues(),
+        colors = ButtonDefaults.buttonColors(Color.Transparent)
+    ) {
+        Box(
+            modifier = Modifier
+                .heightIn(48.dp),
+            contentAlignment = Alignment.Center
+        ) {
+            Text(
+                text = value,
+                modifier = Modifier.padding(10.dp, 0.dp),
+                fontSize = 14.sp,
+                fontWeight = FontWeight.Bold,
+                textAlign = TextAlign.Center
+            )
+        }
+    }
+}
+
 @Preview
 @Composable
 fun ButtonCompPreview() {
-    ButtonComp(value = "", navHostController = rememberNavController())
+    ButtonComp_(value = "", navHostController = rememberNavController())
 }
 

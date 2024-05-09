@@ -1,6 +1,8 @@
 package com.thanasis.e_thessbike.ui.components
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.res.Configuration
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -25,7 +27,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
@@ -36,36 +37,72 @@ import com.thanasis.e_thessbike.backend.initInfo
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun BikeCard(indexesOfBikes: ArrayList<Int>, index: Int, task: QuerySnapshot, userLoggedIn: Array<String>, navHostController: NavHostController, notificationService: NotificationService) {
+fun BikeCard(indexesOfBikes: ArrayList<Int>, index: Int, task: QuerySnapshot, userLoggedIn: Array<String>, navHostController: NavHostController, notificationService: NotificationService, configuration: Configuration) {
     val context = LocalContext.current
 
-    Scaffold(
-        modifier = Modifier.height(210.dp),
-        //floatingActionButton = { FavouriteButton() }
-    ) {
-        Card(
-            colors = CardDefaults.cardColors(
-                containerColor = MaterialTheme.colorScheme.surfaceVariant,
-            ),
-            modifier = Modifier.size(width = 410.dp, height = 210.dp),
-            onClick = {}
-        ) {
-            Row(
-                modifier = Modifier.width(410.dp),
-                horizontalArrangement = Arrangement.SpaceBetween
+    when (configuration.orientation) {
+        Configuration.ORIENTATION_PORTRAIT -> {
+            Scaffold(
+                modifier = Modifier.height(280.dp),
+                //floatingActionButton = { EditButton(navHostController) }
             ) {
-                Column {
-                    Row {
-                        BikeInfoSection(indexesOfBikes, index, task)
+                Card(
+                    colors = CardDefaults.cardColors(
+                        containerColor = MaterialTheme.colorScheme.surfaceVariant,
+                    ),
+                    modifier = Modifier.size(width = 410.dp, height = 280.dp),
+                    onClick = {}
+                ) {
+                    Row(
+                        modifier = Modifier.width(410.dp),
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        Column {
+                            Row {
+                                BikeInfoSection(indexesOfBikes, index, task)
+                            }
+                        }
+                        if (task.documents[indexesOfBikes[index]].getString("email").equals(userLoggedIn[1])) {
+                            OptionsDropdown(
+                                userLoggedIn,
+                                index,
+                                navHostController,
+                                notificationService
+                            )
+                        }
                     }
                 }
-                if (task.documents[indexesOfBikes[index]].getString("email").equals(userLoggedIn[1])) {
-                    OptionsDropdown(
-                        userLoggedIn,
-                        index,
-                        navHostController,
-                        notificationService
-                    )
+            }
+        } else -> {
+            Scaffold(
+                modifier = Modifier.height(280.dp),
+                floatingActionButton = { EditButton(navHostController) }
+            ) {
+                Card(
+                    colors = CardDefaults.cardColors(
+                        containerColor = MaterialTheme.colorScheme.surfaceVariant,
+                    ),
+                    modifier = Modifier.size(width = 410.dp, height = 280.dp),
+                    onClick = {}
+                ) {
+                    Row(
+                        modifier = Modifier.width(410.dp),
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        Column {
+                            Row {
+                                BikeInfoSection(indexesOfBikes, index, task)
+                            }
+                        }
+                        if (task.documents[indexesOfBikes[index]].getString("email").equals(userLoggedIn[1])) {
+                            OptionsDropdown(
+                                userLoggedIn,
+                                index,
+                                navHostController,
+                                notificationService
+                            )
+                        }
+                    }
                 }
             }
         }
@@ -77,7 +114,7 @@ fun BikeCard(indexesOfBikes: ArrayList<Int>, index: Int, task: QuerySnapshot, us
 fun BikeCard_() {
     Scaffold(
         modifier = Modifier.height(190.dp),
-        //floatingActionButton = { FavouriteButton() }
+        //floatingActionButton = { EditButton(navHostController = rememberNavController()) }
     ) {
         Card(
             colors = CardDefaults.cardColors(
@@ -88,7 +125,7 @@ fun BikeCard_() {
         ) {
             Row(
                 modifier = Modifier.width(410.dp),
-                horizontalArrangement = Arrangement.SpaceBetween
+                horizontalArrangement = Arrangement.SpaceBetween,
             ) {
                 Column {
                     Text(
@@ -139,15 +176,11 @@ fun BikeCard_() {
     }
 }
 
-@Preview
-@Composable
-fun BikeCardPreview() {
-    BikeCard_()
-}
-
 @Composable
 fun BikeInfoSection(indexesOfBikes: ArrayList<Int>, index: Int, task: QuerySnapshot) {
-    Column {
+    Column(
+        modifier = Modifier.height(210.dp)
+    ) {
         Spacer(modifier = Modifier.height(1.dp))
 
         BrandName(indexesOfBikes, index, task)
@@ -181,7 +214,7 @@ fun BrandName(indexesOfBikes: ArrayList<Int>, index: Int, task: QuerySnapshot) {
             )
             Text(
                 text = it,
-                modifier = Modifier.padding(10.dp, 17.dp),
+                modifier = Modifier.padding(5.dp, 17.dp),
                 style = TextStyle(
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Normal
@@ -207,7 +240,7 @@ fun Color(indexesOfBikes: ArrayList<Int>, index: Int, task: QuerySnapshot) {
             )
             Text(
                 text = it,
-                modifier = Modifier.padding(10.dp, 17.dp),
+                modifier = Modifier.padding(5.dp, 17.dp),
                 style = TextStyle(
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Normal
@@ -233,7 +266,7 @@ fun Location(indexesOfBikes: ArrayList<Int>, index: Int, task: QuerySnapshot) {
             )
             Text(
                 text = it,
-                modifier = Modifier.padding(10.dp, 17.dp),
+                modifier = Modifier.padding(5.dp, 17.dp),
                 style = TextStyle(
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Normal
@@ -259,7 +292,7 @@ fun EmailInfo(indexesOfBikes: ArrayList<Int>, index: Int, task: QuerySnapshot) {
             )
             Text(
                 text = it,
-                modifier = Modifier.padding(10.dp, 17.dp),
+                modifier = Modifier.padding(5.dp, 17.dp),
                 style = TextStyle(
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Normal
@@ -270,19 +303,31 @@ fun EmailInfo(indexesOfBikes: ArrayList<Int>, index: Int, task: QuerySnapshot) {
     }
 }
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun ProfileCard(userLoggedIn: Array<String>) {
-    Card(
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceVariant,
-        ),
-        modifier = Modifier
-            .size(width = 383.dp, height = 250.dp)
-
+fun ProfileCard(userLoggedIn: Array<String>, navHostController: NavHostController, context: Context, notificationService: NotificationService) {
+    Scaffold(
+        modifier = Modifier.height(250.dp),
+        floatingActionButton = {
+            Column {
+                EditButton(navHostController)
+                Spacer(modifier = Modifier.height(12.dp))
+                DeleteButton(userLoggedIn, navHostController, context, notificationService)
+            }
+        }
     ) {
-        Column {
-            Row {
-                ProfileInfoSection(userLoggedIn)
+        Card(
+            colors = CardDefaults.cardColors(
+                containerColor = MaterialTheme.colorScheme.surfaceVariant,
+            ),
+            modifier = Modifier
+                .size(width = 383.dp, height = 250.dp)
+
+        ) {
+            Column {
+                Row {
+                    ProfileInfoSection(userLoggedIn)
+                }
             }
         }
     }
@@ -314,7 +359,8 @@ fun FirstName(userLoggedIn: Array<String>) {
         Row {
             Text(
                 text = stringResource(id = R.string.first_name_indicator),
-                modifier = Modifier.padding(16.dp),style = TextStyle(
+                modifier = Modifier.padding(16.dp),
+                style = TextStyle(
                     fontSize = 25.sp,
                     fontWeight = FontWeight.Bold
                 ),

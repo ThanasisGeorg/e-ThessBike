@@ -16,33 +16,53 @@ class ForgotPasswordUIViewModel: ViewModel() {
     private var allValidationsPassed = mutableStateOf(false)
 
     @OptIn(ExperimentalCoroutinesApi::class)
-    fun onEvent(event: ForgotPasswordUIEvent, navHostController: NavHostController, db: FirebaseFirestore, context: Context) {
-        validateWithRules()
+    fun onEvent(event: ForgotPasswordUIEvent, navHostController: NavHostController, db: FirebaseFirestore, context: Context): Int {
         when (event) {
             is ForgotPasswordUIEvent.EmailChanged -> {
                 forgotPasswordUIState.value = forgotPasswordUIState.value.copy(
                     email = event.email
                 )
+
+                val emailResult = Validator.validateExistingEmail(
+                    email = forgotPasswordUIState.value.email
+                )
+
+                return if (emailResult) 1
+                else -1
             }
             is ForgotPasswordUIEvent.NewPasswordChanged -> {
                 forgotPasswordUIState.value = forgotPasswordUIState.value.copy(
                     newPassword = event.newPassword
                 )
+
+                val newPasswordResult = Validator.validateNewPassword(
+                    newPassword = forgotPasswordUIState.value.newPassword
+                )
+
+                return if (newPasswordResult) 2
+                else -2
             }
             is ForgotPasswordUIEvent.ConfirmNewPasswordChanged -> {
                 forgotPasswordUIState.value = forgotPasswordUIState.value.copy(
                     confirmNewPassword = event.confirmNewPassword
                 )
+
+                val confirmNewPasswordResult = Validator.validateConfirmNewPassword(
+                    newPassword = forgotPasswordUIState.value.newPassword,
+                    confirmNewPassword = forgotPasswordUIState.value.confirmNewPassword
+                )
+
+                if (confirmNewPasswordResult) allValidationsPassed.value = true
+                else return -3
             }
             is ForgotPasswordUIEvent.ApplyBtnClicked -> {
                 if (allValidationsPassed.value) {
                     changePassword(navHostController, db, context)
-                } else {
-                    Toast.makeText(context, "*Enter an existing email\n*Enter a valid and different password from the old one\n*Re-enter correctly your new password", Toast.LENGTH_LONG).show()
                 }
-
             }
         }
+
+        return 0
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)
@@ -56,6 +76,7 @@ class ForgotPasswordUIViewModel: ViewModel() {
                     .update("password", forgotPasswordUIState.value.newPassword.hashCode().toString())
                     .addOnSuccessListener {
                         navHostController.navigate(EThessBikeApp.Login.name)
+                        Toast.makeText(context, "Successful change of password", Toast.LENGTH_SHORT).show()
                     }
                     .addOnFailureListener{
                         Toast.makeText(context, "Something went wrong. Please try again", Toast.LENGTH_SHORT).show()

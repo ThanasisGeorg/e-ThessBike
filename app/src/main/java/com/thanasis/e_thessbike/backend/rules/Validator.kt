@@ -73,7 +73,7 @@ object Validator {
         val task = getDocuments("users").getCompleted()
 
         for (i in task.documents.indices) {
-            if (!task.documents[i].getString("password").equals(newPassword)) {
+            if (!task.documents[i].getString("password").equals(newPassword.hashCode().toString()) && newPassword.length >= 8) {
                 return true
             }
         }

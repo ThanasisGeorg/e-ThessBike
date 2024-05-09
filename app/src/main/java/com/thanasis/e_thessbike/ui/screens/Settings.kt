@@ -1,6 +1,7 @@
 package com.thanasis.e_thessbike.ui.screens
 
 import android.annotation.SuppressLint
+import android.content.res.Configuration
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -15,13 +16,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.thanasis.e_thessbike.backend.roomAPI.AppDatabase
+import com.thanasis.e_thessbike.ui.components.ButtonComp_
 import com.thanasis.e_thessbike.ui.components.CategoryIndicator
 import com.thanasis.e_thessbike.ui.components.ThemeSwitch
 import com.thanasis.e_thessbike.ui.components.TopBar
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun SettingsInit(navController: NavHostController, value: String, roomDb: AppDatabase, darkTheme: Boolean, onThemeUpdated: () -> Unit){
+fun SettingsInit(navController: NavHostController, value: String, roomDb: AppDatabase, darkTheme: Boolean, onThemeUpdated: () -> Unit, configuration: Configuration){
     Scaffold(
         topBar = {
             TopBar(navController, title = value)
@@ -53,10 +55,12 @@ fun SettingsInit(navController: NavHostController, value: String, roomDb: AppDat
                 CategoryIndicator(category = "light", textSize = 15)
             }
 
-            /*Spacer(modifier = Modifier.padding(10.dp))
+            Spacer(modifier = Modifier.padding(10.dp))
 
-            CategoryIndicator(category = "language", textSize = 25)
-            HorizontalDivider()*/
+            CategoryIndicator(category = "security", textSize = 25)
+            HorizontalDivider()
+            Spacer(modifier = Modifier.padding(0.dp, 5.dp))
+            ButtonComp_("Change password", navController)
         }
     }
 }

@@ -19,6 +19,7 @@
     <string name="show_password" translatable="false">Show password</string>
     <string name="terms_privacy" translatable="false">By continuing you accept our Privacy and Term of Use</string>
     <string name="forgot_password" translatable="false">Forgot my password</string>
+    <string name="change_password" translatable="false">Change my password</string>
     <string name="first_name_indicator" translatable="false">First name: </string>
     <string name="last_name_indicator" translatable="false">Last name: </string>
     <string name="email_indicator" translatable="false">Email: </string>
@@ -28,6 +29,7 @@
     <string name="dark" translatable="false">Dark</string>
     <string name="theme" translatable="false">Theme</string>
     <string name="language" translatable="false">Language</string>
+    <string name="security" translatable="false">Security</string>
     <string name="edit_info" translatable="false">Edit your information</string>
     <string name="search" translatable="false">Search</string>
     <string name="brand_name_indicators" translatable="false">Brand name:</string>
@@ -45,4 +47,5 @@
     <string name="home_text_3" translatable="false">Start exploring now and pedal your way to Thessaloniki!</string>
     <string name="terms_of_use" translatable="false">Terms of Use</string>
     <string name="privacy_policy" translatable="false">Privacy Policy</string>
+    <string name="delete_account" translatable="false">Delete account</string>
 </resources>

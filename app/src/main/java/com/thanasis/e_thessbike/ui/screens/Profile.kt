@@ -12,21 +12,24 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.thanasis.e_thessbike.NotificationService
 import com.thanasis.e_thessbike.R
-import com.thanasis.e_thessbike.ui.components.ButtonComp
-import com.thanasis.e_thessbike.ui.components.EditButton
+import com.thanasis.e_thessbike.ui.components.BikeListButtonComp
 import com.thanasis.e_thessbike.ui.components.LogoutButton
 import com.thanasis.e_thessbike.ui.components.ProfileCard
 import com.thanasis.e_thessbike.ui.components.TopBar
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun ProfileInit(navController: NavHostController, value: String, userLoggedIn: Array<String>) {
+fun ProfileInit(navController: NavHostController, value: String, userLoggedIn: Array<String>, notificationService: NotificationService) {
+    val context = LocalContext.current
+
     Scaffold(
         topBar = {
             TopBar(navController, title = value)
@@ -42,12 +45,7 @@ fun ProfileInit(navController: NavHostController, value: String, userLoggedIn: A
                 .fillMaxSize()
                 .padding(10.dp, 77.dp)
         ) {
-            Scaffold(
-                modifier = Modifier.height(250.dp),
-                floatingActionButton = { EditButton(navController) }
-            ) {
-                ProfileCard(userLoggedIn)
-            }
+            ProfileCard(userLoggedIn, navController, context, notificationService)
             Spacer(modifier = Modifier.height(15.dp))
             HorizontalDivider()
             Scaffold(
@@ -57,21 +55,21 @@ fun ProfileInit(navController: NavHostController, value: String, userLoggedIn: A
                     horizontalAlignment = Alignment.CenterHorizontally,
                     modifier = Modifier.padding(85.dp, 50.dp)
                 ) {
-                    ButtonComp(stringResource(id = R.string.bike_list), navController)
+                    BikeListButtonComp(stringResource(id = R.string.bike_list), navController)
                     Spacer(modifier = Modifier.padding(0.dp, 10.dp))
-                    ButtonComp(stringResource(id = R.string.available_bikes), navController)
+                    BikeListButtonComp(stringResource(id = R.string.available_bikes), navController)
                     /*Row(
                         horizontalArrangement = Arrangement.Center
                     ) {
-                        ButtonComp(stringResource(id = R.string.bike_list), navController)
+                        BikeListButtonComp(stringResource(id = R.string.bike_list), navController)
                         Spacer(modifier = Modifier.padding(5.dp, 0.dp))
-                        ButtonComp(stringResource(id = R.string.favourites), navController)
+                        BikeListButtonComp(stringResource(id = R.string.favourites), navController)
                     }
                     Spacer(modifier = Modifier.padding(0.dp, 5.dp))
                     Row(
                         horizontalArrangement = Arrangement.Center
                     ) {
-                        ButtonComp(stringResource(id = R.string.available_bikes), navController)
+                        BikeListButtonComp(stringResource(id = R.string.available_bikes), navController)
                     }*/
                 }
             }
@@ -83,5 +81,5 @@ fun ProfileInit(navController: NavHostController, value: String, userLoggedIn: A
 @Composable
 fun ProfileInitPreview() {
     val navController = rememberNavController()
-    ProfileInit(navController, "Profile", userLoggedIn = arrayOf("", ""))
+    //ProfileInit(navController, "Profile", userLoggedIn = arrayOf("", ""))
 }

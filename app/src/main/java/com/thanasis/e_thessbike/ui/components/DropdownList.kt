@@ -141,6 +141,21 @@ fun OptionsDropdown(userLoggedIn: Array<String>, index: Int, navHostController: 
     }
 }
 
+@Composable
+fun ErrorListDropdown(errorList: MutableList<String>, index: Int) {
+    Box {
+        Popup {
+            Column {
+                Box(
+                    modifier = Modifier.padding(0.dp, 25.dp)
+                ) {
+                    Text(text = errorList[index])
+                }
+            }
+        }
+    }
+}
+
 @Preview
 @Composable
 fun DropdownListPreview() {

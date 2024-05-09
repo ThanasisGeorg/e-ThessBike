@@ -1,5 +1,6 @@
 package com.thanasis.e_thessbike
 
+import android.content.res.Configuration
 import androidx.activity.compose.BackHandler
 import androidx.annotation.StyleRes
 import androidx.compose.material3.MaterialTheme
@@ -28,6 +29,7 @@ enum class EThessBikeApp(@StyleRes val title: Int) {
     Register(title = R.string.register),
     Login(title = R.string.login),
     ForgotPassword(title = R.string.forgot_password),
+    ChangePassword(title = R.string.change_password),
     Settings(title = R.string.settings),
     Search(title = R.string.search),
     EditInfo(title = R.string.edit_info),
@@ -45,7 +47,8 @@ fun MainApp(
     darkTheme: Boolean,
     onThemeUpdated: () -> Unit,
     notificationService: NotificationService,
-    navHostController: NavHostController
+    navHostController: NavHostController,
+    configuration: Configuration
 ) {
     var userLoggedIn by remember { mutableStateOf(arrayOf("", "")) }
 
@@ -77,7 +80,8 @@ fun MainApp(
                     darkTheme,
                     onThemeUpdated,
                     userLoggedIn,
-                    notificationService
+                    notificationService,
+                    configuration
                 )
             }
             composable(EThessBikeApp.Settings.name) {
@@ -89,7 +93,21 @@ fun MainApp(
                     darkTheme,
                     onThemeUpdated,
                     userLoggedIn,
-                    notificationService
+                    notificationService,
+                    configuration
+                )
+            }
+            composable(EThessBikeApp.ChangePassword.name) {
+                MenuDrawer(
+                    navHostController,
+                    selectedIndex = "change_password",
+                    db,
+                    roomDb,
+                    darkTheme,
+                    onThemeUpdated,
+                    userLoggedIn,
+                    notificationService,
+                    configuration
                 )
             }
             composable(EThessBikeApp.Profile.name) {
@@ -101,10 +119,11 @@ fun MainApp(
                     darkTheme,
                     onThemeUpdated,
                     userLoggedIn,
-                    notificationService
+                    notificationService,
+                    configuration
                 )
             }
-            composable(EThessBikeApp.EditInfo.name)  {
+            composable(EThessBikeApp.EditInfo.name) {
                 MenuDrawer(
                     navHostController,
                     selectedIndex = "editInfo",
@@ -113,10 +132,11 @@ fun MainApp(
                     darkTheme,
                     onThemeUpdated,
                     userLoggedIn,
-                    notificationService
+                    notificationService,
+                    configuration
                 )
             }
-            composable(EThessBikeApp.Search.name)  {
+            composable(EThessBikeApp.Search.name) {
                 MenuDrawer(
                     navHostController,
                     selectedIndex = "search",
@@ -125,10 +145,11 @@ fun MainApp(
                     darkTheme,
                     onThemeUpdated,
                     userLoggedIn,
-                    notificationService
+                    notificationService,
+                    configuration
                 )
             }
-            composable(EThessBikeApp.AddBike.name)  {
+            composable(EThessBikeApp.AddBike.name) {
                 MenuDrawer(
                     navHostController,
                     selectedIndex = "add_bike",
@@ -136,9 +157,11 @@ fun MainApp(
                     darkTheme,
                     onThemeUpdated,
                     userLoggedIn,
-                    notificationService)
+                    notificationService,
+                    configuration
+                )
             }
-            composable(EThessBikeApp.MyBikeList.name)  {
+            composable(EThessBikeApp.MyBikeList.name) {
                 MenuDrawer(
                     navHostController,
                     selectedIndex = "my_bike_list",
@@ -147,10 +170,11 @@ fun MainApp(
                     darkTheme,
                     onThemeUpdated,
                     userLoggedIn,
-                    notificationService
+                    notificationService,
+                    configuration
                 )
             }
-            composable(EThessBikeApp.AllBikeList.name)  {
+            composable(EThessBikeApp.AllBikeList.name) {
                 MenuDrawer(
                     navHostController,
                     selectedIndex = "available_bikes",
@@ -159,7 +183,8 @@ fun MainApp(
                     darkTheme,
                     onThemeUpdated,
                     userLoggedIn,
-                    notificationService
+                    notificationService,
+                    configuration
                 )
             }
         }
