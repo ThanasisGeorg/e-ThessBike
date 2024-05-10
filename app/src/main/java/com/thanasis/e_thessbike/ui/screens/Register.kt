@@ -100,7 +100,6 @@ fun registerScreen(navController: NavHostController, db: FirebaseFirestore, room
                 roomDb,
                 context,
                 signUpViewModel,
-                onClick,
                 isEnabled = signUpViewModel.allValidationsPassed.value
             )
 

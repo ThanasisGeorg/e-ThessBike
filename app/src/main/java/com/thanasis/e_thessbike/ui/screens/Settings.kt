@@ -22,7 +22,7 @@ import com.thanasis.e_thessbike.ui.components.TopBar
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun SettingsInit(navController: NavHostController, value: String, roomDb: AppDatabase, darkTheme: Boolean, onThemeUpdated: () -> Unit){
+fun SettingsInit(navController: NavHostController, value: String, roomDb: AppDatabase, darkTheme: Boolean, userLoggedIn: Array<String>, onThemeUpdated: () -> Unit){
     Scaffold(
         topBar = {
             TopBar(navController, title = value)
@@ -48,6 +48,7 @@ fun SettingsInit(navController: NavHostController, value: String, roomDb: AppDat
                     size = 40.dp,
                     padding = 5.dp,
                     onClick = onThemeUpdated,
+                    userLoggedIn = userLoggedIn,
                     roomDb = roomDb
                 )
                 Spacer(modifier = Modifier.padding(5.dp, 0.dp))

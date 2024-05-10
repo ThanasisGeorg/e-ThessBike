@@ -40,13 +40,13 @@ import com.thanasis.e_thessbike.ui.theme.Purple40
 import com.thanasis.e_thessbike.ui.theme.Purple80
 
 @Composable
-fun loginRegisterButtonComp(value: String, navController: NavHostController, db: FirebaseFirestore, roomDb: AppDatabase, context: Context, viewModel: ViewModel, onClick: () -> Unit, isEnabled: Boolean = false): Array<String> {
+fun loginRegisterButtonComp(value: String, navController: NavHostController, db: FirebaseFirestore, roomDb: AppDatabase, context: Context, viewModel: ViewModel, isEnabled: Boolean = false): Array<String> {
     var userLoggedIn by remember { mutableStateOf(arrayOf("", "")) }
 
     Button(
         onClick = {
             if (viewModel is LoginViewModel) {
-                userLoggedIn = viewModel.onEvent(LoginUIEvent.LoginBtnClicked, navController, db, roomDb, context, onClick)
+                userLoggedIn = viewModel.onEvent(LoginUIEvent.LoginBtnClicked, navController, db, roomDb, context)
             } else if (viewModel is SignUpViewModel) {
                 userLoggedIn = viewModel.onEvent(SignUpUIEvent.RegisterBtnClicked, navController, db, roomDb, context)
             }

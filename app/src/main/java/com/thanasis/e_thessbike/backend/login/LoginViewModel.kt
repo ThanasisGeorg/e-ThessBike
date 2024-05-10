@@ -9,7 +9,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
 import com.thanasis.e_thessbike.EThessBikeApp
 import com.thanasis.e_thessbike.backend.roomAPI.AppDatabase
-import com.thanasis.e_thessbike.backend.roomAPI.initNewUserLocalDB
+import com.thanasis.e_thessbike.backend.roomAPI.initUser
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
@@ -21,7 +21,7 @@ class LoginViewModel: ViewModel() {
     private var allValidationsPassed = mutableStateOf(false)
 
     @OptIn(ExperimentalCoroutinesApi::class)
-    fun onEvent(event: LoginUIEvent, navHostController: NavHostController, db: FirebaseFirestore, roomDb: AppDatabase, context: Context, onClick: () -> Unit): Array<String> {
+    fun onEvent(event: LoginUIEvent, navHostController: NavHostController, db: FirebaseFirestore, roomDb: AppDatabase, context: Context): Array<String> {
         when (event) {
             is LoginUIEvent.EmailChanged -> {
                 loginUIState.value = loginUIState.value.copy(
@@ -39,8 +39,8 @@ class LoginViewModel: ViewModel() {
                 userLoggedIn = verifyData(document)
 
                 if (allValidationsPassed.value) {
+                    initUser(userLoggedIn, roomDb)
                     navHostController.navigate(EThessBikeApp.Home.name)
-                    initNewUserLocalDB(userLoggedIn, roomDb)
                 } else Toast.makeText(context, "Login failed. Incorrect email or password", Toast.LENGTH_LONG).show()
             }
         }

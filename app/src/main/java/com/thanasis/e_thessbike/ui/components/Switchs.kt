@@ -1,6 +1,6 @@
 package com.thanasis.e_thessbike.ui.components
 
-import android.content.ContentValues.TAG
+import android.content.ContentValues
 import android.util.Log
 import androidx.compose.animation.core.AnimationSpec
 import androidx.compose.animation.core.animateDpAsState
@@ -51,6 +51,7 @@ fun ThemeSwitch(
     toggleShape: Shape = CircleShape,
     animationSpec: AnimationSpec<Dp> = tween(durationMillis = 300),
     onClick: () -> Unit,
+    userLoggedIn: Array<String>,
     roomDb: AppDatabase
 ) {
     val offset by animateDpAsState(
@@ -58,7 +59,6 @@ fun ThemeSwitch(
         animationSpec = animationSpec, label = ""
     )
     val settingsDao = roomDb.settingsDao()
-    var settings = Settings(settingsDao.getSettings().userId, settingsDao.getSettings().theme)
 
     Box(modifier = Modifier
         .width(size * 2)
@@ -67,13 +67,11 @@ fun ThemeSwitch(
         .clickable {
             onClick()
             if (!darkTheme) {
-                settings = settings.copy(theme = "dark")
-                settingsDao.updateSettings(Settings(settingsDao.getSettings().userId, "dark"))
-                Log.d(TAG, settingsDao.getSettings().toString())
+                settingsDao.updateSettings(Settings(userId = userLoggedIn[1], theme = "dark"))
+                Log.d(ContentValues.TAG, settingsDao.getSettings().toString())
             } else {
-                settings = settings.copy(theme = "light")
-                settingsDao.updateSettings(Settings(settingsDao.getSettings().userId, "light"))
-                Log.d(TAG, settingsDao.getSettings().toString())
+                settingsDao.updateSettings(Settings(userId = userLoggedIn[1], theme = "light"))
+                Log.d(ContentValues.TAG, settingsDao.getSettings().toString())
             }
         }
         .background(MaterialTheme.colorScheme.secondaryContainer)
@@ -131,7 +129,7 @@ fun ThemeSwitcher(roomDb: AppDatabase, darkTheme: Boolean ,onThemeUpdated: () ->
     var settings = Settings(settingsDao.getSettings().userId, settingsDao.getSettings().theme)
     val TAG: String? = SignUpViewModel::class.simpleName
 
-    if (settingsDao.getTheme() == "light") checked = true
+    //if (settingsDao.getTheme() == "light") checked = true
 
     Switch(
         checked = !darkTheme,

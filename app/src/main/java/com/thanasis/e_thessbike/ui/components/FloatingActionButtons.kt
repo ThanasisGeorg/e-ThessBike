@@ -65,10 +65,10 @@ fun EditButton(navHostController: NavHostController) {
 }
 
 @Composable
-fun LogoutButton(navController: NavHostController, userLoggedIn: Array<String>, roomDb: AppDatabase) {
+fun LogoutButton(navController: NavHostController, userLoggedIn: Array<String>, roomDb: AppDatabase, onClick: () -> Unit) {
     FloatingActionButton(
         onClick = {
-            logout(navController, userLoggedIn, roomDb)
+            logout(navController, userLoggedIn, roomDb, onClick)
         },
         content = { Icon(Icons.AutoMirrored.Filled.Logout, "Floating action button.") }
     )

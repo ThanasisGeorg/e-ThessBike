@@ -102,10 +102,10 @@ fun MenuDrawer(
                 SearchInit(navHostController, stringResource(id = R.string.search), userLoggedIn, notificationService)
             }
             "settings" -> {
-                SettingsInit(navHostController, stringResource(id = R.string.settings), roomDb, darkTheme, onThemeUpdated)
+                SettingsInit(navHostController, stringResource(id = R.string.settings), roomDb, darkTheme, userLoggedIn, onThemeUpdated)
             }
             "profile" -> {
-                ProfileInit(navHostController, stringResource(id = R.string.profile), userLoggedIn, roomDb, notificationService)
+                ProfileInit(navHostController, stringResource(id = R.string.profile), userLoggedIn, roomDb, onThemeUpdated, notificationService)
             }
             "editInfo" -> {
                 EditInfoInit(navHostController, stringResource(id = R.string.edit_info), db, userLoggedIn)

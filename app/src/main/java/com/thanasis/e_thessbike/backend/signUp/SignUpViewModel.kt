@@ -11,7 +11,7 @@ import com.thanasis.e_thessbike.EThessBikeApp
 import com.thanasis.e_thessbike.backend.Account
 import com.thanasis.e_thessbike.backend.login.LoginViewModel
 import com.thanasis.e_thessbike.backend.roomAPI.AppDatabase
-import com.thanasis.e_thessbike.backend.roomAPI.initNewUserLocalDB
+import com.thanasis.e_thessbike.backend.roomAPI.initUser
 import com.thanasis.e_thessbike.backend.rules.Validator
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
@@ -58,7 +58,7 @@ class SignUpViewModel: ViewModel() {
                     Toast.makeText(context, "This email is already in use", Toast.LENGTH_LONG).show()
                 } else {
                     userLoggedIn = signUp(db)
-                    initNewUserLocalDB(userLoggedIn, roomDb)
+                    initUser(userLoggedIn, roomDb)
                     navHostController.navigate(EThessBikeApp.Home.name)
                 }
             }
