@@ -1,7 +1,6 @@
 package com.thanasis.e_thessbike.ui.screens
 
 import android.annotation.SuppressLint
-import android.content.res.Configuration
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -20,6 +19,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.thanasis.e_thessbike.R
 import com.thanasis.e_thessbike.backend.editInfo.EditInfoUIEvent
 import com.thanasis.e_thessbike.backend.editInfo.EditInfoUIViewModel
+import com.thanasis.e_thessbike.backend.getData
 import com.thanasis.e_thessbike.backend.initInfo
 import com.thanasis.e_thessbike.ui.components.ApplyButton
 import com.thanasis.e_thessbike.ui.components.BackButton
@@ -28,17 +28,18 @@ import com.thanasis.e_thessbike.ui.components.TextField
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter", "UnrememberedMutableState")
 @Composable
-fun EditInfoInit(navController: NavHostController, value: String, db: FirebaseFirestore, userLoggedIn: Array<String>, configuration: Configuration) {
+fun EditInfoInit(navController: NavHostController, value: String, db: FirebaseFirestore, userLoggedIn: Array<String>) {
     val editInfoUIViewModel = EditInfoUIViewModel(userLoggedIn)
     val context = LocalContext.current
-    val data = initInfo("users_info")
+    val documents = initInfo("users_info")
+    val data = getData(userLoggedIn)
 
     Scaffold(
         floatingActionButton = {
             Row {
                 ApplyButton(navController, editInfoUIViewModel, db, context, userLoggedIn)
                 Spacer(modifier = Modifier.padding(5.dp, 0.dp))
-                BackButton(navController)
+                BackButton(navController, "profile")
             }
         }
     ) {
@@ -49,7 +50,7 @@ fun EditInfoInit(navController: NavHostController, value: String, db: FirebaseFi
         ) {
             HeadingText(value = value)
             Spacer(modifier = Modifier.height(40.dp))
-            data.documents[userLoggedIn[0].toInt()].getString("name")?.let { it ->
+            documents.documents[data[0].toInt()].getString("name")?.let { it ->
                 TextField(
                     labelValue = stringResource(id = R.string.first_name),
                     textValue = "$it ",
@@ -61,7 +62,7 @@ fun EditInfoInit(navController: NavHostController, value: String, db: FirebaseFi
                 )
             }
             Spacer(modifier = Modifier.height(15.dp))
-            data.documents[userLoggedIn[0].toInt()].getString("surname")?.let { it ->
+            documents.documents[data[0].toInt()].getString("surname")?.let { it ->
                 TextField(
                     labelValue = stringResource(id = R.string.last_name),
                     textValue = "$it ",

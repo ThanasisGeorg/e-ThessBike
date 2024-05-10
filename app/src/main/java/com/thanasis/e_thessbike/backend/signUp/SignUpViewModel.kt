@@ -11,7 +11,7 @@ import com.thanasis.e_thessbike.EThessBikeApp
 import com.thanasis.e_thessbike.backend.Account
 import com.thanasis.e_thessbike.backend.login.LoginViewModel
 import com.thanasis.e_thessbike.backend.roomAPI.AppDatabase
-import com.thanasis.e_thessbike.backend.roomAPI.initLocalDB
+import com.thanasis.e_thessbike.backend.roomAPI.initNewUserLocalDB
 import com.thanasis.e_thessbike.backend.rules.Validator
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
@@ -22,7 +22,7 @@ class SignUpViewModel: ViewModel() {
     var allValidationsPassed = mutableStateOf(false)
     private var userLoggedIn = arrayOf("", "")
 
-    fun onEvent(event: SignUpUIEvent, navHostController: NavHostController, db: FirebaseFirestore, roomDb: AppDatabase, context: Context): Array<String>{
+    fun onEvent(event: SignUpUIEvent, navHostController: NavHostController, db: FirebaseFirestore, roomDb: AppDatabase, context: Context): Array<String> {
         validateDataWithRules(context)
         when (event) {
             is SignUpUIEvent.FirstNameChanged -> {
@@ -52,14 +52,13 @@ class SignUpViewModel: ViewModel() {
                 validateDataWithRules(context)
             }
             is SignUpUIEvent.RegisterBtnClicked -> {
-                if (Validator.validateEmail(email = signUpUIState.value.email, context = context) == -2) {
+                if (Validator.validateEmail(email = signUpUIState.value.email) == -2) {
                     Toast.makeText(context, "This email does not match a proper email sequence", Toast.LENGTH_LONG).show()
-                } else if (Validator.validateEmail(email = signUpUIState.value.email, context = context) == -3) {
+                } else if (Validator.validateEmail(email = signUpUIState.value.email) == -3) {
                     Toast.makeText(context, "This email is already in use", Toast.LENGTH_LONG).show()
                 } else {
                     userLoggedIn = signUp(db)
-                    initLocalDB(userLoggedIn, roomDb)
-                    initLocalDB(userLoggedIn, roomDb)
+                    initNewUserLocalDB(userLoggedIn, roomDb)
                     navHostController.navigate(EThessBikeApp.Home.name)
                 }
             }
@@ -113,8 +112,7 @@ class SignUpViewModel: ViewModel() {
         )
 
         val emailResult = Validator.validateEmail(
-            email = signUpUIState.value.email,
-            context = context
+            email = signUpUIState.value.email
         )
 
         val passwordResult = Validator.validatePassword(
@@ -125,6 +123,8 @@ class SignUpViewModel: ViewModel() {
             statusValue = signUpUIState.value.conditionsAndPrivacyAccepted
         )
 
+        emailFlag.value = emailResult > 0
+
         signUpUIState.value = signUpUIState.value.copy(
             firstNameError = fNameResult,
             lastNameError = lNameResult,
@@ -132,8 +132,6 @@ class SignUpViewModel: ViewModel() {
             passwordError = passwordResult,
             conditionsAndPrivacyError = conditionsAndPrivacyResult
         )
-
-        emailFlag.value = emailResult != -1
 
         allValidationsPassed.value = fNameResult && lNameResult && emailFlag.value && passwordResult && conditionsAndPrivacyResult
     }

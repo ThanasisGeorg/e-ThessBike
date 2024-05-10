@@ -2,7 +2,6 @@ package com.thanasis.e_thessbike.ui.components
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.res.Configuration
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -22,7 +21,6 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -33,76 +31,39 @@ import androidx.navigation.NavHostController
 import com.google.firebase.firestore.QuerySnapshot
 import com.thanasis.e_thessbike.NotificationService
 import com.thanasis.e_thessbike.R
+import com.thanasis.e_thessbike.backend.getData
 import com.thanasis.e_thessbike.backend.initInfo
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun BikeCard(indexesOfBikes: ArrayList<Int>, index: Int, task: QuerySnapshot, userLoggedIn: Array<String>, navHostController: NavHostController, notificationService: NotificationService, configuration: Configuration) {
-    val context = LocalContext.current
-
-    when (configuration.orientation) {
-        Configuration.ORIENTATION_PORTRAIT -> {
-            Scaffold(
-                modifier = Modifier.height(280.dp),
-                //floatingActionButton = { EditButton(navHostController) }
+fun BikeCard(indexesOfBikes: ArrayList<Int>, index: Int, task: QuerySnapshot, userLoggedIn: Array<String>, navHostController: NavHostController, notificationService: NotificationService) {
+    Scaffold(
+        modifier = Modifier.height(280.dp),
+        //floatingActionButton = { EditButton(navHostController) }
+    ) {
+        Card(
+            colors = CardDefaults.cardColors(
+                containerColor = MaterialTheme.colorScheme.surfaceVariant,
+            ),
+            modifier = Modifier.size(width = 410.dp, height = 280.dp),
+            onClick = {}
+        ) {
+            Row(
+                modifier = Modifier.width(410.dp),
+                horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                Card(
-                    colors = CardDefaults.cardColors(
-                        containerColor = MaterialTheme.colorScheme.surfaceVariant,
-                    ),
-                    modifier = Modifier.size(width = 410.dp, height = 280.dp),
-                    onClick = {}
-                ) {
-                    Row(
-                        modifier = Modifier.width(410.dp),
-                        horizontalArrangement = Arrangement.SpaceBetween
-                    ) {
-                        Column {
-                            Row {
-                                BikeInfoSection(indexesOfBikes, index, task)
-                            }
-                        }
-                        if (task.documents[indexesOfBikes[index]].getString("email").equals(userLoggedIn[1])) {
-                            OptionsDropdown(
-                                userLoggedIn,
-                                index,
-                                navHostController,
-                                notificationService
-                            )
-                        }
+                Column {
+                    Row {
+                        BikeInfoSection(indexesOfBikes, index, task)
                     }
                 }
-            }
-        } else -> {
-            Scaffold(
-                modifier = Modifier.height(280.dp),
-                floatingActionButton = { EditButton(navHostController) }
-            ) {
-                Card(
-                    colors = CardDefaults.cardColors(
-                        containerColor = MaterialTheme.colorScheme.surfaceVariant,
-                    ),
-                    modifier = Modifier.size(width = 410.dp, height = 280.dp),
-                    onClick = {}
-                ) {
-                    Row(
-                        modifier = Modifier.width(410.dp),
-                        horizontalArrangement = Arrangement.SpaceBetween
-                    ) {
-                        Column {
-                            Row {
-                                BikeInfoSection(indexesOfBikes, index, task)
-                            }
-                        }
-                        if (task.documents[indexesOfBikes[index]].getString("email").equals(userLoggedIn[1])) {
-                            OptionsDropdown(
-                                userLoggedIn,
-                                index,
-                                navHostController,
-                                notificationService
-                            )
-                        }
-                    }
+                if (task.documents[indexesOfBikes[index]].getString("email").equals(userLoggedIn[1])) {
+                    OptionsDropdown(
+                        userLoggedIn,
+                        index,
+                        navHostController,
+                        notificationService
+                    )
                 }
             }
         }
@@ -352,9 +313,10 @@ fun ProfileInfoSection(userLoggedIn: Array<String>) {
 
 @SuppressLint("UnrememberedMutableState")
 @Composable
-fun FirstName(userLoggedIn: Array<String>) {
-    if (userLoggedIn[0].isNotEmpty()) {
+fun FirstName(tempArray: Array<String>) {
+    if (tempArray[0].isNotEmpty()) {
         val data = initInfo("users_info")
+        val userLoggedIn = getData(tempArray)
 
         Row {
             Text(
@@ -381,9 +343,10 @@ fun FirstName(userLoggedIn: Array<String>) {
 
 @SuppressLint("CoroutineCreationDuringComposition", "UnrememberedMutableState")
 @Composable
-fun LastName(userLoggedIn: Array<String>) {
-    if (userLoggedIn[0].isNotEmpty()) {
+fun LastName(tempArray: Array<String>) {
+    if (tempArray[0].isNotEmpty()) {
         val data = initInfo("users_info")
+        val userLoggedIn = getData(tempArray)
 
         Row {
             Text(
@@ -410,9 +373,10 @@ fun LastName(userLoggedIn: Array<String>) {
 
 @SuppressLint("CoroutineCreationDuringComposition", "UnrememberedMutableState")
 @Composable
-fun Email(userLoggedIn: Array<String>) {
-    if (userLoggedIn[0].isNotEmpty()) {
+fun Email(tempArray: Array<String>) {
+    if (tempArray[0].isNotEmpty()) {
         val data = initInfo("users_info")
+        val userLoggedIn = getData(tempArray)
 
         Row {
             Text(

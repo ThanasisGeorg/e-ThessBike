@@ -21,6 +21,21 @@ fun initInfo(collectionName: String): QuerySnapshot {
 }
 
 @OptIn(ExperimentalCoroutinesApi::class)
+fun getData(tempArray: Array<String>): Array<String>{
+    val documents = getDocuments("users_info").getCompleted()
+    val userLoggedIn = arrayOf("", "")
+
+    for (i in documents.documents.indices) {
+        if (documents.documents[i].getString("email").equals(tempArray[1])) {
+            userLoggedIn[0] = i.toString()
+            userLoggedIn[1] = tempArray[1]
+        }
+    }
+
+    return userLoggedIn
+}
+
+@OptIn(ExperimentalCoroutinesApi::class)
 @SuppressLint("UnrememberedMutableState")
 fun updateInfo(db: FirebaseFirestore, collectionName: String, numOfDocument: Int, fieldName: String, value: String): QuerySnapshot? {
     val task = db.collection(collectionName)

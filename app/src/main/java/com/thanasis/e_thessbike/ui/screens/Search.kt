@@ -1,7 +1,6 @@
 package com.thanasis.e_thessbike.ui.screens
 
 import android.annotation.SuppressLint
-import android.content.res.Configuration
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -36,7 +35,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 @OptIn(ExperimentalCoroutinesApi::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter", "MutableCollectionMutableState")
 @Composable
-fun SearchInit(navHostController: NavHostController, value: String, userLoggedIn: Array<String>, notificationService: NotificationService, configuration: Configuration) {
+fun SearchInit(navHostController: NavHostController, value: String, userLoggedIn: Array<String>, notificationService: NotificationService) {
     val scrollState = rememberScrollState()
     val indexesOfBikes = remember { mutableStateOf(ArrayList<Int>()) }
     val task = getDocuments("bikes").getCompleted()
@@ -80,7 +79,7 @@ fun SearchInit(navHostController: NavHostController, value: String, userLoggedIn
                         .verticalScroll(state = scrollState)
                 ) {
                     for (i in indexesOfBikes.value.indices) {
-                        BikeCard(indexesOfBikes.value, i, task, userLoggedIn, navHostController, notificationService, configuration)
+                        BikeCard(indexesOfBikes.value, i, task, userLoggedIn, navHostController, notificationService)
                         Spacer(modifier = Modifier.padding(0.dp, 5.dp))
                     }
                 }
@@ -92,5 +91,5 @@ fun SearchInit(navHostController: NavHostController, value: String, userLoggedIn
 @Preview
 @Composable
 fun SearchInitPreview() {
-    SearchInit(navHostController = rememberNavController(), value = "Search", userLoggedIn = arrayOf(), notificationService = NotificationService(LocalContext.current), configuration = Configuration())
+    SearchInit(navHostController = rememberNavController(), value = "Search", userLoggedIn = arrayOf(), notificationService = NotificationService(LocalContext.current))
 }

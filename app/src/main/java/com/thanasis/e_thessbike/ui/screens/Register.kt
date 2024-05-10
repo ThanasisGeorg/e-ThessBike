@@ -36,7 +36,7 @@ import com.thanasis.e_thessbike.ui.components.TextField
 import com.thanasis.e_thessbike.ui.components.loginRegisterButtonComp
 
 @Composable
-fun registerScreen(navController: NavHostController, db: FirebaseFirestore, roomDb: AppDatabase, signUpViewModel: SignUpViewModel = viewModel()): Array<String> {
+fun registerScreen(navController: NavHostController, db: FirebaseFirestore, roomDb: AppDatabase, onClick: () -> Unit, signUpViewModel: SignUpViewModel = viewModel()): Array<String> {
     var userLoggedIn by remember { mutableStateOf(arrayOf("", "")) }
     val context = LocalContext.current
 
@@ -100,6 +100,7 @@ fun registerScreen(navController: NavHostController, db: FirebaseFirestore, room
                 roomDb,
                 context,
                 signUpViewModel,
+                onClick,
                 isEnabled = signUpViewModel.allValidationsPassed.value
             )
 

@@ -3,6 +3,7 @@ package com.thanasis.e_thessbike.ui.screens
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -28,6 +29,7 @@ import com.thanasis.e_thessbike.R
 import com.thanasis.e_thessbike.backend.changePw.ChangePasswordUIEvent
 import com.thanasis.e_thessbike.backend.changePw.ChangePasswordUIViewModel
 import com.thanasis.e_thessbike.ui.components.ApplyButton
+import com.thanasis.e_thessbike.ui.components.BackButton
 import com.thanasis.e_thessbike.ui.components.ErrorListDropdown
 import com.thanasis.e_thessbike.ui.components.HeadingText
 import com.thanasis.e_thessbike.ui.components.PasswordTextField
@@ -37,7 +39,7 @@ import com.thanasis.e_thessbike.ui.components.PasswordTextField
 fun ChangePasswordScreen(navController: NavHostController, value: String, db: FirebaseFirestore, userLoggedIn: Array<String>, changePasswordUIViewModel: ChangePasswordUIViewModel = viewModel()){
     val context = LocalContext.current
     var isEnabled by remember { mutableStateOf(false) }
-    var errorIndex by remember { mutableIntStateOf(-1) }
+    var errorIndex by remember { mutableIntStateOf(0) }
     val errorList = mutableListOf<String>()
     val newPwError = "Enter a different password from the old one\n" + "and make sure is greater or equal to 8 characters"
     val confirmNewPwError = "This password does not match with your new one"
@@ -47,14 +49,18 @@ fun ChangePasswordScreen(navController: NavHostController, value: String, db: Fi
 
     Scaffold (
         floatingActionButton = {
-            ApplyButton(
-                navController = navController,
-                changePasswordUIViewModel = changePasswordUIViewModel,
-                db = db,
-                userLoggedIn = userLoggedIn,
-                errorList,
-                context = context
-            )
+            Row {
+                ApplyButton(
+                    navController = navController,
+                    changePasswordUIViewModel = changePasswordUIViewModel,
+                    db = db,
+                    userLoggedIn = userLoggedIn,
+                    errorList,
+                    context = context
+                )
+                Spacer(modifier = Modifier.padding(5.dp, 0.dp))
+                BackButton(navController, "settings")
+            }
         }
     ){
         Column(

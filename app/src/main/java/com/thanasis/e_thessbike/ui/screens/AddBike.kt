@@ -1,7 +1,6 @@
 package com.thanasis.e_thessbike.ui.screens
 
 import android.annotation.SuppressLint
-import android.content.res.Configuration
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -27,22 +26,27 @@ import com.thanasis.e_thessbike.R
 import com.thanasis.e_thessbike.backend.addBike.AddBikeUIEvent
 import com.thanasis.e_thessbike.backend.addBike.AddBikeUIViewModel
 import com.thanasis.e_thessbike.ui.components.ApplyButton
+import com.thanasis.e_thessbike.ui.components.BackButton
 import com.thanasis.e_thessbike.ui.components.DropdownList
 import com.thanasis.e_thessbike.ui.components.HeadingText
 import com.thanasis.e_thessbike.ui.components.TextField
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun AddBikeInit(navHostController: NavHostController, value: String, db: FirebaseFirestore, userLoggedIn: Array<String>, notificationService: NotificationService, configuration: Configuration, addBikeUIViewModel: AddBikeUIViewModel = viewModel()){
-    val locationList = listOf("Sikies", "Neapoli", "Stavroupoli", "Evosmos", "Polichni", "Thessaloiniki", "Kalamaria", "Meteora")
-    val colorList = listOf("Black", "Blue", "Red", "Green", "Purple", "Grey", "Yellow")
+fun AddBikeInit(navHostController: NavHostController, value: String, db: FirebaseFirestore, userLoggedIn: Array<String>, notificationService: NotificationService, addBikeUIViewModel: AddBikeUIViewModel = viewModel()){
+    val locationList = listOf("None", "Sikies", "Neapoli", "Stavroupoli", "Evosmos", "Polichni", "Thessaloiniki", "Kalamaria", "Meteora")
+    val colorList = listOf("None", "Black", "Blue", "Red", "Green", "Purple", "Grey", "Yellow")
     var locationIndex by rememberSaveable { mutableIntStateOf(0) }
     var colorIndex by rememberSaveable { mutableIntStateOf(0) }
     val context = LocalContext.current
 
     Scaffold(
         floatingActionButton = {
-            ApplyButton(navHostController, addBikeUIViewModel, db, context, userLoggedIn, notificationService)
+            Row {
+                ApplyButton(navHostController, addBikeUIViewModel, db, context, userLoggedIn, notificationService)
+                Spacer(modifier = Modifier.padding(5.dp, 0.dp))
+                BackButton(navHostController, "my_bike_list")
+            }
         }
     ) {
         Column(

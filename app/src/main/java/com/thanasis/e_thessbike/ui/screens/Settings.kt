@@ -1,7 +1,6 @@
 package com.thanasis.e_thessbike.ui.screens
 
 import android.annotation.SuppressLint
-import android.content.res.Configuration
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -23,7 +22,7 @@ import com.thanasis.e_thessbike.ui.components.TopBar
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun SettingsInit(navController: NavHostController, value: String, roomDb: AppDatabase, darkTheme: Boolean, onThemeUpdated: () -> Unit, configuration: Configuration){
+fun SettingsInit(navController: NavHostController, value: String, roomDb: AppDatabase, darkTheme: Boolean, onThemeUpdated: () -> Unit){
     Scaffold(
         topBar = {
             TopBar(navController, title = value)

@@ -53,6 +53,7 @@ import com.thanasis.e_thessbike.backend.forgotPw.ForgotPasswordUIEvent
 import com.thanasis.e_thessbike.backend.forgotPw.ForgotPasswordUIViewModel
 import com.thanasis.e_thessbike.backend.logout.logout
 import com.thanasis.e_thessbike.backend.removeBike
+import com.thanasis.e_thessbike.backend.roomAPI.AppDatabase
 import com.thanasis.e_thessbike.ui.theme.Purple40
 
 @Composable
@@ -64,10 +65,10 @@ fun EditButton(navHostController: NavHostController) {
 }
 
 @Composable
-fun LogoutButton(navController: NavHostController) {
+fun LogoutButton(navController: NavHostController, userLoggedIn: Array<String>, roomDb: AppDatabase) {
     FloatingActionButton(
         onClick = {
-            logout(navController)
+            logout(navController, userLoggedIn, roomDb)
         },
         content = { Icon(Icons.AutoMirrored.Filled.Logout, "Floating action button.") }
     )
@@ -110,10 +111,24 @@ fun ApplyButton(navController: NavHostController, editInfoUIViewModel: EditInfoU
 }
 
 @Composable
-fun BackButton(navController: NavHostController) {
+fun BackButton(navController: NavHostController, destination: String) {
     FloatingActionButton(
         onClick = {
-            navController.navigate(EThessBikeApp.Profile.name)
+            when (destination) {
+                "profile" -> {
+                    navController.navigate(EThessBikeApp.Profile.name)
+                }
+                "settings" -> {
+                    navController.navigate(EThessBikeApp.Settings.name)
+                }
+                "login" -> {
+                    navController.navigate(EThessBikeApp.Login.name)
+                }
+                "my_bike_list" -> {
+                    navController.navigate(EThessBikeApp.MyBikeList.name)
+                }
+            }
+
         },
         content = { Icon(Icons.AutoMirrored.Filled.ArrowBack, "Floating action button.") },
     )

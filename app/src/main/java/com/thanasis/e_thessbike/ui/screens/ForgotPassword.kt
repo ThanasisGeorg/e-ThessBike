@@ -2,6 +2,7 @@ package com.thanasis.e_thessbike.ui.screens
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -25,6 +26,7 @@ import com.thanasis.e_thessbike.R
 import com.thanasis.e_thessbike.backend.forgotPw.ForgotPasswordUIEvent
 import com.thanasis.e_thessbike.backend.forgotPw.ForgotPasswordUIViewModel
 import com.thanasis.e_thessbike.ui.components.ApplyButton
+import com.thanasis.e_thessbike.ui.components.BackButton
 import com.thanasis.e_thessbike.ui.components.ErrorListDropdown
 import com.thanasis.e_thessbike.ui.components.HeadingText
 import com.thanasis.e_thessbike.ui.components.PasswordTextField
@@ -48,12 +50,16 @@ fun ForgotPasswordScreen(navController: NavHostController, value: String, db: Fi
 
     Scaffold (
         floatingActionButton = {
-            ApplyButton(
-                navController = navController,
-                forgotPasswordUIViewModel = forgotPasswordUIViewModel,
-                db = db,
-                context = context
-            )
+            Row {
+                ApplyButton(
+                    navController = navController,
+                    forgotPasswordUIViewModel = forgotPasswordUIViewModel,
+                    db = db,
+                    context = context
+                )
+                Spacer(modifier = Modifier.padding(5.dp, 0.dp))
+                BackButton(navController, "login")
+            }
         }
     ){
         Column(

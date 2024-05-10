@@ -25,7 +25,6 @@ import com.thanasis.e_thessbike.R
 import com.thanasis.e_thessbike.backend.roomAPI.AppDatabase
 import com.thanasis.e_thessbike.ui.screens.AddBikeInit
 import com.thanasis.e_thessbike.ui.screens.AvailableBikeListInit
-import com.thanasis.e_thessbike.ui.screens.ChangePasswordScreen
 import com.thanasis.e_thessbike.ui.screens.EditInfoInit
 import com.thanasis.e_thessbike.ui.screens.HomeInit
 import com.thanasis.e_thessbike.ui.screens.MyBikeListInit
@@ -100,28 +99,25 @@ fun MenuDrawer(
                 HomeInit(navHostController, stringResource(id = R.string.home))
             }
             "search" -> {
-                SearchInit(navHostController, stringResource(id = R.string.search), userLoggedIn, notificationService, configuration)
+                SearchInit(navHostController, stringResource(id = R.string.search), userLoggedIn, notificationService)
             }
             "settings" -> {
-                SettingsInit(navHostController, stringResource(id = R.string.settings), roomDb, darkTheme, onThemeUpdated, configuration)
-            }
-            "change_password" -> {
-                ChangePasswordScreen(navHostController, stringResource(id = R.string.change_password), db, userLoggedIn)
+                SettingsInit(navHostController, stringResource(id = R.string.settings), roomDb, darkTheme, onThemeUpdated)
             }
             "profile" -> {
-                ProfileInit(navHostController, stringResource(id = R.string.profile), userLoggedIn, notificationService)
+                ProfileInit(navHostController, stringResource(id = R.string.profile), userLoggedIn, roomDb, notificationService)
             }
             "editInfo" -> {
-                EditInfoInit(navHostController, stringResource(id = R.string.edit_info), db, userLoggedIn, configuration)
+                EditInfoInit(navHostController, stringResource(id = R.string.edit_info), db, userLoggedIn)
             }
             "add_bike" -> {
-                AddBikeInit(navHostController, stringResource(id = R.string.add_bike), db, userLoggedIn, notificationService, configuration)
+                AddBikeInit(navHostController, stringResource(id = R.string.add_bike), db, userLoggedIn, notificationService)
             }
             "my_bike_list" -> {
-                MyBikeListInit(navHostController, stringResource(id = R.string.bike_list), userLoggedIn, notificationService, configuration)
+                MyBikeListInit(navHostController, stringResource(id = R.string.bike_list), userLoggedIn, notificationService)
             }
             "available_bikes" -> {
-                AvailableBikeListInit(navHostController, stringResource(id = R.string.available_bikes), userLoggedIn, notificationService, configuration)
+                AvailableBikeListInit(navHostController, stringResource(id = R.string.available_bikes), userLoggedIn, notificationService)
             }
         }
     }

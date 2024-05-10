@@ -1,7 +1,6 @@
 package com.thanasis.e_thessbike.backend.rules
 
 import android.content.ContentValues
-import android.content.Context
 import android.util.Log
 import com.thanasis.e_thessbike.backend.getDocuments
 import com.thanasis.e_thessbike.backend.signUp.SignUpViewModel
@@ -33,8 +32,8 @@ object Validator {
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)
-    fun validateEmail(email: String, context: Context): Int {
-        val emailRegex = Regex("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\$")
+    fun validateEmail(email: String): Int {
+        val emailRegex = Regex("^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}\$")
         val task = getDocuments("users").getCompleted()
 
         if (email.isBlank() || email.isEmpty()) return -1

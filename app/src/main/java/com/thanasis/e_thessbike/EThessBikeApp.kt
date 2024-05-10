@@ -17,6 +17,7 @@ import androidx.navigation.compose.composable
 import com.google.firebase.firestore.FirebaseFirestore
 import com.thanasis.e_thessbike.backend.roomAPI.AppDatabase
 import com.thanasis.e_thessbike.ui.components.MenuDrawer
+import com.thanasis.e_thessbike.ui.screens.ChangePasswordScreen
 import com.thanasis.e_thessbike.ui.screens.ForgotPasswordScreen
 import com.thanasis.e_thessbike.ui.screens.PrivacyPolicyScreen
 import com.thanasis.e_thessbike.ui.screens.TermsOfUseScreen
@@ -56,11 +57,11 @@ fun MainApp(
         NavHost(navController = navHostController, startDestination = EThessBikeApp.Login.name) {
             composable(EThessBikeApp.Register.name) {
                 BackHandler(true) {}
-                userLoggedIn = registerScreen(navHostController, db, roomDb)
+                userLoggedIn = registerScreen(navHostController, db, roomDb, onThemeUpdated)
             }
             composable(EThessBikeApp.Login.name) {
                 BackHandler(true) {}
-                userLoggedIn = loginScreen(navHostController, db, roomDb)
+                userLoggedIn = loginScreen(navHostController, db, roomDb, onThemeUpdated)
             }
             composable(EThessBikeApp.ForgotPassword.name) {
                 ForgotPasswordScreen(navHostController, stringResource(id = R.string.forgot_password), db)
@@ -70,6 +71,9 @@ fun MainApp(
             }
             composable(EThessBikeApp.PrivacyPolicy.name) {
                 PrivacyPolicyScreen(stringResource(id = R.string.privacy_policy))
+            }
+            composable(EThessBikeApp.ChangePassword.name) {
+                ChangePasswordScreen(navHostController, stringResource(id = R.string.change_password), db, userLoggedIn)
             }
             composable(EThessBikeApp.Home.name) {
                 MenuDrawer(
@@ -88,19 +92,6 @@ fun MainApp(
                 MenuDrawer(
                     navHostController,
                     selectedIndex = "settings",
-                    db,
-                    roomDb,
-                    darkTheme,
-                    onThemeUpdated,
-                    userLoggedIn,
-                    notificationService,
-                    configuration
-                )
-            }
-            composable(EThessBikeApp.ChangePassword.name) {
-                MenuDrawer(
-                    navHostController,
-                    selectedIndex = "change_password",
                     db,
                     roomDb,
                     darkTheme,

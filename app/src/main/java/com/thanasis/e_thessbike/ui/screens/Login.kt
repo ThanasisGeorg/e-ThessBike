@@ -47,7 +47,7 @@ import com.thanasis.e_thessbike.ui.components.loginRegisterButtonComp
 import com.thanasis.e_thessbike.ui.theme.Purple40
 
 @Composable
-fun loginScreen(navController: NavHostController, db: FirebaseFirestore, roomDb: AppDatabase, loginViewModel: LoginViewModel = viewModel()): Array<String> {
+fun loginScreen(navController: NavHostController, db: FirebaseFirestore, roomDb: AppDatabase, onClick: () -> Unit, loginViewModel: LoginViewModel = viewModel()): Array<String> {
     var userLoggedIn by remember{ mutableStateOf(arrayOf("", "")) }
     val context = LocalContext.current
     val annotatedString = buildAnnotatedString {
@@ -76,14 +76,14 @@ fun loginScreen(navController: NavHostController, db: FirebaseFirestore, roomDb:
             TextField(
                 labelValue = stringResource(id = R.string.email),
                 onTextSelected = {
-                    loginViewModel.onEvent(LoginUIEvent.EmailChanged(it), navController, db, roomDb, context)
+                    loginViewModel.onEvent(LoginUIEvent.EmailChanged(it), navController, db, roomDb, context, onClick)
                 },
                 //errorStatus = loginViewModel.loginUIState.value.emailError
             )
             PasswordTextField(
                 labelValue = stringResource(id = R.string.password),
                 onTextSelected = {
-                    loginViewModel.onEvent(LoginUIEvent.PasswordChanged(it), navController, db, roomDb, context)
+                    loginViewModel.onEvent(LoginUIEvent.PasswordChanged(it), navController, db, roomDb, context, onClick)
                 },
                 //errorStatus = loginViewModel.loginUIState.value.passwordError
             )
@@ -115,6 +115,7 @@ fun loginScreen(navController: NavHostController, db: FirebaseFirestore, roomDb:
                 roomDb,
                 context,
                 loginViewModel,
+                onClick,
                 isEnabled = true
             )
 

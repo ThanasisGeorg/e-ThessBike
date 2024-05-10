@@ -1,7 +1,6 @@
 package com.thanasis.e_thessbike.ui.screens
 
 import android.annotation.SuppressLint
-import android.content.res.Configuration
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -25,7 +24,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 @OptIn(ExperimentalCoroutinesApi::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun MyBikeListInit(navController: NavHostController, value: String, userLoggedIn: Array<String>, notificationService: NotificationService, configuration: Configuration){
+fun MyBikeListInit(navController: NavHostController, value: String, userLoggedIn: Array<String>, notificationService: NotificationService){
     val scrollState = rememberScrollState()
     val indexesOfBikes = getIndexesOfMyBikes(userLoggedIn)
     val task = getDocuments("bikes").getCompleted()
@@ -47,7 +46,7 @@ fun MyBikeListInit(navController: NavHostController, value: String, userLoggedIn
                 .verticalScroll(state = scrollState)
         ) {
             for (i in indexesOfBikes.indices) {
-                BikeCard(indexesOfBikes, i, task, userLoggedIn, navController, notificationService, configuration)
+                BikeCard(indexesOfBikes, i, task, userLoggedIn, navController, notificationService)
                 Spacer(modifier = Modifier.padding(0.dp, 5.dp))
             }
         }

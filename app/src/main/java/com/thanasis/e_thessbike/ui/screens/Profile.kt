@@ -20,6 +20,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.thanasis.e_thessbike.NotificationService
 import com.thanasis.e_thessbike.R
+import com.thanasis.e_thessbike.backend.roomAPI.AppDatabase
 import com.thanasis.e_thessbike.ui.components.BikeListButtonComp
 import com.thanasis.e_thessbike.ui.components.LogoutButton
 import com.thanasis.e_thessbike.ui.components.ProfileCard
@@ -27,7 +28,7 @@ import com.thanasis.e_thessbike.ui.components.TopBar
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun ProfileInit(navController: NavHostController, value: String, userLoggedIn: Array<String>, notificationService: NotificationService) {
+fun ProfileInit(navController: NavHostController, value: String, userLoggedIn: Array<String>, roomDb: AppDatabase, notificationService: NotificationService) {
     val context = LocalContext.current
 
     Scaffold(
@@ -36,7 +37,7 @@ fun ProfileInit(navController: NavHostController, value: String, userLoggedIn: A
         },
         floatingActionButton = {
             Row {
-                LogoutButton(navController)
+                LogoutButton(navController, userLoggedIn, roomDb)
             }
         }
     ) {
