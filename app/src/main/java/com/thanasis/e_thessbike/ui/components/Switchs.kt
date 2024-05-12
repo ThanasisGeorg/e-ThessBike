@@ -39,10 +39,12 @@ import com.thanasis.e_thessbike.EThessBikeApp
 import com.thanasis.e_thessbike.backend.roomAPI.AppDatabase
 import com.thanasis.e_thessbike.backend.roomAPI.Settings
 import com.thanasis.e_thessbike.backend.signUp.SignUpViewModel
+import com.thanasis.e_thessbike.ui.theme.MyTheme
+import com.thanasis.e_thessbike.ui.theme.ThemeManager
 
 @Composable
 fun ThemeSwitch(
-    darkTheme: Boolean = false,
+    navHostController: NavHostController,
     size: Dp = 150.dp,
     iconSize: Dp = size / 3,
     padding: Dp = 10.dp,
@@ -50,12 +52,11 @@ fun ThemeSwitch(
     parentShape: Shape = CircleShape,
     toggleShape: Shape = CircleShape,
     animationSpec: AnimationSpec<Dp> = tween(durationMillis = 300),
-    onClick: () -> Unit,
     userLoggedIn: Array<String>,
     roomDb: AppDatabase
 ) {
     val offset by animateDpAsState(
-        targetValue = if (darkTheme) 0.dp else size,
+        targetValue = if (ThemeManager.getCurrentTheme() == MyTheme.Dark) 0.dp else size,
         animationSpec = animationSpec, label = ""
     )
     val settingsDao = roomDb.settingsDao()
@@ -65,13 +66,16 @@ fun ThemeSwitch(
         .height(size)
         .clip(shape = parentShape)
         .clickable {
-            onClick()
-            if (!darkTheme) {
+            if (ThemeManager.getCurrentTheme() != MyTheme.Dark) {
+                ThemeManager.setTheme(MyTheme.Dark)
                 settingsDao.updateSettings(Settings(userId = userLoggedIn[1], theme = "dark"))
                 Log.d(ContentValues.TAG, settingsDao.getSettings().toString())
+                navHostController.navigate(EThessBikeApp.Settings.name)
             } else {
+                ThemeManager.setTheme(MyTheme.Light)
                 settingsDao.updateSettings(Settings(userId = userLoggedIn[1], theme = "light"))
                 Log.d(ContentValues.TAG, settingsDao.getSettings().toString())
+                navHostController.navigate(EThessBikeApp.Settings.name)
             }
         }
         .background(MaterialTheme.colorScheme.secondaryContainer)
@@ -95,14 +99,16 @@ fun ThemeSwitch(
                 )
         ) {
             Box(
-                modifier = Modifier.size(size),
+                modifier = Modifier
+                    .size(size),
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
-                    modifier = Modifier.size(iconSize),
+                    modifier = Modifier
+                        .size(iconSize),
                     imageVector = Icons.Default.Nightlight,
                     contentDescription = "Theme Icon",
-                    tint = if (darkTheme) MaterialTheme.colorScheme.secondaryContainer
+                    tint = if (ThemeManager.getCurrentTheme() == MyTheme.Dark) MaterialTheme.colorScheme.secondaryContainer
                     else MaterialTheme.colorScheme.primary
                 )
             }
@@ -114,7 +120,7 @@ fun ThemeSwitch(
                     modifier = Modifier.size(iconSize),
                     imageVector = Icons.Default.LightMode,
                     contentDescription = "Theme Icon",
-                    tint = if (darkTheme) MaterialTheme.colorScheme.primary
+                    tint = if (ThemeManager.getCurrentTheme() == MyTheme.Dark) MaterialTheme.colorScheme.primary
                     else MaterialTheme.colorScheme.secondaryContainer
                 )
             }

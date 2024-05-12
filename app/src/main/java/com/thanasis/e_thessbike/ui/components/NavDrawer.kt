@@ -1,6 +1,5 @@
 package com.thanasis.e_thessbike.ui.components
 
-import android.content.res.Configuration
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
@@ -77,11 +76,8 @@ fun MenuDrawer(
     selectedIndex: String,
     db: FirebaseFirestore,
     roomDb: AppDatabase,
-    darkTheme: Boolean,
-    onThemeUpdated: () -> Unit,
     userLoggedIn: Array<String>,
-    notificationService: NotificationService,
-    configuration: Configuration
+    notificationService: NotificationService
 ) {
     ModalNavigationDrawer(
         drawerContent = {
@@ -102,10 +98,10 @@ fun MenuDrawer(
                 SearchInit(navHostController, stringResource(id = R.string.search), userLoggedIn, notificationService)
             }
             "settings" -> {
-                SettingsInit(navHostController, stringResource(id = R.string.settings), roomDb, darkTheme, userLoggedIn, onThemeUpdated)
+                SettingsInit(navHostController, stringResource(id = R.string.settings), roomDb, userLoggedIn)
             }
             "profile" -> {
-                ProfileInit(navHostController, stringResource(id = R.string.profile), userLoggedIn, roomDb, onThemeUpdated, notificationService)
+                ProfileInit(navHostController, stringResource(id = R.string.profile), userLoggedIn, roomDb, notificationService)
             }
             "editInfo" -> {
                 EditInfoInit(navHostController, stringResource(id = R.string.edit_info), db, userLoggedIn)

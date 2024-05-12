@@ -1,7 +1,6 @@
 package com.thanasis.e_thessbike.ui.screens
 
 import android.annotation.SuppressLint
-import android.service.autofill.OnClickAction
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -29,7 +28,7 @@ import com.thanasis.e_thessbike.ui.components.TopBar
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun ProfileInit(navController: NavHostController, value: String, userLoggedIn: Array<String>, roomDb: AppDatabase, onClick: () -> Unit, notificationService: NotificationService) {
+fun ProfileInit(navController: NavHostController, value: String, userLoggedIn: Array<String>, roomDb: AppDatabase, notificationService: NotificationService) {
     val context = LocalContext.current
 
     Scaffold(
@@ -38,7 +37,7 @@ fun ProfileInit(navController: NavHostController, value: String, userLoggedIn: A
         },
         floatingActionButton = {
             Row {
-                LogoutButton(navController, userLoggedIn, roomDb, onClick)
+                LogoutButton(navController, userLoggedIn, roomDb)
             }
         }
     ) {

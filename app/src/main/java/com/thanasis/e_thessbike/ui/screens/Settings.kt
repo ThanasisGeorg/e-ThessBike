@@ -22,10 +22,10 @@ import com.thanasis.e_thessbike.ui.components.TopBar
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun SettingsInit(navController: NavHostController, value: String, roomDb: AppDatabase, darkTheme: Boolean, userLoggedIn: Array<String>, onThemeUpdated: () -> Unit){
+fun SettingsInit(navHostController: NavHostController, value: String, roomDb: AppDatabase, userLoggedIn: Array<String>){
     Scaffold(
         topBar = {
-            TopBar(navController, title = value)
+            TopBar(navHostController, title = value)
         }
     ) {
         Column(
@@ -44,10 +44,9 @@ fun SettingsInit(navController: NavHostController, value: String, roomDb: AppDat
                 CategoryIndicator(category = "dark", textSize = 15)
                 Spacer(modifier = Modifier.padding(5.dp, 10.dp))
                 ThemeSwitch(
-                    darkTheme = darkTheme,
+                    navHostController = navHostController,
                     size = 40.dp,
                     padding = 5.dp,
-                    onClick = onThemeUpdated,
                     userLoggedIn = userLoggedIn,
                     roomDb = roomDb
                 )
@@ -60,7 +59,7 @@ fun SettingsInit(navController: NavHostController, value: String, roomDb: AppDat
             CategoryIndicator(category = "security", textSize = 25)
             HorizontalDivider()
             Spacer(modifier = Modifier.padding(0.dp, 5.dp))
-            ButtonComp_("Change password", navController)
+            ButtonComp_("Change password", navHostController)
         }
     }
 }

@@ -61,7 +61,7 @@ fun ForgotPasswordScreen(navController: NavHostController, value: String, db: Fi
                 BackButton(navController, "login")
             }
         }
-    ){
+    ) {
         Column(
             Modifier
                 .fillMaxSize()

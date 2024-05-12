@@ -1,6 +1,5 @@
 package com.thanasis.e_thessbike
 
-import android.content.res.Configuration
 import androidx.activity.compose.BackHandler
 import androidx.annotation.StyleRes
 import androidx.compose.material3.MaterialTheme
@@ -45,11 +44,8 @@ enum class EThessBikeApp(@StyleRes val title: Int) {
 fun MainApp(
     db: FirebaseFirestore,
     roomDb: AppDatabase,
-    darkTheme: Boolean,
-    onThemeUpdated: () -> Unit,
     notificationService: NotificationService,
-    navHostController: NavHostController,
-    configuration: Configuration
+    navHostController: NavHostController
 ) {
     var userLoggedIn by remember { mutableStateOf(arrayOf("", "")) }
 
@@ -57,7 +53,7 @@ fun MainApp(
         NavHost(navController = navHostController, startDestination = EThessBikeApp.Login.name) {
             composable(EThessBikeApp.Register.name) {
                 BackHandler(true) {}
-                userLoggedIn = registerScreen(navHostController, db, roomDb, onThemeUpdated)
+                userLoggedIn = registerScreen(navHostController, db, roomDb)
             }
             composable(EThessBikeApp.Login.name) {
                 BackHandler(true) {}
@@ -81,11 +77,8 @@ fun MainApp(
                     selectedIndex = "home",
                     db,
                     roomDb,
-                    darkTheme,
-                    onThemeUpdated,
                     userLoggedIn,
                     notificationService,
-                    configuration
                 )
             }
             composable(EThessBikeApp.Settings.name) {
@@ -94,11 +87,8 @@ fun MainApp(
                     selectedIndex = "settings",
                     db,
                     roomDb,
-                    darkTheme,
-                    onThemeUpdated,
                     userLoggedIn,
-                    notificationService,
-                    configuration
+                    notificationService
                 )
             }
             composable(EThessBikeApp.Profile.name) {
@@ -107,11 +97,8 @@ fun MainApp(
                     selectedIndex = "profile",
                     db,
                     roomDb,
-                    darkTheme,
-                    onThemeUpdated,
                     userLoggedIn,
-                    notificationService,
-                    configuration
+                    notificationService
                 )
             }
             composable(EThessBikeApp.EditInfo.name) {
@@ -120,11 +107,8 @@ fun MainApp(
                     selectedIndex = "editInfo",
                     db,
                     roomDb,
-                    darkTheme,
-                    onThemeUpdated,
                     userLoggedIn,
-                    notificationService,
-                    configuration
+                    notificationService
                 )
             }
             composable(EThessBikeApp.Search.name) {
@@ -133,11 +117,8 @@ fun MainApp(
                     selectedIndex = "search",
                     db,
                     roomDb,
-                    darkTheme,
-                    onThemeUpdated,
                     userLoggedIn,
-                    notificationService,
-                    configuration
+                    notificationService
                 )
             }
             composable(EThessBikeApp.AddBike.name) {
@@ -145,11 +126,8 @@ fun MainApp(
                     navHostController,
                     selectedIndex = "add_bike",
                     db, roomDb,
-                    darkTheme,
-                    onThemeUpdated,
                     userLoggedIn,
-                    notificationService,
-                    configuration
+                    notificationService
                 )
             }
             composable(EThessBikeApp.MyBikeList.name) {
@@ -158,11 +136,8 @@ fun MainApp(
                     selectedIndex = "my_bike_list",
                     db,
                     roomDb,
-                    darkTheme,
-                    onThemeUpdated,
                     userLoggedIn,
-                    notificationService,
-                    configuration
+                    notificationService
                 )
             }
             composable(EThessBikeApp.AllBikeList.name) {
@@ -171,11 +146,8 @@ fun MainApp(
                     selectedIndex = "available_bikes",
                     db,
                     roomDb,
-                    darkTheme,
-                    onThemeUpdated,
                     userLoggedIn,
-                    notificationService,
-                    configuration
+                    notificationService
                 )
             }
         }

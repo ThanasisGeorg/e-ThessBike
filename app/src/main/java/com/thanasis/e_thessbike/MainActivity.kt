@@ -9,12 +9,10 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.navigation.compose.rememberNavController
 import androidx.room.Room
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
@@ -23,10 +21,28 @@ import com.google.accompanist.permissions.rememberPermissionState
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.firestore
 import com.thanasis.e_thessbike.backend.roomAPI.AppDatabase
-import com.thanasis.e_thessbike.ui.theme.EThessBikeTheme
+import com.thanasis.e_thessbike.ui.theme.MyTheme
+import com.thanasis.e_thessbike.ui.theme.Pink40
+import com.thanasis.e_thessbike.ui.theme.Pink80
+import com.thanasis.e_thessbike.ui.theme.Purple40
+import com.thanasis.e_thessbike.ui.theme.Purple80
+import com.thanasis.e_thessbike.ui.theme.PurpleGrey40
+import com.thanasis.e_thessbike.ui.theme.PurpleGrey80
+import com.thanasis.e_thessbike.ui.theme.ThemeManager
 
 class MainActivity: ComponentActivity() {
     private val db = Firebase.firestore
+    private val DarkColorScheme = darkColorScheme(
+        primary = Purple80,
+        secondary = PurpleGrey80,
+        tertiary = Pink80
+    )
+    private val LightColorScheme = lightColorScheme(
+        primary = Purple40,
+        secondary = PurpleGrey40,
+        tertiary = Pink40
+    )
+
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     @OptIn(ExperimentalPermissionsApi::class)
@@ -35,8 +51,8 @@ class MainActivity: ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            val isSystemInDarkTheme = isSystemInDarkTheme()
-            var darkTheme by remember { mutableStateOf(isSystemInDarkTheme) }
+            val currentTheme = ThemeManager.getCurrentTheme()
+            val darkTheme = isSystemInDarkTheme()
             val roomDb = Room.databaseBuilder(
                 applicationContext,
                 AppDatabase::class.java, "Settings"
@@ -46,7 +62,6 @@ class MainActivity: ComponentActivity() {
             val postNotificationPermission = rememberPermissionState(permission = Manifest.permission.POST_NOTIFICATIONS)
             val notificationService = NotificationService(this)
             val navHostController = rememberNavController()
-            val configuration = LocalConfiguration.current
 
             LaunchedEffect(key1 = true) {
                 if (!postNotificationPermission.status.isGranted) {
@@ -54,18 +69,18 @@ class MainActivity: ComponentActivity() {
                 }
             }
 
-            EThessBikeTheme(darkTheme) {
+            MaterialTheme(
+                colorScheme =
+                    when (currentTheme) {
+                        is MyTheme.Light -> LightColorScheme
+                        is MyTheme.Dark -> DarkColorScheme
+                    }
+            ) {
                 MainApp(
                     db,
                     roomDb,
-                    darkTheme = darkTheme,
-                    onThemeUpdated = {
-                        darkTheme = !darkTheme
-                        navHostController.navigate(EThessBikeApp.Settings.name)
-                    },
                     notificationService,
-                    navHostController,
-                    configuration
+                    navHostController
                 )
             }
         }
