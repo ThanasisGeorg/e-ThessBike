@@ -43,7 +43,6 @@ class MainActivity: ComponentActivity() {
         tertiary = Pink40
     )
 
-
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     @OptIn(ExperimentalPermissionsApi::class)
     @SuppressLint("UnrememberedMutableState")
@@ -72,8 +71,8 @@ class MainActivity: ComponentActivity() {
             MaterialTheme(
                 colorScheme =
                     when (currentTheme) {
-                        is MyTheme.Light -> LightColorScheme
                         is MyTheme.Dark -> DarkColorScheme
+                        is MyTheme.Light -> LightColorScheme
                     }
             ) {
                 MainApp(

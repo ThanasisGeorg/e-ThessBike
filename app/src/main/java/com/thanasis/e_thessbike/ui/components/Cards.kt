@@ -39,7 +39,19 @@ import com.thanasis.e_thessbike.backend.initInfo
 fun BikeCard(indexesOfBikes: ArrayList<Int>, index: Int, task: QuerySnapshot, userLoggedIn: Array<String>, navHostController: NavHostController, notificationService: NotificationService) {
     Scaffold(
         modifier = Modifier.height(280.dp),
-        //floatingActionButton = { EditButton(navHostController) }
+        floatingActionButton = {
+            if (task.documents[indexesOfBikes[index]].getString("email").equals(userLoggedIn[1])) {
+                Column {
+                    OptionsDropdown(
+                        userLoggedIn,
+                        index,
+                        navHostController,
+                        notificationService
+                    )
+                    Spacer(modifier = Modifier.padding(0.dp, 75.dp))
+                }
+            }
+        }
     ) {
         Card(
             colors = CardDefaults.cardColors(
@@ -57,14 +69,14 @@ fun BikeCard(indexesOfBikes: ArrayList<Int>, index: Int, task: QuerySnapshot, us
                         BikeInfoSection(indexesOfBikes, index, task)
                     }
                 }
-                if (task.documents[indexesOfBikes[index]].getString("email").equals(userLoggedIn[1])) {
+                /*if (task.documents[indexesOfBikes[index]].getString("email").equals(userLoggedIn[1])) {
                     OptionsDropdown(
                         userLoggedIn,
                         index,
                         navHostController,
                         notificationService
                     )
-                }
+                }*/
             }
         }
     }
@@ -140,7 +152,7 @@ fun BikeCard_() {
 @Composable
 fun BikeInfoSection(indexesOfBikes: ArrayList<Int>, index: Int, task: QuerySnapshot) {
     Column(
-        modifier = Modifier.height(210.dp)
+        modifier = Modifier.height(280.dp)
     ) {
         Spacer(modifier = Modifier.height(1.dp))
 
@@ -175,7 +187,7 @@ fun BrandName(indexesOfBikes: ArrayList<Int>, index: Int, task: QuerySnapshot) {
             )
             Text(
                 text = it,
-                modifier = Modifier.padding(5.dp, 17.dp),
+                modifier = Modifier.padding(0.dp, 17.dp),
                 style = TextStyle(
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Normal
@@ -201,7 +213,7 @@ fun Color(indexesOfBikes: ArrayList<Int>, index: Int, task: QuerySnapshot) {
             )
             Text(
                 text = it,
-                modifier = Modifier.padding(5.dp, 17.dp),
+                modifier = Modifier.padding(0.dp, 17.dp),
                 style = TextStyle(
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Normal
@@ -227,7 +239,7 @@ fun Location(indexesOfBikes: ArrayList<Int>, index: Int, task: QuerySnapshot) {
             )
             Text(
                 text = it,
-                modifier = Modifier.padding(5.dp, 17.dp),
+                modifier = Modifier.padding(0.dp, 17.dp),
                 style = TextStyle(
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Normal
@@ -253,9 +265,9 @@ fun EmailInfo(indexesOfBikes: ArrayList<Int>, index: Int, task: QuerySnapshot) {
             )
             Text(
                 text = it,
-                modifier = Modifier.padding(5.dp, 17.dp),
+                modifier = Modifier.padding(0.dp, 17.dp),
                 style = TextStyle(
-                    fontSize = 18.sp,
+                    fontSize = 15.sp,
                     fontWeight = FontWeight.Normal
                 ),
                 textAlign = TextAlign.Center,
@@ -270,9 +282,9 @@ fun ProfileCard(userLoggedIn: Array<String>, navHostController: NavHostControlle
     Scaffold(
         modifier = Modifier.height(250.dp),
         floatingActionButton = {
-            Column {
+            Row {
                 EditButton(navHostController)
-                Spacer(modifier = Modifier.height(12.dp))
+                Spacer(modifier = Modifier.padding(12.dp, 0.dp))
                 DeleteButton(userLoggedIn, navHostController, context, notificationService)
             }
         }

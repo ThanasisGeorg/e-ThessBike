@@ -1,8 +1,12 @@
 package com.thanasis.e_thessbike.ui.components
 
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -167,24 +171,58 @@ fun PasswordTextField(labelValue: String, onTextSelected: (String) -> Unit, erro
 
 @Composable
 fun CheckBox(onCheckedChange: (Boolean) -> Unit, navHostController: NavHostController) {
-    Row(modifier = Modifier
-        .fillMaxWidth()
-        .heightIn(56.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        val checkedState = remember {
-            mutableStateOf(false)
-        }
+    val initialText = "By continuing you accept our "
+    val privacyPolicyText = "Privacy Policy "
+    val andText = "and "
+    val termsAndConditionsText = "Term of Use"
+    val checkedState = remember {
+        mutableStateOf(false)
+    }
 
-        Checkbox(
-            checked = checkedState.value,
-            onCheckedChange = {
-                checkedState.value = !checkedState.value
-                onCheckedChange.invoke(it)
-            }
+
+    Column {
+        Row(modifier = Modifier
+            .fillMaxWidth()
+            .heightIn(56.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Checkbox(
+                checked = checkedState.value,
+                onCheckedChange = {
+                    checkedState.value = !checkedState.value
+                    onCheckedChange.invoke(it)
+                }
+            )
+
+            Text(
+                text = initialText,
+                fontSize = 13.sp
+            )
+            Text(
+                text = privacyPolicyText,
+                fontSize = 14.sp,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier
+                    .clickable {
+                        navHostController.navigate(EThessBikeApp.PrivacyPolicy.name)
+                    }
+            )
+            Text(
+                text = andText,
+                fontSize = 13.sp
+            )
+            Spacer(modifier = Modifier.padding(5.dp, 0.dp))
+            //ClickableTextComp(navHostController)
+        }
+        Text(
+            text = termsAndConditionsText,
+            fontSize = 14.sp,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier
+                .clickable {
+                    navHostController.navigate(EThessBikeApp.TermsOfUse.name)
+                }
         )
-        
-        ClickableTextComp(navHostController)
     }
 }
 

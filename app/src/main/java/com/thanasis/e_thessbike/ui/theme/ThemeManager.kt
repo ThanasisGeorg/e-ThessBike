@@ -5,7 +5,7 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 
 object ThemeManager {
-    private var currentTheme: MutableState<MyTheme> = mutableStateOf(MyTheme.Dark)
+    private var currentTheme: MutableState<MyTheme> = mutableStateOf(MyTheme.Light)
 
     fun getCurrentTheme(): MyTheme {
         return currentTheme.value

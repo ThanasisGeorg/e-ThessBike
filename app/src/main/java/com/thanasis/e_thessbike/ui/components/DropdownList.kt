@@ -107,7 +107,7 @@ fun OptionsDropdown(userLoggedIn: Array<String>, index: Int, navHostController: 
     var showDropdown by remember { mutableStateOf(false) }
 
     Column(
-        horizontalAlignment = Alignment.End
+        horizontalAlignment = Alignment.Start
     ) {
         Column(
             modifier = Modifier.height(115.dp)

@@ -69,12 +69,12 @@ fun ThemeSwitch(
             if (ThemeManager.getCurrentTheme() != MyTheme.Dark) {
                 ThemeManager.setTheme(MyTheme.Dark)
                 settingsDao.updateSettings(Settings(userId = userLoggedIn[1], theme = "dark"))
-                Log.d(ContentValues.TAG, settingsDao.getSettings().toString())
+                Log.d(ContentValues.TAG, "Room API: ${settingsDao.getSettings()}")
                 navHostController.navigate(EThessBikeApp.Settings.name)
             } else {
                 ThemeManager.setTheme(MyTheme.Light)
                 settingsDao.updateSettings(Settings(userId = userLoggedIn[1], theme = "light"))
-                Log.d(ContentValues.TAG, settingsDao.getSettings().toString())
+                Log.d(ContentValues.TAG, "Room API: ${settingsDao.getSettings()}")
                 navHostController.navigate(EThessBikeApp.Settings.name)
             }
         }

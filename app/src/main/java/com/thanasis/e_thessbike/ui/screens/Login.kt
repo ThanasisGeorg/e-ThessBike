@@ -1,28 +1,30 @@
 package com.thanasis.e_thessbike.ui.screens
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
@@ -37,7 +39,6 @@ import com.thanasis.e_thessbike.R
 import com.thanasis.e_thessbike.backend.login.LoginUIEvent
 import com.thanasis.e_thessbike.backend.login.LoginViewModel
 import com.thanasis.e_thessbike.backend.roomAPI.AppDatabase
-import com.thanasis.e_thessbike.ui.components.ClickableLoginTextComp
 import com.thanasis.e_thessbike.ui.components.DividerComp
 import com.thanasis.e_thessbike.ui.components.HeadingText
 import com.thanasis.e_thessbike.ui.components.NormalText
@@ -57,6 +58,8 @@ fun loginScreen(navController: NavHostController, db: FirebaseFirestore, roomDb:
             textDecoration = TextDecoration.Underline)
         ) {}
     }
+    val initialText = "Don't have an account yet? "
+    val clickableText = "Register"
 
     Surface(
         modifier = Modifier
@@ -90,7 +93,7 @@ fun loginScreen(navController: NavHostController, db: FirebaseFirestore, roomDb:
 
             Spacer(modifier = Modifier.heightIn(20.dp))
 
-            ClickableText(
+            /*ClickableText(
                 modifier = Modifier
                     .fillMaxWidth()
                     .heightIn(min = 40.dp),
@@ -107,6 +110,7 @@ fun loginScreen(navController: NavHostController, db: FirebaseFirestore, roomDb:
             )
 
             Spacer(modifier = Modifier.heightIn(20.dp))
+             */
 
             userLoggedIn = loginRegisterButtonComp(
                 value = stringResource(id = R.string.login),
@@ -122,12 +126,34 @@ fun loginScreen(navController: NavHostController, db: FirebaseFirestore, roomDb:
             DividerComp()
             Spacer(modifier = Modifier.height(20.dp))
 
-            ClickableLoginTextComp(
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.CenterVertically
+            ){
+                Spacer(modifier = Modifier.padding(2.dp, 0.dp))
+                Text(
+                    text = initialText,
+                    fontSize = 20.sp
+                )
+                Spacer(modifier = Modifier.padding(5.dp, 0.dp))
+                Text(
+                    text = clickableText,
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier
+                        .clickable {
+                            navController.navigate(EThessBikeApp.Register.name)
+                        }
+                )
+            }
+
+            /*ClickableLoginTextComp(
                 loginAttempt = false,
                 onTextSelected = {
                     navController.navigate(EThessBikeApp.Register.name)
                 }
-            )
+            )*/
         }
     }
 
